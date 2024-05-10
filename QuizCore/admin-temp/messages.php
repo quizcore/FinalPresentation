@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	
+	$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+	
+	$select = "SELECT * FROM contact";
+	$result = $conn->query($select);
+?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -314,7 +322,7 @@
     >
       <a
         class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"
-        href="index.html"
+        href="index.php"
       >
         <img
           src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png"
@@ -391,7 +399,7 @@
                   <a
                     class="nav-link d-flex align-items-center gap-2 active"
                     aria-current="page"
-                    href="index.html"
+                    href="index.php"
                   >
                     <svg class="bi"><use xlink:href="#house-fill" /></svg>
                     Dashboard
@@ -400,7 +408,7 @@
                 <li class="nav-item">
                   <a
                     class="nav-link d-flex align-items-center gap-2"
-                    href="student.html"
+                    href="student.php"
                   >
                     <svg class="bi"><use xlink:href="#file-earmark" /></svg>
                     Students
@@ -409,7 +417,7 @@
                 <li class="nav-item">
                   <a
                     class="nav-link d-flex align-items-center gap-2"
-                    href="messages.html"
+                    href="messages.php"
                   >
                     <svg class="bi"><use xlink:href="#file-earmark" /></svg>
                     Contact Messages
@@ -423,7 +431,7 @@
                 <li class="nav-item">
                   <a
                     class="nav-link d-flex align-items-center gap-2"
-                    href="profile.html"
+                    href="profile.php"
                   >
                     <svg class="bi">
                       <use xlink:href="#gear-wide-connected" />
@@ -472,25 +480,17 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit.
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>
-                              Sed do eiusmod tempor incididunt ut labore et
-                              dolore magna aliqua.
-                            </td>
-                          </tr>
-                          <!-- Add more rows as needed -->
+						<!-- Dynamically pull all messages from database -->
+						  <?php
+						    while($row = $result->fetch_assoc()) {
+							  echo '<tr>';
+							    echo '<td>' . $row["contact_id"] . '</td>';
+								echo '<td>' . $row["contact_name"] . '</td>';
+								echo '<td>' . $row["contact_email"] . '</td>';
+								echo '<td>' . $row["contact_message"] . '</td>';
+							  echo '</tr>';
+							}
+						  ?>
                         </tbody>
                       </table>
                     </div>

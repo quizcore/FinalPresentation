@@ -6,7 +6,7 @@ $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION
 
 // Check if the user is already logged in, if yes, redirect to admin page.
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("Location: admin.php");
+    header("Location: /admin-temp/admin.php");
     exit;
 }
 
@@ -46,10 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 				// Store data in session variables.
 				$_SESSION["loggedin"] = true;
-				$_SESSION["email"] = $email;
+				$_SESSION["admin_email"] = $email;
 
 				// Redirect user to admin page.
-				header("location: admin.php");
+				header("location: /admin-temp/admin.php");
 			}
         }
 		if($valud === False) {

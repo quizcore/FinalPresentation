@@ -1,21 +1,29 @@
 <?php
+	session_start();
+	
+	$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+	
+	// Check if the send button was pressed
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+		$name = test_input($_POST['name']);
+		$email = test_input($_POST['contactEmail']);
+		$body = test_input($_POST['emailBody']);
+		
+		if (strlen($name) > 0 && strlen($email) > 0  && strlen($body) > 0) {
+			$sql = "INSERT INTO contact(contact_name, contact_email, contact_message) VALUES('$name', '$email', '$body');";
+			mysqli_query($conn, $sql);
+		}
+	}
+	
+	function test_input($data) {
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
+	
 	$pageTitle = "Contact Us";
 	require_once 'header.php';
-
-	$isSent = False;
-			
-	// Check if the send button was pressed
-	if(isset($_POST['Send'])) {
-		// Gather email contents from form
-		$email = "conadcwu@gmail.com";
-		$title = "Message from: " . $_POST['name'];
-		$body = $_POST['emailBody'];
-		$from = "From: " . $_POST['contactEmail'];
-				
-		// Use mail() to send email to support email, track is sent for success message
-		mail($email, $title, $body, $from);
-		$isSent = True;
-	}
 ?>
 
 <!--Main-->
@@ -24,7 +32,7 @@
   <p>
     If you have any questions or feedback, feel free to reach out to us.
   </p>
-  <form>
+  <form method="POST">
     <div class="mb-3">
       <label for="name" class="form-label">Your Name</label>
       <input type="text" class="form-control" name="name" id="name" required />

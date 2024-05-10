@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+
+  $select = "SELECT * FROM students";
+  $result = $conn->query($select);
+  $row = $result->fetch_assoc();
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="../assets/js/color-modes.js"></script>
@@ -206,7 +214,7 @@
 </svg>
 
 <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="index.html">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="index.php">
     <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px;">
   </a>
 
@@ -239,19 +247,19 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="index.html">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="index.php">
                 <svg class="bi"><use xlink:href="#house-fill"/></svg>
                 Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="student.html">
+              <a class="nav-link d-flex align-items-center gap-2" href="student.php">
                 <svg class="bi"><use xlink:href="#file-earmark"/></svg>
                 Students
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="messages.html">
+              <a class="nav-link d-flex align-items-center gap-2" href="messages.php">
                 <svg class="bi"><use xlink:href="#file-earmark"/></svg>
                 Contact Messages
               </a>
@@ -262,7 +270,7 @@
 
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="profile.html">
+              <a class="nav-link d-flex align-items-center gap-2" href="profile.php">
                 <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
                 Profile
               </a>
@@ -303,28 +311,36 @@
 
             <div class="card shadow-lg p-3 mb-5 bg-white rounded">
               <div class="card-body">
-                <h5 class="card-title text-center">Table Data as Cards</h5>
+                <h5 class="card-title text-center"> <?php echo $row["first_name"] . " " . $row["last_name"] ?> </h5>
                 <hr>
                 <p class="card-text text-center">Student details</p>
                 <div class="row">
-                  <div class="col-md-6">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><strong>ID:</strong> John Doe</li>
-                      <li class="list-group-item"><strong>First Name:</strong> admin@example.com</li>
-                      <li class="list-group-item"><strong>Last Name:</strong> Administrator</li>
-                      <li class="list-group-item"><strong>Email:</strong> John Doe</li>
-                      <li class="list-group-item"><strong>Date Of Birth:</strong> admin@example.com</li>
-                    </ul>
-                  </div>
-                  <div class="col-md-6">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><strong>Recommendation:</strong> Administrator</li>
-                      <li class="list-group-item"><strong>Start Term:</strong> John Doe</li>
-                      <li class="list-group-item"><strong>CWU ID:</strong> admin@example.com</li>
-                      <li class="list-group-item"><strong>Previous College:</strong> Administrator</li>
-                      <li class="list-group-item"><strong>Relevant CS Courses:</strong> Administrator</li>
-                    </ul>
-                  </div>
+				  <?php
+                    echo '<div class="col-md-6">';
+                      echo '<ul class="list-group list-group-flush">';
+                        echo '<li class="list-group-item"><strong>ID: </strong>' . $row["student_id"] . '</li>';
+                        echo '<li class="list-group-item"><strong>First Name: </strong>' . $row["first_name"] . '</li>';
+                        echo '<li class="list-group-item"><strong>Last Name: </strong>' . $row["last_name"] . '</li>';
+                        echo '<li class="list-group-item"><strong>Email: </strong>' . $row["email"] . '</li>';
+                        echo '<li class="list-group-item"><strong>Date Of Birth: </strong>' . $row["dob"] . '</li>';
+                      echo '</ul>';
+                    echo '</div>';
+                    echo '<div class="col-md-6">';
+                      echo '<ul class="list-group list-group-flush">';
+                        echo '<li class="list-group-item"><strong>Recommendation: </strong>' . $row["recommendation"] . '</li>';
+                        echo '<li class="list-group-item"><strong>Start Term: </strong>' . $row["expected_term"] . '</li>';
+                        echo '<li class="list-group-item"><strong>CWU ID: </strong>';
+						  if($row["sid"] > 0) { 
+						    echo $row["sid"];
+						  } else {
+							echo 'No SID';
+						  }
+						  echo '</li>';
+                        echo '<li class="list-group-item"><strong>Previous College: </strong>' . $row["previous_education"] . '</li>';
+                        echo '<li class="list-group-item"><strong>Relevant CS Courses: </strong>' . $row["previous_classes"] . '</li>';
+                      echo '</ul>';
+                    echo '</div>';
+				  ?>
                 </div>
               </div>
             </div>
@@ -333,7 +349,7 @@
       </div>
 
 
-      <h2>Section title</h2>
+      <h2>Exam Results</h2>
       <!-- Tables data-->
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
@@ -347,48 +363,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
-              <!-- Row content -->
-              <td>1,000</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-            </tr>
-            
-            <tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-            </tr>
-
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-  
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-            </tr>
-
-
+		    <?php
+			  $qSelect = "SELECT * FROM questions";
+			  $qResults = $conn->query($qSelect);
+			  
+			  while($qRow = $qResults->fetch_assoc()) {
+				$number = 'question_' . $qRow["question_id"];
+                if(strlen($row[$number]) > 0) {
+				  echo '<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">';
+                    echo '<td>' . $qRow["question_id"] . '</td>';
+                    echo '<td>' . $qRow["question_body"] . '</td>';
+                    echo '<td>' . $row[$number] . '</td>';
+                    echo '<td>' . $qRow["question_answer"] . '</td>';
+                  echo '</tr>';
+				}
+			  }
+            ?>
           </tbody>
         </table>
       </div>

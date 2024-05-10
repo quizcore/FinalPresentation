@@ -1,4 +1,11 @@
 <?php
+session_start();
+$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+
+$select = "SELECT * FROM students WHERE email = '$_COOKIE[student]';";
+$result = $conn->query($select);
+$row = $result->fetch_assoc();
+
 $pageTitle = "Exam";
 require_once 'header.php';
 include 'questions2.php';
@@ -10,7 +17,7 @@ include 'questions2.php';
   <div class="container">
     <!-- Display User info-->
     <div class="container shadow p-3 my-5 bg-body-tertiary rounded">
-      <h1 id="userInfo"></h1>
+      <h1>Welcome <?php echo $row["first_name"] . ' ' . $row["last_name"]; ?></h1>
     </div>
 
     <!--Guidelines Div-->

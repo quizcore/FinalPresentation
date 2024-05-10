@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+  
+  // Store Count of students recommended to 110, 111, and 112
+  $count110 = 0;
+  $count111 = 0;
+  $count112 = 0;
+?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -12,16 +21,16 @@
     />
     <meta name="generator" content="Hugo 0.122.0" />
     <title>Dashboard Template · Bootstrap v5.3</title>
-        <!---->
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-          crossorigin="anonymous"
-        />
+    <!---->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
 
     <link
       rel="canonical"
@@ -68,7 +77,8 @@
 
       .bi {
         vertical-align: -0.125em;
-        fill: currentColor;
+        fill: #ab0433;
+		width: 30%;
       }
 
       .nav-scroller {
@@ -92,7 +102,6 @@
       .btn-bd-primary {
         --bd-violet-bg: #712cf9;
         --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
         --bs-btn-font-weight: 600;
         --bs-btn-color: var(--bs-white);
         --bs-btn-bg: var(--bd-violet-bg);
@@ -314,7 +323,7 @@
     >
       <a
         class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"
-        href="index.html"
+        href="index.php"
       >
         <img
           src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png"
@@ -391,7 +400,7 @@
                   <a
                     class="nav-link d-flex align-items-center gap-2 active"
                     aria-current="page"
-                    href="index.html"
+                    href="index.php"
                   >
                     <svg class="bi"><use xlink:href="#house-fill" /></svg>
                     Dashboard
@@ -400,7 +409,7 @@
                 <li class="nav-item">
                   <a
                     class="nav-link d-flex align-items-center gap-2"
-                    href="student.html"
+                    href="student.php"
                   >
                     <svg class="bi"><use xlink:href="#file-earmark" /></svg>
                     Students
@@ -409,7 +418,7 @@
                 <li class="nav-item">
                   <a
                     class="nav-link d-flex align-items-center gap-2"
-                    href="messages.html"
+                    href="messages.php"
                   >
                     <svg class="bi"><use xlink:href="#file-earmark" /></svg>
                     Contact Messages
@@ -423,7 +432,7 @@
                 <li class="nav-item">
                   <a
                     class="nav-link d-flex align-items-center gap-2"
-                    href="profile.html"
+                    href="profile.php"
                   >
                     <svg class="bi">
                       <use xlink:href="#gear-wide-connected" />
@@ -446,71 +455,226 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
+            <h1 class="h2">Dashboard</h1>
           </div>
-
+          
+          <!--Boxes-->
           <div class="container-fluid">
             <div class="row">
-              <div class="col-xl-12 col-xxl-12 col-sm-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Contact Messages</h3>
-                  </div>
+              <div class="col-xl-6 col-xxl-6 col-sm-6">
+                <div class="widget-stat card bg-primary">
                   <div class="card-body">
-                    <div class="table-responsive">
-                      <table
-                        id="messages"
-                        class="table table-striped table-bordered table-sm"
-                        cellspacing="0"
-                        width="100%"
-                      >
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email Address</th>
-                            <th>Message</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit.
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>
-                              Sed do eiusmod tempor incididunt ut labore et
-                              dolore magna aliqua.
-                            </td>
-                          </tr>
-                          <!-- Add more rows as needed -->
-                        </tbody>
-                      </table>
+                    <div class="media">
+                      <span class="mr-3">
+                        <i class="la la-users"></i>
+                      </span>
+                      <div class="media-body text-white">
+                        <p class="mb-1">Total Students</p>
+						<?php
+						  $select = "SELECT * FROM students";
+						  $result = $conn->query($select);
+						  
+						  $newStudents = 0;
+						  $total = 0;
+						  while($row = $result->fetch_assoc()) {
+							$total++;
+							if($row["expected_term"] === "Fall24") {
+							  $newStudents++;
+							}
+							if($row["recommendation"] == 110) {
+							  $count110++;
+							} else if($row["recommendation"] == 111) {
+							  $count111++;
+							} else if($row["recommendation"] == 112) {
+							  $count112++;
+							}
+						  }
+						  echo '<h3 class="text-white">' . $total . '</h3>';
+						?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-xxl-6 col-sm-6">
+                <div class="widget-stat card bg-warning">
+                  <div class="card-body">
+                    <div class="media">
+                      <span class="mr-3">
+                        <i class="la la-user"></i>
+                      </span>
+                      <div class="media-body text-white">
+                        <p class="mb-1">Students Attended Next Term</p>
+                        <?php
+						  echo '<h3 class="text-white">' . $newStudents . '</h3>';
+						?>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <br /><br />
+
+          <!--Data table-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-12 col-xxl-12 col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Table</h3>
+                  </div>
+                  <div class="card-body">
+
+                      <!-- table entry-->
+                      <table
+                        id="dtBasicExample"
+                        class="table table-striped table-bordered table-sm"
+                        cellspacing="0"
+                        width="100%"
+                      >
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date Of Birth</th>
+                            <th scope="col">Recommendation</th>
+                            <th scope="col">Start Term</th>
+                            <th scope="col">CWu ID</th>
+                            <th scope="col">Previous College</th>
+                            <th scope="col">Relevant CS Courses</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+							$select = "SELECT * FROM students";
+							$result = $conn->query($select);
+						  
+							while($row = $result->fetch_assoc()) {
+								echo '<tr
+								  data-bs-toggle=' . "tooltip" .
+								  'data-bs-placement=' . "top" .
+								  'data-bs-title=' . "Tooltip on top" . 
+								  '>';
+								  echo '<td>' . $row["student_id"] . '</td>';
+								  echo '<td>' . $row["first_name"] . '</td>';
+								  echo '<td>' . $row["last_name"] . '</td>';
+								  echo '<td>' . $row["email"] . '</td>';
+								  echo '<td>' . $row["dob"] . '</td>';
+								  echo '<td>' . $row["recommendation"] . '</td>';
+								  echo '<td>' . $row["expected_term"] . '</td>';
+								  if($row["sid"] > 0) {
+									echo '<td>' . $row["sid"] . '</td>';
+								  } else {
+									  echo '<td>No SID</td>';
+								  }
+								  echo '<td>' . $row["previous_education"] . '</td>';
+								  echo '<td>' . $row["previous_classes"] . '</td>';
+								echo '</tr>';
+							}
+							echo '</a>';
+						  ?>
+                        </tbody>
+                      </table>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- chart-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-12 col-xxl-12 col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Course Recommendations</h3>
+                  </div>
+                  <div class="card-body">
+                    <canvas
+                      class="my-4 w-100"
+                      id="myChart"
+                      style="max-height: 300px"
+                    ></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br /><br />
         </main>
       </div>
     </div>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
     <script
       src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
       integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // Get the canvas element
+      var ctx = document.getElementById("myChart").getContext("2d");
+
+      // Define the data
+      var data = {
+        labels: ["CS110", "CS111", "CS112+"],
+        datasets: [
+          {
+            data: [<?php echo $count110 ?>, <?php echo $count111 ?>, <?php echo $count112 ?>], // Sample data, you can replace with your own values
+            backgroundColor: [
+              "rgba(171, 4, 51, 255)", // Red
+              "rgba(138, 35, 50, 255)", // Dark Red
+              "rgba(0, 0, 0, 255)", // Black
+            ],
+            borderColor: [
+              "rgba(171, 4, 51, 255)",
+              "rgba(138, 35, 50, 255)",
+              "rgba(0, 0, 0, 255)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      // Define options
+      var options = {
+        // Add a legend to the chart
+        legend: {
+          position: "right", // Adjust position as needed
+        },
+        // Add labels inside the doughnut chart
+        plugins: {
+          labels: {
+            render: "percentage", // Display percentages
+            precision: 0, // Number of decimal places for percentages
+            fontSize: 14, // Font size of labels
+            fontColor: "#fff", // Font color of labels
+            fontStyle: "bold", // Font style of labels
+            fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", // Font family of labels
+          },
+        },
+        // Customize hover effects
+        hover: {
+          mode: "nearest", // Highlight nearest item on hover
+          animationDuration: 500, // Adjusted animation duration on hover (increased to 500ms)
+          intersect: true, // Enable hover interactions with all elements at the same index
+        },
+      };
+
+      // Create the doughnut chart
+      var myChart = new Chart(ctx, {
+        type: "doughnut",
+        data: data,
+        options: options,
+      });
+    </script>
 
     <script>
       const tooltipTriggerList = document.querySelectorAll(
@@ -527,7 +691,7 @@
     </script>
     <script>
       $(document).ready(function () {
-        $("#messages").DataTable({
+        $("#dtBasicExample").DataTable({
           scrollY: "360px",
           scrollCollapse: true,
         });

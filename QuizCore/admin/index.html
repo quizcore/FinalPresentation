@@ -115,17 +115,54 @@
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>
-
                     <li><a class="ai-icon" href="index.html" aria-expanded="false">
                         <i class="fa fa-home"></i>
-                        <span class="nav-text">Dashboard</span>
+                        <span class="nav-text">Dashboard 1</span>
                     </a>
                     </li>
-
-					<li><a class="ai-icon" href="all-students.html" aria-expanded="false">
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="fa fa-users"></i>
-                        <span class="nav-text">All Students</span>
-                    </a>
+                        <span class="nav-text">Students</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="all-students.html">All Students</a></li>
+                            <li><a href="add-student.html">Add Students</a></li>
+                            <li><a href="edit-student.html">Edit Students</a></li>
+                            <li><a href="about-student.html">About Students</a></li>
+                        </ul>
+                    </li>
+					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+							<span class="nav-text">Professors</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="all-professors.html">All Professor</a></li>
+                            <li><a href="add-professor.html">Add Professor</a></li>
+                            <li><a href="edit-professor.html">Edit Professor</a></li>
+                            <li><a href="professor-profile.html">Professor Profile</a></li>
+                        </ul>
+                    </li>
+					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+							<i class="fa fa-graduation-cap"></i>
+							<span class="nav-text">Courses</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="all-courses.html">All Courses</a></li>
+                            <li><a href="add-courses.html">Add Courses</a></li>
+                            <li><a href="edit-courses.html">Edit Courses</a></li>
+                            <li><a href="about-courses.html">About Courses</a></li>
+                        </ul>
+                    </li>
+					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="fa-solid fa-id-card-clip"></i>
+							<span class="nav-text">Staff</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="all-staff.html">All Staff</a></li>
+                            <li><a href="add-staff.html">Add Staff</a></li>
+                            <li><a href="edit-staff.html">Edit Staff</a></li>
+                            <li><a href="staff-profile.html">Staff Profile</a></li>
+                        </ul>
                     </li>
 
 				</ul>
@@ -142,7 +179,78 @@
             <!-- row -->
             <div class="container-fluid">
 				    
-                <div class="row">	
+                <div class="row">
+					<div class="col-xl-6 col-xxl-6 col-sm-6">
+						<div class="widget-stat card bg-primary">
+							<div class="card-body">
+								<div class="media">
+									<span class="mr-3">
+										<i class="la la-users"></i>
+									</span>
+									<div class="media-body text-white">
+										<p class="mb-1">Total Students</p>
+										<h3 class="text-white">3280</h3>
+										<div class="progress mb-2 bg-white">
+                                            <div class="progress-bar progress-animated bg-light" style="width: 80%"></div>
+                                        </div>
+										<small>80% Increase in 20 Days</small>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+					<div class="col-xl-6 col-xxl-6 col-sm-6">
+						<div class="widget-stat card bg-warning">
+							<div class="card-body">
+								<div class="media">
+									<span class="mr-3">
+										<i class="la la-user"></i>
+									</span>
+									<div class="media-body text-white">
+										<p class="mb-1">New Students</p>
+										<h3 class="text-white">245</h3>
+										<div class="progress mb-2 bg-white">
+                                            <div class="progress-bar progress-animated bg-light" style="width: 50%"></div>
+                                        </div>
+										<small>50% Increase in 25 Days</small>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+
+					<div class="col-xl-6 col-xxl-6 col-lg-12 col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">University Survey</h3>
+							</div>
+							<div class="card-body">
+								<div id="morris_bar_stalked" class="morris_chart_height" style="height: 300px !important;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-xxl-3 col-sm-6">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Donught Chart</h3>
+							</div>
+							<div class="card-body">
+								<div id="morris_donught_2" class="morris_chart_height" style="height: 300px !important;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-xxl-3 col-sm-6">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">University Survey</h3>
+							</div>
+							<div class="card-body">
+								<div id="morris_area" class="morris_chart_height" style="height: 300px !important;"></div>
+							</div>
+						</div>
+					</div>
+
+					
 					<div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
@@ -154,73 +262,87 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No.</th>
-                                                <th scope="col">First Name</th>
-                                                <th scope="col">Last Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Date of Birth</th>
-                                                <th scope="col">Recommendation</th>
-                                                <th scope="col">Empty 1</th>
-                                                <th scope="col">Empty 2</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Assigned Professor</th>
+                                                <th scope="col">Date Of Admit</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Subject</th>
+                                                <th scope="col">Fees</th>
+                                                <th scope="col">Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>01</td>
-												<td>Jack</td>
-                                                <td>Airi</td>
-                                                <td>Jack.Airi@gmail.com</td>
-                                                <td>30 July 1998</td>
-                                                <td>110</td>
-                                                <td>---</td>
-                                                <td>---</td>
-                                  
+												<td>Jack Ronan</td>
+                                                <td>Airi Satou</td>
+                                                <td>01 August 2020</td>
+                                                <td><span class="badge badge-rounded badge-primary">Checkin</span></td>
+                                                <td>Commerce</td>
+                                                <td>120$</td>
+                                                <td>
+                                                    <a href="edit-student.html" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>02</td>
-                                                <td>Jimmy</td>
-                                                <td>Ramos</td>
-												<td>Jimmy.Ramos@gmail.com</td>
-                                                <td>30 July 2000</td>
-                                                <td>111</td>
-                                      
+                                                <td>02 </td>
+                                                <td>Jimmy Morris</td>
+                                                <td>Angelica Ramos</td>
+												<td>31 July 2020</td>
+                                                <td><span class="badge badge-rounded badge-warning">Panding</span></td>
+                                                <td>Mechanical</td>
+                                                <td>120$</td>
+                                                <td>
+                                                    <a href="edit-student.html" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>03</td>
-                                                <td>Ramos</td>
-                                                <td>Airi</td>
-												<td>Ramos.Airi@gmail.com</td>
-                                                <td>30 July 2000</td>
-                                                <td>111</td>
-                                      
+                                                <td>03 </td>
+                                                <td>Nashid Martines</td>
+                                                <td>Ashton Cox</td>
+												<td>30 July 2020</td>
+                                                <td><span class="badge badge-rounded badge-danger">Canceled</span></td>
+                                                <td>Science</td>
+                                                <td>520$</td>
+                                                <td>
+                                                    <a href="edit-student.html" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>04</td>
-                                                <td>Ramos</td>
-                                                <td>Airi</td>
-												<td>Ramos.Airi@gmail.com</td>
-                                                <td>30 July 2000</td>
-                                                <td>None</td>
-                                      
+                                                <td>Roman Aurora</td>
+                                                <td>Cara Stevens</td>
+												<td>29 July 2020</td>
+                                                <td><span class="badge badge-rounded badge-success">Checkin</span></td>
+                                                <td>Arts</td>
+                                                <td>220$</td>
+                                                <td>
+                                                    <a href="edit-student.html" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                </td>
                                             </tr>
-
+                                            <tr>
+                                                <td>05</td>
+                                                <td>Samantha</td>
+                                                <td>Bruno Nash </td>
+												<td>28 July 2020</td>
+                                                <td><span class="badge badge-rounded badge-success">Checkin</span></td>
+                                                <td>Maths</td>
+                                                <td>130$</td>
+                                                <td>
+                                                    <a href="edit-student.html" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-6 col-xxl-6 col-sm-12">
-						<div class="card">
-							<div class="card-header">
-								<h3 class="card-title">Donught Chart</h3>
-							</div>
-							<div class="card-body">
-								<div id="morris_donught_2" class="morris_chart_height" style="height: 300px !important;"></div>
-							</div>
-						</div>
-					</div>
-                    
                 </div>
 				
             </div>
