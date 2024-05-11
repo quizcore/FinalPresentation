@@ -1,10 +1,17 @@
 <?php
   session_start();
-  $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
-  $select = "SELECT * FROM students";
-  $result = $conn->query($select);
-  $row = $result->fetch_assoc();
+  $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+  if (isset($_GET['id'])) {
+    // get student_id from index.php
+    $id = $_GET['id'];
+    $select = "SELECT * FROM students WHERE student_id = $id;";
+    $result = $conn->query($select);
+    $row = $result->fetch_assoc();
+} else {
+    echo "Student ID not provided.";
+}
+
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">

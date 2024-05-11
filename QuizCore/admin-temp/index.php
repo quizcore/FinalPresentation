@@ -1,5 +1,6 @@
 <?php
   session_start();
+
   $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
   
   // Store Count of students recommended to 110, 111, and 112
@@ -534,6 +535,7 @@
                         cellspacing="0"
                         width="100%"
                       >
+                    
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
@@ -554,12 +556,15 @@
 							$result = $conn->query($select);
 						  
 							while($row = $result->fetch_assoc()) {
+                 // Get the student ID
+                $id = $row["student_id"];
 								echo '<tr
 								  data-bs-toggle=' . "tooltip" .
 								  'data-bs-placement=' . "top" .
 								  'data-bs-title=' . "Tooltip on top" . 
 								  '>';
-								  echo '<td>' . $row["student_id"] . '</td>';
+                  // add a tag on student_id
+								  echo '<td><a href="student.php?id=' . $id . '">' . $id . '</a></td>';
 								  echo '<td>' . $row["first_name"] . '</td>';
 								  echo '<td>' . $row["last_name"] . '</td>';
 								  echo '<td>' . $row["email"] . '</td>';
@@ -575,7 +580,7 @@
 								  echo '<td>' . $row["previous_classes"] . '</td>';
 								echo '</tr>';
 							}
-							echo '</a>';
+							
 						  ?>
                         </tbody>
                       </table>
