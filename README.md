@@ -4,7 +4,7 @@ Edits to be made
 * [X] Make exam "Sign Up" Button Red"
 * [ ] Email Conformation Pop up in "Contact Us"
 * [ ] More Questions in FAQ
-* [ ] Questions and Answers Sheet
+* [X] Questions and Answers Sheet
 * [X] Get Test answers from the database
 * [x] After Signing in to take the test have "User 1" be the name of the student
 * [ ] ALEX TASK: For the exams guidelines page refine and put the business side onto the instructions
@@ -25,3 +25,6 @@ Edits to be made
 * [ ] Different Admin Header for after sign in
 * [ ] Add admin ability to change Questions and delete items in Database for students
 * [ ] In user information allow the students information to be search able and only show so many with full screen
+
+**Both**
+* [ ] Add Favicons to all pages
