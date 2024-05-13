@@ -22,6 +22,11 @@
 
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style> 
+   /* Side bar offcanvas width */
+  .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+    --bs-offcanvas-width: 250px;
+  }
+
   .bg-red {
       background-color: #ab0032;
       /* Your desired background color */
@@ -233,7 +238,7 @@
   </svg>
 
   <header class="navbar sticky-top bg-red flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-  <a class="navbar-brand me-0 px-3 fs-6" href="index">
+  <a class="navbar-brand me-0 px-3 fs-6" href="./">
     <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px" />
   </a>
   
