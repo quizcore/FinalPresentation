@@ -25,7 +25,11 @@
 }
 
 .sidebar .nav-link.active {
-  color: #2470dc;
+  color: #ab0032;
+}
+
+.sidebar .nav-link.active:hover {
+  color: rgb(255, 0, 0);
 }
 
 .sidebar-heading {
@@ -39,7 +43,7 @@
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: rgba(0, 0, 0, .25);
+  background-color: rgba(212, 34, 34, 0.25);
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
 
