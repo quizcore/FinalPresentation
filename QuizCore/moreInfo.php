@@ -47,14 +47,15 @@
 		</select>
 	  </div>
 
+	  <span class="guide-text">If you are a current Central student, please provide your student ID.</span></br>
       <div class="form-floating">  
-		<span class="guide-text">If you are a current Central student, please provide your student ID.</br></span>
+		
         <input type="text" class="form-control" name="sid" id="floatingInput" placeholder="Student ID">
         <label for="floatingInput">Student ID (Optional)</label>
       </div>
-
+	  
+	  <span class="guide-text">If you are a student looking to transfer to Central, please provide your previous universities you've attended, and any previous computer science courses you've taken.</br></span>
       <div class="form-floating">
-		<span class="guide-text">If you are a student looking to transfer to Central, please provide your previous universities you've attended, and any previous computer science courses you've taken.</br></span>
         <input type="text" class="form-control" name="education" id="floatingInput" placeholder="Previous Universities" required>
         <label for="floatingInput">Previous Universities Attended</label>
       </div>
