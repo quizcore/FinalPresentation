@@ -36,8 +36,6 @@
 <!--Main Div-->
 <div class="container">
   <h1 class="h3 mb-3 fw-normal">Please provide information about your previous education.</h1>
-	  <h4>If you are a current Central student, please provide your student ID. 
-	  If you are a student looking to transfer to Central, please provide your previous universities you've attended, and any previous computer science courses you've taken.</h4>
   <!--Form-->
   <div id="myForm" class="form-signin w-100 m-auto">
     <form id="studentForm" method="post" action="#">
@@ -49,12 +47,14 @@
 		</select>
 	  </div>
 
-      <div class="form-floating">
+      <div class="form-floating">  
+		<span class="guide-text">If you are a current Central student, please provide your student ID.</br></span>
         <input type="text" class="form-control" name="sid" id="floatingInput" placeholder="Student ID">
         <label for="floatingInput">Student ID (Optional)</label>
       </div>
 
       <div class="form-floating">
+		<span class="guide-text">If you are a student looking to transfer to Central, please provide your previous universities you've attended, and any previous computer science courses you've taken.</br></span>
         <input type="text" class="form-control" name="education" id="floatingInput" placeholder="Previous Universities" required>
         <label for="floatingInput">Previous Universities Attended</label>
       </div>
