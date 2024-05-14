@@ -56,12 +56,12 @@
 	  
 	  <span class="guide-text">If you are a student looking to transfer to Central, please provide your previous universities you've attended, and any previous computer science courses you've taken.</br></span>
       <div class="form-floating">
-        <input type="text" class="form-control" name="education" id="floatingInput" placeholder="Previous Universities" required>
+        <input type="text" class="form-control" name="education" id="floatingInput" placeholder="Previous Universities">
         <label for="floatingInput">Previous Universities Attended</label>
       </div>
 
       <div class="form-floating">
-        <textarea class="form-control" name="classes" id="floatingPassword" placeholder="Previous Classes" rows="8" cols="50" required> </textarea>
+        <textarea class="form-control" name="classes" id="floatingPassword" placeholder="Previous Classes" rows="8" cols="50"> </textarea>
         <label for="floatingPassword">Previous Computer Science Courses</label>
       </div><br />
 
