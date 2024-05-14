@@ -1,5 +1,9 @@
 <?php
 	session_start();
+  $_SESSION['servername'] = "localhost";
+	$_SESSION['username'] = "root";
+	$_SESSION['password'] = "";
+	$_SESSION['dbname'] = "quizcore";
 	$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 	
 	$select = "SELECT * FROM contact";
