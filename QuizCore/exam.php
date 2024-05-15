@@ -60,18 +60,18 @@
       <h1 class="h3 mb-3 fw-normal">Please provide your information</h1>
 
       <div class="form-floating">
-        <input type="text" class="form-control" name="firstName" id="floatingInput" placeholder="First Name" required>
-        <label for="floatingInput">First Name</label>
+        <input type="text" class="form-control" name="firstName" id="floatingInput1" placeholder="First Name" required>
+        <label for="floatingInput1">First Name</label>
       </div>
 
       <div class="form-floating">
-        <input type="text" class="form-control" name="lastName" id="floatingInput" placeholder="Last Name" required>
-        <label for="floatingInput">Last Name</label>
+        <input type="text" class="form-control" name="lastName" id="floatingInput2" placeholder="Last Name" required>
+        <label for="floatingInput2">Last Name</label>
       </div>
 
       <div class="form-floating">
-        <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
-        <label for="floatingInput">Email address</label>
+        <input type="email" class="form-control" name="email" id="floatingInput3" placeholder="name@example.com" required>
+        <label for="floatingInput3">Email address</label>
       </div>
 
       <div class="form-floating">
@@ -89,18 +89,6 @@
     </form>
   </div>
 </div>
-
-<script>
-  document
-    .getElementById("quickStartBtn")
-    .addEventListener("submit", function(event) {
-      // Prevents the default form submission behavior.
-      event.preventDefault();
-      // Redirect to exam2.php.
-      window.location.href = "exam2.php";
-    });
-</script>
-<!--End of Main-->
 
 <?php
 // Include footer.
