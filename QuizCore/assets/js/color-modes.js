@@ -110,9 +110,9 @@ const setTheme = theme => {
 
   if (signUpBtn) {
     if (theme === 'dark') {
-        signUpBtn.classList.add('btn-outline-danger');
+        signUpBtn.classList.add('btn-bd-red');
     } else {
-        signUpBtn.classList.remove('btn-outline-danger');
+        signUpBtn.classList.remove('btn-bd-red');
     }
   }
 
@@ -123,13 +123,13 @@ const setTheme = theme => {
           if ((currentHour >= sunsetHour || currentHour < sunriseHour)) {
               
               if (signUpBtn) {
-                  signUpBtn.classList.add('btn-outline-danger');
+                  signUpBtn.classList.add('btn-outline-danger btn-bd-red btn-bd-red');
               }
               document.documentElement.setAttribute('data-bs-theme', 'dark');
           } else {
               
               if (signUpBtn) {
-                  signUpBtn.classList.remove('btn-outline-danger');
+                  signUpBtn.classList.remove('btn-bd-red');
               }
               document.documentElement.setAttribute('data-bs-theme', 'light');
           }
@@ -140,9 +140,9 @@ const setTheme = theme => {
       document.documentElement.setAttribute('data-bs-theme', theme);
       if (signUpBtn) {
           if (theme === 'dark') {
-              signUpBtn.classList.add('btn-outline-danger');
+              signUpBtn.classList.add('btn-bd-red');
           } else {
-              signUpBtn.classList.remove('btn-outline-danger');
+              signUpBtn.classList.remove('btn-bd-red');
           }
       }
   }
@@ -194,9 +194,9 @@ const setTheme = theme => {
 
     if (signUpBtn) {
       if (getPreferredTheme() === 'dark') {
-        signUpBtn.classList.add('btn-outline-danger');
+        signUpBtn.classList.add('btn-bd-red');
       } else {
-        signUpBtn.classList.remove('btn-outline-danger');
+        signUpBtn.classList.remove('btn-bd-red');
       }
     }
 

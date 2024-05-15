@@ -37,7 +37,7 @@ require_once 'header.php';
 <!--Main Div-->
 <div class="container">
 	<div class="container text-center">
-		<h1 class="h3 mb-3 fw-normal">Please provide information about your previous education.</h1>
+		<h1 class="h3 my-4 fw-normal">Please provide information about your previous education.</h1>
 	</div>
 
 	<div id="myForm" class="form-signin w-100 m-auto">
@@ -85,9 +85,9 @@ require_once 'header.php';
 						</div>
 					</div>
 				</div>
-			</div>
+			</div><br/>
 
-			<input type="submit" value="Submit" class="btn btn-lg btn-dark w-100 py-2">
+			<input id="signUpBtn" type="submit" value="Submit" class="btn btn-lg btn-dark w-100 py-2">
 
 		</form>
 	</div>
