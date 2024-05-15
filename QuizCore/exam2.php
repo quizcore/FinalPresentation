@@ -104,7 +104,7 @@ include 'questions2.php';
 
   <script>
         document.getElementById('startBtn').addEventListener('click', function() {
-            window.location.href = 'CS110Q1.php';
+            window.location.href = 'moreInfo.php';
         });
 </script>
 

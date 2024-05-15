@@ -79,8 +79,8 @@
         <label for="floatingPassword">Date of Birth</label>
       </div><br />
 
-      <input type="submit" value="Sign Up" class="btn btn-lg btn-dark w-100 py-2"> 
-	  <!--<button class="btn btn-lg btn-dark w-100 py-2" type="submit">Sign Up</button>-->
+      <input id=signUpBtn type="submit" value="Sign Up" class="btn btn-lg btn-dark w-100 py-2"> 
+	  
 	  <?php
 		if($canStore === False) {
 			echo"<h3>Our records show that you have already completed the test</h3>";
