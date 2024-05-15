@@ -16,7 +16,7 @@ Edits to be made
 * [X] Half-screen bug with radio button on Question 19
 * [x] After doing well in both sections the student can test out of both 110 and 111
 * [ ] Thank you on Last page
-* [ ] Redirect to other resources on the last page of the exam
+* [X] Add a Home buttons / Redirect to other resources on the last page of the exam
 * [ ] Track date that student took exam
 * [ ] CS111+ not CS112+ as highest recommendation
 * [X] Redesign additional information page, explain each section
