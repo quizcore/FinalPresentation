@@ -18,7 +18,7 @@ if ($_SESSION['score'] >= 11) {
 	mysqli_query($conn, $res);
 }
 echo "</div>";
-echo "<div class='d-grid gap-2 d-md-grid justify-content-md-center'>";
+echo "<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>";
 echo "<button type='button' class='btn btn-lg btn-bd-red' id='homeBtn'>Home</button> <br />";
 echo "</div>\n";
 echo "<script>\n";
