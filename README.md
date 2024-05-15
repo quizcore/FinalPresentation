@@ -2,7 +2,7 @@ Edits to be made
 # ROADMAP
 **Student**
 * [X] Make exam "Sign Up" Button Red"
-* [ ] Conformation Pop up in "Contact Us"
+* [X] Conformation Pop up in "Contact Us"
 * [ ] More Questions in FAQ
 * [X] Questions and Answers Sheet
 * [X] Get Test answers from the database
