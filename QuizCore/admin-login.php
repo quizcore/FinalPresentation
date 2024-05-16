@@ -87,7 +87,8 @@ require_once 'header.php';
                     <label for="adminPassword">Password</label>
                 </div><br />
 
-                <input class="btn btn-lg btn-dark w-100 py-2" type="submit" value="Login">
+                <input class="btn btn-lg btn-danger w-100 py-2" type="submit" value="Login">
+                <!-- <input class="btn btn-lg btn-dark w-100 py-2" type="submit" value="Login"> -->
             </form>
         </div>
     </div>
