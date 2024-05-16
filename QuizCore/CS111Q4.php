@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			if ($a34 == $row['question_answer']) {
 				$_SESSION['score'] = $_SESSION['score'] + 1;
 			}
-			if ($a35 == $row['question_answer']) {
+			if ($a35 == $row['qu∑estion_answer']) {
 				$_SESSION['score'] = $_SESSION['score'] + 1;
 			}
 		}

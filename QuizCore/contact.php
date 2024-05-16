@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 
-function test_input($data) {
+function test_input($data)
+{
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
@@ -30,34 +31,35 @@ require_once 'header.php';
 ?>
 
 <div class="container py-5">
-    <div class="row d-flex align-items-center">
+  <div class="row d-flex align-items-center">
     <div class="col-md-6">
-        <h1>Contact Us</h1>
-        <p>
-          If you have any questions or feedback, feel free to reach out to us.
-        </p>
-        <form method="POST">
-          <div class="mb-3">
-            <label for="name" class="form-label">Your Name</label>
-            <input type="text" class="form-control" name="name" id="name" required />
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" name="contactEmail" id="email" required />
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" name="emailBody" rows="5" required></textarea>
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <input type="submit" class="btn btn-bd-red btn-lg px-4" value="Send">
-          </div>
-        </form>
-      </div>
-      <div class="col-md-6 mt-3">
-        <img src="./img/cwu-brand.jpeg" class="img-fluid rounded-5" alt="Contact Us Image">  </div>
+      <h1>Contact Us</h1>
+      <p>
+        If you have any questions or feedback, feel free to reach out to us.
+      </p>
+      <form method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" name="name" id="name" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" name="contactEmail" id="email" required />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="emailBody" rows="5" required></textarea>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <input type="submit" class="btn btn-bd-red btn-lg px-4" value="Send">
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 mt-3">
+      <img src="./img/cwu-brand.jpeg" class="img-fluid rounded-5" alt="Contact Us Image">
     </div>
   </div>
+</div>
 <?php
 // Include footer.
 require_once 'footer.php';
