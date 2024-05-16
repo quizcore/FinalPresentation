@@ -25,12 +25,19 @@
 }
 
 .sidebar .nav-link.active {
+  margin: 5px;
+  background-color: #F3F7F0;
   color: #ab0032;
+  border: 2px solid #A93F55; /* Combine border width and color */
+  border-radius: 20px;
+
 }
 
 .sidebar .nav-link.active:hover {
-  color: rgb(255, 0, 0);
+  color: rgb(0, 0, 0); /* Use a shorthand for red color */
+  background-color: #A93F55;
 }
+
 
 .sidebar-heading {
   font-size: .75rem;

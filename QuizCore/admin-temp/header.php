@@ -26,26 +26,72 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style> 
-   /* Side bar offcanvas width */
-  .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
-    --bs-offcanvas-width: 250px;
-  }
+  <style>
+    /* Side bar offcanvas width */
+    .offcanvas,
+    .offcanvas-lg,
+    .offcanvas-md,
+    .offcanvas-sm,
+    .offcanvas-xl,
+    .offcanvas-xxl {
+      --bs-offcanvas-width: 250px;
+    }
 
-  .bg-red {
+    .bg-red {
       background-color: #ab0032;
       /* Your desired background color */
     }
 
     .nav-link {
-      color:black;
+      color: black;
+    }
+
+    /* Color for dark mode */
+    :root {
+      --nav-link-color: #F3F7F0;
+      /* Color for dark mode */
+      --nav-link-color-light: black;
+      /* Color for light mode */
+      --nav-link-color-hover: #ab0032;
+      --bs-link-color: #A93F55;
+      --bs-link-hover-color: #8C5E58;
+
+    }
+
+    .nav-link {
+      color: var(--nav-link-color-light);
+    }
+
+    [data-bs-theme="dark"] .nav-link {
+      color: white;
+    }
+
+    [data-bs-theme="dark"] .nav-link:hover {
+      color: var(--nav-link-color-hover);
     }
 
     .nav {
-    --bs-nav-link-hover-color: #ab0032;
+      --bs-nav-link-hover-color: #ab0032;
 
-}
-    </style>
+    }
+
+    /* Color data table dark mode */
+    .page-item.active .page-link {
+      z-index: 1;
+      color: #fff;
+      background-color: var(--bs-link-color);
+      border-color: var(--bs-link-hover-color);
+    }
+
+    .pagination {
+      --bs-pagination-color: var(--bs-link-color);
+      --bs-pagination-hover-color: var(--bs-link-hover-color);
+      --bs-pagination-focus-color: var(--bs-link-hover-color);
+      --bs-pagination-active-bg: #ab0032;
+      --bs-pagination-active-border-color: #ab0032;
+
+    }
+  </style>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -78,9 +124,9 @@
     }
 
     .bi {
-        vertical-align: -0.125em;
-        fill: currentColor;
-      }
+      vertical-align: -0.125em;
+      fill: currentColor;
+    }
 
     .nav-scroller {
       position: relative;
@@ -103,6 +149,7 @@
     .btn-bd-primary {
       --bd-violet-bg: #712cf9;
       --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
       --bs-btn-font-weight: 600;
       --bs-btn-color: var(--bs-white);
       --bs-btn-bg: var(--bd-violet-bg);
@@ -149,7 +196,7 @@
   </svg>
 
   <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+    <button class="btn btn-secondary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
         <use href="#circle-half"></use>
       </svg>
@@ -243,10 +290,10 @@
   </svg>
 
   <header class="navbar sticky-top bg-red flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-  <a class="navbar-brand me-0 px-3 fs-6" href="./">
-    <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px" />
-  </a>
-  
+    <a class="navbar-brand me-0 px-3 fs-6" href="./">
+      <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px" />
+    </a>
+
     <ul class="navbar-nav flex-row d-md-none">
       <li class="nav-item text-nowrap">
         <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">

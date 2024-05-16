@@ -10,7 +10,7 @@ $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION
 // Store Count of students recommended to 110, 111, and 112
 $count110 = 0;
 $count111 = 0;
-$count112 = 0;
+$count1 = 0;
 
 
 $pageTitle = "Dashboard";
@@ -50,8 +50,8 @@ require_once 'header.php';
                     $count110++;
                   } else if ($row["recommendation"] == 111) {
                     $count111++;
-                  } else if ($row["recommendation"] == 112) {
-                    $count112++;
+                  } else if ($row["recommendation"] == 1) {
+                    $count1++;
                   }
                 }
                 echo '<h3 class="text-white">' . $total . '</h3>';
@@ -183,13 +183,13 @@ require_once 'header.php';
 
   // Define the data
   var data = {
-    labels: ["CS110", "CS111", "CS112+"],
+    labels: ["CS110", "CS111", "CS111++"],
     datasets: [{
-      data: [<?php echo $count110 ?>, <?php echo $count111 ?>, <?php echo $count112 ?>], // Sample data, you can replace with your own values
+      data: [<?php echo $count110 ?>, <?php echo $count111 ?>, <?php echo $count1 ?>], // Sample data, you can replace with your own values
       backgroundColor: [
-        "rgba(171, 4, 51, 255)", // Red
-        "rgba(138, 35, 50, 255)", // Dark Red
-        "rgba(0, 0, 0, 255)", // Black
+        "rgba(171, 0, 50, 1)", // Madder
+        "rgba(140, 94, 88, 1)", // Rose
+        "rgba(25, 50, 60, 1)", // Gunmetal
       ],
       borderColor: [
         "rgba(171, 4, 51, 255)",
