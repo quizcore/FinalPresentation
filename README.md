@@ -24,7 +24,7 @@ Edits to be made
 **Admin**
 * [x] Remove the Header options for Admin
 * [ ] Red Login Button
-* [ ] Change "Login as Admin" to "Admin Login"
+* [x] Change "Login as Admin" to "Admin Login"
 * [ ] Different Admin Header for after sign in
 * [X] In user information allow the students information to be search able and only show so many with full screen
 * [ ] Show whether question is correct or incorrect on 'student information' page
