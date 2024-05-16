@@ -3,7 +3,7 @@ Edits to be made
 **Student**
 * [X] Make exam "Sign Up" Button Red"
 * [X] Conformation Pop up in "Contact Us"
-* [ ] More Questions in FAQ
+* [X] More Questions in FAQ
 * [X] Questions and Answers Sheet
 * [X] Get Test answers from the database
 * [x] After Signing in to take the test have "User 1" be the name of the student
