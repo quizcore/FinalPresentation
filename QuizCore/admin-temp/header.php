@@ -290,8 +290,19 @@
   </svg>
 
   <header class="navbar sticky-top bg-red flex-md-nowrap p-0 shadow" data-bs-theme="dark">
+
     <a class="navbar-brand me-0 px-3 fs-6" href="./">
       <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px" />
+    </a>
+    <!--
+    <a class="navbar-brand me-0 px-3 fs-5" href="./">Computer Science Self-Placement Exam Admin Panel</a>
+    -->
+    <a class="navbar-text mx-auto d-none d-md-block text-white p-3">
+      Computer Science Self-Placement Exam Admin Panel
+    </a>
+
+    <a class="navbar-text me-0 px-3 d-block d-md-none fs-5 text-white">
+      Admin Panel
     </a>
 
     <ul class="navbar-nav flex-row d-md-none">

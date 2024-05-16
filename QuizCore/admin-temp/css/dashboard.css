@@ -57,3 +57,9 @@
 .navbar .form-control {
   padding: .75rem 1rem;
 }
+
+.navbar-text {
+  background-color: #ab0032;
+  font-size: var(--bs-navbar-brand-font-size);
+  box-shadow: none;
+}
