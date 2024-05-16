@@ -22,7 +22,7 @@ Edits to be made
 * [X] Redesign additional information page, explain each section
 
 **Admin**
-* [ ] Remove the Header options for Admin
+* [x] Remove the Header options for Admin
 * [ ] Red Login Button
 * [ ] Change "Login as Admin" to "Admin Login"
 * [ ] Different Admin Header for after sign in
