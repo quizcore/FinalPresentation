@@ -60,6 +60,6 @@
 
 .navbar-text {
   background-color: #ab0032;
-  font-size: var(--bs-navbar-brand-font-size);
+  font-size: 27px;
   box-shadow: none;
 }
