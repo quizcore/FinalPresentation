@@ -140,22 +140,22 @@
     }
   </style>
   <style>
-  @media (max-width: 768px) {
-    #header{
-      display: grid;
-      justify-items: center;
-      justify-content: center;
+    @media (max-width: 768px) {
+      #header {
+        display: grid;
+        justify-items: center;
+        justify-content: center;
+      }
     }
-  }
 
-  @media (max-width: 768px) {
-    #header{
-      display: grid;
-      justify-items: center;
-      justify-content: center;
+    @media (max-width: 768px) {
+      #header {
+        display: grid;
+        justify-items: center;
+        justify-content: center;
+      }
     }
-  }
-</style>
+  </style>
   <script src="./assets/js/color-modes.js"></script>
 </head>
 
@@ -195,13 +195,13 @@
   <!-- Nav -->
   <nav class="navbar navbar-dark bg-red" aria-label="Fourth navbar example">
     <div id=header class="container-fluid">
-        <img style="margin-left: 30px;" height="60px" src="img/cwu-wildcat-spirit-mark-single-color-reversed.png" />
-        <h1 id="one" style="color:white; margin:auto auto">Computer Science Self-Placement Exam</h1>
-        <h1 id="two" style="color:white; margin:auto auto">Computer Science</h1>
-        <h1 id="three"  style="color:white; margin:auto auto">Self-Placement Exam</h1>
-        </div>
-        
-      </div>
+      <img style="margin-left: 30px;" height="60px" src="img/cwu-wildcat-spirit-mark-single-color-reversed.png" />
+      <h1 id="one" style="color:white; margin:auto auto">Computer Science Self-Placement Exam</h1>
+      <h1 id="two" style="color:white; margin:auto auto">Computer Science</h1>
+      <h1 id="three" style="color:white; margin:auto auto">Self-Placement Exam</h1>
+    </div>
+
+    </div>
   </nav>
 
   <script>
@@ -212,30 +212,30 @@
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-  $(document).ready(function() {
-    function toggleTextVisibility() {
-      var windowWidth = $(window).width();
-      var h1Element = $("#one");
-      var h2Element = $("#two");
-      var h3Element = $("#three");
-      
-      if (windowWidth < 768) {
-        h1Element.hide();
-        h2Element.show();
-        h3Element.show();
-      } else {
-        h1Element.show();
-        h2Element.hide();
-        h3Element.hide();
-      }
-    }
-    
-    // Initial check on page load
-    toggleTextVisibility();
+    $(document).ready(function() {
+      function toggleTextVisibility() {
+        var windowWidth = $(window).width();
+        var h1Element = $("#one");
+        var h2Element = $("#two");
+        var h3Element = $("#three");
 
-    // Check on window resize
-    $(window).resize(function() {
+        if (windowWidth < 768) {
+          h1Element.hide();
+          h2Element.show();
+          h3Element.show();
+        } else {
+          h1Element.show();
+          h2Element.hide();
+          h3Element.hide();
+        }
+      }
+
+      // Initial check on page load
       toggleTextVisibility();
+
+      // Check on window resize
+      $(window).resize(function() {
+        toggleTextVisibility();
+      });
     });
-  });
-</script>
+  </script>

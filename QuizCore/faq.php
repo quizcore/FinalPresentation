@@ -11,7 +11,7 @@ require_once 'header.php';
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-			Can I take the test multiple times?
+          Can I take the test multiple times?
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -23,7 +23,7 @@ require_once 'header.php';
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-			What happens if I exit the test early?
+          What happens if I exit the test early?
         </button>
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -35,13 +35,13 @@ require_once 'header.php';
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-			Where do the test questions come from?
+          Where do the test questions come from?
         </button>
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-        Each question in the exam is designed around the curriculum of the introductory computer science courses offered here at Central.
-				These questions are designed in partnership with the computer science department, and cover all the critical components of these classes.
+          Each question in the exam is designed around the curriculum of the introductory computer science courses offered here at Central.
+          These questions are designed in partnership with the computer science department, and cover all the critical components of these classes.
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@ require_once 'header.php';
     </div>
     <div class="accordion-item">
       <h2 class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          How do I see my course recommendation?
+        How do I see my course recommendation?
         </button>
       </h2>
       <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">

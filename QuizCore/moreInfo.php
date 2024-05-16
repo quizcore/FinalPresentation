@@ -43,11 +43,11 @@ require_once 'header.php';
 	<div id="myForm" class="form-signin w-100 m-auto">
 		<form id="studentForm" method="post" action="#">
 
-		<div class="form-group mb-3">
-        <label for="term">Intended Enrollment Term</label>
-        <select id="term" name="term" class="form-control" required>
-          </select>
-      </div>
+			<div class="form-group mb-3">
+				<label for="term">Intended Enrollment Term</label>
+				<select id="term" name="term" class="form-control" required>
+				</select>
+			</div>
 
 			<div class="accordion" id="accordionExample">
 				<div class="accordion-item">
@@ -85,7 +85,7 @@ require_once 'header.php';
 						</div>
 					</div>
 				</div>
-			</div><br/>
+			</div><br />
 
 			<input id="signUpBtn" type="submit" value="Submit" class="btn btn-lg btn-dark w-100 py-2">
 
@@ -105,24 +105,24 @@ require_once 'header.php';
 		});
 </script>
 <script>
-  const selectTerm = document.getElementById('term');
-  const currentYear = new Date().getFullYear(); // Get current year
+	const selectTerm = document.getElementById('term');
+	const currentYear = new Date().getFullYear(); // Get current year
 
-  // Function to create and add option elements
-  function addTermOption(year, season) {
-    const option = document.createElement('option');
-    option.value = `${season}${year}`;
-    option.text = `${season} ${year}`;
-    selectTerm.appendChild(option);
-  }
+	// Function to create and add option elements
+	function addTermOption(year, season) {
+		const option = document.createElement('option');
+		option.value = `${season}${year}`;
+		option.text = `${season} ${year}`;
+		selectTerm.appendChild(option);
+	}
 
-  // Loop through the next 2 years and add options for Fall, Winter, Spring, and Summer
-  for (let year = currentYear; year < currentYear + 2; year++) {
-    addTermOption(year, 'Fall');
-    addTermOption(year, 'Winter');
-    addTermOption(year, 'Spring');
-    addTermOption(year, 'Summer');
-  }
+	// Loop through the next 2 years and add options for Fall, Winter, Spring, and Summer
+	for (let year = currentYear; year < currentYear + 2; year++) {
+		addTermOption(year, 'Fall');
+		addTermOption(year, 'Winter');
+		addTermOption(year, 'Spring');
+		addTermOption(year, 'Summer');
+	}
 </script>
 
 <?php
