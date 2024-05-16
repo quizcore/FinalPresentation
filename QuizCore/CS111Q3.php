@@ -46,7 +46,7 @@ require_once 'testheader.php';
 <!--Main-->
 <!--Main Div-->
 <div class="container shadow p-3 my-5 bg-body-tertiary rounded">
-	<h2>Exam Questions 6</h2>
+	<h2>Exam Question Set: 6</h2>
 </div>
 
 <div class="container">
