@@ -11,7 +11,7 @@ Edits to be made
 * [x] Fix the Radio Button on 8,9,15, should be at the top of the question
 * [x] Fix Halfway message student should not be able to see the results
 * [x] Take away CWU link on halfway so the student wont lose there place in the exam
-* [ ] Top of the page should not say "Exam Questions 4" but instead say "Exam Questions Set: 4"
+* [X] Top of the page should not say "Exam Questions 4" but instead say "Exam Questions Set: 4"
 * [x] More spacing between Radio buttons and text in the test
 * [X] Half-screen bug with radio button on Question 19
 * [x] After doing well in both sections the student can test out of both 110 and 111
