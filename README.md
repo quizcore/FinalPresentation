@@ -18,7 +18,7 @@ Edits to be made
 * [x] Thank you on Last page
 * [X] Add a Home buttons / Redirect to other resources on the last page of the exam
 * [ ] Track date that student took exam
-* [ ] CS111+ not CS112+ as highest recommendation
+* [X] CS111+ not CS112+ as highest recommendation
 * [X] Redesign additional information page, explain each section
 
 **Admin**
