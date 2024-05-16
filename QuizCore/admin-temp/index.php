@@ -104,7 +104,7 @@ require_once 'header.php';
                   <th scope="col">Date Of Birth</th>
                   <th scope="col">Recommendation</th>
                   <th scope="col">Start Term</th>
-                  <th scope="col">CWu ID</th>
+                  <th scope="col">CWU ID</th>
                   <th scope="col">Previous College</th>
                   <th scope="col">Relevant CS Courses</th>
                 </tr>
@@ -257,6 +257,8 @@ require_once 'header.php';
     });
   });
 </script>
-</body>
 
-</html>
+<?php
+// Include footer.
+require_once './ad-footer.php';
+?>

@@ -100,5 +100,9 @@
         });
       });
     </script>
-  </body>
-</html>
+
+    
+<?php
+// Include footer.
+require_once './ad-footer.php';
+?>

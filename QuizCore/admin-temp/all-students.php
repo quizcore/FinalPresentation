@@ -130,6 +130,8 @@ require_once 'header.php';
     });
   });
 </script>
-</body>
 
-</html>
+<?php
+// Include footer.
+require_once './ad-footer.php';
+?>
