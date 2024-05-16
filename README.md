@@ -29,9 +29,10 @@ Edits to be made
 * [ ] In user information allow the students information to be search able and only show so many with full screen
 * [ ] Show whether question is correct or incorrect on 'student information' page
 * [ ] Bar graph that shows students attending each quarter
+* [ ] Fix color in dark mode
 
 **Both**
-* [ ] Add Favicons to all pages
+* [X] Add Favicons to all pages
 
 **Extra**
 * [ ] Add admin ability to change Questions and delete items in Database for students

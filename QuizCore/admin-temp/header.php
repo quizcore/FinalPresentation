@@ -288,11 +288,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="student.php">
+                <a class="nav-link d-flex align-items-center gap-2" href="all-students.php">
                   <svg class="bi">
                     <use xlink:href="#file-earmark" />
                   </svg>
-                  Students
+                  All Students
                 </a>
               </li>
               <li class="nav-item">
