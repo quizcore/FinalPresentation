@@ -3,18 +3,21 @@
 	
 	$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 	$canStore = True;
+
+	date_default_timezone_set("America/Los_Angeles");
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$first_name = test_input($_POST['firstName']);
 		$last_name = test_input($_POST['lastName']);
 		$email = test_input($_POST['email']);
 		$dob = date('Y-m-d', strtotime($_POST['dob']));
+		$date_taken = date('Y-m-d');
 		
 		if(strlen($first_name) > 0 && strlen($last_name) > 0 && strlen($email) > 0) {
 			$select = "SELECT * FROM students";
 			$result = $conn->query($select);
 			
-			$sql = "INSERT INTO students(first_name, last_name, dob, email) VALUES('$first_name', '$last_name', '$dob', '$email');";
+			$sql = "INSERT INTO students(first_name, last_name, dob, date_quiz_taken, email) VALUES('$first_name', '$last_name', '$dob', '$date_taken','$email');";
 			
 			// Allow insertion if the DB is empty
 			if ($result->num_rows === 0 ) {
