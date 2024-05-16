@@ -34,58 +34,60 @@ require_once 'header.php';
           <div class="card-body">
 
             <!-- table entry-->
-            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <div class="table-wrapper">
+              <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Date Of Birth</th>
-                  <th scope="col">Recommendation</th>
-                  <th scope="col">Start Term</th>
-                  <th scope="col">CWU ID</th>
-                  <th scope="col">Previous College</th>
-                  <th scope="col">Relevant CS Courses</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                $select = "SELECT * FROM students";
-                $result = $conn->query($select);
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date Of Birth</th>
+                    <th scope="col">Recommendation</th>
+                    <th scope="col">Start Term</th>
+                    <th scope="col">CWU ID</th>
+                    <th scope="col">Previous College</th>
+                    <th scope="col">Relevant CS Courses</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $select = "SELECT * FROM students";
+                  $result = $conn->query($select);
 
-                while ($row = $result->fetch_assoc()) {
-                  // Get the student ID
-                  $student_id  = $row["student_id"];
-                  echo '<tr
+                  while ($row = $result->fetch_assoc()) {
+                    // Get the student ID
+                    $student_id  = $row["student_id"];
+                    echo '<tr
                         data-bs-toggle="' . "tooltip" . '"
                         data-bs-placement="' . "top" . '"
                         data-bs-title="' . "Tooltip on top" . '"
                         data-student-id="' . $student_id . '"
                       >';
 
-                  // add a tag on student_id
-                  echo '<td>' . $row["student_id"] . '</td>';
-                  echo '<td>' . $row["first_name"] . '</td>';
-                  echo '<td>' . $row["last_name"] . '</td>';
-                  echo '<td>' . $row["email"] . '</td>';
-                  echo '<td>' . $row["dob"] . '</td>';
-                  echo '<td>' . $row["recommendation"] . '</td>';
-                  echo '<td>' . $row["expected_term"] . '</td>';
-                  if ($row["sid"] > 0) {
-                    echo '<td>' . $row["sid"] . '</td>';
-                  } else {
-                    echo '<td>No SID</td>';
+                    // add a tag on student_id
+                    echo '<td>' . $row["student_id"] . '</td>';
+                    echo '<td>' . $row["first_name"] . '</td>';
+                    echo '<td>' . $row["last_name"] . '</td>';
+                    echo '<td>' . $row["email"] . '</td>';
+                    echo '<td>' . $row["dob"] . '</td>';
+                    echo '<td>' . $row["recommendation"] . '</td>';
+                    echo '<td>' . $row["expected_term"] . '</td>';
+                    if ($row["sid"] > 0) {
+                      echo '<td>' . $row["sid"] . '</td>';
+                    } else {
+                      echo '<td>No SID</td>';
+                    }
+                    echo '<td>' . $row["previous_education"] . '</td>';
+                    echo '<td>' . $row["previous_classes"] . '</td>';
+                    echo '</tr>';
                   }
-                  echo '<td>' . $row["previous_education"] . '</td>';
-                  echo '<td>' . $row["previous_classes"] . '</td>';
-                  echo '</tr>';
-                }
 
-                ?>
-              </tbody>
-            </table>
+                  ?>
+                </tbody>
+              </table>
+            </div>
           </div>
 
         </div>
@@ -107,6 +109,7 @@ require_once 'header.php';
   $(document).ready(function() {
     $("#dtBasicExample").DataTable({
       scrollY: "500px",
+      scrollX: true,
       scrollCollapse: true,
     });
   });

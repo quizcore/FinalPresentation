@@ -236,6 +236,7 @@ require_once 'header.php';
   $(document).ready(function() {
     $("#dtBasicExample").DataTable({
       scrollY: "360px",
+      scrollX: true,
       scrollCollapse: true,
     });
   });

@@ -95,6 +95,7 @@
       $(document).ready(function () {
         $("#messages").DataTable({
           scrollY: "360px",
+          scrollX: true,
           scrollCollapse: true,
         });
       });

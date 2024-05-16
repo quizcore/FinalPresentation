@@ -26,7 +26,7 @@ Edits to be made
 * [ ] Red Login Button
 * [ ] Change "Login as Admin" to "Admin Login"
 * [ ] Different Admin Header for after sign in
-* [ ] In user information allow the students information to be search able and only show so many with full screen
+* [X] In user information allow the students information to be search able and only show so many with full screen
 * [ ] Show whether question is correct or incorrect on 'student information' page
 * [ ] Bar graph that shows students attending each quarter
 * [ ] Fix color in dark mode
