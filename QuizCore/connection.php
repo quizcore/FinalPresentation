@@ -14,6 +14,6 @@
 	}
 	
 	$_SESSION['connection'] = $conn;
-	header("Location: index.php");
+	header("Location: exam.php");
 ?>
 
