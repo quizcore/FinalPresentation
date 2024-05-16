@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS students (
 	first_name VARCHAR(40) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
 	dob DATE NOT NULL,
+	date_quiz_taken DATE NOT NULL,
 	email VARCHAR(100) UNIQUE NOT NULL,
 	expected_term VARCHAR(20),
 	previous_education VARCHAR(100),
