@@ -17,7 +17,7 @@ Edits to be made
 * [x] After doing well in both sections the student can test out of both 110 and 111
 * [x] Thank you on Last page
 * [X] Add a Home buttons / Redirect to other resources on the last page of the exam
-* [ ] Track date that student took exam
+* [X] Track date that student took exam
 * [X] CS111+ not CS112+ as highest recommendation
 * [X] Redesign additional information page, explain each section
 
@@ -30,6 +30,7 @@ Edits to be made
 * [ ] Show whether question is correct or incorrect on 'student information' page
 * [ ] Bar graph that shows students attending each quarter
 * [ ] Fix color in dark mode
+* [ ] Put the date the exam was taken onto the screen
 
 **Both**
 * [X] Add Favicons to all pages
