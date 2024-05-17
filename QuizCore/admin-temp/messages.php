@@ -1,11 +1,9 @@
 <?php
+// Include the database connection file.
+include_once 'dbconnection.php';
+
+// Start the session.
 session_start();
-//delete later
-$_SESSION['servername'] = "localhost";
-$_SESSION['username'] = "root";
-$_SESSION['password'] = "";
-$_SESSION['dbname'] = "quizcore";
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
 
 $pageTitle = "Contact Messages";

@@ -1,4 +1,8 @@
 <?php
+// Include the database connection file.
+include_once 'dbconnection.php';
+
+// Start the session.
 session_start();
 
 // Check if the user is not logged in, redirect them to the login page.
@@ -6,8 +10,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("Location: login.php");
   exit();
 }
-
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
 //$select = "SELECT * FROM admin WHERE email = '$_SESSION[admin_email]';";
 $select = "SELECT * FROM admin";

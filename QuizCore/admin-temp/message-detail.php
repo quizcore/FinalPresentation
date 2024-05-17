@@ -1,6 +1,9 @@
 <?php
+// Include the database connection file.
+include_once 'dbconnection.php';
+
+// Start the session.
 session_start();
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
 if (isset($_GET['mess_id'])) {
   // Get student_id from index.php (existing logic)

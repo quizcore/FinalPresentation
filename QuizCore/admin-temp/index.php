@@ -1,4 +1,8 @@
 <?php
+// Include the database connection file.
+include_once 'dbconnection.php';
+
+// Start the session.
 session_start();
 
 // Check if the user is not logged in, redirect them to the login page.
@@ -6,13 +10,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("Location: login.php");
   exit();
 }
-
-//delete later
-$_SESSION['servername'] = "localhost";
-$_SESSION['username'] = "root";
-$_SESSION['password'] = "";
-$_SESSION['dbname'] = "quizcore";
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
 // Store Count of students recommended to 110, 111, and 112
 $count110 = 0;
