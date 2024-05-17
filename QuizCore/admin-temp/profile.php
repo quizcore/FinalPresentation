@@ -36,8 +36,8 @@ require_once 'header.php';
             <?php
             echo '<p class="card-text text-center">Welcome, ' . $row["first_name"] .  '! Here are your details:</p>';
             echo '<ul class="list-group list-group-flush">';
-            echo '<li class="list-group-item"><strong>Name:</strong>' . $row["first_name"] . " " . $row["last_name"] . '</li>';
-            echo '<li class="list-group-item"><strong>Email:</strong>' . $row["email"] . '</li>';
+            echo '<li class="list-group-item"><strong>Name:</strong>' . " " . $row["first_name"] . " " . $row["last_name"] . '</li>';
+            echo '<li class="list-group-item"><strong>Email:</strong>' . " " .$row["email"] . '</li>';
             echo '<li class="list-group-item"><strong>Role:</strong> Administrator</li>';
             echo '</ul>';
             ?>
