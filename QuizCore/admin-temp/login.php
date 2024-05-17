@@ -1,6 +1,6 @@
 <?php
 $pageTitle = "Admin Login";
-require_once 'ad-header.php';
+require_once 'loginheader.php';
 ?>
 <style>
   .form-floating.position-relative {
@@ -66,5 +66,5 @@ require_once 'ad-header.php';
 
 <?php
 // Include footer.
-require_once './ad-footer.php';
+require_once './footer.php';
 ?>

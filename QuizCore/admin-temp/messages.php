@@ -99,5 +99,5 @@ tableRows.forEach(row => {
 
 <?php
 // Include footer.
-require_once './ad-footer.php';
+require_once './footer.php';
 ?>

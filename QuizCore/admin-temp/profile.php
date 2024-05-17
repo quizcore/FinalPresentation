@@ -51,5 +51,5 @@ require_once 'header.php';
 
 <?php
 // Include footer.
-require_once './ad-footer.php';
+require_once './footer.php';
 ?>

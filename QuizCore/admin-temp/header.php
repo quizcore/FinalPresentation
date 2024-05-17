@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
   <link rel="manifest" href="../img/site.webmanifest">
-  <link rel="stylesheet" href="CSS/styles.css" />
+
   <!---->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -305,62 +305,63 @@
     </div>
   </header>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-        <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">CWU</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="index.php">
-                  <svg class="bi">
-                    <use xlink:href="#house-fill" />
-                  </svg>
-                  Dashboard
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="all-students.php">
-                  <svg class="bi">
-                    <use xlink:href="#people" />
-                  </svg>
-                  All Students
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="messages.php">
-                  <svg class="bi">
-                    <use xlink:href="#chat-dots" />
-                  </svg>
-                  Contact Messages
-                </a>
-              </li>
-            </ul>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+          <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="sidebarMenuLabel">CWU</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="index.php">
+                    <svg class="bi">
+                      <use xlink:href="#house-fill" />
+                    </svg>
+                    Dashboard
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="all-students.php">
+                    <svg class="bi">
+                      <use xlink:href="#people" />
+                    </svg>
+                    All Students
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="messages.php">
+                    <svg class="bi">
+                      <use xlink:href="#chat-dots" />
+                    </svg>
+                    Contact Messages
+                  </a>
+                </li>
+              </ul>
 
-            <hr class="my-3" />
+              <hr class="my-3" />
 
-            <ul class="nav flex-column mb-auto">
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="profile.php">
-                  <svg class="bi">
-                    <use xlink:href="#person-circle" />
-                  </svg>
-                  Profile
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                  <svg class="bi">
-                    <use xlink:href="#door-closed" />
-                  </svg>
-                  Sign out
-                </a>
-              </li>
-            </ul>
+              <ul class="nav flex-column mb-auto">
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="profile.php">
+                    <svg class="bi">
+                      <use xlink:href="#person-circle" />
+                    </svg>
+                    Profile
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <svg class="bi">
+                      <use xlink:href="#door-closed" />
+                    </svg>
+                    Sign out
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>

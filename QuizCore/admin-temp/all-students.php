@@ -101,8 +101,7 @@ require_once 'header.php';
   </div>
 
 </main>
-</div>
-</div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -138,5 +137,5 @@ require_once 'header.php';
 
 <?php
 // Include footer.
-require_once './ad-footer.php';
+require_once './footer.php';
 ?>

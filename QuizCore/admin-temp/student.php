@@ -196,6 +196,7 @@ require_once 'header.php';
   }
 </script>
 
-</body>
-
-</html>
+<?php
+// Include footer.
+require_once './footer.php';
+?>
