@@ -26,6 +26,9 @@ The online self-placement tool assists Central Washington University students in
 * Student view: Open a browser and go to the URL [http://localhost/FinalPresenation/QuizCore/connection.php](http://localhost/FinalPresenation/QuizCore/connection.php)
 * Admin view: Open a browser and go to the URL [http://localhost/FinalPresenation/QuizCore/admin-temp/](http://localhost/FinalPresenation/QuizCore/admin-temp/)
 
+If your XAMPP database cannot start, there might be other database that takes up that port 3306. Make sure to kill all the processes that take up the port and try to start the XAMPP database again.
+For macos, run `sudo pkill mysqld` to kill mysqld that use the port 3306.
+
 # ROADMAP
 
 ## Student

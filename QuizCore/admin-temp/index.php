@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+// Check if the user is not logged in, redirect them to the login page.
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("Location: login.php");
+  exit();
+}
+
 //delete later
 $_SESSION['servername'] = "localhost";
 $_SESSION['username'] = "root";
