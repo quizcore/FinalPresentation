@@ -189,7 +189,7 @@
             <a class="nav-link active" aria-current="page" href="./">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./connection3.php">Exam</a>
+            <a class="nav-link" href="./exam.php">Exam</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -198,7 +198,7 @@
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Other</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="./faq.php">FAQs</a></li>
-              <li><a class="dropdown-item" href="./connection2.php">Contact Us</a></li>
+              <li><a class="dropdown-item" href="./contact.php">Contact Us</a></li>
             </ul>
           </li>
         </ul>

@@ -19,7 +19,7 @@ require_once 'header.php';
       </p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <!-- Get Started button-->
-        <a href="connection.php" class="btn btn-bd-red btn-lg px-4 me-md-2">Get Started</a>
+        <a href="exam.php" class="btn btn-bd-red btn-lg px-4 me-md-2">Get Started</a>
 
       </div>
     </div>

@@ -14,4 +14,4 @@ if (!$conn) {
 }
 
 $_SESSION['connection'] = $conn;
-header("Location: exam.php");
+header("Location: index.php");
