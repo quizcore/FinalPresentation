@@ -2,6 +2,8 @@
 
 The online self-placement tool assists Central Washington University students in determining the appropriate path to take: CS110 or CS111.
 
+![QuizCore Home Page](./doc/img/home-page.png)
+
 # Technology Stack
 
 * **Backend language:** PHP
