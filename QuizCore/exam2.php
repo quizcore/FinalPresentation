@@ -8,7 +8,7 @@ $row = $result->fetch_assoc();
 
 $pageTitle = "Exam";
 require_once 'header.php';
-include 'questions2.php';
+
 ?>
 
 <!-- Main -->
