@@ -2,7 +2,8 @@
 
 // functions.php
 
-function displayQuestions($result) {
+function displayQuestions($result)
+{
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
@@ -28,3 +29,19 @@ function displayQuestions($result) {
         }
     }
 }
+
+// Function to generate a Bootstrap progress bar
+function generateProgressBar($width = 25)
+{
+    $progressBar = "
+        <div class='container shadow p-3 my-5 bg-body-tertiary rounded'>
+            <div class='progress' role='progressbar' aria-label='Animated striped example' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'>
+                <div id='progressBars' class='progress-bar progress-bar-striped progress-bar-animated bg-danger' style='width: {$width}%'></div>
+            </div>
+        </div>
+    ";
+
+    return $progressBar;
+}
+
+

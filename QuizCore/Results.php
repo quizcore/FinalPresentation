@@ -6,6 +6,8 @@ $course = 0;
 
 $pageTitle = "Result";
 require_once 'testheader.php';
+// Include functions file
+require_once 'functions.php';
 
 echo "<div class='container shadow p-3 my-5 bg-body-tertiary rounded'>";
 echo "<h2>Thank you for completing the test!</h2><br><br><h3>Please talk to an advisor about your results, and to learn what course is recommended for you.</h3>";
@@ -19,6 +21,9 @@ if ($_SESSION['score'] >= 25) {
 
 $res = "UPDATE students SET recommendation = '$course', score = '$_SESSION[score]' WHERE email = '$_COOKIE[student]';";
 mysqli_query($conn, $res);
+
+//<!-- Progress bar -->
+echo generateProgressBar(100);
 
 echo "</div>";
 echo "<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>";
