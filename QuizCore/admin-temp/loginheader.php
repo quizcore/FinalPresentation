@@ -263,7 +263,7 @@
 
   <header class="navbar sticky-top bg-red flex-md-nowrap p-0 shadow" data-bs-theme="dark">
 
-    <a class="navbar-brand me-0 px-3 fs-6" href="./">
+    <a class="navbar-brand me-0 px-3 fs-6" href="#">
       <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px" />
     </a>
     <!--
