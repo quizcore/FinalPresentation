@@ -1,6 +1,11 @@
-Edits to be made
+# Introduction
+
+The online self-placement tool assists Central Washington University students in determining the appropriate path to take: CS110 or CS111.
+
 # ROADMAP
-**Student**
+
+## Student
+
 * [X] Make exam "Sign Up" Button Red"
 * [X] Conformation Pop up in "Contact Us"
 * [X] More Questions in FAQ
@@ -21,7 +26,8 @@ Edits to be made
 * [X] CS111+ not CS112+ as highest recommendation
 * [X] Redesign additional information page, explain each section
 
-**Admin**
+## Admin
+
 * [x] Remove the Header options for Admin
 * [ ] Red Login Button
 * [x] Change "Login as Admin" to "Admin Login"
@@ -32,8 +38,10 @@ Edits to be made
 * [ ] Fix color in dark mode
 * [ ] Put the date the exam was taken onto the screen
 
-**Both**
+## Both
+
 * [X] Add Favicons to all pages
 
-**Extra**
+## Low Priority
+
 * [ ] Add admin ability to change Questions and delete items in Database for students
