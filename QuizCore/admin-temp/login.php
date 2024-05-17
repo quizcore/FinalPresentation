@@ -12,6 +12,11 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     exit;
 }
 
+$_SESSION['servername'] = "localhost";
+$_SESSION['username'] = "root";
+$_SESSION['password'] = "";
+$_SESSION['dbname'] = "quizcore";
+
 $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
 // Define variables and initialize with empty values.
