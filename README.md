@@ -13,8 +13,7 @@ The online self-placement tool assists Central Washington University students in
 # Run on Localhost
 
 * Download XAMPP: https://www.apachefriends.org/download.html
-* Start the local server using XAMPP
-![XAMPP Setup Screenshot](./doc/LocalHostXAMPPSetup.png)
+* Open XAMPP (on MacOS, it's called "manager-osx")
 * Click the Start All button in XAMPP
 ![XAMPP Start All](./doc/img/xampp-start-all.png)
 * Open the subfolder "htdocs" in XAMPP and run "git clone https://github.com/quizcore/FinalPresentation/" to clone the repository to the local file system
