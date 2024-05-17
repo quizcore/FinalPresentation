@@ -46,6 +46,7 @@ require_once 'header.php';
 			<div class="form-group mb-3">
 				<label for="term">Intended Enrollment Term</label>
 				<select id="term" name="term" class="form-control" required>
+					<option value="" disabled selected>Select Term</option>
 				</select>
 			</div>
 
