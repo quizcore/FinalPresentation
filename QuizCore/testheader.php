@@ -22,6 +22,15 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
+    .form-check-input {
+      border: var(--bs-border-width) solid #ab0032;
+    }
+
+    .form-check-input:checked {
+      background-color: #ab0032;
+      border-color: #ab0032;
+    }
+
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
