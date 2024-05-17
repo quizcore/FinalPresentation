@@ -78,3 +78,5 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Add admin ability to change their profile???
 * [ ] Add admin ability to change password???
 * [ ] Add admin ability to create new admin account???
+* [ ] Handle error for bad database connection
+* [ ] Handle error for invalid session state
