@@ -72,7 +72,12 @@ require_once 'header.php';
                     echo '<td>' . $row["last_name"] . '</td>';
                     echo '<td>' . $row["email"] . '</td>';
                     echo '<td>' . $row["dob"] . '</td>';
-                    echo '<td>' . $row["recommendation"] . '</td>';
+                    // Recommendation check and display
+                    if ($row["recommendation"] == 1) {
+                      echo '<td>111++</td>'; // Show "111+" when recommendation is 1
+                    } else {
+                      echo '<td>' . $row["recommendation"] . '</td>'; // Display actual recommendation value otherwise
+                    }
                     echo '<td>' . $row["expected_term"] . '</td>';
                     if ($row["sid"] > 0) {
                       echo '<td>' . $row["sid"] . '</td>';

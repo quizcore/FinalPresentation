@@ -100,6 +100,21 @@
         });
       });
     </script>
+    <!-- redirect To Student Page -->
+<script>
+  // redirectToStudentPage
+  const tableRows = document.querySelectorAll('tr[message-id]'); // Select rows with data-student-id attribute
+
+  tableRows.forEach(row => {
+    row.addEventListener('click', (event) => {
+      // Get the student ID from the data attribute
+      const studentId = row.dataset.studentId;
+
+      // Redirect to student info page with ID parameter
+      window.location.href = `student.php?id=${studentId}`;
+    });
+  });
+</script>
 
     
 <?php

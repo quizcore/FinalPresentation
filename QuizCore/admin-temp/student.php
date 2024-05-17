@@ -57,7 +57,15 @@ require_once 'header.php';
               echo '</div>';
               echo '<div class="col-md-6">';
               echo '<ul class="list-group list-group-flush">';
-              echo '<li class="list-group-item"><strong>Recommendation: </strong>' . $row["recommendation"] . '</li>';
+
+              // Recommendation check and display
+              if ($row["recommendation"] == 1) {
+
+                echo '<li class="list-group-item"><strong>Recommendation: </strong>' . '111++' . '</li>';
+              } else {
+                echo '<li class="list-group-item"><strong>Recommendation: </strong>' . $row["recommendation"] . '</li>'; // Display actual recommendation value otherwise
+              }
+
               echo '<li class="list-group-item"><strong>Start Term: </strong>' . $row["expected_term"] . '</li>';
               echo '<li class="list-group-item"><strong>CWU ID: </strong>';
               if ($row["sid"] > 0) {
