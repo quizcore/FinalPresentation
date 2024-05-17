@@ -296,7 +296,7 @@
     <a class="navbar-brand me-0 px-3 fs-5" href="./">Computer Science Self-Placement Exam Admin Panel</a>
     -->
     <a class="navbar-text mx-auto d-none d-md-block text-white p-3">
-      Computer Science Self-Placement Exam Admin Portal
+      Computer Science Self-Placement Exam Admin Dashboard
     </a>
 
     <a class="navbar-text me-0 px-3 d-block d-md-none fs-5 text-white">
