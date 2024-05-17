@@ -55,14 +55,16 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 ## Admin
 
 * [x] Remove the Header options for Admin
-* [ ] Red Login Button
+* [X] Red Login Button
 * [x] Change "Login as Admin" to "Admin Login"
 * [x] Different Admin Header for after sign in
 * [X] In user information allow the students information to be search able and only show so many with full screen
+* [X] Update admin database connection.
 * [ ] Show whether question is correct or incorrect on 'student information' page
 * [ ] Bar graph that shows students attending each quarter
 * [ ] Fix color in dark mode
 * [ ] Put the date the exam was taken onto the screen
+* [ ] Add a long cookie session when "remember me" is checked.
 
 ## Both
 
@@ -71,3 +73,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 ## Low Priority
 
 * [ ] Add admin ability to change Questions and delete items in Database for students
+* [ ] Add admin ability to change edit and delete students???
+* [ ] Add admin ability to change their profile???
+* [ ] Add admin ability to change password???
+* [ ] Add admin ability to create new admin account???
