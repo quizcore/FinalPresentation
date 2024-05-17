@@ -14,7 +14,7 @@ The online self-placement tool assists Central Washington University students in
 
 * Download XAMPP: https://www.apachefriends.org/download.html
 * Start the local server using XAMPP
-![XAMPP Setup Screenshot](/doc/LocalHostXAMPPSetup.png)
+![XAMPP Setup Screenshot](./doc/LocalHostXAMPPSetup.png)
 * Click the Start All button in XAMPP
 ![XAMPP Start All](./doc/img/xampp-start-all.png)
 * Open the subfolder "htdocs" in XAMPP and run "git clone https://github.com/quizcore/FinalPresentation/" to clone the repository to the local file system
@@ -22,6 +22,7 @@ The online self-placement tool assists Central Washington University students in
   * Open the browser and go to the URL [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
   * Create a new database called "quizcore" (on the right panel)
   * Go to the SQL and paste the SQL code (MySQL_Code.txt) into the text field and click the Go button.
+![XAMPP PHP MyAdmin](./doc/img/xampp-mysql.png)
 * Student view: Open a browser and go to the URL [http://localhost/FinalPresenation/QuizCore/connection.php](http://localhost/FinalPresenation/QuizCore/connection.php)
 * Admin view: Open a browser and go to the URL [http://localhost/FinalPresenation/QuizCore/admin-temp/](http://localhost/FinalPresenation/QuizCore/admin-temp/)
 
