@@ -2,13 +2,17 @@
 // Start the session.
 session_start();
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 // Check if the user is already logged in, if yes, redirect to admin page.
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("Location: index.php");
     exit;
 }
+
+$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
 // Define variables and initialize with empty values.
 $email = $password = "";
@@ -45,14 +49,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $valid = True;
 
                 // Store data in session variables.
-                $_SESSION["loggedin"] = true;
+                $_SESSION["loggedin"] = $valid;
                 $_SESSION["admin_email"] = $email;
 
                 // Redirect user to admin page.
                 header("location: index.php");
             }
         }
-        if ($valud === False) {
+        if ($valid === False) {
             // Email doesn't exist, display a generic error message.
             $login_err = "Invalid email or password.";
             echo "<script>alert(`$login_err`)</script>";
