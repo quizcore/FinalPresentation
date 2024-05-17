@@ -4,7 +4,7 @@ define('DB_ACCESS', TRUE);
 
 // Include this file in all your scripts that require database connection.
 // Check if DB_ACCESS is not defined to prevent access to this file directly.
-if(!defined('DB_ACCESS')){
+if (!defined('DB_ACCESS')) {
     die('Direct access not allowed');
 }
 
@@ -21,4 +21,3 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-?>
