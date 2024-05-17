@@ -51,6 +51,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [X] Track date that student took exam
 * [X] CS111+ not CS112+ as highest recommendation
 * [X] Redesign additional information page, explain each section
+* [ ] Add progress bars to other pages
 
 ## Admin
 
