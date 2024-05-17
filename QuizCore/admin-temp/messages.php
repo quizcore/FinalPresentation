@@ -84,16 +84,15 @@ require_once 'header.php';
   // redirectToStudentPage
   const tableRows = document.querySelectorAll('tr[data-message-id]'); // Select rows with data-message-id attribute
 
-tableRows.forEach(row => {
-  row.addEventListener('click', (event) => {
-    // Get the contact ID from the data attribute with updated name
-    const contactId = row.dataset.messageId;
+  tableRows.forEach(row => {
+    row.addEventListener('click', (event) => {
+      // Get the contact ID from the data attribute with updated name
+      const contactId = row.dataset.messageId;
 
-    // Redirect to student info page with ID parameter
-    window.location.href = `message-detail.php?mess_id=${contactId}`;
+      // Redirect to student info page with ID parameter
+      window.location.href = `message-detail.php?mess_id=${contactId}`;
+    });
   });
-});
-
 </script>
 
 

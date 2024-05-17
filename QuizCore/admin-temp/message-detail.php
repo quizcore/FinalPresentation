@@ -46,7 +46,7 @@ require_once 'header.php';
             <h5 class="card-title text-center"> <?php echo $row["contact_name"] ?> </h5>
             <hr>
             <?php
-            echo '<p class="card-text text-center">'. $row["contact_email"] . '</p>';
+            echo '<p class="card-text text-center">' . $row["contact_email"] . '</p>';
             echo '<ul class="list-group list-group-flush">';
             echo '<li class="list-group-item">' . $row["contact_message"] . '</li>';
             echo '</ul>';
