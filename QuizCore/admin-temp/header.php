@@ -51,11 +51,31 @@
       --nav-link-color: #F3F7F0;
       /* Color for dark mode */
       --nav-link-color-light: black;
+      --nav-link-color-dark: white;
       /* Color for light mode */
       --nav-link-color-hover: #ab0032;
       --bs-link-color: #A93F55;
       --bs-link-hover-color: #8C5E58;
 
+    }
+
+    /* Color for dark mode */
+    [data-bs-theme="dark"] .card {
+      color: white;
+      --bs-card-color: black;
+    }
+
+    [data-bs-theme="dark"] .card-title {
+      color: white;
+    }
+
+    [data-bs-theme="dark"] .card-body {
+      color: white;
+    }
+
+    [data-bs-theme="dark"] .list-group {
+      --bs-list-group-color: #ffffff;
+      --bs-list-group-bg: transparent;
     }
 
     .nav-link {

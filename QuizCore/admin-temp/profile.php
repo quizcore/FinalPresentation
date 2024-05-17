@@ -22,7 +22,7 @@ require_once 'header.php';
     <div class="row justify-content-center">
       <div class="col-md-6">
         <!-- Admin Profile Card -->
-        <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="card shadow-lg p-3 mb-5 rounded">
           <div class="card-body">
             <h5 class="card-title text-center">Admin Profile</h5>
             <hr>
