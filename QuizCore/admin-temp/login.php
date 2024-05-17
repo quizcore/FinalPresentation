@@ -21,7 +21,7 @@ require_once 'ad-header.php';
 <main class="form-signin w-100 m-auto">
   <form>
     <!-- <img class="mb-4" src="img/cwu_wildcat_spirit_mark_rgb.png" alt="" width="80" height="80"> -->
-    <h1 class="h3 mb-3 mt-5 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 mt-5 fw-normal">Please Login.</h1>
 
     <div class="form-floating">
       <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -40,7 +40,7 @@ require_once 'ad-header.php';
         Remember me
       </label>
     </div>
-    <button class="btn btn-bd-red w-100 py-2" type="submit">Sign in</button>
+    <button class="btn btn-bd-red w-100 py-2" type="submit">Login</button>
   </form>
 </main>
 
