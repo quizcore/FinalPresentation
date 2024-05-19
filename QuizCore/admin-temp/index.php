@@ -193,6 +193,8 @@ require_once 'header.php';
     </div>
   </div>
 
+
+  <br /><br />
   <!-- Pie chart-->
   <div class="container-fluid">
     <div class="row">
@@ -209,6 +211,8 @@ require_once 'header.php';
     </div>
   </div>
 
+
+  <br /><br />
   <!-- Bar chart: Date Taken vs Number of Students -->
   <div class="container-fluid">
     <div class="row">
@@ -225,6 +229,8 @@ require_once 'header.php';
     </div>
   </div>
 
+
+  <br /><br />
   <!-- Bar chart: Date Taken vs Number of Students -->
   <div class="container-fluid">
     <div class="row">
