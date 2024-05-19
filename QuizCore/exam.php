@@ -68,22 +68,22 @@ require_once 'header.php';
 				<label for="floatingInput1">First Name</label>
 			</div>
 
-			<div class="form-floating">
+			<div class="mt-2 form-floating">
 				<input type="text" class="form-control" name="lastName" id="floatingInput2" placeholder="Last Name" required>
 				<label for="floatingInput2">Last Name</label>
 			</div>
 
-			<div class="form-floating">
+			<div class="mt-2 form-floating">
 				<input type="email" class="form-control" name="email" id="floatingInput3" placeholder="name@example.com" required>
 				<label for="floatingInput3">Email address</label>
 			</div>
 
-			<div class="form-floating">
+			<div class="mt-2 form-floating">
 				<input type="date" min="1900-01-01" max="2006-09-01" class="form-control" name="dob" id="floatingPassword" placeholder="date of birth" required>
 				<label for="floatingPassword">Date of Birth</label>
-			</div><br />
+			</div>
 
-			<input id=signUpBtn type="submit" value="Sign Up" class="btn btn-lg btn-dark w-100 py-2">
+			<input id=signUpBtn type="submit" value="Sign Up" class="mt-4 btn btn-lg btn-dark w-100 py-2">
 
 			<?php
 			if ($canStore === False) {
