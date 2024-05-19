@@ -121,7 +121,11 @@ require_once 'header.php';
             echo '<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">';
             echo '<td>' . $qRow["question_id"] . '</td>';
             echo '<td>' . $qRow["question_body"] . '</td>';
-            echo '<td>' . $row[$number] . '</td>';
+            if ($row[$number] === $qRow["question_answer"]) {
+              echo '<td class="bg-primary">' . $row[$number] . '</td>';
+            } else {
+              echo '<td class="bg-danger">' . $row[$number] . '</td>';
+            }
             echo '<td>' . $qRow["question_answer"] . '</td>';
             echo '</tr>';
           }
