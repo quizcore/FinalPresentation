@@ -62,7 +62,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [X] In user information allow the students information to be search able and only show so many with full screen
 * [X] Update admin database connection.
 * [ ] Show whether question is correct or incorrect on 'student information' page
-* [ ] Bar graph that shows students attending each quarter
+* [x] Bar graph that shows students attending each quarter
 * [x] Bar graph Date Taken vs Number of Students
 * [ ] Fix color in dark mode
 * [ ] Put the date the exam was taken onto the screen

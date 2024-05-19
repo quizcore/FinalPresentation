@@ -28,8 +28,20 @@ if ($dates_students_result->num_rows > 0) {
     $dates[] = $row['date_quiz_taken'];
     $numberOfStudents[] = $row['number_of_students'];
   }
-} else {
-  echo "0 results";
+}
+
+// Count students attending each quarter.
+$terms_students_query = "SELECT expected_term, COUNT(*) as number_of_students FROM students GROUP BY expected_term";
+$terms_students_result = $conn->query($terms_students_query);
+
+$terms = array();
+$term_student_counts = array();
+
+if ($terms_students_result->num_rows > 0) {
+  while ($row = $terms_students_result->fetch_assoc()) {
+    $terms[] = $row['expected_term'];
+    $term_student_counts[] = $row['number_of_students'];
+  }
 }
 
 
@@ -197,16 +209,32 @@ require_once 'header.php';
     </div>
   </div>
 
-  <!-- Bar chart-->
+  <!-- Bar chart: Date Taken vs Number of Students -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Number of Students</h3>
+            <h3 class="card-title">Number of Students Taking Exam</h3>
           </div>
           <div class="card-body">
             <canvas class="my-4 w-100" id="dateTakenBarChart" style="max-height: 300px"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bar chart: Date Taken vs Number of Students -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-12 col-xxl-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Number of Students Attending Each Term</h3>
+          </div>
+          <div class="card-body">
+            <canvas class="my-4 w-100" id="termBarChart" style="max-height: 300px"></canvas>
           </div>
         </div>
       </div>
@@ -279,7 +307,7 @@ require_once 'header.php';
   });
 
 
-  // Get the canvas element
+  // Date Taken vs Number of Students Bar Chart.
   var dateTakenBarChartCTX = document.getElementById("dateTakenBarChart").getContext("2d");
   const dates = <?php echo json_encode($dates); ?>;
   const numberOfStudents = <?php echo json_encode($numberOfStudents); ?>;
@@ -346,6 +374,75 @@ require_once 'header.php';
       }
     }
   });
+  // End of Date Taken vs Number of Students Bar Chart.
+
+  
+  // Date Taken vs Number of Students Bar Chart.
+  var termBarChartCTX = document.getElementById("termBarChart").getContext("2d");
+  const terms = <?php echo json_encode($terms); ?>;
+  const term_student_counts = <?php echo json_encode($term_student_counts); ?>;
+
+  const termChart = new Chart(termBarChartCTX, {
+    type: 'bar',
+    data: {
+      labels: terms,
+      datasets: [{
+        label: 'Number of Students',
+        data: term_student_counts,
+        backgroundColor: [
+          "rgba(171, 0, 50, 1)"
+        ],
+        borderColor: [
+          "rgba(171, 4, 51, 255)"
+        ],
+      }]
+    },
+    options: {
+      borderWidth: 0,
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Expected Term'
+          },
+          ticks: {
+            maxRotation: 90,
+            minRotation: 90,
+            autoSkip: false
+          },
+          grid: {
+            display: false // Hide the x-grid lines
+          },
+        },
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of Students'
+          },
+
+          ticks: {
+            beginAtZero: true,
+            callback: function(value) {
+              if (value % 1 === 0) {
+                return value;
+              }
+            }
+          },
+        }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.dataset.label}: ${context.raw}`;
+            }
+          }
+        }
+      }
+    }
+  });
+  // End of Date Taken vs Number of Students Bar Chart.
 </script>
 <script>
   $(document).ready(function() {
