@@ -75,6 +75,7 @@ require_once 'header.php';
                 echo '<li class="list-group-item"><strong>Recommendation: </strong>' . $row["recommendation"] . '</li>'; // Display actual recommendation value otherwise
               }
 
+              echo '<li class="list-group-item"><strong>Date Taken: </strong>' . $row["date_quiz_taken"] . '</li>';
               echo '<li class="list-group-item"><strong>Start Term: </strong>' . $row["expected_term"] . '</li>';
               echo '<li class="list-group-item"><strong>CWU ID: </strong>';
               if ($row["sid"] > 0) {
