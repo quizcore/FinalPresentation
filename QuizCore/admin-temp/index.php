@@ -314,6 +314,9 @@ require_once 'header.php';
             minRotation: 90,
             autoSkip: false
           },
+          grid: {
+            display: false // Hide the x-grid lines
+          },
         },
         y: {
           beginAtZero: true,
