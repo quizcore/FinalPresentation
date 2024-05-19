@@ -106,6 +106,7 @@ require_once 'header.php';
                   <th scope="col">Last Name</th>
                   <th scope="col">Email</th>
                   <th scope="col">Date Of Birth</th>
+                  <th scope="col">Date Taken</th>
                   <th scope="col">Recommendation</th>
                   <th scope="col">Start Term</th>
                   <th scope="col">CWU ID</th>
@@ -134,6 +135,7 @@ require_once 'header.php';
                   echo '<td>' . $row["last_name"] . '</td>';
                   echo '<td>' . $row["email"] . '</td>';
                   echo '<td>' . $row["dob"] . '</td>';
+                  echo '<td>' . $row["date_quiz_taken"] . '</td>';
 
                   // Recommendation check and display
                   if ($row["recommendation"] == 1) {
