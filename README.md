@@ -65,7 +65,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Bar graph that shows students attending each quarter
 * [x] Bar graph Date Taken vs Number of Students
 * [ ] Fix color in dark mode
-* [ ] Put the date the exam was taken onto the screen
+* [x] Put the date the exam was taken onto the screen
 * [ ] Add a long cookie session when "remember me" is checked.
 
 ## Both
