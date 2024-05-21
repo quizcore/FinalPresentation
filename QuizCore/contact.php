@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO contact(contact_name, contact_email, contact_message) VALUES('$name', '$email', '$body');";
     mysqli_query($conn, $sql);
 
-    // Success message after successful insert using alert
-    echo "<script>alert('Your message has been sent successfully!');</script>";
+    // Set a flag to indicate successful submission
+    $success = true;
   }
 }
 
@@ -29,6 +29,23 @@ function test_input($data)
 $pageTitle = "Contact Us";
 require_once 'header.php';
 ?>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const alert = document.querySelector('.alert');
+    
+    <?php if(isset($success) && $success === true): ?>
+      alert.style.display = 'block';
+    <?php else: ?>
+      alert.style.display = 'none';
+    <?php endif; ?>
+    
+    const closeButton = document.querySelector('.btn-close');
+    closeButton.addEventListener('click', function() {
+      alert.style.display = 'none';
+    });
+  });
+</script>
 
 <div class="container py-5">
   <div class="row d-flex align-items-center">
@@ -53,7 +70,17 @@ require_once 'header.php';
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
           <input type="submit" class="btn btn-bd-red btn-lg px-4" value="Send">
         </div>
-      </form>
+      </form><br />
+
+      <!-- Success message display -->
+      <div class='alert alert-success d-flex alert-dismissible fade show' role='alert'>
+        <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'><use xlink:href='#check-circle-fill'/></svg>
+        <div>
+          Your message has been sent successfully!
+          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-6 mt-3">
       <img src="./img/cwu-brand.jpeg" class="img-fluid rounded-5" alt="Contact Us Image">
