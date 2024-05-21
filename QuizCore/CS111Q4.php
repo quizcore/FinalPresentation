@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql = "UPDATE students SET question_31 = '$a31', question_32 = '$a32', question_33 = '$a33', question_34 = '$a34', question_35 = '$a35' WHERE email = '$_COOKIE[student]';";
 	mysqli_query($conn, $sql);
 
-	header("Location: results.php");
+	header("Location: Results.php");
 }
 
 $pageTitle = "Exam";
