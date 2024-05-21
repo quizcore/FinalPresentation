@@ -20,25 +20,26 @@ require_once 'header.php';
       <h1>Welcome <?php echo $row["first_name"] . ' ' . $row["last_name"]; ?></h1>
     </div>
 
-    <!--Guidelines Div-->
-    <div id=guidelinesDiv class="container shadow p-3 my-5 bg-body-tertiary rounded">
-      <h2>Guidelines for Taking the Exam</h2>
-      <p>Welcome to the Central Washington University Self-Placement Exam for the Computer Science department. This exam is designed to help assess your current level of proficiency in computer science concepts and programming skills. Whether you're a seasoned coder or just beginning your journey in computer science, this exam will assist you and your academic advisors in determining the appropriate level of coursework for your skill level.</p>
+   <!-- New Guidelines Div -->
+   <div id="guidelinesDiv" class="container shadow p-3 my-5 bg-body-tertiary rounded">
+      <h2>Welcome to the Computer Science Self-Placement Exam</h2>
+      <p>At Central Washington University, we understand that each student enters our computer science program with a unique set of skills and experiences. This self-placement exam is designed to identify your current proficiency in essential computer science and programming concepts, ensuring that you enroll in courses that align with your knowledge level.</p>
 
-      <p>This exam consists of multiple-choice questions covering various topics from the introductory programming courses offered here at Central. This exam is designed to test your knowledge in areas such as variables, conditionals, basic program structure, object-oriented programming, and more. All exam questions will be written with the Java programming language in mind, but the aim of this exam is to gather your general programming knowledge more than anything else.</p>
+      <p>The exam features multiple-choice questions based on the introductory programming courses at CWU, focusing on fundamental aspects such as variables, conditionals, program structure, and object-oriented concepts. Although the questions use Java for examples, the goal is to assess your overall understanding of programming principles.</p>
 
-      <p>Before you begin, ensure that you have a quiet and distraction-free environment to concentrate. Take your time to read each question carefully and select the answer that you believe is correct. Once you complete the exam, your results will be used to recommend appropriate courses for your skill level. Remember, the goal is to help you succeed and thrive here at Central. Good luck, and let's get started!</p>
-      <h3>Tips for taking the exam:</h3>
+      <p>To maximize your performance, please find a quiet, distraction-free environment. Read each question thoroughly and trust your instincts when selecting an answer. The results will guide us in tailoring your coursework to better suit your educational needs, setting you on the path to success in our program.</p>
+
+      <h3>Exam Tips:</h3>
       <ul>
-        <li>Read each question carefully before selecting an answer.</li>
-        <li>Answer questions to the best of your ability.</li>
-        <li>Do not use any external resources during the exam.</li>
+        <li>Ensure thorough understanding by reading questions carefully.</li>
+        <li>Rely on your knowledge and intuition when answering.</li>
+        <li>Avoid external aids to simulate an accurate academic assessment.</li>
       </ul>
-      <h3>Preparation Tips:</h3>
-      <p>
-        Prepare for the exam by reviewing basic programming concepts and
-        practicing coding tasks in Java.
-      </p>
+
+      <h3>How to Prepare:</h3>
+      <p>Strengthen your readiness by reviewing core programming concepts and engaging in practical Java coding exercises. Consider revisiting the basics of object-oriented programming and familiarizing yourself with Java syntax to build confidence and proficiency.</p>
+
+      <p>Good luck! We are excited to help you start your journey in computer science with confidence and clarity.</p>
     </div>
 
 
