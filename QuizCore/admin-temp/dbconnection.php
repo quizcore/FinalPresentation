@@ -8,14 +8,13 @@ if (!defined('DB_ACCESS')) {
     die('Direct access not allowed');
 }
 
-// Your database connection code can be placed here.
-// For example:
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "quizcore";
+$_SESSION['servername'] = "localhost";
+$_SESSION['username'] = "root";
+$_SESSION['password'] = "";
+$_SESSION['dbname'] = "quizcore";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Create connection
+$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
 // Check connection
 if (!$conn) {

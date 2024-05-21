@@ -42,7 +42,7 @@ require_once 'header.php';
 
             <!-- table entry-->
             <div class="table-wrapper">
-              <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              <table id="dtTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 
                 <thead>
                   <tr>
@@ -120,7 +120,7 @@ require_once 'header.php';
 
 <script>
   $(document).ready(function() {
-    $("#dtBasicExample").DataTable({
+    $("#dtTable").DataTable({
       scrollY: "500px",
       scrollX: true,
       scrollCollapse: true,
