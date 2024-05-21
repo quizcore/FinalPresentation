@@ -72,6 +72,8 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 ## Both
 
 * [X] Add Favicons to all pages
+* [ ] Remove Extension from all pages (ex. .php, .html)
+      
 
 ## Low Priority
 
