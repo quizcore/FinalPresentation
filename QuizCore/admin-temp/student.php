@@ -98,42 +98,65 @@ require_once 'header.php';
 
 
   <h2>Exam Results</h2>
-  <!-- Tables data-->
-  <div class="table-responsive small">
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Question number</th>
-          <th scope="col">Question details</th>
-          <th scope="col">Student Answer</th>
-          <th scope="col">Corrected Answer</th>
+<div class="table-responsive small">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Question number</th>
+        <th scope="col">Question details</th>
+        <th scope="col">Student Answer</th>
+        <th scope="col">Corrected Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      $cs110 = true; // Flag to indicate we're currently in CS110 section
 
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        $qSelect = "SELECT * FROM questions";
-        $qResults = $conn->query($qSelect);
+      // Display CS110 header before the loop (guaranteed)
+      echo '<tr>';
+      echo '<th colspan="4" class="text-center">CS110</th>';
+      echo '</tr>';
+      echo '<hr>'; // Add horizontal line for separation
 
-        while ($qRow = $qResults->fetch_assoc()) {
-          $number = 'question_' . $qRow["question_id"];
-          if (strlen($row[$number]) > 0) {
-            echo '<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">';
-            echo '<td>' . $qRow["question_id"] . '</td>';
-            echo '<td>' . $qRow["question_body"] . '</td>';
-            if ($row[$number] === $qRow["question_answer"]) {
-              echo '<td class="bg-primary">' . $row[$number] . '</td>';
-            } else {
-              echo '<td class="bg-danger">' . $row[$number] . '</td>';
-            }
-            echo '<td>' . $qRow["question_answer"] . '</td>';
-            echo '</tr>';
-          }
+      $qSelect = "SELECT * FROM questions";
+      $qResults = $conn->query($qSelect);
+
+      while ($qRow = $qResults->fetch_assoc()) {
+        $number = 'question_' . $qRow["question_id"];
+        $questionId = $qRow["question_id"];
+
+        // Determine subsection (CS110 or CS111) based on question ID range
+        if ($questionId <= 15) {
+          $subsection = "CS110";
+        } else {
+          $subsection = "CS111";
         }
-        ?>
-      </tbody>
-    </table>
-  </div>
+
+        // Insert subsection title and line only if changing sections (after CS110)
+        if ($cs110 && $subsection === "CS111") {
+          echo '<tr>';
+          echo '<th colspan="4" class="text-center">' . $subsection . '</th>';
+          echo '</tr>';
+          echo '<hr>'; // Add horizontal line for separation
+          $cs110 = false; // Update flag after first CS110 section
+        }
+
+        if (strlen($row[$number]) > 0) {
+          $rowClass = ($row[$number] === $qRow["question_answer"]) ? 'table-success' : 'table-danger'; // Set row class based on answer
+          echo '<tr class="' . $rowClass . '"">';
+          echo '<td>' . $qRow["question_id"] . '</td>';
+          echo '<td>' . $qRow["question_body"] . '</td>';
+          echo '<td>' . $row[$number] . '</td>';
+          echo '<td>' . $qRow["question_answer"] . '</td>';
+          echo '</tr>';
+        }
+      }
+      ?>
+    </tbody>
+  </table>
+</div>
+
+
 
 
 
@@ -143,67 +166,7 @@ require_once 'header.php';
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
-<script>
-  // Get the canvas element
-  var ctx = document.getElementById('myChart').getContext('2d');
 
-  // Define the data
-  var data = {
-    labels: ['CS110', 'CS111', 'NONE'],
-    datasets: [{
-      data: [30, 40, 30], // Sample data, you can replace with your own values
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.6)', // Red
-        'rgba(54, 162, 235, 0.6)', // Blue
-        'rgba(255, 206, 86, 0.6)' // Yellow
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)'
-      ],
-      borderWidth: 1
-    }]
-  };
-
-  // Define options
-  var options = {
-    // Add a legend to the chart
-    legend: {
-      position: 'right' // Adjust position as needed
-    },
-    // Add labels inside the doughnut chart
-    plugins: {
-      labels: {
-        render: 'percentage', // Display percentages
-        precision: 0, // Number of decimal places for percentages
-        fontSize: 14, // Font size of labels
-        fontColor: '#fff', // Font color of labels
-        fontStyle: 'bold', // Font style of labels
-        fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" // Font family of labels
-      }
-    },
-    // Customize hover effects
-    hover: {
-      mode: 'nearest', // Highlight nearest item on hover
-      animationDuration: 500, // Adjusted animation duration on hover (increased to 500ms)
-      intersect: true // Enable hover interactions with all elements at the same index
-    }
-  };
-
-
-  // Create the doughnut chart
-  var myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: data,
-    options: options
-  });
-</script>
-
-<script>
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-</script>
 <script>
   function redirectToStudentPage(studentId) {
     window.location.href = 'students_page?id=' + studentId;
