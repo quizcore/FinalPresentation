@@ -42,12 +42,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $pageTitle = "Exam";
 require_once 'testheader.php';
+// Include functions file
+require_once 'functions.php';
 ?>
 <!--Main-->
 <!--Main Div-->
 <div class="container shadow p-3 my-5 bg-body-tertiary rounded">
 	<h2>Exam Question Set: 4</h2>
 </div>
+
+<!-- Progress bar -->
+<?php echo generateProgressBar(20); ?>
 
 <div class="container">
 	<!--Questions pulled from database-->
