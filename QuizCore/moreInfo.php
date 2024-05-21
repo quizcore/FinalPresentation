@@ -5,21 +5,26 @@ $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sid = NULL;
-
-	if (isset($_POST['sid'])) {
-		$sid = test_input($_POST['sid']);
+	if (isset($_POST['sid']) && !empty($_POST['sid'])) {
+	  $sid = test_input($_POST['sid']);
 	}
 	$term = $_POST['term'];
 	$education = test_input($_POST['education']);
 	$classes = test_input($_POST['classes']);
-
-	$select = "SELECT * FROM students";
-	$result = $conn->query($select);
-
-	$sql = "UPDATE students SET sid = '$sid', expected_term = '$term', previous_education = '$education', previous_classes = '$classes' WHERE email = '$_COOKIE[student]';";
+  
+	$sql = "UPDATE students SET ";
+	$sql .= "expected_term = '$term', ";
+	$sql .= "previous_education = '$education', ";
+	$sql .= "previous_classes = '$classes' ";
+	// Add sid update only if it has a value
+	if (isset($sid)) {
+	  $sql .= ", sid = '$sid' ";
+	}
+	$sql .= "WHERE email = '$_COOKIE[student]';";
+  
 	mysqli_query($conn, $sql);
 	header("Location: CS110Q1.php");
-}
+  }
 
 function test_input($data)
 {
