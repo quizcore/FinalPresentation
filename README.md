@@ -4,6 +4,14 @@ The online self-placement tool assists Central Washington University students in
 
 ![QuizCore Home Page](./doc/img/home-page.png)
 
+# Online Mirrors
+
+## Mirror 1
+
+* Student online site: [http://quizcore.free.nf/connection.php](http://quizcore.free.nf/connection.php)
+
+* Admin online site: [http://quizcore-admin.free.nf/](http://quizcore-admin.free.nf/)
+
 # Technology Stack
 
 * **Backend language:** PHP
