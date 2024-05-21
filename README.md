@@ -46,7 +46,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [X] Questions and Answers Sheet
 * [X] Get Test answers from the database
 * [x] After Signing in to take the test have "User 1" be the name of the student
-* [ ] ALEX TASK: For the exams guidelines page refine and put the business side onto the instructions
+* [X] ALEX TASK: For the exams guidelines page refine and put the business side onto the instructions
 * [x] Fix the Radio Button on 8,9,15, should be at the top of the question
 * [x] Fix Halfway message student should not be able to see the results
 * [x] Take away CWU link on halfway so the student wont lose there place in the exam
