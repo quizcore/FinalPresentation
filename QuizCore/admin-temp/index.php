@@ -11,10 +11,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
+// Define the date range for the last 7 days
+$today = date("Y-m-d");
+$sevenDaysAgo = date('Y-m-d', strtotime($today . '- 7 days'));
+
 // Store Count of students recommended to 110, 111, and 112
 $count110 = 0;
 $count111 = 0;
 $count1 = 0;
+
+// Count students who took exam in the last 7 days
+$lastWeekStudents_query = "SELECT COUNT(*) as number_of_students FROM students WHERE date_quiz_taken >= '$sevenDaysAgo' AND date_quiz_taken <= '$today'";
+$lastWeekStudents_result = $conn->query($lastWeekStudents_query);
+
+$lastWeekStudents = 0;
+if ($lastWeekStudents_result->num_rows > 0) {
+  $row = $lastWeekStudents_result->fetch_assoc();
+  $lastWeekStudents = $row['number_of_students'];
+}
 
 // Count date and students.
 $dates_students_query = "SELECT date_quiz_taken, COUNT(*) as number_of_students FROM students GROUP BY date_quiz_taken";
@@ -71,13 +85,13 @@ require_once 'header.php';
                 $select = "SELECT * FROM students";
                 $result = $conn->query($select);
 
-                $newStudents = 0;
+                //$newStudents = 0;
                 $total = 0;
                 while ($row = $result->fetch_assoc()) {
                   $total++;
-                  if ($row["expected_term"] === "Fall24") {
-                    $newStudents++;
-                  }
+                  // if ($row["expected_term"] === "Fall2024") {
+                  //   $newStudents++;
+                  // }
                   if ($row["recommendation"] == 110) {
                     $count110++;
                   } else if ($row["recommendation"] == 111) {
@@ -101,9 +115,9 @@ require_once 'header.php';
                 <i class="la la-user"></i>
               </span>
               <div class="media-body text-white">
-                <p class="mb-1">Students Attended Next Term</p>
+                <p class="mb-1">Last Week Students</p>
                 <?php
-                echo '<h3 class="text-white">' . $newStudents . '</h3>';
+                echo '<h3 class="text-white">' . $lastWeekStudents . '</h3>';
                 ?>
               </div>
             </div>
