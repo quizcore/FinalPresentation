@@ -123,7 +123,7 @@ const setTheme = theme => {
           if ((currentHour >= sunsetHour || currentHour < sunriseHour)) {
               
               if (signUpBtn) {
-                  signUpBtn.classList.add('btn-outline-danger btn-bd-red btn-bd-red');
+                  signUpBtn.classList.add('btn-bd-red');
               }
               document.documentElement.setAttribute('data-bs-theme', 'dark');
           } else {
