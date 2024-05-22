@@ -32,6 +32,8 @@
       height: 100%;
     }
 
+    /* Form */
+
     .form-signin {
       max-width: 330px;
       padding: 1rem;
@@ -48,6 +50,74 @@
     .form-check-input:checked {
       background-color: #ab0032;
       border-color: #ab0032;
+    }
+
+    /* dashboard */
+    .bi {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /*
+ * Sidebar
+ */
+
+    @media (min-width: 768px) {
+      .sidebar .offcanvas-lg {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px;
+      }
+
+      .navbar-search {
+        display: block;
+      }
+    }
+
+    .sidebar .nav-link {
+      font-size: .875rem;
+      font-weight: 500;
+    }
+
+    .sidebar .nav-link.active {
+      margin: 5px;
+      background-color: #F3F7F0;
+      color: #ab0032;
+      border: 2px solid #A93F55;
+      /* Combine border width and color */
+      border-radius: 20px;
+
+    }
+
+    .sidebar .nav-link.active:hover {
+      color: rgb(0, 0, 0);
+      /* Use a shorthand for red color */
+      background-color: #A93F55;
+    }
+
+
+    .sidebar-heading {
+      font-size: .75rem;
+    }
+
+    /* Navbar */
+
+    .navbar-brand {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(212, 34, 34, 0.25);
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+    }
+
+    .navbar .form-control {
+      padding: .75rem 1rem;
+    }
+
+    .navbar-text {
+      background-color: #ab0032;
+      font-size: 27px;
+      box-shadow: none;
     }
 
     /* Side bar offcanvas width */
