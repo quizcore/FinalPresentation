@@ -112,7 +112,7 @@ require_once 'header.php';
             Students Signed Up Last Week
           </div>
           <div class="card-body">
-            <h2> <?php echo $total; ?></h2>
+            <h2> <?php echo $lastWeekStudents; ?></h2>
           </div>
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
