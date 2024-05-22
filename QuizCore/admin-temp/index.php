@@ -91,44 +91,38 @@ require_once 'header.php';
   <!--Boxes-->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xl-6 col-xxl-6 col-sm-6">
-        <div class="widget-stat card bg-primary">
+      <div class="col-xl-6 col-xxl-6 col-sm-6 mb-4">
+        <div class="card border-primary text-center border-2">
+          <div class="card-header fs-5">
+            Total Students
+          </div>
           <div class="card-body">
-            <div class="media">
-              <div class="media-body text-white">
-                <p class="mb-1">Total Students</p>
-                <?php
-                echo '<h3 class="text-white">' . $total . '</h3>';
-                ?>
-              </div>
-              <span class="ml-3 align-self-center">
-                <i class="bi bi-people" style="font-size: 2rem;"></i>
-              </span>
-            </div>
+            <h2> <?php echo $total; ?></h2>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="ml-3 align-self-center">
+              <i class="bi bi-people" style="font-size: 1.75rem;"></i>
+            </span>
           </div>
         </div>
       </div>
-      <div class="col-xl-6 col-xxl-6 col-sm-6">
-        <div class="widget-stat card bg-warning">
+      <div class="col-xl-6 col-xxl-6 col-sm-6 mb-4">
+        <div class="card border-warning text-center border-2">
+          <div class="card-header fs-5">
+            Students Signed Up Last Week
+          </div>
           <div class="card-body">
-            <div class="media">
-              <div class="media-body text-white">
-                <p class="mb-1">Last Week Students</p>
-                <?php
-                echo '<h3 class="text-white">' . $lastWeekStudents . '</h3>';
-                ?>
-              </div>
-              <span class="ml-3 align-self-center">
-                <i class="bi bi-people" style="font-size: 2rem;"></i>
-              </span>
-            </div>
+            <h2> <?php echo $total; ?></h2>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="ml-3 align-self-center">
+              <i class="bi bi-people" style="font-size: 1.75rem;"></i>
+            </span>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <br /><br />
 
   <!--Data table-->
   <div class="container-fluid">
@@ -209,9 +203,8 @@ require_once 'header.php';
     </div>
   </div>
 
-  <br /><br />
-  <!-- Pie chart-->
-  <div class="container-fluid">
+  <!-- Pie chart -->
+  <div class="container-fluid mt-4">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
@@ -226,9 +219,8 @@ require_once 'header.php';
     </div>
   </div>
 
-  <br /><br />
   <!-- Bar chart: Date Taken vs Number of Students -->
-  <div class="container-fluid">
+  <div class="container-fluid mt-4">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
@@ -243,9 +235,8 @@ require_once 'header.php';
     </div>
   </div>
 
-  <br /><br />
   <!-- Bar chart: Date Taken vs Number of Students -->
-  <div class="container-fluid">
+  <div class="container-fluid mt-4">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
@@ -259,8 +250,6 @@ require_once 'header.php';
       </div>
     </div>
   </div>
-
-  <br /><br />
 </main>
 </div>
 </div>
