@@ -72,7 +72,7 @@ require_once 'header.php';
 						<div class="accordion-body">
 							<div class="form-group mb-3">
 								<label for="sid">CWU Student ID</label>
-								<input type="text" class="form-control" name="sid" id="floatingInput" placeholder="Student ID">
+								<input type="number" class="form-control" name="sid" id="floatingInput" placeholder="Student ID">
 							</div>
 						</div>
 					</div>

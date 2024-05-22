@@ -61,7 +61,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [X] Redesign additional information page, explain each section
 * [ ] Add progress bars to other pages
 * [x] Add spacing between inputs in exam.php
-* [ ] Handle invalid Student ID
+* [x] Handle non-numeric value for Student ID
 
 ## Admin
 
