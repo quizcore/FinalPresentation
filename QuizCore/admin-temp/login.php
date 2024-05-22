@@ -119,23 +119,6 @@ require_once 'login-header.php';
   }
 </style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const alert = document.getElementById('loginErrorAlert');
-
-    <?php if (empty($login_err_msg)) : ?>
-      alert.classList.remove('show');
-    <?php else : ?>
-      alert.classList.add('show');
-    <?php endif; ?>
-
-    const closeButton = document.querySelector('.btn-close');
-    closeButton.addEventListener('click', function() {
-      alert.classList.remove('show');
-    });
-  });
-</script>
-
 <main class="form-signin w-100 m-auto">
   <form method="post" action="login.php">
     <!-- <img class="mb-4" src="img/cwu_wildcat_spirit_mark_rgb.png" alt="" width="80" height="80"> -->
@@ -176,6 +159,7 @@ require_once 'login-header.php';
 </main>
 
 <script>
+  // Toggle password show/hide.
   document.querySelectorAll(".toggle-password").forEach(function(button) {
     button.addEventListener("click", function() {
       // Toggle the classes for the eye icon
@@ -191,6 +175,22 @@ require_once 'login-header.php';
       } else {
         input.setAttribute("type", "password");
       }
+    });
+  });
+
+  // Login error alert.
+  document.addEventListener('DOMContentLoaded', function() {
+    const alert = document.getElementById('loginErrorAlert');
+
+    <?php if (empty($login_err_msg)) : ?>
+      alert.classList.remove('show');
+    <?php else : ?>
+      alert.classList.add('show');
+    <?php endif; ?>
+
+    const closeButton = document.querySelector('.btn-close');
+    closeButton.addEventListener('click', function() {
+      alert.classList.remove('show');
     });
   });
 </script>
