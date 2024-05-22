@@ -82,6 +82,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Make the font size of the axis labels bigger (to make it more visible on the presentation screen)
 * [x] Remove class table-bordered to remove cluttering
 * [x] Use bootstrap alert for invalid admin login
+* [x] Change table name "Table" to "Students"
 
 ## Both
 

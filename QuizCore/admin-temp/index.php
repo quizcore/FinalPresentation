@@ -134,7 +134,7 @@ require_once 'header.php';
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Table</h3>
+            <h3 class="card-title">Students</h3>
           </div>
           <div class="card-body">
 
