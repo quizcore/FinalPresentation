@@ -79,7 +79,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Add a long cookie session when "remember me" is checked.
 * [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart
 * [ ] Khang: Fix date (off by  1 day) in the graph Date Taken vs Number of Students
-* [ ] Khang: Make the font size of the axis labels bigger (to make it more visible on the presentation screen)
+* [x] Make the font size of the axis labels bigger (to make it more visible on the presentation screen)
 
 ## Both
 

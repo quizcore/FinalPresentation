@@ -355,7 +355,10 @@ require_once 'header.php';
         x: {
           title: {
             display: true,
-            text: 'Date Taken'
+            text: 'Date Taken',
+            font: {
+              size: 18,
+            },
           },
           ticks: {
             maxRotation: 90,
@@ -370,9 +373,11 @@ require_once 'header.php';
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Number of Students'
+            text: 'Number of Students',
+            font: {
+              size: 18,
+            },
           },
-
           ticks: {
             beginAtZero: true,
             callback: function(value) {
@@ -396,7 +401,7 @@ require_once 'header.php';
   });
   // End of Date Taken vs Number of Students Bar Chart.
 
-  
+
   // Date Taken vs Number of Students Bar Chart.
   var termBarChartCTX = document.getElementById("termBarChart").getContext("2d");
   const terms = <?php echo json_encode($terms); ?>;
@@ -423,7 +428,10 @@ require_once 'header.php';
         x: {
           title: {
             display: true,
-            text: 'Expected Term'
+            text: 'Expected Term',
+            font: {
+              size: 18,
+            },
           },
           ticks: {
             maxRotation: 90,
@@ -438,9 +446,11 @@ require_once 'header.php';
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Number of Students'
+            text: 'Number of Students',
+            font: {
+              size: 18,
+            },
           },
-
           ticks: {
             beginAtZero: true,
             callback: function(value) {
