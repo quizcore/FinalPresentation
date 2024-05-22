@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$first_name = test_input($_POST['firstName']);
 	$last_name = test_input($_POST['lastName']);
 	$email = test_input($_POST['email']);
+	$email = strtolower($email);
 	$dob = date('Y-m-d', strtotime($_POST['dob']));
 	$date_taken = date('Y-m-d');
 
