@@ -16,7 +16,7 @@ The online self-placement tool assists Central Washington University students in
 
 * **Backend language:** PHP
 * **Database:** MariaDB or MySQL
-* **Frontend:** JavaScript, HTML, CSS, Bootstrap
+* **Frontend:** JavaScript/HTML/CSS, Bootstrap, DataTables, Chart.JS
 
 # Run on Localhost
 
@@ -86,8 +86,13 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 ## Both
 
 * [X] Add Favicons to all pages
+* [x] Remove local bootstrap copy
+* [x] Remove unused dependencies
 * [ ] Remove Extension from all pages (ex. .php, .html)
 * [ ] Remove old data
+* [ ] Close database after open
+* [ ] Hash password
+* [ ] Improve file naming consistency (lower-case for file names)
 
 ## Low Priority
 
