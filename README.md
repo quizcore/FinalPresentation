@@ -74,7 +74,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Show whether question is correct or incorrect on 'student information' page
 * [x] Bar graph that shows students attending each quarter
 * [x] Bar graph Date Taken vs Number of Students
-* [ ] Fix color in dark mode
+* [x] Fix login button color in dark mode
 * [x] Put the date the exam was taken onto the screen
 * [ ] Add a long cookie session when "remember me" is checked.
 * [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart

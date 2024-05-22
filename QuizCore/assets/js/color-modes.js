@@ -105,14 +105,17 @@
   };
   //getLocalSunriseTime end
 
-  const setTheme = theme => {
-    const signUpBtn = document.getElementById('signUpBtn');
+  const signUpBtnID = 'signUpBtn';
+  const loginBtnID = 'loginBtn';
 
-    if (signUpBtn) {
+  const setButtonThemeWithID = (theme, elementId) => {
+    const element = document.getElementById(elementId);
+
+    if (element) {
       if (theme === 'dark') {
-        signUpBtn.classList.add('btn-bd-red');
+        element.classList.add('btn-bd-red');
       } else {
-        signUpBtn.classList.remove('btn-bd-red');
+        element.classList.remove('btn-bd-red');
       }
     }
 
@@ -122,14 +125,14 @@
 
         if ((currentHour >= sunsetHour || currentHour < sunriseHour)) {
 
-          if (signUpBtn) {
-            signUpBtn.classList.add('btn-bd-red');
+          if (element) {
+            element.classList.add('btn-bd-red');
           }
           document.documentElement.setAttribute('data-bs-theme', 'dark');
         } else {
 
-          if (signUpBtn) {
-            signUpBtn.classList.remove('btn-bd-red');
+          if (element) {
+            element.classList.remove('btn-bd-red');
           }
           document.documentElement.setAttribute('data-bs-theme', 'light');
         }
@@ -138,18 +141,23 @@
       });
     } else {
       document.documentElement.setAttribute('data-bs-theme', theme);
-      if (signUpBtn) {
+      if (element) {
         if (theme === 'dark') {
-          signUpBtn.classList.add('btn-bd-red');
+          element.classList.add('btn-bd-red');
         } else {
-          signUpBtn.classList.remove('btn-bd-red');
+          element.classList.remove('btn-bd-red');
         }
       }
     }
-
   }
 
-  setTheme(getPreferredTheme())
+  const setButtonTheme = theme => {
+    setButtonThemeWithID(theme, signUpBtnID)
+    setButtonThemeWithID(theme, loginBtnID)
+  }
+
+
+  setButtonTheme(getPreferredTheme())
 
   const showActiveTheme = (theme, focus = false) => {
     const themeSwitcher = document.querySelector('#bd-theme')
@@ -182,29 +190,19 @@
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     const storedTheme = getStoredTheme()
     if (storedTheme !== 'light' && storedTheme !== 'dark') {
-      setTheme(getPreferredTheme())
+      setButtonTheme(getPreferredTheme())
     }
   })
 
   window.addEventListener('DOMContentLoaded', () => {
-    const signUpBtn = document.getElementById('signUpBtn');
-
-    showActiveTheme(getPreferredTheme())
-
-    if (signUpBtn) {
-      if (getPreferredTheme() === 'dark') {
-        signUpBtn.classList.add('btn-bd-red');
-      } else {
-        signUpBtn.classList.remove('btn-bd-red');
-      }
-    }
+    setButtonTheme(getPreferredTheme())
 
     document.querySelectorAll('[data-bs-theme-value]')
       .forEach(toggle => {
         toggle.addEventListener('click', () => {
           const theme = toggle.getAttribute('data-bs-theme-value')
           setStoredTheme(theme)
-          setTheme(theme)
+          setButtonTheme(theme)
           showActiveTheme(theme, true)
         })
       })
