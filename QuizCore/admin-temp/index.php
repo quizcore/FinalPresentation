@@ -450,9 +450,9 @@ require_once 'header.php';
   });
 
   // Students table.
-  $(document).ready(function() {
-    $("#quizcore-students-table").DataTable({
-      scrollY: "400px",
+  document.addEventListener('DOMContentLoaded', function() {
+    new DataTable('#quizcore-students-table', {
+      scrollY: "100vh",
       scrollX: true,
       scrollCollapse: true,
     });

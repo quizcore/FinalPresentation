@@ -17,10 +17,13 @@
 
   <!-- data table -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css">
   <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- bootstrap icon -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet" />
 
   <style>
     html,
@@ -280,11 +283,6 @@
       display: block !important;
     }
   </style>
-
-  <!-- Custom styles for this template -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="./css/dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
