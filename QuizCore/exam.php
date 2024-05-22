@@ -58,7 +58,7 @@ require_once 'header.php';
 
 <!--Main-->
 <!--Main Div-->
-<div class="container">
+<div class="container-lg">
 	<!--Form-->
 	<div id="myForm" class="form-signin w-100 m-auto">
 		<form id="studentForm" method="post" action="#">

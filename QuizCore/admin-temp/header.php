@@ -27,6 +27,29 @@
 
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .form-signin {
+      max-width: 330px;
+      padding: 1rem;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-check-input {
+      border: var(--bs-border-width) solid #ab0032;
+    }
+
+    .form-check-input:checked {
+      background-color: #ab0032;
+      border-color: #ab0032;
+    }
+
     /* Side bar offcanvas width */
     .offcanvas,
     .offcanvas-lg,

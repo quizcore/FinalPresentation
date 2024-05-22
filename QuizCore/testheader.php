@@ -9,11 +9,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
   <link rel="manifest" href="./img/site.webmanifest">
-  <link rel="stylesheet" href="CSS/styles.css" />
-  <link href="CSS/headers.css" rel="stylesheet" />
-  <link href="CSS/heroes.css" rel="stylesheet" />
-  <link href="CSS/features.css" rel="stylesheet" />
-  <link href="CSS/sign-in.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/" />
 
@@ -22,6 +17,20 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .form-signin {
+      max-width: 330px;
+      padding: 1rem;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
     .form-check-input {
       border: var(--bs-border-width) solid #ab0032;
     }
@@ -213,12 +222,6 @@
     </div>
   </nav>
 
-  <script>
-    // Assign login link.
-    document.getElementById('loginButton').addEventListener('click', function() {
-      window.location.href = 'login.html';
-    });
-  </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {

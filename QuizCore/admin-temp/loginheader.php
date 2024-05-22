@@ -14,7 +14,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
   <link rel="manifest" href="../img/site.webmanifest">
-  <link href="css/sign-in.css" rel="stylesheet" />
   <!---->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -30,6 +29,29 @@
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .form-signin {
+      max-width: 330px;
+      padding: 1rem;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-check-input {
+      border: var(--bs-border-width) solid #ab0032;
+    }
+
+    .form-check-input:checked {
+      background-color: #ab0032;
+      border-color: #ab0032;
+    }
+
     /* Side bar offcanvas width */
     .offcanvas,
     .offcanvas-lg,

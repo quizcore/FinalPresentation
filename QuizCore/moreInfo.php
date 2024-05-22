@@ -111,17 +111,6 @@ require_once 'header.php';
 	</div>
 </div>
 
-
-<script>
-	document
-		.getElementById("quickStartBtn")
-		.addEventListener("submit", function(event) {
-			// Prevents the default form submission behavior.
-			event.preventDefault();
-			// Redirect to exam2.php.
-			window.location.href = "exam2.php";
-		});
-</script>
 <script>
 	const selectTerm = document.getElementById('term');
 	const currentYear = new Date().getFullYear(); // Get current year
