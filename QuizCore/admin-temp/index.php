@@ -116,7 +116,7 @@ require_once 'header.php';
           </div>
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
-              <i class="bi bi-people" style="font-size: 1.75rem;"></i>
+              <i class="bi bi-pen" style="font-size: 1.75rem;"></i>
             </span>
           </div>
         </div>
