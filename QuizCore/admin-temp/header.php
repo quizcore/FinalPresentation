@@ -16,10 +16,10 @@
   <link rel="manifest" href="../img/site.webmanifest">
 
   <!-- data table -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
-  <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css" crossorigin="anonymous">
   <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <!-- bootstrap icon -->

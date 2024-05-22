@@ -24,7 +24,7 @@ require_once 'header.php';
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table id="messages" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              <table id="quizcore-messages-table" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -63,16 +63,16 @@ require_once 'header.php';
 </div>
 
 <script>
-  $(document).ready(function() {
-    $("#messages").DataTable({
-      scrollY: "360px",
+  // Messages table.
+  document.addEventListener('DOMContentLoaded', function() {
+    new DataTable('#quizcore-messages-table', {
+      scrollY: "100vh",
       scrollX: true,
       scrollCollapse: true,
     });
   });
-</script>
-<!-- redirect To Student Page -->
-<script>
+
+
   // redirectToStudentPage
   const tableRows = document.querySelectorAll('tr[data-message-id]'); // Select rows with data-message-id attribute
 
