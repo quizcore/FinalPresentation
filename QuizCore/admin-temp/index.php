@@ -448,8 +448,8 @@ require_once 'header.php';
       }
     }
   });
-</script>
-<script>
+
+  // Students table.
   $(document).ready(function() {
     $("#quizcore-students-table").DataTable({
       scrollY: "400px",

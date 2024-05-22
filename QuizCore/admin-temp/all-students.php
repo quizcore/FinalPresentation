@@ -36,72 +36,72 @@ require_once 'header.php';
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">All students</h3>
+            <h3 class="card-title">Table</h3>
           </div>
           <div class="card-body">
 
             <!-- table entry-->
-            <div class="table-wrapper">
-              <table id="dtTable" class="table table-striped table-sm" cellspacing="0" width="100%">
+            <table id="quizcore-students-table" class="table table-striped table-sm" cellspacing="0" width="100%">
 
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Date Of Birth</th>
-                    <th scope="col">Date Taken</th>
-                    <th scope="col">Recommendation</th>
-                    <th scope="col">Start Term</th>
-                    <th scope="col">CWU ID</th>
-                    <th scope="col">Previous College</th>
-                    <th scope="col">Relevant CS Courses</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $select = "SELECT * FROM students";
-                  $result = $conn->query($select);
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Date Of Birth</th>
+                  <th scope="col">Date Taken</th>
+                  <th scope="col">Recommendation</th>
+                  <th scope="col">Start Term</th>
+                  <th scope="col">CWU ID</th>
+                  <th scope="col">Previous College</th>
+                  <th scope="col">Relevant CS Courses</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $select = "SELECT * FROM students";
+                $result = $conn->query($select);
 
-                  while ($row = $result->fetch_assoc()) {
-                    // Get the student ID
-                    $student_id  = $row["student_id"];
-                    echo '<tr
+                while ($row = $result->fetch_assoc()) {
+                  // Get the student ID
+                  $student_id  = $row["student_id"];
+                  echo '<tr
                         data-bs-toggle="' . "tooltip" . '"
                         data-bs-placement="' . "top" . '"
                         data-bs-title="' . "Tooltip on top" . '"
                         data-student-id="' . $student_id . '"
                       >';
 
-                    // add a tag on student_id
-                    echo '<td>' . $row["student_id"] . '</td>';
-                    echo '<td>' . $row["first_name"] . '</td>';
-                    echo '<td>' . $row["last_name"] . '</td>';
-                    echo '<td>' . $row["email"] . '</td>';
-                    echo '<td>' . $row["dob"] . '</td>';
-                    echo '<td>' . $row["date_quiz_taken"] . '</td>';
-                    // Recommendation check and display
-                    if ($row["recommendation"] == 1) {
-                      echo '<td>111++</td>'; // Show "111+" when recommendation is 1
-                    } else {
-                      echo '<td>' . $row["recommendation"] . '</td>'; // Display actual recommendation value otherwise
-                    }
-                    echo '<td>' . $row["expected_term"] . '</td>';
-                    if ($row["sid"] > 0) {
-                      echo '<td>' . $row["sid"] . '</td>';
-                    } else {
-                      echo '<td>No SID</td>';
-                    }
-                    echo '<td>' . $row["previous_education"] . '</td>';
-                    echo '<td>' . $row["previous_classes"] . '</td>';
-                    echo '</tr>';
+                  // add a tag on student_id
+                  echo '<td>' . $row["student_id"] . '</td>';
+                  echo '<td>' . $row["first_name"] . '</td>';
+                  echo '<td>' . $row["last_name"] . '</td>';
+                  echo '<td>' . $row["email"] . '</td>';
+                  echo '<td>' . $row["dob"] . '</td>';
+                  echo '<td>' . $row["date_quiz_taken"] . '</td>';
+
+                  // Recommendation check and display
+                  if ($row["recommendation"] == 1) {
+                    echo '<td>111++</td>'; // Show "111+" when recommendation is 1
+                  } else {
+                    echo '<td>' . $row["recommendation"] . '</td>'; // Display actual recommendation value otherwise
                   }
 
-                  ?>
-                </tbody>
-              </table>
-            </div>
+                  echo '<td>' . $row["expected_term"] . '</td>';
+                  if ($row["sid"] > 0) {
+                    echo '<td>' . $row["sid"] . '</td>';
+                  } else {
+                    echo '<td>No SID</td>';
+                  }
+                  echo '<td>' . $row["previous_education"] . '</td>';
+                  echo '<td>' . $row["previous_classes"] . '</td>';
+                  echo '</tr>';
+                }
+
+                ?>
+              </tbody>
+            </table>
           </div>
 
         </div>
@@ -111,17 +111,15 @@ require_once 'header.php';
 </main>
 
 <script>
+  // Students table.
   $(document).ready(function() {
-    $("#dtTable").DataTable({
-      scrollY: "500px",
+    $("#quizcore-students-table").DataTable({
+      scrollY: "400px",
       scrollX: true,
       scrollCollapse: true,
     });
   });
-</script>
 
-<!-- redirect To Student Page -->
-<script>
   // redirectToStudentPage
   const tableRows = document.querySelectorAll('tr[data-student-id]'); // Select rows with data-student-id attribute
 
