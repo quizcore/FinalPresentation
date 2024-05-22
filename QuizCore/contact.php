@@ -33,13 +33,13 @@ require_once 'header.php';
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const alert = document.querySelector('.alert');
-    
-    <?php if(isset($success) && $success === true): ?>
+
+    <?php if (isset($success) && $success === true) : ?>
       alert.classList.add('show');
-    <?php else: ?>
+    <?php else : ?>
       alert.classList.remove('show');
     <?php endif; ?>
-    
+
     const closeButton = document.querySelector('.btn-close');
     closeButton.addEventListener('click', function() {
       alert.classList.remove('show');
@@ -74,7 +74,9 @@ require_once 'header.php';
 
       <!-- Success message display -->
       <div id='myAlert' class='alert alert-success d-flex alert-dismissible fade show' role='alert'>
-        <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'><use xlink:href='#check-circle-fill'/></svg>
+        <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
+          <use xlink:href='#check-circle-fill' />
+        </svg>
         <div>
           Your message has been sent successfully!
           <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
