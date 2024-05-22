@@ -344,11 +344,11 @@
     <!--
     <a class="navbar-brand me-0 px-3 fs-5" href="./">Computer Science Self-Placement Exam Admin Panel</a>
     -->
-    <a class="navbar-text mx-auto d-none d-sm-block text-white p-3 text-decoration-none">
-      Computer Science Self-Placement Exam Admin Dashboard
+    <a class="navbar-text mx-auto d-none d-md-block text-white p-3 text-decoration-none">
+      CS Self-Placement Exam Admin Dashboard
     </a>
 
-    <a class="navbar-text mx-auto d-block d-sm-none text-white text-decoration-none">
+    <a class="navbar-text mx-auto d-block d-md-none text-white text-decoration-none">
       Admin Dashboard
     </a>
 

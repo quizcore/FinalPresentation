@@ -15,17 +15,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
   <link rel="manifest" href="../img/site.webmanifest">
 
-  <!---->
+  <!-- data table -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/" />
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
-
-  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     html,
     body {
@@ -388,12 +384,12 @@
     <!--
     <a class="navbar-brand me-0 px-3 fs-5" href="./">Computer Science Self-Placement Exam Admin Panel</a>
     -->
-    <a class="navbar-text mx-auto d-none d-md-block text-white p-3">
-      Computer Science Self-Placement Exam Admin Dashboard
+    <a class="navbar-text mx-auto d-none d-md-block text-white p-3 text-decoration-none">
+      CS Self-Placement Exam Admin Dashboard
     </a>
 
-    <a class="navbar-text me-0 px-3 d-block d-md-none fs-5 text-white">
-      Admin Panel
+    <a class="navbar-text mx-auto d-block d-md-none text-white text-decoration-none">
+      Admin Dashboard
     </a>
 
     <ul class="navbar-nav flex-row d-md-none">
