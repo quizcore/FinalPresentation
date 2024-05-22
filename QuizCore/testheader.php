@@ -10,11 +10,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
   <link rel="manifest" href="./img/site.webmanifest">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/" />
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
-  <!-- chartjs-->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     html,
@@ -222,23 +217,22 @@
     </div>
   </nav>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
       function toggleTextVisibility() {
-        var windowWidth = $(window).width();
-        var h1Element = $("#one");
-        var h2Element = $("#two");
-        var h3Element = $("#three");
+        var windowWidth = window.innerWidth;
+        var h1Element = document.getElementById('one');
+        var h2Element = document.getElementById('two');
+        var h3Element = document.getElementById('three');
 
         if (windowWidth < 768) {
-          h1Element.hide();
-          h2Element.show();
-          h3Element.show();
+          h1Element.style.display = 'none';
+          h2Element.style.display = 'block';
+          h3Element.style.display = 'block';
         } else {
-          h1Element.show();
-          h2Element.hide();
-          h3Element.hide();
+          h1Element.style.display = 'block';
+          h2Element.style.display = 'none';
+          h3Element.style.display = 'none';
         }
       }
 
@@ -246,7 +240,7 @@
       toggleTextVisibility();
 
       // Check on window resize
-      $(window).resize(function() {
+      window.addEventListener('resize', function() {
         toggleTextVisibility();
       });
     });
