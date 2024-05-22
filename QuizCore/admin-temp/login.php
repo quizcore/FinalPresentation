@@ -132,7 +132,7 @@ require_once 'login-header.php';
     <div class="form-floating mt-3">
       <input type="password" class="form-control rounded-2" id="floatingPassword" name="password">
       <label for="floatingPassword">Password</label>
-      <span toggle="#floatingPassword" class="fa fa-fw fa-eye field-icon-b toggle-password"></span>
+      <span toggle="#floatingPassword" class="bi bi-eye-slash field-icon-b toggle-password"></span>
     </div>
 
     <div class="form-check text-start mt-3">
@@ -163,8 +163,8 @@ require_once 'login-header.php';
   document.querySelectorAll(".toggle-password").forEach(function(button) {
     button.addEventListener("click", function() {
       // Toggle the classes for the eye icon
-      this.classList.toggle("fa-eye");
-      this.classList.toggle("fa-eye-slash");
+      this.classList.toggle("bi-eye-slash");
+      this.classList.toggle("bi-eye");
 
       // Get the input element based on the "toggle" attribute of the clicked element
       var input = document.querySelector(this.getAttribute("toggle"));
@@ -177,6 +177,7 @@ require_once 'login-header.php';
       }
     });
   });
+
 
   // Login error alert.
   document.addEventListener('DOMContentLoaded', function() {
