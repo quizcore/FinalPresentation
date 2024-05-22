@@ -35,12 +35,12 @@ $dates_students_query = "SELECT date_quiz_taken, COUNT(*) as number_of_students 
 $dates_students_result = $conn->query($dates_students_query);
 
 $dates = array();
-$numberOfStudents = array();
+$number_of_students = array();
 
 if ($dates_students_result->num_rows > 0) {
   while ($row = $dates_students_result->fetch_assoc()) {
     $dates[] = $row['date_quiz_taken'];
-    $numberOfStudents[] = $row['number_of_students'];
+    $number_of_students[] = $row['number_of_students'];
   }
 }
 
@@ -139,7 +139,7 @@ require_once 'header.php';
           <div class="card-body">
 
             <!-- table entry-->
-            <table id="dtBasicExample" class="table table-striped table-sm" cellspacing="0" width="100%">
+            <table id="quizcore-students-table" class="table table-striped table-sm" cellspacing="0" width="100%">
 
               <thead>
                 <tr>
@@ -207,7 +207,6 @@ require_once 'header.php';
     </div>
   </div>
 
-
   <br /><br />
   <!-- Pie chart-->
   <div class="container-fluid">
@@ -218,13 +217,12 @@ require_once 'header.php';
             <h3 class="card-title">Course Recommendations</h3>
           </div>
           <div class="card-body">
-            <canvas class="my-4 w-100" id="myChart" style="max-height: 300px"></canvas>
+            <canvas class="my-4 w-100" id="quizcore-doughnut-chart" style="max-height: 300px"></canvas>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <br /><br />
   <!-- Bar chart: Date Taken vs Number of Students -->
@@ -236,13 +234,12 @@ require_once 'header.php';
             <h3 class="card-title">Number of Students Taking Exam</h3>
           </div>
           <div class="card-body">
-            <canvas class="my-4 w-100" id="dateTakenBarChart" style="max-height: 300px"></canvas>
+            <canvas class="my-4 w-100" id="quizcore-date-taken-bar-chart" style="max-height: 300px"></canvas>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <br /><br />
   <!-- Bar chart: Date Taken vs Number of Students -->
@@ -254,7 +251,7 @@ require_once 'header.php';
             <h3 class="card-title">Number of Students Attending Each Term</h3>
           </div>
           <div class="card-body">
-            <canvas class="my-4 w-100" id="termBarChart" style="max-height: 300px"></canvas>
+            <canvas class="my-4 w-100" id="quizcore-expected-term-bar-chart" style="max-height: 300px"></canvas>
           </div>
         </div>
       </div>
@@ -270,77 +267,62 @@ require_once 'header.php';
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
 <!-- Chart -->
 <script>
-  // Get the canvas element
-  var ctx = document.getElementById("myChart").getContext("2d");
-
-  // Define the data
-  var data = {
-    labels: ["CS110", "CS111", "CS111++"],
-    datasets: [{
-      data: [<?php echo $count110 ?>, <?php echo $count111 ?>, <?php echo $count1 ?>], // Sample data, you can replace with your own values
-      backgroundColor: [
-        "rgba(171, 0, 50, 1)", // Madder
-        "rgba(140, 94, 88, 1)", // Rose
-        "rgba(25, 50, 60, 1)", // Gunmetal
-      ],
-      borderColor: [
-        "rgba(171, 4, 51, 255)",
-        "rgba(138, 35, 50, 255)",
-        "rgba(0, 0, 0, 255)",
-      ],
-      borderWidth: 1,
-    }, ],
-  };
-
-  // Define options
-  var options = {
-    // Add a legend to the chart
-    legend: {
-      position: "right", // Adjust position as needed
+  // Doughnut Chart.
+  new Chart(document.getElementById("quizcore-doughnut-chart").getContext("2d"), {
+    type: "doughnut",
+    data: {
+      labels: ["CS110", "CS111", "CS111++"],
+      datasets: [{
+        data: [<?php echo $count110 ?>, <?php echo $count111 ?>, <?php echo $count1 ?>],
+        backgroundColor: [
+          "rgba(171, 0, 50, 1)", // Madder
+          "rgba(140, 94, 88, 1)", // Rose
+          "rgba(25, 50, 60, 1)", // Gunmetal
+        ],
+        borderColor: [
+          "rgba(171, 4, 51, 255)",
+          "rgba(138, 35, 50, 255)",
+          "rgba(0, 0, 0, 255)",
+        ],
+        borderWidth: 1,
+      }, ],
     },
-    // Add labels inside the doughnut chart
-    plugins: {
-      labels: {
-        render: "percentage", // Display percentages
-        precision: 0, // Number of decimal places for percentages
-        fontSize: 14, // Font size of labels
-        fontColor: "#fff", // Font color of labels
-        fontStyle: "bold", // Font style of labels
-        fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", // Font family of labels
+    options: {
+      // Add a legend to the chart.
+      legend: {
+        position: "right", // Adjust position as needed.
+      },
+      // Add labels inside the doughnut chart.
+      plugins: {
+        labels: {
+          render: "percentage", // Display percentages
+          precision: 0, // Number of decimal places for percentages
+          fontSize: 14, // Font size of labels
+          fontColor: "#fff", // Font color of labels
+          fontStyle: "bold", // Font style of labels
+          fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", // Font family of labels
+        },
+      },
+      // Customize hover effects
+      hover: {
+        mode: "nearest", // Highlight nearest item on hover
+        animationDuration: 500, // Adjusted animation duration on hover (increased to 500ms)
+        intersect: true, // Enable hover interactions with all elements at the same index
       },
     },
-    // Customize hover effects
-    hover: {
-      mode: "nearest", // Highlight nearest item on hover
-      animationDuration: 500, // Adjusted animation duration on hover (increased to 500ms)
-      intersect: true, // Enable hover interactions with all elements at the same index
-    },
-  };
-
-  // Create the doughnut chart
-  var myChart = new Chart(ctx, {
-    type: "doughnut",
-    data: data,
-    options: options,
   });
 
 
   // Date Taken vs Number of Students Bar Chart.
-  var dateTakenBarChartCTX = document.getElementById("dateTakenBarChart").getContext("2d");
-  const dates = <?php echo json_encode($dates); ?>;
-  const numberOfStudents = <?php echo json_encode($numberOfStudents); ?>;
-
-  const formattedDates = dates.map(date => new Date(date).toLocaleDateString('en-US', {
-    timeZone: 'UTC'
-  }));
-
-  const studentChart = new Chart(dateTakenBarChartCTX, {
+  new Chart(document.getElementById("quizcore-date-taken-bar-chart").getContext("2d"), {
     type: 'bar',
     data: {
-      labels: formattedDates,
+      labels: <?php echo json_encode($dates); ?>.map(date => new Date(date).toLocaleDateString('en-US', {
+        timeZone: 'UTC'
+      })),
       datasets: [{
         label: 'Number of Students',
-        data: numberOfStudents,
+        data: <?php echo json_encode($number_of_students); ?>,
         backgroundColor: [
           "rgba(171, 0, 50, 1)"
         ],
@@ -399,21 +381,15 @@ require_once 'header.php';
       }
     }
   });
-  // End of Date Taken vs Number of Students Bar Chart.
-
 
   // Date Taken vs Number of Students Bar Chart.
-  var termBarChartCTX = document.getElementById("termBarChart").getContext("2d");
-  const terms = <?php echo json_encode($terms); ?>;
-  const term_student_counts = <?php echo json_encode($term_student_counts); ?>;
-
-  const termChart = new Chart(termBarChartCTX, {
+  new Chart(document.getElementById("quizcore-expected-term-bar-chart").getContext("2d"), {
     type: 'bar',
     data: {
-      labels: terms,
+      labels: <?php echo json_encode($terms); ?>,
       datasets: [{
         label: 'Number of Students',
-        data: term_student_counts,
+        data: <?php echo json_encode($term_student_counts); ?>,
         backgroundColor: [
           "rgba(171, 0, 50, 1)"
         ],
@@ -472,12 +448,11 @@ require_once 'header.php';
       }
     }
   });
-  // End of Date Taken vs Number of Students Bar Chart.
 </script>
 <script>
   $(document).ready(function() {
-    $("#dtBasicExample").DataTable({
-      scrollY: "360px",
+    $("#quizcore-students-table").DataTable({
+      scrollY: "400px",
       scrollX: true,
       scrollCollapse: true,
     });
