@@ -42,7 +42,7 @@ require_once 'header.php';
 
             <!-- table entry-->
             <div class="table-wrapper">
-              <table id="dtTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              <table id="dtTable" class="table table-striped table-sm" cellspacing="0" width="100%">
 
                 <thead>
                   <tr>
