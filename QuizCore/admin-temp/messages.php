@@ -24,12 +24,12 @@ require_once 'header.php';
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table id="quizcore-messages-table" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              <table id="quizcore-messages-table" class="table table-striped table-sm" cellspacing="0" width="100%">
                 <thead>
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Email Address</th>
+                    <th>Email</th>
                     <th>Message</th>
                   </tr>
                 </thead>
