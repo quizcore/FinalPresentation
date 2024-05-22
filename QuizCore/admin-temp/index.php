@@ -139,7 +139,7 @@ require_once 'header.php';
           <div class="card-body">
 
             <!-- table entry-->
-            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <table id="dtBasicExample" class="table table-striped table-sm" cellspacing="0" width="100%">
 
               <thead>
                 <tr>
