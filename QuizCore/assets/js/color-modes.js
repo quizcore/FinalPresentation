@@ -105,8 +105,6 @@
   };
   //getLocalSunriseTime end
 
-  const signUpBtnID = 'signUpBtn';
-  const loginBtnID = 'loginBtn';
 
   const setButtonThemeWithID = (theme, elementId) => {
     const element = document.getElementById(elementId);
@@ -152,8 +150,8 @@
   }
 
   const setButtonTheme = theme => {
-    setButtonThemeWithID(theme, signUpBtnID)
-    setButtonThemeWithID(theme, loginBtnID)
+    setButtonThemeWithID(theme, 'signUpBtn')
+    setButtonThemeWithID(theme, 'loginBtn')
   }
 
 
