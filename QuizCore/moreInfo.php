@@ -2,11 +2,15 @@
 session_start();
 
 $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+$idError = False;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sid = NULL;
 	if (isset($_POST['sid']) && !empty($_POST['sid'])) {
 	  $sid = test_input($_POST['sid']);
+	  if(!is_numeric($sid)) {
+		$idError = True;  
+	  }
 	}
 	$term = $_POST['term'];
 	$education = test_input($_POST['education']);
@@ -21,9 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  $sql .= ", sid = '$sid' ";
 	}
 	$sql .= "WHERE email = '$_COOKIE[student]';";
-  
-	mysqli_query($conn, $sql);
-	header("Location: CS110Q1.php");
+	
+	if($idError == False) {
+		mysqli_query($conn, $sql);
+		header("Location: CS110Q1.php");
+	}
   }
 
 function test_input($data)
@@ -94,7 +100,13 @@ require_once 'header.php';
 			</div><br />
 
 			<input id="signUpBtn" type="submit" value="Submit" class="btn btn-lg btn-dark w-100 py-2">
-
+			
+			<?php
+			if ($idError === True) {
+				echo "<h3>Student ID should only contain numbers, please enter it again.</h3>";
+			}
+			?>
+			
 		</form>
 	</div>
 </div>
