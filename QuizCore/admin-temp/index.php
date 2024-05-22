@@ -332,7 +332,9 @@ require_once 'header.php';
   const dates = <?php echo json_encode($dates); ?>;
   const numberOfStudents = <?php echo json_encode($numberOfStudents); ?>;
 
-  const formattedDates = dates.map(date => new Date(date).toLocaleDateString('en-US'));
+  const formattedDates = dates.map(date => new Date(date).toLocaleDateString('en-US', {
+    timeZone: 'UTC'
+  }));
 
   const studentChart = new Chart(dateTakenBarChartCTX, {
     type: 'bar',
