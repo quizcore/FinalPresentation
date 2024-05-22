@@ -20,6 +20,25 @@ $count110 = 0;
 $count111 = 0;
 $count1 = 0;
 
+$select = "SELECT * FROM students";
+$result = $conn->query($select);
+
+//$newStudents = 0;
+$total = 0;
+while ($row = $result->fetch_assoc()) {
+  $total++;
+  // if ($row["expected_term"] === "Fall2024") {
+  //   $newStudents++;
+  // }
+  if ($row["recommendation"] == 110) {
+    $count110++;
+  } else if ($row["recommendation"] == 111) {
+    $count111++;
+  } else if ($row["recommendation"] == 1) {
+    $count1++;
+  }
+}
+
 // Count students who took exam in the last 7 days
 $lastWeekStudents_query = "SELECT COUNT(*) as number_of_students FROM students WHERE date_quiz_taken >= '$sevenDaysAgo' AND date_quiz_taken <= '$today'";
 $lastWeekStudents_result = $conn->query($lastWeekStudents_query);
@@ -76,33 +95,15 @@ require_once 'header.php';
         <div class="widget-stat card bg-primary">
           <div class="card-body">
             <div class="media">
-              <span class="mr-3">
-                <i class="la la-users"></i>
-              </span>
               <div class="media-body text-white">
                 <p class="mb-1">Total Students</p>
                 <?php
-                $select = "SELECT * FROM students";
-                $result = $conn->query($select);
-
-                //$newStudents = 0;
-                $total = 0;
-                while ($row = $result->fetch_assoc()) {
-                  $total++;
-                  // if ($row["expected_term"] === "Fall2024") {
-                  //   $newStudents++;
-                  // }
-                  if ($row["recommendation"] == 110) {
-                    $count110++;
-                  } else if ($row["recommendation"] == 111) {
-                    $count111++;
-                  } else if ($row["recommendation"] == 1) {
-                    $count1++;
-                  }
-                }
                 echo '<h3 class="text-white">' . $total . '</h3>';
                 ?>
               </div>
+              <span class="ml-3 align-self-center">
+                <i class="bi bi-people" style="font-size: 2rem;"></i>
+              </span>
             </div>
           </div>
         </div>
@@ -111,21 +112,22 @@ require_once 'header.php';
         <div class="widget-stat card bg-warning">
           <div class="card-body">
             <div class="media">
-              <span class="mr-3">
-                <i class="la la-user"></i>
-              </span>
               <div class="media-body text-white">
                 <p class="mb-1">Last Week Students</p>
                 <?php
                 echo '<h3 class="text-white">' . $lastWeekStudents . '</h3>';
                 ?>
               </div>
+              <span class="ml-3 align-self-center">
+                <i class="bi bi-people" style="font-size: 2rem;"></i>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <br /><br />
 
   <!--Data table-->
