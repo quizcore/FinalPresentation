@@ -142,14 +142,14 @@ require_once 'loginheader.php';
     <h1 class="h3 mb-3 mt-5 fw-normal">Please Login.</h1>
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" name="email">
+      <input type="text" class="form-control rounded-3" id="floatingInput" name="email">
       <label for="floatingInput">Email address</label>
     </div>
 
-    <div class="form-floating position-relative mt-3">
-      <input type="password" id="password" class="form-control" id="floatingPassword" name="password">
+    <div class="form-floating mt-3">
+      <input type="password" class="form-control rounded-2" id="floatingPassword" name="password">
       <label for="floatingPassword">Password</label>
-      <span toggle="#password" class="fa fa-fw fa-eye field-icon-b toggle-password"></span>
+      <span toggle="#floatingPassword" class="fa fa-fw fa-eye field-icon-b toggle-password"></span>
     </div>
 
     <div class="form-check text-start mt-3">
