@@ -81,6 +81,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Fix date (off by  1 day) in the graph Date Taken vs Number of Students
 * [x] Make the font size of the axis labels bigger (to make it more visible on the presentation screen)
 * [x] Remove class table-bordered to remove cluttering
+* [x] Use bootstrap alert for invalid admin login
 
 ## Both
 

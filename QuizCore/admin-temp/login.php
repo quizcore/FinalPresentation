@@ -5,68 +5,98 @@ include_once 'dbconnection.php';
 // Start the session.
 session_start();
 
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
 // Check if the user is already logged in, if yes, redirect to admin page.
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("Location: index.php");
-    exit;
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
+  header("Location: index.php");
+  exit;
 }
 
 // Define variables and initialize with empty values.
 $email = $password = "";
-$email_err = $password_err = $login_err = "";
-
-$select = "SELECT email, password FROM admin";
-$result = $conn->query($select);
+$email_err = $password_err = $login_err_msg = "";
 
 // Processing form data when form is submitted.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if email is empty.
-    if (empty(trim($_POST["email"]))) {
-        $email_err = "Please enter email.";
-    } else {
-        $email = trim($_POST["email"]);
-    }
+  // Check if email is empty.
+  if (empty(trim($_POST["email"]))) {
+    $email_err = "Email is empty";
+  } else {
+    $email = trim($_POST["email"]);
+  }
 
-    // Check if password is empty.
-    if (empty(trim($_POST["password"]))) {
-        $password_err = "Please enter your password.";
-    } else {
-        $password = trim($_POST["password"]);
-    }
+  // Check if password is empty.
+  if (empty(trim($_POST["password"]))) {
+    $password_err = "Password is empty";
+  } else {
+    $password = trim($_POST["password"]);
+  }
 
-    // Check for valid login based on database entries
-    $valid = False;
+  // Validate credentials.
+  if (empty($email_err) && empty($password_err)) {
+    // Prepare a select statement.
+    $sql = "SELECT email, password FROM admin WHERE email = ?";
 
-    // Validate credentials.
-    if (empty($email_err) && empty($password_err)) {
-        while ($row = $result->fetch_assoc()) {
-            if ($row["email"] === $email && $row["password"] === $password) {
-                // Password is correct, start a new session.
-                session_start();
-                $valid = True;
+    if ($stmt = $conn->prepare($sql)) {
+      // Bind variables to the prepared statement as parameters.
+      $stmt->bind_param("s", $email);
 
-                // Store data in session variables.
-                $_SESSION["loggedin"] = $valid;
-                $_SESSION["admin_email"] = $email;
+      // Attempt to execute the prepared statement.
+      if ($stmt->execute()) {
+        // Store result.
+        $stmt->store_result();
 
-                // Redirect user to admin page.
-                header("location: index.php");
+        // Check if email exists, if yes then verify password.
+        if ($stmt->num_rows == 1) {
+          // Bind result variables.
+          $stmt->bind_result($email, $stored_password);
+          if ($stmt->fetch()) {
+            if ($password === $stored_password) {
+              // Password is correct, start a new session.
+              session_start();
+
+              // Store data in session variables.
+              $_SESSION["loggedin"] = true;
+              $_SESSION["admin_email"] = $email;
+
+              // Redirect user to admin page.
+              header("Location: index.php");
+              exit;
+            } else {
+              // Display an error message if password is not valid.
+              $password_err = "The password you entered was not valid.";
             }
+          }
+        } else {
+          // Display an error message if email doesn't exist.
+          $email_err = "No account found with that email.";
         }
-        if ($valid === False) {
-            // Email doesn't exist, display a generic error message.
-            $login_err = "Invalid email or password.";
-            echo "<script>alert(`$login_err`)</script>";
-        }
-    } else {
-        $login_err = $email_err . " " . $password_err;
-        echo "<script>alert(`$login_err`)</script>";
+      } else {
+        echo "Oops! Something went wrong. Please try again later.";
+      }
+
+      // Close statement.
+      $stmt->close();
     }
+  }
+
+  // Collect all error messages.
+  $all_error_msgs = [];
+
+  if (!empty($email_err)) {
+    array_push($all_error_msgs, $email_err);
+  }
+
+  if (!empty($password_err)) {
+    array_push($all_error_msgs, $password_err);
+  }
+
+  if (count($all_error_msgs) > 0) {
+    $login_err_msg = implode("<br>", $all_error_msgs);
+  }
 }
+
+// Close connection.
+$conn->close();
 ?>
 
 <?php
@@ -78,7 +108,7 @@ require_once 'loginheader.php';
   .form-floating.position-relative {
     position: relative;
   }
-  
+
   .field-icon-b {
     position: absolute;
     right: 10px;
@@ -89,29 +119,59 @@ require_once 'loginheader.php';
   }
 </style>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const alert = document.getElementById('loginErrorAlert');
+
+    <?php if (empty($login_err_msg)) : ?>
+      alert.classList.remove('show');
+    <?php else : ?>
+      alert.classList.add('show');
+    <?php endif; ?>
+
+    const closeButton = document.querySelector('.btn-close');
+    closeButton.addEventListener('click', function() {
+      alert.classList.remove('show');
+    });
+  });
+</script>
+
 <main class="form-signin w-100 m-auto">
   <form method="post" action="login.php">
     <!-- <img class="mb-4" src="img/cwu_wildcat_spirit_mark_rgb.png" alt="" width="80" height="80"> -->
     <h1 class="h3 mb-3 mt-5 fw-normal">Please Login.</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+      <input type="text" class="form-control" id="floatingInput" name="email">
       <label for="floatingInput">Email address</label>
     </div>
-    <div class="form-floating position-relative">
-      <input type="password" id="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+
+    <div class="form-floating position-relative mt-3">
+      <input type="password" id="password" class="form-control" id="floatingPassword" name="password">
       <label for="floatingPassword">Password</label>
       <span toggle="#password" class="fa fa-fw fa-eye field-icon-b toggle-password"></span>
     </div>
 
-    <div class="form-check text-start my-3">
+    <div class="form-check text-start mt-3">
       <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
       <label class="form-check-label" for="flexCheckDefault">
         Remember me
       </label>
     </div>
-    <button class="btn btn-bd-red w-100 py-2" type="submit">Login</button>
+
+    <button class="btn btn-bd-red w-100 py-2 mt-3" type="submit">Login</button>
   </form>
+
+  <!-- Error message display -->
+  <div id='loginErrorAlert' class='alert alert-danger d-flex alert-dismissible fade mt-3' role='alert'>
+    <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Error:'>
+      <use xlink:href='#check-circle-fill' />
+    </svg>
+    <div>
+      <?php echo "$login_err_msg" ?>
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+  </div>
 </main>
 
 <script>
