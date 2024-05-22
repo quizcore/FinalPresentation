@@ -61,6 +61,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [X] Redesign additional information page, explain each section
 * [ ] Add progress bars to other pages
 * [x] Add spacing between inputs in exam.php
+* [ ] Handle invalid Student ID
 
 ## Admin
 
@@ -76,12 +77,15 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Fix color in dark mode
 * [x] Put the date the exam was taken onto the screen
 * [ ] Add a long cookie session when "remember me" is checked.
+* [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart
+* [ ] Khang: Fix date (off by  1 day) in the graph Date Taken vs Number of Students
+* [ ] Khang: Make the font size of the axis labels bigger (to make it more visible on the presentation screen)
 
 ## Both
 
 * [X] Add Favicons to all pages
 * [ ] Remove Extension from all pages (ex. .php, .html)
-      
+* [ ] Remove old data
 
 ## Low Priority
 
