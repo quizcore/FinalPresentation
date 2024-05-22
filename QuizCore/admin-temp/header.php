@@ -345,34 +345,6 @@
     </ul>
   </div>
 
-  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-    <symbol id="door-closed" viewBox="0 0 16 16">
-      <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
-      <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
-    </symbol>
-    <symbol id="house-fill" viewBox="0 0 16 16">
-      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
-      <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
-    </symbol>
-    <symbol id="list" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-    </symbol>
-    <symbol id="people" viewBox="0 0 16 16">
-      <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
-    </symbol>
-    <symbol id="search" viewBox="0 0 16 16">
-      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-    </symbol>
-    <symbol id="person-circle" viewBox="0 0 16 16">
-      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-    </symbol>
-    <symbol id="chat-dots" viewBox="0 0 16 16">
-      <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-      <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2" />
-    </symbol>
-  </svg>
-
   <header class="navbar sticky-top bg-red flex-md-nowrap p-0 shadow" data-bs-theme="dark">
 
     <a class="navbar-brand me-0 px-3 fs-6" href="./">
@@ -391,17 +363,8 @@
 
     <ul class="navbar-nav flex-row d-md-none">
       <li class="nav-item text-nowrap">
-        <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-          <svg class="bi">
-            <use xlink:href="#search" />
-          </svg>
-        </button>
-      </li>
-      <li class="nav-item text-nowrap">
         <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <svg class="bi">
-            <use xlink:href="#list" />
-          </svg>
+          <i class="bi bi-list fs-5"></i>
         </button>
       </li>
     </ul>
@@ -423,27 +386,21 @@
             <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="index.php">
-                    <svg class="bi">
-                      <use xlink:href="#house-fill" />
-                    </svg>
-                    Dashboard
+                  <a class="nav-link active" aria-current="page" href="index.php">
+                    <i class="bi bi-house-fill fs-5"></i>
+                    <span class="ms-2">Dashboard</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="all-students.php">
-                    <svg class="bi">
-                      <use xlink:href="#people" />
-                    </svg>
-                    All Students
+                  <a class="nav-link" href="all-students.php">
+                    <i class="bi bi-people-fill fs-5"></i>
+                    <span class="ms-2">All Students</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="messages.php">
-                    <svg class="bi">
-                      <use xlink:href="#chat-dots" />
-                    </svg>
-                    Contact Messages
+                  <a class="nav-link" href="messages.php">
+                    <i class="bi bi-chat-right-text-fill fs-5"></i>
+                    <span class="ms-2">Contact Messages</span>
                   </a>
                 </li>
               </ul>
@@ -452,19 +409,15 @@
 
               <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="profile.php">
-                    <svg class="bi">
-                      <use xlink:href="#person-circle" />
-                    </svg>
-                    Profile
+                  <a class="nav-link" href="profile.php">
+                    <i class="bi bi-person-circle fs-5"></i>
+                    <span class="ms-2">Profile</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2" href="logout.php">
-                    <svg class="bi">
-                      <use xlink:href="#door-closed" />
-                    </svg>
-                    Logout
+                  <a class="nav-link" href="logout.php">
+                    <i class="bi bi-door-open-fill fs-5"></i>
+                    <span class="ms-2">Logout</span>
                   </a>
                 </li>
               </ul>
