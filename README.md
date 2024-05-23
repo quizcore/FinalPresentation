@@ -87,7 +87,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Improve Admin Profile display
 * [ ] Sort the date taken data before rendering the graph
 * [ ] Sort the expected term data before rendering the graph
-* [ ] (topic: security) Use of htmlspecialchars() to prevent XSS attacks when outputting data.
+* [x] (topic: security) Use of htmlspecialchars() to prevent XSS attacks when outputting data.
 * [x] Prevent access to pages content without authentication
 * [x] Prevent direct access to component and helper files
 
