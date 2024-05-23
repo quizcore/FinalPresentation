@@ -5,6 +5,15 @@ include_once 'dbconnection.php';
 // Start the session.
 session_start();
 
+// Check if the user is not logged in, redirect them to the login page.
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("Location: login.php");
+  exit();
+}
+
+// Start the session.
+session_start();
+
 if (isset($_GET['messageId'])) {
   // Get messageId from query parameter
   $messageId = $_GET['messageId'];
