@@ -796,6 +796,69 @@ VALUES(
     "To write data to a file"
 );
 
+--start test
+INSERT INTO questions(
+    question_id,
+    difficulty,
+    question_body,
+    answer_1,
+    answer_2,
+    answer_3,
+    answer_4,
+    question_answer
+)
+VALUES(
+    36,
+    1,
+    "Test1 What Java library is commonly used for creating graphical user interfaces (GUIs)?",
+    "JavaFX",
+    "Swing",
+    "AWT",
+    "JavaGUI",
+    "JavaFX"
+);
+INSERT INTO questions(
+    question_id,
+    difficulty,
+    question_body,
+    answer_1,
+    answer_2,
+    answer_3,
+    answer_4,
+    question_answer
+)
+VALUES(
+    37,
+    1,
+    "Test 2 What Java library is commonly used for creating graphical user interfaces (GUIs)?",
+    "JavaFX",
+    "Swing",
+    "AWT",
+    "JavaGUI",
+    "JavaFX"
+);
+INSERT INTO questions(
+    question_id,
+    difficulty,
+    question_body,
+    answer_1,
+    answer_2,
+    answer_3,
+    answer_4,
+    question_answer
+)
+VALUES(
+    38,
+    1,
+    "Test 3 What Java library is commonly used for creating graphical user interfaces (GUIs)?",
+    "JavaFX",
+    "Swing",
+    "AWT",
+    "JavaGUI",
+    "JavaFX"
+);
+--end test
+
 INSERT INTO students (
 	student_id,
 	sid,
