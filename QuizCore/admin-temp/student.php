@@ -161,12 +161,6 @@ require_once 'header.php';
 </div>
 </div>
 
-<script>
-  function redirectToStudentPage(studentId) {
-    window.location.href = 'students_page?id=' + studentId;
-  }
-</script>
-
 <?php
 // Include footer.
 require_once './footer.php';
