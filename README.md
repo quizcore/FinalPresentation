@@ -78,7 +78,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Fix login button color in dark mode
 * [x] Put the date the exam was taken onto the screen
 * [ ] Add a long cookie session when "remember me" is checked.
-* [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart
+* [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart (or anywhere you think it's good)
 * [x] Fix date (off by  1 day) in the graph Date Taken vs Number of Students
 * [x] Make the font size of the axis labels bigger (to make it more visible on the presentation screen)
 * [x] Remove class table-bordered to remove cluttering
@@ -100,6 +100,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Improve file naming consistency (lower-case for file names)
 * [ ] Filter and escape user inputs before assembling query (prevent SQL injection)
 * [ ] Setup .env to improve convenience for deployment
+* [ ] Add character limit for all text boxes
 
 ## Low Priority
 
