@@ -1,7 +1,4 @@
 <?php
-// Include the database connection file.
-include_once 'dbconnection.php';
-
 // Start the session.
 session_start();
 
@@ -10,6 +7,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("Location: login.php");
   exit();
 }
+
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 // Define the date range for the last 7 days
 $today = date("Y-m-d");
@@ -255,8 +255,7 @@ require_once 'header.php';
 </div>
 
 <!-- chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
-  integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
 <!-- Chart -->
 <script>
   // Doughnut Chart.
@@ -277,7 +276,7 @@ require_once 'header.php';
           "rgba(0, 0, 0, 255)",
         ],
         borderWidth: 1,
-      },],
+      }, ],
     },
     options: {
       // Add a legend to the chart.

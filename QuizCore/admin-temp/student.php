@@ -1,7 +1,4 @@
 <?php
-// Include the database connection file.
-include_once 'dbconnection.php';
-
 // Start the session.
 session_start();
 
@@ -10,6 +7,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("Location: login.php");
   exit();
 }
+
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 if (isset($_GET['id'])) {
   // Get student_id from index.php (existing logic)
@@ -98,63 +98,63 @@ require_once 'header.php';
 
 
   <h2>Exam Results</h2>
-<div class="table-responsive small">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Question number</th>
-        <th scope="col">Question details</th>
-        <th scope="col">Student Answer</th>
-        <th scope="col">Corrected Answer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      $cs110 = true; // Flag to indicate we're currently in CS110 section
+  <div class="table-responsive small">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Question number</th>
+          <th scope="col">Question details</th>
+          <th scope="col">Student Answer</th>
+          <th scope="col">Corrected Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $cs110 = true; // Flag to indicate we're currently in CS110 section
 
-      // Display CS110 header before the loop (guaranteed)
-      echo '<tr>';
-      echo '<th colspan="4" class="text-center">CS110</th>';
-      echo '</tr>';
-      echo '<hr>'; // Add horizontal line for separation
+        // Display CS110 header before the loop (guaranteed)
+        echo '<tr>';
+        echo '<th colspan="4" class="text-center">CS110</th>';
+        echo '</tr>';
+        echo '<hr>'; // Add horizontal line for separation
 
-      $qSelect = "SELECT * FROM questions";
-      $qResults = $conn->query($qSelect);
+        $qSelect = "SELECT * FROM questions";
+        $qResults = $conn->query($qSelect);
 
-      while ($qRow = $qResults->fetch_assoc()) {
-        $number = 'question_' . $qRow["question_id"];
-        $questionId = $qRow["question_id"];
+        while ($qRow = $qResults->fetch_assoc()) {
+          $number = 'question_' . $qRow["question_id"];
+          $questionId = $qRow["question_id"];
 
-        // Determine subsection (CS110 or CS111) based on question ID range
-        if ($questionId <= 15) {
-          $subsection = "CS110";
-        } else {
-          $subsection = "CS111";
+          // Determine subsection (CS110 or CS111) based on question ID range
+          if ($questionId <= 15) {
+            $subsection = "CS110";
+          } else {
+            $subsection = "CS111";
+          }
+
+          // Insert subsection title and line only if changing sections (after CS110)
+          if ($cs110 && $subsection === "CS111") {
+            echo '<tr>';
+            echo '<th colspan="4" class="text-center">' . $subsection . '</th>';
+            echo '</tr>';
+            echo '<hr>'; // Add horizontal line for separation
+            $cs110 = false; // Update flag after first CS110 section
+          }
+
+          if (strlen($row[$number]) > 0) {
+            $rowClass = ($row[$number] === $qRow["question_answer"]) ? 'table-success' : 'table-danger'; // Set row class based on answer
+            echo '<tr class="' . $rowClass . '"">';
+            echo '<td>' . $qRow["question_id"] . '</td>';
+            echo '<td>' . $qRow["question_body"] . '</td>';
+            echo '<td>' . $row[$number] . '</td>';
+            echo '<td>' . $qRow["question_answer"] . '</td>';
+            echo '</tr>';
+          }
         }
-
-        // Insert subsection title and line only if changing sections (after CS110)
-        if ($cs110 && $subsection === "CS111") {
-          echo '<tr>';
-          echo '<th colspan="4" class="text-center">' . $subsection . '</th>';
-          echo '</tr>';
-          echo '<hr>'; // Add horizontal line for separation
-          $cs110 = false; // Update flag after first CS110 section
-        }
-
-        if (strlen($row[$number]) > 0) {
-          $rowClass = ($row[$number] === $qRow["question_answer"]) ? 'table-success' : 'table-danger'; // Set row class based on answer
-          echo '<tr class="' . $rowClass . '"">';
-          echo '<td>' . $qRow["question_id"] . '</td>';
-          echo '<td>' . $qRow["question_body"] . '</td>';
-          echo '<td>' . $row[$number] . '</td>';
-          echo '<td>' . $qRow["question_answer"] . '</td>';
-          echo '</tr>';
-        }
-      }
-      ?>
-    </tbody>
-  </table>
-</div>
+        ?>
+      </tbody>
+    </table>
+  </div>
 </main>
 </div>
 </div>

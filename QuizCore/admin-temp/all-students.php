@@ -1,11 +1,6 @@
 <?php
-
-// Include the database connection file.
-include_once 'dbconnection.php';
-
 // Start the session.
 session_start();
-
 
 // Check if the user is not logged in, redirect them to the login page.
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -13,6 +8,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 // Store Count of students recommended to 110, 111, and 112
 $count110 = 0;

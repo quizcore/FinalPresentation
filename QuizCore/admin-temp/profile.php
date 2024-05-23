@@ -1,7 +1,4 @@
 <?php
-// Include the database connection file.
-include_once 'dbconnection.php';
-
 // Start the session.
 session_start();
 
@@ -10,6 +7,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("Location: login.php");
   exit();
 }
+
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 //$select = "SELECT * FROM admin WHERE email = '$_SESSION[admin_email]';";
 $select = "SELECT * FROM admin";

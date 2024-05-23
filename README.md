@@ -88,7 +88,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Sort the date taken data before rendering the graph
 * [ ] Sort the expected term data before rendering the graph
 * [ ] (topic: security) Use of htmlspecialchars() to prevent XSS attacks when outputting data.
-* [x] Prevent access to message-detail.php content without authentication
+* [x] Prevent access to pages content without authentication
 
 ## Both
 
