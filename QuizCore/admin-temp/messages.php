@@ -5,9 +5,26 @@ include_once 'dbconnection.php';
 // Start the session.
 session_start();
 
-
 $pageTitle = "Contact Messages";
 require_once 'header.php';
+
+// Fetch messages from the database
+$messages = [];
+$select = "SELECT * FROM contact";
+$result = $conn->query($select);
+
+if ($result) {
+  while ($row = $result->fetch_assoc()) {
+    $messages[] = $row;
+  }
+} else {
+  // Handle query error
+  $error = "Failed to retrieve messages: " . $conn->error;
+}
+
+$conn->close(); // Close the connection when done
+
+// Use of htmlspecialchars() to prevent XSS attacks when outputting data.
 ?>
 
 <!--Main-->
@@ -34,22 +51,20 @@ require_once 'header.php';
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Dynamically pull all messages from database -->
-                  <?php
-                  $select = "SELECT * FROM contact";
-                  $result = $conn->query($select);
-                  while ($row = $result->fetch_assoc()) {
-                    // Get the contact ID
-                    $contact_id  = $row["contact_id"];
-                    echo '<tr data-message-id="' . $contact_id . '">';
-
-                    echo '<td>' . $row["contact_id"] . '</td>';
-                    echo '<td>' . $row["contact_name"] . '</td>';
-                    echo '<td>' . $row["contact_email"] . '</td>';
-                    echo '<td>' . $row["contact_message"] . '</td>';
-                    echo '</tr>';
-                  }
-                  ?>
+                  <?php if (!empty($messages)) : ?>
+                    <?php foreach ($messages as $row) : ?>
+                      <tr data-message-id="<?= htmlspecialchars($row['contact_id'], ENT_QUOTES, 'UTF-8') ?>">
+                        <td><?= htmlspecialchars($row['contact_id'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td><?= htmlspecialchars($row['contact_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td><?= htmlspecialchars($row['contact_email'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td><?= htmlspecialchars($row['contact_message'], ENT_QUOTES, 'UTF-8') ?></td>
+                      </tr>
+                    <?php endforeach; ?>
+                  <?php else : ?>
+                    <tr>
+                      <td colspan="4"><?= isset($error) ? $error : 'No messages found.' ?></td>
+                    </tr>
+                  <?php endif; ?>
                 </tbody>
               </table>
             </div>
@@ -72,7 +87,6 @@ require_once 'header.php';
     });
   });
 
-
   // redirectToStudentPage
   const tableRows = document.querySelectorAll('tr[data-message-id]'); // Select rows with data-message-id attribute
 
@@ -86,7 +100,6 @@ require_once 'header.php';
     });
   });
 </script>
-
 
 <?php
 // Include footer.

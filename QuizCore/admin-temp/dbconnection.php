@@ -8,15 +8,15 @@ if (!defined('DB_ACCESS')) {
     die('Direct access not allowed');
 }
 
-$_SESSION['servername'] = "localhost";
-$_SESSION['username'] = "root";
-$_SESSION['password'] = "";
-$_SESSION['dbname'] = "quizcore";
+const DB_SERVERNAME = "localhost";
+const DB_USERNAME = "root";
+const DB_PASSWORD = "";
+const DB_NAME = "quizcore";
 
 // Create connection
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+$conn = new mysqli(DB_SERVERNAME, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
