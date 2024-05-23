@@ -1,4 +1,7 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 // Include the database connection file.
 include_once 'dbconnection.php';
 
@@ -59,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION['question_added']))
     if ($conn->query($sql) === TRUE) {
       $message = "Question added successfully!";
       // Clear form fields after successful submission
-      $question_body = $answer_1 = $answer_2 = $answer_3 = $answer_4 = $question_answer = ""; 
-      $difficulty = 1;// Reset form values
+      $question_body = $answer_1 = $answer_2 = $answer_3 = $answer_4 = $question_answer = "";
+      $difficulty = 1; // Reset form values
 
     } else {
       array_push($errors, "Error adding question: " . $conn->error);
@@ -102,8 +105,7 @@ unset($_SESSION['question_added']);
   <form id="myForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <div class="mb-3">
       <label for="question_body" class="form-label">Question Body:</label>
-      <textarea class="form-control" id="question_body" name="question_body" rows="3"
-        required><?php echo $question_body; ?></textarea>
+      <textarea class="form-control" id="question_body" name="question_body" rows="3" required><?php echo $question_body; ?></textarea>
     </div>
     <div class="mb-3">
       <label for="answer_1" class="form-label">Answer 1:</label>
@@ -131,71 +133,68 @@ unset($_SESSION['question_added']);
 
     <div class="mb-3">
       <label for="difficulty" class="form-label">Difficulty:</label>
-      <input type="number" class="form-control" id="difficulty" name="difficulty" value="<?php echo $difficulty; ?>"
-        required>
-    </div><br/>
+      <input type="number" class="form-control" id="difficulty" name="difficulty" value="<?php echo $difficulty; ?>" required>
+    </div><br />
 
     <div class="container d-grid gap-2 d-md-grid justify-content-md-center">
-			<input type="submit" value="Add Question" class="btn btn-lg btn-bd-red">
-		</div>
-    
+      <input type="submit" value="Add Question" class="btn btn-lg btn-bd-red">
+    </div>
+
   </form>
 </main>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get the input elements for Answer 1 to Answer 4
+    var answerInput1 = document.getElementById("answer_1");
+    var answerInput2 = document.getElementById("answer_2");
+    var answerInput3 = document.getElementById("answer_3");
+    var answerInput4 = document.getElementById("answer_4");
 
-    document.addEventListener("DOMContentLoaded", function() {
-  // Get the input elements for Answer 1 to Answer 4
-  var answerInput1 = document.getElementById("answer_1");
-  var answerInput2 = document.getElementById("answer_2");
-  var answerInput3 = document.getElementById("answer_3");
-  var answerInput4 = document.getElementById("answer_4");
+    // Get the select element
+    var selectElement = document.getElementById("question_answer");
 
-  // Get the select element
-  var selectElement = document.getElementById("question_answer");
-
-  // Event listener for Answer 1 input field
-  answerInput1.addEventListener("input", function() {
-    updateSelectOptions();
-  });
-
-  // Event listener for Answer 2 input field
-  answerInput2.addEventListener("input", function() {
-    updateSelectOptions();
-  });
-
-  // Event listener for Answer 3 input field
-  answerInput3.addEventListener("input", function() {
-    updateSelectOptions();
-  });
-
-  // Event listener for Answer 4 input field
-  answerInput4.addEventListener("input", function() {
-    updateSelectOptions();
-  });
-
-  // Function to update select options based on input field values
-  function updateSelectOptions() {
-    var answers = [
-      answerInput1.value,
-      answerInput2.value,
-      answerInput3.value,
-      answerInput4.value
-    ];
-
-    // Clear existing options
-    selectElement.innerHTML = "<option disabled value=''>Select Correct Answer</option>";
-
-    // Loop through answers and create options
-    answers.forEach(function(answer, index) {
-      var option = document.createElement("option");
-      option.value = answer;
-      option.text = "Answer " + (index + 1) + ": " + answer;
-      selectElement.appendChild(option);
+    // Event listener for Answer 1 input field
+    answerInput1.addEventListener("input", function() {
+      updateSelectOptions();
     });
-  }
-});
 
+    // Event listener for Answer 2 input field
+    answerInput2.addEventListener("input", function() {
+      updateSelectOptions();
+    });
+
+    // Event listener for Answer 3 input field
+    answerInput3.addEventListener("input", function() {
+      updateSelectOptions();
+    });
+
+    // Event listener for Answer 4 input field
+    answerInput4.addEventListener("input", function() {
+      updateSelectOptions();
+    });
+
+    // Function to update select options based on input field values
+    function updateSelectOptions() {
+      var answers = [
+        answerInput1.value,
+        answerInput2.value,
+        answerInput3.value,
+        answerInput4.value
+      ];
+
+      // Clear existing options
+      selectElement.innerHTML = "<option disabled value=''>Select Correct Answer</option>";
+
+      // Loop through answers and create options
+      answers.forEach(function(answer, index) {
+        var option = document.createElement("option");
+        option.value = answer;
+        option.text = "Answer " + (index + 1) + ": " + answer;
+        selectElement.appendChild(option);
+      });
+    }
+  });
 </script>
 
 <?php
