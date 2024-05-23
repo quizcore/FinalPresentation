@@ -85,6 +85,8 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Use bootstrap alert for invalid admin login
 * [x] Change table name "Table" to "Students"
 * [x] Improve Admin Profile display
+* [ ] Sort the date taken data before rendering the graph
+* [ ] Sort the expected term data before rendering the graph
 
 ## Both
 
@@ -96,6 +98,8 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Close database after open
 * [ ] Hash password
 * [ ] Improve file naming consistency (lower-case for file names)
+* [ ] Filter and escape user inputs before assembling query (prevent SQL injection)
+* [ ] Setup .env to improve convenience for deployment
 
 ## Low Priority
 
