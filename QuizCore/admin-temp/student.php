@@ -14,17 +14,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Include the database connection file.
 include_once 'dbconnection.php';
 
-if (isset($_GET['id'])) {
-  // Get student_id from index.php (existing logic)
-  $id = $_GET['id'];
-  $select = "SELECT * FROM students WHERE student_id = $id;";
-} else {
-  // Display default student with ID 1
-  $id = 1;  // Set the default student ID
-  $select = "SELECT * FROM students WHERE student_id = $id;";
-}
-
-$result = $conn->query($select);
+// Default student ID
+$id = isset($_GET['id']) ? $_GET['id'] : 1;
+// Prepare the SQL statement
+$select = "SELECT * FROM students WHERE student_id = ?;";
+$stmt = $conn->prepare($select);
+// Bind parameters
+$stmt->bind_param("i", $id);
+// Execute the statement
+$stmt->execute();
+// Get the result
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
@@ -53,18 +53,18 @@ require_once 'header.php';
 
         <div class="card shadow-lg p-3 mb-5 rounded">
           <div class="card-body">
-            <h5 class="card-title text-center"> <?php echo $row["first_name"] . " " . $row["last_name"] ?> </h5>
+            <h5 class="card-title text-center"> <?php echo htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8') ?> </h5>
             <hr>
             <p class="card-text text-center">Student details</p>
             <div class="row">
               <?php
               echo '<div class="col-md-6">';
               echo '<ul class="list-group list-group-flush">';
-              echo '<li class="list-group-item"><strong>ID: </strong>' . $row["student_id"] . '</li>';
-              echo '<li class="list-group-item"><strong>First Name: </strong>' . $row["first_name"] . '</li>';
-              echo '<li class="list-group-item"><strong>Last Name: </strong>' . $row["last_name"] . '</li>';
-              echo '<li class="list-group-item"><strong>Email: </strong>' . $row["email"] . '</li>';
-              echo '<li class="list-group-item"><strong>Date Of Birth: </strong>' . $row["dob"] . '</li>';
+              echo '<li class="list-group-item"><strong>ID: </strong>' . htmlspecialchars($row["student_id"], ENT_QUOTES, 'UTF-8') . '</li>';
+              echo '<li class="list-group-item"><strong>First Name: </strong>' . htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8') . '</li>';
+              echo '<li class="list-group-item"><strong>Last Name: </strong>' . htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8') . '</li>';
+              echo '<li class="list-group-item"><strong>Email: </strong>' . htmlspecialchars($row["email"], ENT_QUOTES, 'UTF-8') . '</li>';
+              echo '<li class="list-group-item"><strong>Date Of Birth: </strong>' . htmlspecialchars($row["dob"], ENT_QUOTES, 'UTF-8') . '</li>';
               echo '</ul>';
               echo '</div>';
               echo '<div class="col-md-6">';
@@ -72,23 +72,22 @@ require_once 'header.php';
 
               // Recommendation check and display
               if ($row["recommendation"] == 1) {
-
                 echo '<li class="list-group-item"><strong>Recommendation: </strong>' . '111++' . '</li>';
               } else {
-                echo '<li class="list-group-item"><strong>Recommendation: </strong>' . $row["recommendation"] . '</li>'; // Display actual recommendation value otherwise
+                echo '<li class="list-group-item"><strong>Recommendation: </strong>' . htmlspecialchars($row["recommendation"], ENT_QUOTES, 'UTF-8') . '</li>'; // Display actual recommendation value otherwise
               }
 
-              echo '<li class="list-group-item"><strong>Date Taken: </strong>' . $row["date_quiz_taken"] . '</li>';
-              echo '<li class="list-group-item"><strong>Start Term: </strong>' . $row["expected_term"] . '</li>';
+              echo '<li class="list-group-item"><strong>Date Taken: </strong>' . htmlspecialchars($row["date_quiz_taken"], ENT_QUOTES, 'UTF-8') . '</li>';
+              echo '<li class="list-group-item"><strong>Start Term: </strong>' . htmlspecialchars($row["expected_term"], ENT_QUOTES, 'UTF-8') . '</li>';
               echo '<li class="list-group-item"><strong>CWU ID: </strong>';
               if ($row["sid"] > 0) {
-                echo $row["sid"];
+                echo htmlspecialchars($row["sid"], ENT_QUOTES, 'UTF-8');
               } else {
                 echo 'No SID';
               }
               echo '</li>';
-              echo '<li class="list-group-item"><strong>Previous College: </strong>' . $row["previous_education"] . '</li>';
-              echo '<li class="list-group-item"><strong>Relevant CS Courses: </strong>' . $row["previous_classes"] . '</li>';
+              echo '<li class="list-group-item"><strong>Previous College: </strong>' . htmlspecialchars($row["previous_education"], ENT_QUOTES, 'UTF-8') . '</li>';
+              echo '<li class="list-group-item"><strong>Relevant CS Courses: </strong>' . htmlspecialchars($row["previous_classes"], ENT_QUOTES, 'UTF-8') . '</li>';
               echo '</ul>';
               echo '</div>';
               ?>
@@ -147,7 +146,7 @@ require_once 'header.php';
           if (strlen($row[$number]) > 0) {
             $rowClass = ($row[$number] === $qRow["question_answer"]) ? 'table-success' : 'table-danger'; // Set row class based on answer
             echo '<tr class="' . $rowClass . '"">';
-            echo '<td>' . $qRow["question_id"] . '</td>';
+            echo '<td>' . htmlspecialchars($qRow["question_id"], ENT_QUOTES, 'UTF-8') . '</td>';
             echo '<td>' . $qRow["question_body"] . '</td>';
             echo '<td>' . $row[$number] . '</td>';
             echo '<td>' . $qRow["question_answer"] . '</td>';
@@ -171,4 +170,7 @@ require_once 'header.php';
 <?php
 // Include footer.
 require_once './footer.php';
+
+// Close the database connection
+$conn->close();
 ?>
