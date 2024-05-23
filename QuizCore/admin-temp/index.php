@@ -159,7 +159,7 @@ require_once 'header.php';
 
                 while ($row = $result->fetch_assoc()) {
                   // Get the student ID
-                  $student_id  = $row["student_id"];
+                  $student_id = $row["student_id"];
                   echo '<tr
                         data-bs-toggle="' . "tooltip" . '"
                         data-bs-placement="' . "top" . '"
@@ -219,7 +219,7 @@ require_once 'header.php';
     </div>
   </div>
 
-  <!-- Bar chart: Date Taken vs Number of Students -->
+  <!-- Bar chart: Date Taken vs Number of Students (Taking Exam)-->
   <div class="container-fluid mt-4">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
@@ -235,7 +235,7 @@ require_once 'header.php';
     </div>
   </div>
 
-  <!-- Bar chart: Date Taken vs Number of Students -->
+  <!-- Bar chart: Date Taken vs Number of Students (Attending Each Term)-->
   <div class="container-fluid mt-4">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
@@ -255,7 +255,8 @@ require_once 'header.php';
 </div>
 
 <!-- chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
+  integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
 <!-- Chart -->
 <script>
   // Doughnut Chart.
@@ -276,7 +277,7 @@ require_once 'header.php';
           "rgba(0, 0, 0, 255)",
         ],
         borderWidth: 1,
-      }, ],
+      },],
     },
     options: {
       // Add a legend to the chart.
@@ -304,7 +305,7 @@ require_once 'header.php';
   });
 
 
-  // Date Taken vs Number of Students Bar Chart.
+  // Date Taken vs Number of Students Bar Chart. (Taking Exam)
   new Chart(document.getElementById("quizcore-date-taken-bar-chart").getContext("2d"), {
     type: 'bar',
     data: {
@@ -373,7 +374,7 @@ require_once 'header.php';
     }
   });
 
-  // Date Taken vs Number of Students Bar Chart.
+  // Date Taken vs Number of Students Bar Chart (Attending Each Term).
   new Chart(document.getElementById("quizcore-expected-term-bar-chart").getContext("2d"), {
     type: 'bar',
     data: {
@@ -401,8 +402,8 @@ require_once 'header.php';
             },
           },
           ticks: {
-            maxRotation: 90,
-            minRotation: 90,
+            maxRotation: 90, // x labels Rotation
+            minRotation: 90, // x labels Rotation
             autoSkip: false
           },
           grid: {
