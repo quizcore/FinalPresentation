@@ -80,7 +80,6 @@ if ($terms_students_result->num_rows > 0) {
   }
 }
 
-
 $pageTitle = "Dashboard";
 require_once 'header.php';
 ?>
@@ -98,22 +97,22 @@ require_once 'header.php';
         <div class="card border-primary text-center border-2">
           <div class="card-header fs-5">
             Total Students
-          </div>
+          </div> <!-- card-header -->
           <div class="card-body">
             <h2> <?php echo $total; ?></h2>
-          </div>
+          </div> <!-- card-body -->
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
               <i class="bi bi-people" style="font-size: 1.75rem;"></i>
             </span>
-          </div>
-        </div>
-      </div>
+          </div> <!-- card-footer -->
+        </div> <!-- card -->
+      </div> <!-- col -->
       <div class="col-xl-6 col-xxl-6 col-sm-6 mb-4">
         <div class="card border-warning text-center border-2">
           <div class="card-header fs-5">
             Students Signed Up Last Week
-          </div>
+          </div> <!-- card-header -->
           <div class="card-body">
             <h2> <?php echo $lastWeekStudents; ?></h2>
           </div>
@@ -121,11 +120,11 @@ require_once 'header.php';
             <span class="ml-3 align-self-center">
               <i class="bi bi-pen" style="font-size: 1.75rem;"></i>
             </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </div> <!-- card-footer -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
 
   <!--Data table-->
   <div class="container-fluid">
@@ -134,12 +133,10 @@ require_once 'header.php';
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Students</h3>
-          </div>
+          </div> <!-- card-header -->
           <div class="card-body">
-
             <!-- table entry-->
             <table id="quizcore-students-table" class="table table-striped table-sm" cellspacing="0" width="100%">
-
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -195,16 +192,14 @@ require_once 'header.php';
                   echo '<td>' . $row["previous_classes"] . '</td>';
                   echo '</tr>';
                 }
-
                 ?>
               </tbody>
             </table>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
+          </div> <!-- card-body -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
 
   <!-- Pie chart -->
   <div class="container-fluid mt-4">
@@ -213,14 +208,14 @@ require_once 'header.php';
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Course Recommendations</h3>
-          </div>
+          </div> <!-- card-header -->
           <div class="card-body">
             <canvas class="my-4 w-100" id="quizcore-doughnut-chart" style="max-height: 300px"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </div> <!-- card-body -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
 
   <!-- Bar chart: Date Taken vs Number of Students (Taking Exam)-->
   <div class="container-fluid mt-4">
@@ -229,14 +224,14 @@ require_once 'header.php';
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Number of Students Taking Exam</h3>
-          </div>
+          </div> <!-- card-header -->
           <div class="card-body">
             <canvas class="my-4 w-100" id="quizcore-date-taken-bar-chart" style="max-height: 300px"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </div> <!-- card-body -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
 
   <!-- Bar chart: Date Taken vs Number of Students (Attending Each Term)-->
   <div class="container-fluid mt-4">
@@ -245,14 +240,14 @@ require_once 'header.php';
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Number of Students Attending Each Term</h3>
-          </div>
+          </div> <!-- card-header -->
           <div class="card-body">
             <canvas class="my-4 w-100" id="quizcore-expected-term-bar-chart" style="max-height: 300px"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </div> <!-- card-body -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
 </main>
 </div>
 </div>
@@ -337,8 +332,8 @@ require_once 'header.php';
             },
           },
           ticks: {
-            maxRotation: 90,
-            minRotation: 90,
+            maxRotation: 45,
+            minRotation: 45,
             autoSkip: false
           },
           grid: {
@@ -404,8 +399,8 @@ require_once 'header.php';
             },
           },
           ticks: {
-            maxRotation: 90, // x labels Rotation
-            minRotation: 90, // x labels Rotation
+            maxRotation: 45, // x labels Rotation
+            minRotation: 45, // x labels Rotation
             autoSkip: false
           },
           grid: {
