@@ -14,11 +14,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Include the database connection file.
 include_once 'dbconnection.php';
 
-// Store Count of students recommended to 110, 111, and 112
-$count110 = 0;
-$count111 = 0;
-$count112 = 0;
-
+$result = $conn->query("SELECT * FROM students");
 
 $pageTitle = "All Students";
 require_once 'header.php';
@@ -60,10 +56,9 @@ require_once 'header.php';
               </thead>
               <tbody>
                 <?php
-                $select = "SELECT * FROM students";
-                $result = $conn->query($select);
-
-                while ($row = $result->fetch_assoc()) {
+                // Function to build table rows
+                function buildTableRow(array $row): void
+                {
                   // Get the student ID
                   $student_id  = $row["student_id"];
                   echo '<tr
@@ -89,21 +84,23 @@ require_once 'header.php';
                   }
 
                   echo '<td>' . $row["expected_term"] . '</td>';
-                  if ($row["sid"] > 0) {
-                    echo '<td>' . $row["sid"] . '</td>';
-                  } else {
-                    echo '<td>No SID</td>';
-                  }
+                  echo '<td>' . ($row["sid"] > 0 ? $row["sid"] : 'No SID') . '</td>';
                   echo '<td>' . $row["previous_education"] . '</td>';
                   echo '<td>' . $row["previous_classes"] . '</td>';
                   echo '</tr>';
                 }
 
+                // Loop through the result set
+                foreach ($result as $row) {
+                  buildTableRow($row);
+                }
+
+                // Free result set
+                $result->free();
                 ?>
               </tbody>
             </table>
           </div>
-
         </div>
       </div>
     </div>
@@ -113,7 +110,10 @@ require_once 'header.php';
 <script>
   // Students table.
   document.addEventListener('DOMContentLoaded', function() {
-    new DataTable('#quizcore-students-table', {
+    /** @type {HTMLElement} */
+    const quizcoreStudentsTable = document.querySelector('#quizcore-students-table');
+
+    new DataTable(quizcoreStudentsTable, {
       scrollY: "100vh",
       scrollX: true,
       scrollCollapse: true,
@@ -121,11 +121,13 @@ require_once 'header.php';
   });
 
   // redirectToStudentPage
+  /** @type {NodeListOf<HTMLTableRowElement>} */
   const tableRows = document.querySelectorAll('tr[data-student-id]'); // Select rows with data-student-id attribute
 
   tableRows.forEach(row => {
     row.addEventListener('click', (event) => {
       // Get the student ID from the data attribute
+      /** @type {string} */
       const studentId = row.dataset.studentId;
 
       // Redirect to student info page with ID parameter
@@ -136,5 +138,8 @@ require_once 'header.php';
 
 <?php
 // Include footer.
-require_once './footer.php';
+require_once 'footer.php';
+
+// Close the database connection
+$conn->close();
 ?>
