@@ -99,7 +99,7 @@ require_once 'header.php';
             Total Students
           </div> <!-- card-header -->
           <div class="card-body">
-            <h2> <?php echo $total; ?></h2>
+            <h2> <?= $total ?></h2>
           </div> <!-- card-body -->
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
@@ -114,7 +114,7 @@ require_once 'header.php';
             Students Signed Up Last Week
           </div> <!-- card-header -->
           <div class="card-body">
-            <h2> <?php echo $lastWeekStudents; ?></h2>
+            <h2> <?= $lastWeekStudents ?></h2>
           </div>
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
@@ -262,7 +262,7 @@ require_once 'header.php';
     data: {
       labels: ["CS110", "CS111", "CS111++"],
       datasets: [{
-        data: [<?php echo $count110 ?>, <?php echo $count111 ?>, <?php echo $count1 ?>],
+        data: [<?= $count110 ?>, <?= $count111 ?>, <?= $count1 ?>],
         backgroundColor: [
           "rgba(171, 0, 50, 1)", // Madder
           "rgba(140, 94, 88, 1)", // Rose
@@ -306,12 +306,12 @@ require_once 'header.php';
   new Chart(document.getElementById("quizcore-date-taken-bar-chart").getContext("2d"), {
     type: 'bar',
     data: {
-      labels: <?php echo json_encode($dates); ?>.map(date => new Date(date).toLocaleDateString('en-US', {
+      labels: <?= json_encode($dates) ?>.map(date => new Date(date).toLocaleDateString('en-US', {
         timeZone: 'UTC'
       })),
       datasets: [{
         label: 'Number of Students',
-        data: <?php echo json_encode($number_of_students); ?>,
+        data: <?= json_encode($number_of_students) ?>,
         backgroundColor: [
           "rgba(171, 0, 50, 1)"
         ],
@@ -375,10 +375,10 @@ require_once 'header.php';
   new Chart(document.getElementById("quizcore-expected-term-bar-chart").getContext("2d"), {
     type: 'bar',
     data: {
-      labels: <?php echo json_encode($terms); ?>,
+      labels: <?= json_encode($terms) ?>,
       datasets: [{
         label: 'Number of Students',
-        data: <?php echo json_encode($term_student_counts); ?>,
+        data: <?= json_encode($term_student_counts) ?>,
         backgroundColor: [
           "rgba(171, 0, 50, 1)"
         ],

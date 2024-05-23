@@ -18,7 +18,7 @@ if (!defined('MY_APP')) {
   <meta name="description" content="" />
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
   <meta name="generator" content="Hugo 0.122.0" />
-  <title><?php echo "$pageTitle"; ?></title>
+  <title><?= $pageTitle ?></title>
   <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">

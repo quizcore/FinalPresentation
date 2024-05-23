@@ -53,7 +53,7 @@ require_once 'header.php';
 
         <div class="card shadow-lg p-3 mb-5 rounded">
           <div class="card-body">
-            <h5 class="card-title text-center"> <?php echo htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8') ?> </h5>
+            <h5 class="card-title text-center"><?= htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8') ?></h5>
             <hr>
             <p class="card-text text-center">Student details</p>
             <div class="row">

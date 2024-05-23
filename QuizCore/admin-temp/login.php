@@ -155,7 +155,7 @@ require_once 'login-header.php';
       <use xlink:href='#check-circle-fill' />
     </svg>
     <div>
-      <?php echo "$login_err_msg" ?>
+      <?= $login_err_msg ?>
       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     </div>
   </div>
