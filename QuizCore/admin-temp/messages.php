@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 // Include the database connection file.
 include_once 'dbconnection.php';
 
@@ -9,22 +12,32 @@ $pageTitle = "Contact Messages";
 require_once 'header.php';
 
 // Fetch messages from the database
-$messages = [];
-$select = "SELECT * FROM contact";
-$result = $conn->query($select);
-
-if ($result) {
-  while ($row = $result->fetch_assoc()) {
-    $messages[] = $row;
-  }
-} else {
-  // Handle query error
-  $error = "Failed to retrieve messages: " . $conn->error;
-}
-
+$messages = fetchMessages($conn);
 $conn->close(); // Close the connection when done
 
-// Use of htmlspecialchars() to prevent XSS attacks when outputting data.
+/**
+ * Fetches messages from the database.
+ *
+ * @param mysqli $conn The database connection.
+ * @return array An array of messages.
+ */
+function fetchMessages(mysqli $conn): array
+{
+  $messages = [];
+  $select = "SELECT * FROM contact";
+  $result = $conn->query($select);
+
+  if ($result) {
+    while ($row = $result->fetch_assoc()) {
+      $messages[] = $row;
+    }
+  } else {
+    // Handle query error (consider logging the error instead of exposing it to the user)
+    die("Failed to retrieve messages: " . $conn->error);
+  }
+
+  return $messages;
+}
 ?>
 
 <!--Main-->
