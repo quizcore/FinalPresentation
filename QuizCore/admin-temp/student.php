@@ -44,13 +44,11 @@ require_once 'header.php';
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Student</h1>
-
   </div>
   <!-- Student Profile Card -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9">
-
         <div class="card shadow-lg p-3 mb-5 rounded">
           <div class="card-body">
             <h5 class="card-title text-center"><?= htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8') . " " . htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8') ?></h5>
