@@ -8,7 +8,7 @@ The online self-placement tool assists Central Washington University students in
 
 ## Mirror 1
 
-* Student online site: [http://quizcore.free.nf/connection.php](http://quizcore.free.nf/connection.php)
+* Student online site: [http://quizcore.free.nf/](http://quizcore.free.nf/)
 
 * Admin online site: [http://quizcore-admin.free.nf/](http://quizcore-admin.free.nf/)
 
@@ -59,7 +59,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [X] Track date that student took exam
 * [X] CS111+ not CS112+ as highest recommendation
 * [X] Redesign additional information page, explain each section
-* [ ] Add progress bars to other pages
+* [X] Add progress bars to other pages
 * [x] Add spacing between inputs in exam.php
 * [x] Handle non-numeric value for Student ID
 * [x] Close feedback alert by default on Contact page
