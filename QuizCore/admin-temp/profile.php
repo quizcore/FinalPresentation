@@ -14,9 +14,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Include the database connection file.
 include_once 'dbconnection.php';
 
-//$select = "SELECT * FROM admin WHERE email = '$_SESSION[admin_email]';";
-$select = "SELECT * FROM admin";
-$result = $conn->query($select);
+// Fetch the admin data
+$select = "SELECT * FROM admin WHERE email = ?";
+$stmt = $conn->prepare($select);
+$stmt->bind_param("s", $_SESSION['admin_email']);
+$stmt->execute();
+$result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
 $pageTitle = "Admin Profile";
@@ -40,7 +43,7 @@ require_once 'header.php';
                     <label class="col-form-label fw-bold">Email:</label>
                   </div>
                   <div class="col-sm-8">
-                    <div class="form-control"><?php echo $row["email"] ?></div>
+                    <div class="form-control"><?= htmlspecialchars($row["email"], ENT_QUOTES, 'UTF-8'); ?></div>
                   </div>
                 </div>
                 <div class="row" style="border-bottom: 1px dashed #ccc; margin-bottom: 15px; padding-bottom: 15px;">
@@ -48,7 +51,7 @@ require_once 'header.php';
                     <label class="col-form-label fw-bold">First Name:</label>
                   </div>
                   <div class="col-sm-8">
-                    <div class="form-control"><?php echo $row["first_name"] ?></div>
+                    <div class="form-control"><?= htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8'); ?></div>
                   </div>
                 </div>
                 <div class="row" style="border-bottom: 1px dashed #ccc; margin-bottom: 15px; padding-bottom: 15px;">
@@ -56,7 +59,7 @@ require_once 'header.php';
                     <label class="col-form-label fw-bold">Last Name:</label>
                   </div>
                   <div class="col-sm-8">
-                    <div class="form-control"><?php echo $row["last_name"] ?></div>
+                    <div class="form-control"><?= htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8'); ?></div>
                   </div>
                 </div>
                 <div class="row">
@@ -82,4 +85,6 @@ require_once 'header.php';
 <?php
 // Include footer.
 require_once './footer.php';
+// Close connection.
+$conn->close();
 ?>
