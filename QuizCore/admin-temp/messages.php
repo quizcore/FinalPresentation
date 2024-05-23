@@ -1,13 +1,51 @@
 <?php
-// Include the database connection file.
-include_once 'dbconnection.php';
+
+declare(strict_types=1);
+
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
 
 // Start the session.
 session_start();
 
+// Check if the user is not logged in, redirect them to the login page.
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("Location: login.php");
+  exit();
+}
+
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 $pageTitle = "Contact Messages";
 require_once 'header.php';
+
+// Fetch messages from the database
+$messages = fetchMessages($conn);
+
+/**
+ * Fetches messages from the database.
+ *
+ * @param mysqli $conn The database connection.
+ * @return array An array of messages.
+ */
+function fetchMessages(mysqli $conn): array
+{
+  $messages = [];
+  $select = "SELECT * FROM contact";
+  $result = $conn->query($select);
+
+  if ($result) {
+    while ($row = $result->fetch_assoc()) {
+      $messages[] = $row;
+    }
+  } else {
+    // Handle query error (consider logging the error instead of exposing it to the user)
+    die("Failed to retrieve messages: " . $conn->error);
+  }
+
+  return $messages;
+}
 ?>
 
 <!--Main-->
@@ -24,32 +62,30 @@ require_once 'header.php';
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table id="messages" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              <table id="quizcore-messages-table" class="table table-striped table-sm" cellspacing="0" width="100%">
                 <thead>
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Email Address</th>
+                    <th>Email</th>
                     <th>Message</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Dynamically pull all messages from database -->
-                  <?php
-                  $select = "SELECT * FROM contact";
-                  $result = $conn->query($select);
-                  while ($row = $result->fetch_assoc()) {
-                    // Get the contact ID
-                    $contact_id  = $row["contact_id"];
-                    echo '<tr data-message-id="' . $contact_id . '">';
-
-                    echo '<td>' . $row["contact_id"] . '</td>';
-                    echo '<td>' . $row["contact_name"] . '</td>';
-                    echo '<td>' . $row["contact_email"] . '</td>';
-                    echo '<td>' . $row["contact_message"] . '</td>';
-                    echo '</tr>';
-                  }
-                  ?>
+                  <?php if (!empty($messages)) : ?>
+                    <?php foreach ($messages as $row) : ?>
+                      <tr data-message-id="<?= htmlspecialchars($row['contact_id'], ENT_QUOTES, 'UTF-8') ?>">
+                        <td><?= htmlspecialchars($row['contact_id'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td><?= htmlspecialchars($row['contact_name'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td><?= htmlspecialchars($row['contact_email'], ENT_QUOTES, 'UTF-8') ?></td>
+                        <td><?= htmlspecialchars($row['contact_message'], ENT_QUOTES, 'UTF-8') ?></td>
+                      </tr>
+                    <?php endforeach; ?>
+                  <?php else : ?>
+                    <tr>
+                      <td colspan="4"><?= isset($error) ? $error : 'No messages found.' ?></td>
+                    </tr>
+                  <?php endif; ?>
                 </tbody>
               </table>
             </div>
@@ -62,23 +98,16 @@ require_once 'header.php';
 </div>
 </div>
 
-
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
-
-
 <script>
-  $(document).ready(function() {
-    $("#messages").DataTable({
-      scrollY: "360px",
+  // Messages table.
+  document.addEventListener('DOMContentLoaded', function() {
+    new DataTable('#quizcore-messages-table', {
+      scrollY: "100vh",
       scrollX: true,
       scrollCollapse: true,
     });
   });
-</script>
-<!-- redirect To Student Page -->
-<script>
+
   // redirectToStudentPage
   const tableRows = document.querySelectorAll('tr[data-message-id]'); // Select rows with data-message-id attribute
 
@@ -93,8 +122,9 @@ require_once 'header.php';
   });
 </script>
 
-
 <?php
 // Include footer.
 require_once './footer.php';
+// Close the database connection.
+$conn->close();
 ?>

@@ -1,77 +1,79 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
+// Start the session.
+session_start();
+
+// Check if the user is not logged in, redirect them to the login page.
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("Location: login.php");
+  exit();
+}
+
 // Include the database connection file.
 include_once 'dbconnection.php';
 
 // Start the session.
 session_start();
 
-if (isset($_GET['mess_id'])) {
-  // Get student_id from index.php (existing logic)
-  $mess_id = $_GET['mess_id'];
-  $select = "SELECT * FROM contact WHERE contact_id = $mess_id;";
+if (isset($_GET['messageId'])) {
+  // Get messageId from query parameter
+  $messageId = $_GET['messageId'];
 } else {
-  // Display default student with ID 1
-  $mess_id = 1;  // Set the default student ID
-  $select = "SELECT * FROM contact WHERE contact_id = $mess_id;";
+  // Display default contact with ID 1
+  $messageId = 1;  // Set the default contact ID
 }
 
-$result = $conn->query($select);
+// Prepare the SQL statement
+$stmt = $conn->prepare("SELECT * FROM contact WHERE contact_id = ?");
+$stmt->bind_param("i", $messageId);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-  $row = $result->fetch_assoc();
-  // Display student data using $row (existing logic)
+  $contactDetails = $result->fetch_assoc();
+  // Display contact data using $contactDetails
 } else {
-  echo "Contact not found.";  // Handle case where default student is not found
+  echo "Contact not found.";  // Handle case where default contact is not found
 }
 
-// Rest of your code to display student information using $row
-
+// Set page title
 $pageTitle = "Contact Details";
 require_once 'header.php';
 ?>
 
-<!--main-->
-
+<!-- Main Content -->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Message</h1>
   </div>
 
-
   <!-- Contact Card -->
-
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <!-- Admin Profile Card -->
+        <!-- Contact Profile Card -->
         <div class="card shadow-lg p-3 mb-5 rounded">
           <div class="card-body">
-            <h5 class="card-title text-center"> <?php echo $row["contact_name"] ?> </h5>
+            <h5 class="card-title text-center"><?= htmlspecialchars($contactDetails["contact_name"]) ?></h5>
             <hr>
-            <?php
-            echo '<p class="card-text text-center">' . $row["contact_email"] . '</p>';
-            echo '<ul class="list-group list-group-flush">';
-            echo '<li class="list-group-item">' . $row["contact_message"] . '</li>';
-            echo '</ul>';
-            ?>
+            <p class="card-text text-center"><?= htmlspecialchars($contactDetails["contact_email"]) ?></p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><?= htmlspecialchars($contactDetails["contact_message"]) ?></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
 </main>
-</div>
-</div>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
-
 
 <?php
 // Include footer.
 require_once './footer.php';
+
+// Close the statement and database connection.
+$stmt->close();
+$conn->close();
 ?>

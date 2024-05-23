@@ -1,11 +1,9 @@
 <?php
-
-// Include the database connection file.
-include_once 'dbconnection.php';
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
 
 // Start the session.
 session_start();
-
 
 // Check if the user is not logged in, redirect them to the login page.
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -13,14 +11,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
+// Include the database connection file.
+include_once 'dbconnection.php';
 
-// Store Count of students recommended to 110, 111, and 112
-$count110 = 0;
-$count111 = 0;
-$count112 = 0;
+$result = $conn->query("SELECT * FROM students");
 
-
-$pageTitle = "Dashboard";
+$pageTitle = "All Students";
 require_once 'header.php';
 ?>
 
@@ -36,104 +32,102 @@ require_once 'header.php';
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">All students</h3>
+            <h3 class="card-title">Students</h3>
           </div>
           <div class="card-body">
 
             <!-- table entry-->
-            <div class="table-wrapper">
-              <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <table id="quizcore-students-table" class="table table-striped table-sm" cellspacing="0" width="100%">
 
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Date Of Birth</th>
-                    <th scope="col">Recommendation</th>
-                    <th scope="col">Start Term</th>
-                    <th scope="col">CWU ID</th>
-                    <th scope="col">Previous College</th>
-                    <th scope="col">Relevant CS Courses</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $select = "SELECT * FROM students";
-                  $result = $conn->query($select);
-
-                  while ($row = $result->fetch_assoc()) {
-                    // Get the student ID
-                    $student_id  = $row["student_id"];
-                    echo '<tr
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Date Of Birth</th>
+                  <th scope="col">Date Taken</th>
+                  <th scope="col">Recommendation</th>
+                  <th scope="col">Start Term</th>
+                  <th scope="col">CWU ID</th>
+                  <th scope="col">Previous College</th>
+                  <th scope="col">Relevant CS Courses</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                // Function to build table rows
+                function buildTableRow(array $row): void
+                {
+                  // Get the student ID
+                  $student_id  = htmlspecialchars($row["student_id"], ENT_QUOTES, 'UTF-8');
+                  echo '<tr
                         data-bs-toggle="' . "tooltip" . '"
                         data-bs-placement="' . "top" . '"
                         data-bs-title="' . "Tooltip on top" . '"
                         data-student-id="' . $student_id . '"
                       >';
 
-                    // add a tag on student_id
-                    echo '<td>' . $row["student_id"] . '</td>';
-                    echo '<td>' . $row["first_name"] . '</td>';
-                    echo '<td>' . $row["last_name"] . '</td>';
-                    echo '<td>' . $row["email"] . '</td>';
-                    echo '<td>' . $row["dob"] . '</td>';
-                    // Recommendation check and display
-                    if ($row["recommendation"] == 1) {
-                      echo '<td>111++</td>'; // Show "111+" when recommendation is 1
-                    } else {
-                      echo '<td>' . $row["recommendation"] . '</td>'; // Display actual recommendation value otherwise
-                    }
-                    echo '<td>' . $row["expected_term"] . '</td>';
-                    if ($row["sid"] > 0) {
-                      echo '<td>' . $row["sid"] . '</td>';
-                    } else {
-                      echo '<td>No SID</td>';
-                    }
-                    echo '<td>' . $row["previous_education"] . '</td>';
-                    echo '<td>' . $row["previous_classes"] . '</td>';
-                    echo '</tr>';
+                  // add a tag on student_id
+                  echo '<td>' . htmlspecialchars($row["student_id"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["email"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["dob"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["date_quiz_taken"], ENT_QUOTES, 'UTF-8') . '</td>';
+
+                  // Recommendation check and display
+                  if ($row["recommendation"] == 1) {
+                    echo '<td>111++</td>'; // Show "111+" when recommendation is 1
+                  } else {
+                    echo '<td>' . htmlspecialchars($row["recommendation"], ENT_QUOTES, 'UTF-8') . '</td>'; // Display actual recommendation value otherwise
                   }
 
-                  ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
+                  echo '<td>' . htmlspecialchars($row["expected_term"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . ($row["sid"] > 0 ? htmlspecialchars($row["sid"], ENT_QUOTES, 'UTF-8') : 'No SID') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["previous_education"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["previous_classes"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '</tr>';
+                }
 
+                // Loop through the result set
+                foreach ($result as $row) {
+                  buildTableRow($row);
+                }
+
+                // Free result set
+                $result->free();
+                ?>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </main>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
-<!-- Chart -->
-
 <script>
-  $(document).ready(function() {
-    $("#dtBasicExample").DataTable({
-      scrollY: "500px",
+  // Students table.
+  document.addEventListener('DOMContentLoaded', function() {
+    /** @type {HTMLElement} */
+    const quizcoreStudentsTable = document.querySelector('#quizcore-students-table');
+
+    new DataTable(quizcoreStudentsTable, {
+      scrollY: "100vh",
       scrollX: true,
       scrollCollapse: true,
     });
   });
-</script>
 
-<!-- redirect To Student Page -->
-<script>
   // redirectToStudentPage
+  /** @type {NodeListOf<HTMLTableRowElement>} */
   const tableRows = document.querySelectorAll('tr[data-student-id]'); // Select rows with data-student-id attribute
 
   tableRows.forEach(row => {
     row.addEventListener('click', (event) => {
       // Get the student ID from the data attribute
+      /** @type {string} */
       const studentId = row.dataset.studentId;
 
       // Redirect to student info page with ID parameter
@@ -144,5 +138,8 @@ require_once 'header.php';
 
 <?php
 // Include footer.
-require_once './footer.php';
+require_once 'footer.php';
+
+// Close the database connection
+$conn->close();
 ?>

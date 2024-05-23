@@ -1,3 +1,12 @@
+<?php
+// In the individual PHP files, check if the constant indicating the application is defined.
+if (!defined('MY_APP')) {
+  // If the constant is not defined, redirect the user to the homepage and terminate the script.
+  header('Location: index.php');
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 
@@ -9,27 +18,107 @@
   <meta name="description" content="" />
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
   <meta name="generator" content="Hugo 0.122.0" />
-  <title><?php echo "$pageTitle"; ?></title>
+  <title><?= $pageTitle ?></title>
   <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
   <link rel="manifest" href="../img/site.webmanifest">
-  <link href="css/sign-in.css" rel="stylesheet" />
-  <!---->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/" />
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
-
-  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- bootstrap icon -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet" />
   <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .form-signin {
+      max-width: 330px;
+      padding: 1rem;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-check-input {
+      border: var(--bs-border-width) solid #ab0032;
+    }
+
+    .form-check-input:checked {
+      background-color: #ab0032;
+      border-color: #ab0032;
+    }
+
+    /* dashboard */
+    .bi {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /*
+* Sidebar
+*/
+
+    @media (min-width: 768px) {
+      .sidebar .offcanvas-lg {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px;
+      }
+
+      .navbar-search {
+        display: block;
+      }
+    }
+
+    .sidebar .nav-link {
+      font-size: .875rem;
+      font-weight: 500;
+    }
+
+    .sidebar .nav-link.active {
+      margin: 5px;
+      background-color: #F3F7F0;
+      color: #ab0032;
+      border: 2px solid #A93F55;
+      /* Combine border width and color */
+      border-radius: 20px;
+
+    }
+
+    .sidebar .nav-link.active:hover {
+      color: rgb(0, 0, 0);
+      /* Use a shorthand for red color */
+      background-color: #A93F55;
+    }
+
+
+    .sidebar-heading {
+      font-size: .75rem;
+    }
+
+    /* Navbar */
+
+    .navbar-brand {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(212, 34, 34, 0.25);
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+    }
+
+    .navbar .form-control {
+      padding: .75rem 1rem;
+    }
+
+    .navbar-text {
+      background-color: #ab0032;
+      font-size: 27px;
+      box-shadow: none;
+    }
+
     /* Side bar offcanvas width */
     .offcanvas,
     .offcanvas-lg,
@@ -191,11 +280,6 @@
       display: block !important;
     }
   </style>
-
-  <!-- Custom styles for this template -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="./css/dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -263,18 +347,18 @@
 
   <header class="navbar sticky-top bg-red flex-md-nowrap p-0 shadow" data-bs-theme="dark">
 
-    <a class="navbar-brand me-0 px-3 fs-6" href="#">
+    <a class="navbar-brand me-0 px-3" href="#">
       <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px" />
     </a>
     <!--
     <a class="navbar-brand me-0 px-3 fs-5" href="./">Computer Science Self-Placement Exam Admin Panel</a>
     -->
-    <a class="navbar-text mx-auto d-none d-md-block text-white p-3">
-      Computer Science Self-Placement Exam Admin View
+    <a class="navbar-text mx-auto d-none d-md-block text-white p-3 text-decoration-none">
+      CS Self-Placement Exam Admin Dashboard
     </a>
 
-    <a class="navbar-text mx-auto d-block d-md-none text-white">
-      Admin Panel
+    <a class="navbar-text mx-auto d-block d-md-none text-white text-decoration-none">
+      Admin Dashboard
     </a>
 
   </header>

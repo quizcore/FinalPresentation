@@ -85,6 +85,75 @@ require_once 'header.php';
         </div>
       </div>
     </div>
+     <!-- New FAQ: Programming Languages Knowledge -->
+     <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          What programming languages should I know before taking the test?
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          While the test primarily uses <strong>Java</strong> for its questions, a <strong>basic understanding of programming concepts is more crucial</strong> than expertise in a specific language. Familiarity with any programming language that supports object-oriented principles will help you understand the test questions.
+        </div>
+      </div>
+    </div>
+
+    <!-- New FAQ: Use of Calculators or Tools -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          Are calculators or any other tools allowed during the test?
+        </button>
+      </h2>
+      <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+        <strong>No</strong> external tools, including calculators, are allowed during the test. This policy helps ensure that the test accurately assesses your raw understanding and problem-solving skills without assistance.
+        </div>
+      </div>
+    </div>
+
+    <!-- New FAQ: Reviewing Questions Post-Submission -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+          Can I review the questions after submitting my test?
+        </button>
+      </h2>
+      <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          Once you submit your test, you will <strong>not be able to review</strong> the questions or your answers. This measure is in place to maintain the integrity of the test. However, your academic advisor can discuss your performance and any specific areas of concern during your course recommendation meeting.
+        </div>
+      </div>
+    </div>
+
+    <!-- New FAQ: Test Content Coverage -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+          What topics are covered in the placement test?
+        </button>
+      </h2>
+      <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          The placement test covers a <strong>range of topics that are essential to introductory computer science courses.</strong> These include data types, variables, control structures (like loops and conditionals), basic algorithms, and object-oriented programming concepts.
+        </div>
+      </div>
+    </div>
+
+    <!-- New FAQ: Scoring and Placement Criteria -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+          How is the test scored, and what criteria determine my placement?
+        </button>
+      </h2>
+      <div id="collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          The test is scored based on the <strong>number of correct responses.</strong> Your placement in a particular course will depend on your score, aligning with predefined thresholds that match our curriculum's progression. These thresholds are designed to place students in a course that best suits their current skill level.
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 

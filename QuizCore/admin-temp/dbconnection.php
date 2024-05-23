@@ -1,24 +1,20 @@
 <?php
-// Define a constant to prevent direct access to files.
-define('DB_ACCESS', TRUE);
-
-// Include this file in all your scripts that require database connection.
-// Check if DB_ACCESS is not defined to prevent access to this file directly.
-if(!defined('DB_ACCESS')){
-    die('Direct access not allowed');
+// In the individual PHP files, check if the constant indicating the application is defined.
+if (!defined('MY_APP')) {
+    // If the constant is not defined, redirect the user to the homepage and terminate the script.
+    header('Location: index.php');
+    exit;
 }
 
-// Your database connection code can be placed here.
-// For example:
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "quizcore";
+const DB_SERVERNAME = "localhost";
+const DB_USERNAME = "root";
+const DB_PASSWORD = "";
+const DB_NAME = "quizcore";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Create connection
+$conn = new mysqli(DB_SERVERNAME, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-?>

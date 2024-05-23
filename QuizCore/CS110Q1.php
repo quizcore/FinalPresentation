@@ -5,7 +5,28 @@ $_SESSION['score'] = 0;
 
 $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 
-$select = "SELECT * FROM questions WHERE difficulty = '1'";
+// Prepare the query to count questions with difficulty = '1'
+$count_query = "SELECT COUNT(*) AS question_count FROM questions WHERE difficulty = '1'";
+
+$count_result = $conn->query($count_query);
+
+if ($count_result->num_rows > 0) {
+  $row = $count_result->fetch_assoc();
+  $total_questions = $row['question_count'];
+} else {
+  // Handle error if no count retrieved
+  die("Error: Could not count questions.");
+}
+
+// If there are more than 5 questions, select 5 randomly
+if ($total_questions > 5) {
+  // Prepare the query to select random questions
+  $select = "SELECT * FROM questions WHERE difficulty = '1' ORDER BY RAND() LIMIT 5";
+} else {
+  // If there are less than 5 questions, select all
+  $select = "SELECT * FROM questions WHERE difficulty = '1'";
+}
+
 $result = $conn->query($select);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

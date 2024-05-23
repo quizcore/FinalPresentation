@@ -2,24 +2,35 @@
 session_start();
 
 $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+$idError = False;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sid = NULL;
-
-	if (isset($_POST['sid'])) {
-		$sid = test_input($_POST['sid']);
+	if (isset($_POST['sid']) && !empty($_POST['sid'])) {
+	  $sid = test_input($_POST['sid']);
+	  if(!is_numeric($sid)) {
+		$idError = True;  
+	  }
 	}
 	$term = $_POST['term'];
 	$education = test_input($_POST['education']);
 	$classes = test_input($_POST['classes']);
-
-	$select = "SELECT * FROM students";
-	$result = $conn->query($select);
-
-	$sql = "UPDATE students SET sid = '$sid', expected_term = '$term', previous_education = '$education', previous_classes = '$classes' WHERE email = '$_COOKIE[student]';";
-	mysqli_query($conn, $sql);
-	header("Location: CS110Q1.php");
-}
+  
+	$sql = "UPDATE students SET ";
+	$sql .= "expected_term = '$term', ";
+	$sql .= "previous_education = '$education', ";
+	$sql .= "previous_classes = '$classes' ";
+	// Add sid update only if it has a value
+	if (isset($sid)) {
+	  $sql .= ", sid = '$sid' ";
+	}
+	$sql .= "WHERE email = '$_COOKIE[student]';";
+	
+	if($idError == False) {
+		mysqli_query($conn, $sql);
+		header("Location: CS110Q1.php");
+	}
+  }
 
 function test_input($data)
 {
@@ -61,7 +72,7 @@ require_once 'header.php';
 						<div class="accordion-body">
 							<div class="form-group mb-3">
 								<label for="sid">CWU Student ID</label>
-								<input type="text" class="form-control" name="sid" id="floatingInput" placeholder="Student ID">
+								<input type="number" class="form-control" name="sid" id="floatingInput" placeholder="Student ID">
 							</div>
 						</div>
 					</div>
@@ -89,22 +100,17 @@ require_once 'header.php';
 			</div><br />
 
 			<input id="signUpBtn" type="submit" value="Submit" class="btn btn-lg btn-dark w-100 py-2">
-
+			
+			<?php
+			if ($idError === True) {
+				echo "<h3>Student ID should only contain numbers, please enter it again.</h3>";
+			}
+			?>
+			
 		</form>
 	</div>
 </div>
 
-
-<script>
-	document
-		.getElementById("quickStartBtn")
-		.addEventListener("submit", function(event) {
-			// Prevents the default form submission behavior.
-			event.preventDefault();
-			// Redirect to exam2.php.
-			window.location.href = "exam2.php";
-		});
-</script>
 <script>
 	const selectTerm = document.getElementById('term');
 	const currentYear = new Date().getFullYear(); // Get current year
