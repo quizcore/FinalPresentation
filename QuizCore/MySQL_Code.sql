@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS questions(
-    question_id INT UNIQUE NOT NULL,
+    question_id INT AUTO_INCREMENT,
     difficulty INT NOT NULL,
     question_body VARCHAR(500) NOT NULL,
     answer_1 VARCHAR(200) NOT NULL,
