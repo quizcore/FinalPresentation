@@ -2,8 +2,8 @@
 // Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
 
-// Include the database connection file.
-include_once 'dbconnection.php';
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 // Start the session.
 session_start();
@@ -14,8 +14,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-$pageTitle = "Add Question";
-require_once 'header.php';
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 // Initialize variables with empty values
 $question_body = "";
@@ -28,10 +28,8 @@ $difficulty = 1; // Set default difficulty to 1
 
 $errors = array(); // Array to store any errors
 
-
-
 // Processing form data when submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION['question_added'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && isset($_POST["answer_1"]) && isset($_POST["answer_2"]) && isset($_POST["answer_3"]) && isset($_POST["answer_4"])) {
   // Sanitize user input to prevent SQL injection
   $question_body = mysqli_real_escape_string($conn, $_POST["question_body"]);
   $answer_1 = mysqli_real_escape_string($conn, $_POST["answer_1"]);
@@ -71,9 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION['question_added']))
   }
 }
 
-// Clear the session variable after the form has been successfully processed
-unset($_SESSION['question_added']);
-
+$pageTitle = "Add Question";
+require_once 'header.php';
 ?>
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
