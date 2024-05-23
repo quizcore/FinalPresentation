@@ -13,7 +13,6 @@ require_once 'header.php';
 
 // Fetch messages from the database
 $messages = fetchMessages($conn);
-$conn->close(); // Close the connection when done
 
 /**
  * Fetches messages from the database.
@@ -117,4 +116,6 @@ function fetchMessages(mysqli $conn): array
 <?php
 // Include footer.
 require_once './footer.php';
+// Close the database connection.
+$conn->close();
 ?>
