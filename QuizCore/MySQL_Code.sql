@@ -252,8 +252,8 @@ VALUES(
     "if (num % 2 == 0) {<br>&emsp;System.out.println(&quot;Even&quot;);<br>} else {<br>&emsp;System.out.println(&quot;Odd&quot;);<br>}<br>",
     "if (num / 2 == 0) {<br>&emsp;System.out.println(&quot;Even&quot;);<br>} else {<br>&emsp;System.out.println(&quot;Odd&quot;);<br>}<br>",
     "if (num == 0) {<br>&emsp;System.out.println(&quot;Even&quot;);<br>} else {<br>&emsp;System.out.println(&quot;Odd&quot;);<br>}<br>",
-    "if (num % 2 == 0) {<br>&emsp;System.out.println(&quot;Even&quot;);<br>} else {<br>&emsp;System.out.println(&quot;Odd&quot;);<br>}<br>",
-    "1"
+    "if (num % 2 != 0) {<br>&emsp;System.out.println(&quot;Even&quot;);<br>} else {<br>&emsp;System.out.println(&quot;Odd&quot;);<br>}<br>",
+    "if (num % 2 == 0) {<br>&emsp;System.out.println(&quot;Even&quot;);<br>} else {<br>&emsp;System.out.println(&quot;Odd&quot;);<br>}<br>"
 ); -- Assuming the correct answer is answer_1 (indexing from 1)
 INSERT INTO questions(
     question_id,
@@ -273,7 +273,7 @@ VALUES(
     "for (int i = 0; i < 5; i++) {<br>&emsp;System.out.print(i + &quot; &quot;);<br>}<br>",
     "for (int i = 1; i < 6; i++) {<br>&emsp;System.out.print(i + &quot; &quot;);<br>}<br>",
     "for (int i = 0; i <= 5; i++) {<br>&emsp;System.out.print(i + &quot; &quot;);<br>}<br>",
-    "1"
+    "for (int i = 1; i <= 5; i++) {<br>&emsp;System.out.print(i + &quot; &quot;);<br>}<br>"
 ); -- Assuming the correct answer is answer_1 (indexing from 1)
 INSERT INTO questions(
     question_id,
