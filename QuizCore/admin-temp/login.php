@@ -5,7 +5,7 @@ session_start();
 // Check if the user is already logged in, if yes, redirect to admin page.
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
   header("Location: index.php");
-  exit;
+  exit();
 }
 
 // Include the database connection file.
