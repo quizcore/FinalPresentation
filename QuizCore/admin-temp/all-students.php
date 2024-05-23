@@ -20,7 +20,7 @@ $count111 = 0;
 $count112 = 0;
 
 
-$pageTitle = "Dashboard";
+$pageTitle = "All Students";
 require_once 'header.php';
 ?>
 
