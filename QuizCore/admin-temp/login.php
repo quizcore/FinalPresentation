@@ -143,7 +143,7 @@ require_once 'login-header.php';
     </div>
 
     <!-- <button class="btn btn-bd-red w-100 py-2 mt-3" type="submit">Login</button> -->
-    <input id=loginBtn type="submit" value="Login" class="mt-4 btn btn-lg btn-dark w-100 py-2">
+    <input id=signUpBtn type="submit" value="Login" class="mt-4 btn btn-lg btn-dark w-100 py-2">
   </form>
 
   <!-- Error message display -->
