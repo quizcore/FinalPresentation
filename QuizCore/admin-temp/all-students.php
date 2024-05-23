@@ -60,7 +60,7 @@ require_once 'header.php';
                 function buildTableRow(array $row): void
                 {
                   // Get the student ID
-                  $student_id  = $row["student_id"];
+                  $student_id  = htmlspecialchars($row["student_id"], ENT_QUOTES, 'UTF-8');
                   echo '<tr
                         data-bs-toggle="' . "tooltip" . '"
                         data-bs-placement="' . "top" . '"
@@ -69,24 +69,24 @@ require_once 'header.php';
                       >';
 
                   // add a tag on student_id
-                  echo '<td>' . $row["student_id"] . '</td>';
-                  echo '<td>' . $row["first_name"] . '</td>';
-                  echo '<td>' . $row["last_name"] . '</td>';
-                  echo '<td>' . $row["email"] . '</td>';
-                  echo '<td>' . $row["dob"] . '</td>';
-                  echo '<td>' . $row["date_quiz_taken"] . '</td>';
+                  echo '<td>' . htmlspecialchars($row["student_id"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["first_name"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["last_name"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["email"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["dob"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["date_quiz_taken"], ENT_QUOTES, 'UTF-8') . '</td>';
 
                   // Recommendation check and display
                   if ($row["recommendation"] == 1) {
                     echo '<td>111++</td>'; // Show "111+" when recommendation is 1
                   } else {
-                    echo '<td>' . $row["recommendation"] . '</td>'; // Display actual recommendation value otherwise
+                    echo '<td>' . htmlspecialchars($row["recommendation"], ENT_QUOTES, 'UTF-8') . '</td>'; // Display actual recommendation value otherwise
                   }
 
-                  echo '<td>' . $row["expected_term"] . '</td>';
-                  echo '<td>' . ($row["sid"] > 0 ? $row["sid"] : 'No SID') . '</td>';
-                  echo '<td>' . $row["previous_education"] . '</td>';
-                  echo '<td>' . $row["previous_classes"] . '</td>';
+                  echo '<td>' . htmlspecialchars($row["expected_term"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . ($row["sid"] > 0 ? htmlspecialchars($row["sid"], ENT_QUOTES, 'UTF-8') : 'No SID') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["previous_education"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($row["previous_classes"], ENT_QUOTES, 'UTF-8') . '</td>';
                   echo '</tr>';
                 }
 
