@@ -37,7 +37,7 @@ The online self-placement tool assists Central Washington University students in
   * Go to the SQL and paste the SQL code (MySQL_Code.txt) into the text field and click the Go button.
 ![XAMPP PHP MyAdmin](./doc/img/xampp-mysql.png)
 * Student view: Open a browser and go to the URL [http://localhost/FinalPresentation/QuizCore](http://localhost/FinalPresentation/QuizCore)
-* Admin view: Open a browser and go to the URL [http://localhost/FinalPresentation/QuizCore/admin-temp/](http://localhost/FinalPresentation/QuizCore/admin-temp/)
+* Admin view: Open a browser and go to the URL [http://localhost/FinalPresentation/QuizCore/admin/](http://localhost/FinalPresentation/QuizCore/admin/)
 
 Tip: If your XAMPP database cannot start, there might be other database that takes up that port 3306. Make sure to kill all the processes that take up the port and try to start the XAMPP database again.
 For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the port 3306.
