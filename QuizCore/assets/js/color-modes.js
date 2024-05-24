@@ -74,7 +74,12 @@
   })
 
   window.addEventListener('DOMContentLoaded', () => {
-    setButtonTheme(getPreferredTheme())
+    setButtonTheme(getPreferredTheme());
+
+    const storedTheme = getStoredTheme();
+    if (storedTheme) {
+      showActiveTheme(getStoredTheme())
+    }
 
     document.querySelectorAll('[data-bs-theme-value]')
       .forEach(toggle => {
