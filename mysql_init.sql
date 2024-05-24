@@ -417,7 +417,7 @@ VALUES(
     "numbers[];",
     "int numbers[];",
     "array<int> numbers;",
-    "int[] numbers"
+    "int[] numbers;"
 );
 INSERT INTO questions(
     question_id,
