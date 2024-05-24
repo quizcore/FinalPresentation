@@ -7,8 +7,6 @@ session_start();
 // Include the database connection file.
 include_once 'dbconnection.php';
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
-
 // Check if the send button was pressed
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = test_input($_POST['name']);
