@@ -62,15 +62,18 @@
 
   const toggleTheme = theme => {
     setStoredTheme(theme);
-    setButtonTheme(theme);
+    setButtonTheme(getPreferredTheme());
     showActiveTheme(theme, true);
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    const storedTheme = getStoredTheme()
-    if (storedTheme !== 'light' && storedTheme !== 'dark' && storedTheme !== 'auto') {
-      setButtonTheme(getPreferredTheme())
+    const theme = getStoredTheme();
+    if (theme === 'auto') {
+      toggleTheme('auto');
+    } else {
+      toggleTheme(theme);
     }
+    console.log("Hello World " + theme);
   })
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -78,7 +81,7 @@
 
     const storedTheme = getStoredTheme();
     if (storedTheme) {
-      showActiveTheme(getStoredTheme())
+      showActiveTheme(storedTheme)
     }
 
     document.querySelectorAll('[data-bs-theme-value]')
