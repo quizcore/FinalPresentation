@@ -119,3 +119,14 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Handle error for bad database connection
 * [ ] Handle error for invalid session state
 >>>>>>> 7162802ada4d2497cf0e93face0f1252926ac699
+
+# Future
+
+* Allow admin to add question
+* Allow admin to delete question
+* Use CWU domain
+* Use clerk for authentication
+* Allow to modify student information
+* Prevent DDOS attack
+* Prevent brute force attack
+* Allow admin to assign tags to students 
