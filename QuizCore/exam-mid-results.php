@@ -16,7 +16,7 @@ require_once 'functions.php';
 
 echo "<div class='container shadow p-3 my-5 bg-body-tertiary rounded'>";
 if ($_SESSION['score'] >= 11) {
-	echo "<h3>Great job on the first half of the exam, your performance so far allows you to continue on to the rest of the exam</h3><br><br>";
+	echo "<h3>Great job on the first half of the exam! Your performance so far has qualified you to continue with the rest of the exam.</h3><br><br>";
 
 	//<!-- Progress bar -->
 	echo generateProgressBar(100);
@@ -50,5 +50,7 @@ if ($_SESSION['score'] >= 11) {
 
 echo "</div>";
 
-$pageTitle = "Exam";
 require_once 'exam-footer.php';
+
+// Close the database connection
+$conn->close();

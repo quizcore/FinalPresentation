@@ -9,13 +9,11 @@ The online self-placement tool assists Central Washington University students in
 ## Mirror 1
 
 * Student online site: [http://quizcore.free.nf/](http://quizcore.free.nf/)
-
 * Admin online site: [http://quizcore-admin.free.nf/](http://quizcore-admin.free.nf/)
 
 ## Mirror 2
 
 * Student online site: [http://quizcore.42web.io](http://quizcore.42web.io)
-
 * Student online site: [http://quizcore.42web.io/admin](http://quizcore.42web.io/admin)
 
 # Technology Stack
@@ -69,6 +67,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Add spacing between inputs in exam.php
 * [x] Handle non-numeric value for Student ID
 * [x] Close feedback alert by default on Contact page
+* [ ] Prevent users to reaccess the quiz page after they have completed
 
 ## Admin
 
@@ -83,36 +82,33 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Bar graph Date Taken vs Number of Students
 * [x] Fix login button color in dark mode
 * [x] Put the date the exam was taken onto the screen
-* [ ] Add a long cookie session when "remember me" is checked.
-* [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart (or anywhere you think it's good)
 * [x] Fix date (off by  1 day) in the graph Date Taken vs Number of Students
 * [x] Make the font size of the axis labels bigger (to make it more visible on the presentation screen)
 * [x] Remove class table-bordered to remove cluttering
 * [x] Use bootstrap alert for invalid admin login
 * [x] Change table name "Table" to "Students"
 * [x] Improve Admin Profile display
-* [ ] Sort the date taken data before rendering the graph
-* [ ] Sort the expected term data before rendering the graph
 * [x] (topic: security) Use of htmlspecialchars() to prevent XSS attacks when outputting data.
 * [x] Prevent access to pages content without authentication
 * [x] Prevent direct access to component and helper files
+* [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart (or anywhere you think it's good)
+* [ ] Use line chart for Number of Students vs Time
+* [ ] Sort the expected term data before rendering the bar graph
+* [ ] Hash password
 
 ## Both
 
 * [X] Add Favicons to all pages
 * [x] Remove local bootstrap copy
 * [x] Remove unused dependencies
-* [ ] Remove Extension from all pages (ex. .php, .html)
-* [ ] Remove old data
-* [ ] Close database after open
-* [ ] Hash password
-* [ ] Improve file naming consistency (lower-case for file names)
+* [x] Improve file naming consistency (lower-case for file names)
+* [x] Close database after use
 * [ ] Filter and escape user inputs before assembling query (prevent SQL injection)
-* [ ] Setup .env to improve convenience for deployment
 * [ ] Add character limit for all text boxes
 
 ## Low Priority
 
+* [ ] Remove Extension from all pages (ex. .php, .html)
 * [ ] Add admin ability to change Questions and delete items in Database for students
 * [ ] Add admin ability to change edit and delete students???
 * [ ] Add admin ability to change their profile???

@@ -96,4 +96,7 @@ require_once 'header.php';
 <?php
 // Include footer.
 require_once 'footer.php';
+
+// Close the database connection
+$conn->close();
 ?>

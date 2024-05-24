@@ -15,7 +15,7 @@ require_once 'exam-header.php';
 require_once 'functions.php';
 
 echo "<div class='container shadow p-3 my-5 bg-body-tertiary rounded'>";
-echo "<h2>Thank you for completing the test!</h2><br><br><h3>Please talk to an advisor about your results, and to learn what course is recommended for you.</h3>";
+echo "<h2>Thank you for completing the test!</h2><br><br><h3>Please speak with an advisor about your results and to find out which course is recommended for you.</h3>";
 if ($_SESSION['score'] >= 25) {
 	$course = 1;
 } else if ($_SESSION['score'] < 25 && $_SESSION['score'] >= 11) {
@@ -40,5 +40,7 @@ echo "    window.location.href = './';\n";
 echo "  });\n";
 echo "</script>";
 
-$pageTitle = "Exam";
 require_once 'exam-footer.php';
+
+// Close the database connection
+$conn->close();

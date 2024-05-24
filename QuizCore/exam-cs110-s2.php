@@ -97,4 +97,7 @@ require_once 'functions.php';
 <?php
 // Include footer.
 require_once 'exam-footer.php';
+
+// Close the database connection
+$conn->close();
 ?>
