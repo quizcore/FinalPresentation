@@ -2625,3 +2625,11 @@ VALUES (
 	3,
 	110
 );
+
+INSERT INTO contact (contact_name, contact_email, contact_message) VALUES
+('Emily White', 'emilywhite@example.com', 'I would like to inquire about your product features.'),
+('Michael Green', 'michaelgreen@example.com', 'Do you offer any discounts for bulk purchases?'),
+('Sarah Blue', 'sarahblue@example.com', 'Can you send me a catalog of your products?'),
+('David Black', 'davidblack@example.com', 'I am facing an issue with my recent order.'),
+('Laura Red', 'laurared@example.com', 'I am interested in a demo of your service.');
+
