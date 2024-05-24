@@ -204,6 +204,41 @@ require_once 'header.php';
     </div> <!-- row -->
   </div> <!-- container-fluid -->
 
+  <!-- Course Description. -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-xl-12 col-xxl-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Course Recommendation Criteria</h3>
+          </div> <!-- card-header -->
+          <div class="card-body">
+            <ol class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">CS110</div>
+                  Students are recommended to enroll in CS110 if they score less than 11 on the first three sections of the placement exam.
+                </div>
+              </li> <!-- list-group-item -->
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">CS111</div>
+                  Students are recommended to enroll in CS111 if they score between 11 and 24, inclusive, on the placement exam.
+                </div>
+              </li> <!-- list-group-item -->
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">CS111++</div>
+                  Students have met the learning requirements for CS110 and CS111 if they score 25 or higher on the placement exam.
+                </div>
+              </li> <!-- list-group-item -->
+            </ol> <!-- list-group -->
+          </div> <!-- card-body -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
+
   <!-- Pie chart -->
   <div class="container-fluid mt-4">
     <div class="row">
