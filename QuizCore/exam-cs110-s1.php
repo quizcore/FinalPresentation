@@ -15,20 +15,20 @@ $count_query = "SELECT COUNT(*) AS question_count FROM questions WHERE difficult
 $count_result = $conn->query($count_query);
 
 if ($count_result->num_rows > 0) {
-  $row = $count_result->fetch_assoc();
-  $total_questions = $row['question_count'];
+	$row = $count_result->fetch_assoc();
+	$total_questions = $row['question_count'];
 } else {
-  // Handle error if no count retrieved
-  die("Error: Could not count questions.");
+	// Handle error if no count retrieved
+	die("Error: Could not count questions.");
 }
 
 // If there are more than 5 questions, select 5 randomly
 if ($total_questions > 5) {
-  // Prepare the query to select random questions
-  $select = "SELECT * FROM questions WHERE difficulty = '1' ORDER BY RAND() LIMIT 5";
+	// Prepare the query to select random questions
+	$select = "SELECT * FROM questions WHERE difficulty = '1' ORDER BY RAND() LIMIT 5";
 } else {
-  // If there are less than 5 questions, select all
-  $select = "SELECT * FROM questions WHERE difficulty = '1'";
+	// If there are less than 5 questions, select all
+	$select = "SELECT * FROM questions WHERE difficulty = '1'";
 }
 
 $result = $conn->query($select);

@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
 // Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
 
@@ -21,8 +18,6 @@ echo "<div class='container shadow p-3 my-5 bg-body-tertiary rounded'>";
 if ($_SESSION['score'] >= 11) {
 	echo "<h3>Great job on the first half of the exam, your performance so far allows you to continue on to the rest of the exam</h3><br><br>";
 
-	//echo "<a href='CS111Q1.php' class='btn btn-lg btn-bd-red w-100 py-2'>Continue</a><br><br><br>";
-	
 	//<!-- Progress bar -->
 	echo generateProgressBar(100);
 
