@@ -1,4 +1,10 @@
 <?php
+// In the individual PHP files, check if the constant indicating the application is defined.
+if (!defined('MY_APP')) {
+    // If the constant is not defined, redirect the user to the homepage and terminate the script.
+    header('Location: index.php');
+    exit;
+}
 
 // functions.php
 
@@ -43,5 +49,3 @@ function generateProgressBar($width = 25)
 
     return $progressBar;
 }
-
-

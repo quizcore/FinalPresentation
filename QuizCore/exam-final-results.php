@@ -1,11 +1,16 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 session_start();
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+// Include the database connection file.
+include_once 'dbconnection.php';
+
 $course = 0;
 
 $pageTitle = "Result";
-require_once 'testheader.php';
+require_once 'exam-header.php';
 // Include functions file
 require_once 'functions.php';
 
@@ -36,4 +41,4 @@ echo "  });\n";
 echo "</script>";
 
 $pageTitle = "Exam";
-require_once 'testfooter.php';
+require_once 'exam-footer.php';

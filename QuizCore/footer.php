@@ -1,3 +1,12 @@
+<?php
+// In the individual PHP files, check if the constant indicating the application is defined.
+if (!defined('MY_APP')) {
+  // If the constant is not defined, redirect the user to the homepage and terminate the script.
+  header('Location: index.php');
+  exit;
+}
+?>
+
 <!--footer-->
 <div class="container-fluid py-5">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

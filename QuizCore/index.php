@@ -1,4 +1,7 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 $pageTitle = "Self-Placement Quiz";
 require_once 'header.php';
 ?>
@@ -16,7 +19,7 @@ require_once 'header.php';
         Central Washington University provides two entry-level computer science courses, CS110 and CS111. The online self-placement tool assists students in determining the appropriate path to take: CS110 or CS111!
       </p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a href="connection.php" class="btn btn-bd-red btn-lg px-4 me-md-2">Get Started</a>
+        <a href="exam.php" class="btn btn-bd-red btn-lg px-4 me-md-2">Get Started</a>
       </div>
     </div>
   </div>

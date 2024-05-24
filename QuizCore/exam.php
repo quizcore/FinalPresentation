@@ -1,7 +1,12 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 session_start();
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+// Include the database connection file.
+include_once 'dbconnection.php';
+
 $canStore = True;
 
 date_default_timezone_set("America/Los_Angeles");
@@ -40,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($canStore) {
 		setcookie("student", $email, time() + 3600);
 		$_COOKIE["student"] = $email;
-		header("Location: exam2.php");
+		header("Location: exam-instructions.php");
 	}
 }
 
@@ -53,7 +58,7 @@ function test_input($data)
 }
 
 $pageTitle = "Exam";
-require_once 'header.php';
+require_once 'exam-header.php';
 ?>
 
 <!--Main-->
@@ -97,5 +102,5 @@ require_once 'header.php';
 
 <?php
 // Include footer.
-require_once 'testfooter.php';
+require_once 'exam-footer.php';
 ?>

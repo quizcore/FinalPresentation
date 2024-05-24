@@ -1,7 +1,11 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 session_start();
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 $select = "SELECT * FROM questions WHERE difficulty = '3'";
 $result = $conn->query($select);
@@ -38,14 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	mysqli_query($conn, $sql);
 
 	if ($_SESSION['score'] >= 11) {
-		header("Location: midExamResults.php");
+		header("Location: exam-mid-results.php");
 	} else {
-		header("Location: Results.php");
+		header("Location: exam-final-results.php");
 	}
 }
 
 $pageTitle = "Exam";
-require_once 'testheader.php';
+require_once 'exam-header.php';
 // Include functions file
 require_once 'functions.php';
 ?>
@@ -96,5 +100,5 @@ require_once 'functions.php';
 
 <?php
 // Include footer.
-require_once 'testfooter.php';
+require_once 'exam-footer.php';
 ?>

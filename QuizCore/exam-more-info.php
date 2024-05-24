@@ -1,36 +1,41 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 session_start();
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+// Include the database connection file.
+include_once 'dbconnection.php';
+
 $idError = False;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sid = NULL;
 	if (isset($_POST['sid']) && !empty($_POST['sid'])) {
-	  $sid = test_input($_POST['sid']);
-	  if(!is_numeric($sid)) {
-		$idError = True;  
-	  }
+		$sid = test_input($_POST['sid']);
+		if (!is_numeric($sid)) {
+			$idError = True;
+		}
 	}
 	$term = $_POST['term'];
 	$education = test_input($_POST['education']);
 	$classes = test_input($_POST['classes']);
-  
+
 	$sql = "UPDATE students SET ";
 	$sql .= "expected_term = '$term', ";
 	$sql .= "previous_education = '$education', ";
 	$sql .= "previous_classes = '$classes' ";
 	// Add sid update only if it has a value
 	if (isset($sid)) {
-	  $sql .= ", sid = '$sid' ";
+		$sql .= ", sid = '$sid' ";
 	}
 	$sql .= "WHERE email = '$_COOKIE[student]';";
-	
-	if($idError == False) {
+
+	if ($idError == False) {
 		mysqli_query($conn, $sql);
-		header("Location: CS110Q1.php");
+		header("Location: exam-cs110-s1.php");
 	}
-  }
+}
 
 function test_input($data)
 {
@@ -41,7 +46,7 @@ function test_input($data)
 }
 
 $pageTitle = "Exam";
-require_once 'header.php';
+require_once 'exam-header.php';
 ?>
 
 <!--Main-->
@@ -100,13 +105,13 @@ require_once 'header.php';
 			</div><br />
 
 			<input id="signUpBtn" type="submit" value="Submit" class="btn btn-lg btn-dark w-100 py-2">
-			
+
 			<?php
 			if ($idError === True) {
 				echo "<h3>Student ID should only contain numbers, please enter it again.</h3>";
 			}
 			?>
-			
+
 		</form>
 	</div>
 </div>
@@ -134,5 +139,5 @@ require_once 'header.php';
 
 <?php
 // Include footer.
-require_once 'testfooter.php';
+require_once 'exam-footer.php';
 ?>

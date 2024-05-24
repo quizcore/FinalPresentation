@@ -1,5 +1,11 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 session_start();
+
+// Include the database connection file.
+include_once 'dbconnection.php';
 
 $conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
 

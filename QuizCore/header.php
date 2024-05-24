@@ -1,3 +1,12 @@
+<?php
+// In the individual PHP files, check if the constant indicating the application is defined.
+if (!defined('MY_APP')) {
+  // If the constant is not defined, redirect the user to the homepage and terminate the script.
+  header('Location: index.php');
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -238,13 +247,13 @@
             <a class="nav-link active" aria-current="page" href="./">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./connection.php">Exam</a>
+            <a class="nav-link" href="./exam.php">Exam</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Other</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="./faq.php">FAQs</a></li>
-              <li><a class="dropdown-item" href="./connection2.php">Contact Us</a></li>
+              <li><a class="dropdown-item" href="./contact.php">Contact Us</a></li>
             </ul>
           </li>
         </ul>

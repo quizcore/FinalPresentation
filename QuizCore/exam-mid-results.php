@@ -1,11 +1,19 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 session_start();
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+// Include the database connection file.
+include_once 'dbconnection.php';
+
 $course = "";
 
 $pageTitle = "Result";
-require_once 'testheader.php';
+require_once 'exam-header.php';
 // Include functions file
 require_once 'functions.php';
 
@@ -23,7 +31,7 @@ if ($_SESSION['score'] >= 11) {
 	echo "</div>\n";
 	echo "<script>\n";
 	echo "  document.getElementById('continueBtn').addEventListener('click', function() {\n";
-	echo "    window.location.href = './CS111Q1.php';\n";
+	echo "    window.location.href = './exam-cs111-s1.php';\n";
 	echo "  });\n";
 	echo "</script>";
 } else {
@@ -47,6 +55,5 @@ if ($_SESSION['score'] >= 11) {
 
 echo "</div>";
 
-
 $pageTitle = "Exam";
-require_once 'testfooter.php';
+require_once 'exam-footer.php';

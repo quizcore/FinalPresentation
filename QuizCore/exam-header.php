@@ -1,3 +1,12 @@
+<?php
+// In the individual PHP files, check if the constant indicating the application is defined.
+if (!defined('MY_APP')) {
+  // If the constant is not defined, redirect the user to the homepage and terminate the script.
+  header('Location: index.php');
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,6 +72,11 @@
       flex-shrink: 0;
       width: 1.5rem;
       height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -0.125em;
+      fill: currentColor;
     }
 
     .nav-scroller {

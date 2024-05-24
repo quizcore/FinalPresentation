@@ -1,9 +1,13 @@
 <?php
+// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
+define('MY_APP', true);
+
 session_start();
 
-$_SESSION['score'] = 0;
+// Include the database connection file.
+include_once 'dbconnection.php';
 
-$conn = mysqli_connect($_SESSION['servername'], $_SESSION['username'], $_SESSION['password'], $_SESSION['dbname']);
+$_SESSION['score'] = 0;
 
 // Prepare the query to count questions with difficulty = '1'
 $count_query = "SELECT COUNT(*) AS question_count FROM questions WHERE difficulty = '1'";
@@ -60,11 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$sql = "UPDATE students SET question_1 = '$a1', question_2 = '$a2', question_3 = '$a3', question_4 = '$a4', question_5 = '$a5' WHERE email = '$_COOKIE[student]';";
 	mysqli_query($conn, $sql);
-	header("Location: CS110Q2.php");
+	header("Location: exam-cs110-s2.php");
 }
 
 $pageTitle = "Exam";
-require_once 'testheader.php';
+require_once 'exam-header.php';
 // Include functions file
 require_once 'functions.php';
 ?>
@@ -89,5 +93,5 @@ require_once 'functions.php';
 
 <?php
 // Include footer.
-require_once 'testfooter.php';
+require_once 'exam-footer.php';
 ?>
