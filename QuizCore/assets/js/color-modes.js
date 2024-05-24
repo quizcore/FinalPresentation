@@ -1,9 +1,3 @@
-/*!
- * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2024 The Bootstrap Authors
- * Licensed under the Creative Commons Attribution 3.0 Unported License.
- */
-
 (() => {
   'use strict'
 
@@ -11,104 +5,18 @@
   const setStoredTheme = theme => localStorage.setItem('theme', theme)
 
   const getPreferredTheme = () => {
-    const storedTheme = getStoredTheme()
-    if (storedTheme) {
-      return storedTheme
+    const storedTheme = getStoredTheme();
+    if (storedTheme && storedTheme !== 'auto') {
+      return storedTheme;
     }
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
   }
-
-  //getLocalSunsetTime start
-  const getLocalSunsetTime = () => {
-    return new Promise((resolve, reject) => {
-      const geoSuccess = (position) => {
-        const { latitude, longitude } = position.coords;
-        const date = new Date();
-        const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-
-        fetch(`https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}&timezone=America/Los_Angeles&date=${formattedDate}`)
-          //https://api.sunrisesunset.io/json?lat=38.907192&lng=-77.036873&timezone=UTC&date=1990-05-22
-          .then(response => response.json())
-          .then(data => {
-            const sunsetTime = data.results.sunset;
-            console.log('sunsetTime:', sunsetTime);
-            // Split the sunset time into hours and minutes
-            const [hourStr, minuteStr] = sunsetTime.split(':');
-            let sunsetHour = parseInt(hourStr); // Extract hour value
-            const minutes = parseInt(minuteStr); // Extract minute value
-
-            // Adjust sunsetHour if it's PM (afternoon)
-            if (sunsetTime.includes('PM') && sunsetHour !== 12) {
-              sunsetHour += 12;
-            }
-
-            console.log('sunsetHour:', sunsetHour);
-            console.log('current hours:', date.getHours());
-            if (!isNaN(sunsetHour)) {
-              resolve(sunsetHour);
-            } else {
-              reject('Invalid sunset time');
-            }
-          })
-          .catch(error => reject(error));
-      };
-
-      const geoError = (error) => {
-        reject(error);
-      };
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-      } else {
-        reject('Geolocation is not supported by this browser.');
-      }
-    });
-  };
-  //getLocalSunsetTime end
-
-  //getLocalSunriseTime start
-  const getLocalSunriseTime = () => {
-    return new Promise((resolve, reject) => {
-      const geoSuccess = (position) => {
-        const { latitude, longitude } = position.coords;
-        const date = new Date();
-        const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-
-        fetch(`https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}&timezone=America/Los_Angeles&date=${formattedDate}`)
-          .then(response => response.json())
-          .then(data => {
-            const sunriseTime = data.results.sunrise;
-            console.log('sunriseTime:', sunriseTime);
-            const sunriseHour = parseInt(sunriseTime.split(':')[0]);
-            console.log('sunriseHour:', sunriseHour);
-            console.log('current hours:', date.getHours());
-            if (!isNaN(sunriseHour)) {
-              resolve(sunriseHour);
-            } else {
-              reject('Invalid sunrise time');
-            }
-          })
-          .catch(error => reject(error));
-      };
-
-      const geoError = (error) => {
-        reject(error);
-      };
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-      } else {
-        reject('Geolocation is not supported by this browser.');
-      }
-    });
-  };
-  //getLocalSunriseTime end
-
 
   const setButtonThemeWithID = (theme, elementId) => {
     const element = document.getElementById(elementId);
 
+    document.documentElement.setAttribute('data-bs-theme', theme);
     if (element) {
       if (theme === 'dark') {
         element.classList.add('btn-bd-red');
@@ -116,44 +24,11 @@
         element.classList.remove('btn-bd-red');
       }
     }
-
-    if (theme === 'auto') {
-      Promise.all([getLocalSunsetTime(), getLocalSunriseTime()]).then(([sunsetHour, sunriseHour]) => {
-        const currentHour = new Date().getHours();
-
-        if ((currentHour >= sunsetHour || currentHour < sunriseHour)) {
-
-          if (element) {
-            element.classList.add('btn-bd-red');
-          }
-          document.documentElement.setAttribute('data-bs-theme', 'dark');
-        } else {
-
-          if (element) {
-            element.classList.remove('btn-bd-red');
-          }
-          document.documentElement.setAttribute('data-bs-theme', 'light');
-        }
-      }).catch(error => {
-        console.error('Error fetching sunrise/sunset time:', error);
-      });
-    } else {
-      document.documentElement.setAttribute('data-bs-theme', theme);
-      if (element) {
-        if (theme === 'dark') {
-          element.classList.add('btn-bd-red');
-        } else {
-          element.classList.remove('btn-bd-red');
-        }
-      }
-    }
   }
 
   const setButtonTheme = theme => {
     setButtonThemeWithID(theme, 'signUpBtn')
-    setButtonThemeWithID(theme, 'loginBtn')
   }
-
 
   setButtonTheme(getPreferredTheme())
 
@@ -185,9 +60,15 @@
     }
   }
 
+  const toggleTheme = theme => {
+    setStoredTheme(theme);
+    setButtonTheme(theme);
+    showActiveTheme(theme, true);
+  }
+
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     const storedTheme = getStoredTheme()
-    if (storedTheme !== 'light' && storedTheme !== 'dark') {
+    if (storedTheme !== 'light' && storedTheme !== 'dark' && storedTheme !== 'auto') {
       setButtonTheme(getPreferredTheme())
     }
   })
@@ -199,9 +80,11 @@
       .forEach(toggle => {
         toggle.addEventListener('click', () => {
           const theme = toggle.getAttribute('data-bs-theme-value')
-          setStoredTheme(theme)
-          setButtonTheme(theme)
-          showActiveTheme(theme, true)
+          if (theme === 'auto') {
+            toggleTheme('auto');
+          } else {
+            toggleTheme(theme);
+          }
         })
       })
   })
