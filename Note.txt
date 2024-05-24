@@ -1,3 +1,0 @@
-
-MySQL DB Name	MySQL User Name	MySQL Password	MySQL Host Name	PHPMyAdmin
-if0_36498982_quizcore	if0_36498982	(Your vPanel Password)	sql206.infinityfree.com	

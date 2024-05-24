@@ -34,7 +34,7 @@ The online self-placement tool assists Central Washington University students in
 * Setup the local database
   * Open the browser and go to the URL [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
   * Create a new database called "quizcore" (on the right panel)
-  * Go to the SQL and paste the SQL code (MySQL_Code.txt) into the text field and click the Go button.
+  * Go to the SQL and paste the SQL code (mysql_init.sql) into the text field and click the Go button.
 ![XAMPP PHP MyAdmin](./doc/img/xampp-mysql.png)
 * Student view: Open a browser and go to the URL [http://localhost/FinalPresentation/quizcore](http://localhost/FinalPresentation/quizcore)
 * Admin view: Open a browser and go to the URL [http://localhost/FinalPresentation/quizcore/admin/](http://localhost/FinalPresentation/quizcore/admin/)
