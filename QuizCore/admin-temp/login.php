@@ -138,13 +138,6 @@ require_once 'login-header.php';
       <span toggle="#floatingPassword" class="bi bi-eye-slash field-icon-b toggle-password"></span>
     </div>
 
-    <div class="form-check text-start mt-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Remember me
-      </label>
-    </div>
-
     <!-- <button class="btn btn-bd-red w-100 py-2 mt-3" type="submit">Login</button> -->
     <input id=signUpBtn type="submit" value="Login" class="mt-4 btn btn-lg btn-dark w-100 py-2">
   </form>
