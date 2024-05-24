@@ -49,3 +49,10 @@ function generateProgressBar($width = 25)
 
     return $progressBar;
 }
+
+function escapeQuoteEmsp($text)
+{
+    $text = str_replace(" ", "&emsp;", $text); // Replace em space with &emsp;
+    $text = str_replace('"', '&quot;', $text); // Replace double quote with &quot;
+    return $text;
+}

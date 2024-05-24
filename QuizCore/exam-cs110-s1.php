@@ -6,6 +6,8 @@ session_start();
 
 // Include the database connection file.
 include_once 'dbconnection.php';
+// Include functions file
+require_once 'functions.php';
 
 $_SESSION['score'] = 0;
 
@@ -35,11 +37,11 @@ $result = $conn->query($select);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	$a1 = $_POST['1'];
-	$a2 = $_POST['2'];
-	$a3 = $_POST['3'];
-	$a4 = $_POST['4'];
-	$a5 = $_POST['5'];
+	$a1 = escapeQuoteEmsp($_POST['1']);
+	$a2 = escapeQuoteEmsp($_POST['2']);
+	$a3 = escapeQuoteEmsp($_POST['3']);
+	$a4 = escapeQuoteEmsp($_POST['4']);
+	$a5 = escapeQuoteEmsp($_POST['5']);
 
 	if ($result->num_rows > 0) {
 		// output data of each row
@@ -69,8 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $pageTitle = "Exam";
 require_once 'exam-header.php';
-// Include functions file
-require_once 'functions.php';
 ?>
 <!--Main-->
 <!--Main Div-->
