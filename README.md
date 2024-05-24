@@ -12,6 +12,12 @@ The online self-placement tool assists Central Washington University students in
 
 * Admin online site: [http://quizcore-admin.free.nf/](http://quizcore-admin.free.nf/)
 
+## Mirror 2
+
+* Student online site: [http://quizcore.42web.io/connection.php](http://quizcore.42web.io/connection.php)
+
+* Student online site: [http://quizcore.42web.io/admin](http://quizcore.42web.io/admin)
+
 # Technology Stack
 
 * **Backend language:** PHP
@@ -112,13 +118,10 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [ ] Add admin ability to change their profile???
 * [ ] Add admin ability to change password???
 * [ ] Add admin ability to create new admin account???
-<<<<<<< HEAD
 * [ ] Add the ability for administrators to send emails to students when they click on their email addresses???
 * [ ] Add the ability for students to send an email to an administrator after completing the test???
-=======
 * [ ] Handle error for bad database connection
 * [ ] Handle error for invalid session state
->>>>>>> 7162802ada4d2497cf0e93face0f1252926ac699
 
 # Future
 
