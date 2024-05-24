@@ -85,8 +85,8 @@ require_once 'header.php';
         </div>
       </div>
     </div>
-     <!-- New FAQ: Programming Languages Knowledge -->
-     <div class="accordion-item">
+    <!-- New FAQ: Programming Languages Knowledge -->
+    <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
           What programming languages should I know before taking the test?
@@ -108,7 +108,7 @@ require_once 'header.php';
       </h2>
       <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-        <strong>No</strong> external tools, including calculators, are allowed during the test. This policy helps ensure that the test accurately assesses your raw understanding and problem-solving skills without assistance.
+          <strong>No</strong> external tools, including calculators, are allowed during the test. This policy helps ensure that the test accurately assesses your raw understanding and problem-solving skills without assistance.
         </div>
       </div>
     </div>
@@ -156,52 +156,6 @@ require_once 'header.php';
     </div>
   </div>
 </main>
-
-
-<!--Dark mode-->
-<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-  <button class="btn btn-secondary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-    <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-      <use href="#circle-half"></use>
-    </svg>
-    <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-  </button>
-  <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-    <li>
-      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-        <svg class="bi me-2 opacity-50" width="1em" height="1em">
-          <use href="#sun-fill"></use>
-        </svg>
-        Light
-        <svg class="bi ms-auto d-none" width="1em" height="1em">
-          <use href="#check2"></use>
-        </svg>
-      </button>
-    </li>
-    <li>
-      <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-        <svg class="bi me-2 opacity-50" width="1em" height="1em">
-          <use href="#moon-stars-fill"></use>
-        </svg>
-        Dark
-        <svg class="bi ms-auto d-none" width="1em" height="1em">
-          <use href="#check2"></use>
-        </svg>
-      </button>
-    </li>
-    <li>
-      <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-        <svg class="bi me-2 opacity-50" width="1em" height="1em">
-          <use href="#circle-half"></use>
-        </svg>
-        Auto
-        <svg class="bi ms-auto d-none" width="1em" height="1em">
-          <use href="#check2"></use>
-        </svg>
-      </button>
-    </li>
-  </ul>
-</div>
 <!--End of Main-->
 
 <?php
