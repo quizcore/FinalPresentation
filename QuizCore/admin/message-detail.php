@@ -17,9 +17,9 @@ include_once 'dbconnection.php';
 // Start the session.
 session_start();
 
-if (isset($_GET['messageId'])) {
+if (isset($_GET['id'])) {
   // Get messageId from query parameter
-  $messageId = $_GET['messageId'];
+  $messageId = $_GET['id'];
 } else {
   // Display default contact with ID 1
   $messageId = 1;  // Set the default contact ID

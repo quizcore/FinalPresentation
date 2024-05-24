@@ -117,7 +117,7 @@ function fetchMessages(mysqli $conn): array
       const contactId = row.dataset.messageId;
 
       // Redirect to student info page with ID parameter
-      window.location.href = `message-detail.php?mess_id=${contactId}`;
+      window.location.href = `message-detail.php?id=${contactId}`;
     });
   });
 </script>
