@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS contact;
+DROP TABLE IF EXISTS admin;
 CREATE TABLE IF NOT EXISTS questions(
     question_id INT AUTO_INCREMENT,
     difficulty INT NOT NULL,
@@ -796,7 +800,6 @@ VALUES(
     "To write data to a file"
 );
 
---start test
 INSERT INTO questions(
     question_id,
     difficulty,
@@ -857,7 +860,6 @@ VALUES(
     "JavaGUI",
     "JavaFX"
 );
---end test
 
 INSERT INTO students (
 	student_id,
@@ -2603,7 +2605,7 @@ VALUES (
 	"Evans",
 	"2005-01-01",
 	"2023-12-04",
-	"ft@mail.com",
+	"oe@mail.com",
 	"Spring2024",
 	"16",
 	"Infinite loop",
