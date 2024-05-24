@@ -14,7 +14,7 @@ The online self-placement tool assists Central Washington University students in
 ## Mirror 2
 
 * Student online site: [http://quizcore.42web.io](http://quizcore.42web.io)
-* Student online site: [http://quizcore.42web.io/admin](http://quizcore.42web.io/admin)
+* Admin online site: [http://quizcore.42web.io/admin](http://quizcore.42web.io/admin)
 
 # Technology Stack
 
@@ -91,7 +91,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] (topic: security) Use of htmlspecialchars() to prevent XSS attacks when outputting data.
 * [x] Prevent access to pages content without authentication
 * [x] Prevent direct access to component and helper files
-* [ ] Explain the labels (CS110, CS111, and CS111++) before pie chart (or anywhere you think it's good)
+* [x] Add Course Recommendation Criteria (CS110, CS111, and CS111++)
 * [ ] Use line chart for Number of Students vs Time
 * [ ] Sort the expected term data before rendering the bar graph
 * [ ] Hash password
