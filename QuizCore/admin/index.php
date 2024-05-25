@@ -292,6 +292,8 @@ require_once 'header.php';
 
 <!-- chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
+<!-- chart.js date adapter, needed for line chart Number of Students Signed Up over Time -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <!-- Chart -->
 <script>
   // Doughnut Chart.
@@ -342,11 +344,9 @@ require_once 'header.php';
 
   // Date Taken vs Number of Students Bar Chart. (Taking Exam)
   new Chart(document.getElementById("quizcore-date-taken-bar-chart").getContext("2d"), {
-    type: 'bar',
+    type: 'line',
     data: {
-      labels: <?= json_encode($dates) ?>.map(date => new Date(date).toLocaleDateString('en-US', {
-        timeZone: 'UTC'
-      })),
+      labels: <?= json_encode($dates) ?>.map(date => new Date(date).toISOString().split('T')[0]),
       datasets: [{
         label: 'Number of Students',
         data: <?= json_encode($number_of_students) ?>,
@@ -362,6 +362,11 @@ require_once 'header.php';
       borderWidth: 0,
       scales: {
         x: {
+          type: 'time',
+          time: {
+            unit: 'day',
+            tooltipFormat: 'yyyy-MM-dd'
+          },
           title: {
             display: true,
             text: 'Date Taken',
@@ -388,7 +393,6 @@ require_once 'header.php';
             },
           },
           ticks: {
-            beginAtZero: true,
             callback: function(value) {
               if (value % 1 === 0) {
                 return value;
