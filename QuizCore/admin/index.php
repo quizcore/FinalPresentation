@@ -255,7 +255,7 @@ require_once 'header.php';
     </div> <!-- row -->
   </div> <!-- container-fluid -->
 
-  <!-- Bar chart: Date Taken vs Number of Students (Taking Exam)-->
+  <!-- Line chart: Number of Students vs Date Taken -->
   <div class="container-fluid mt-4">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
@@ -264,7 +264,23 @@ require_once 'header.php';
             <h3 class="card-title">Number of Students Taking Exam</h3>
           </div> <!-- card-header -->
           <div class="card-body">
-            <canvas class="my-4 w-100" id="quizcore-date-taken-bar-chart" style="max-height: 300px"></canvas>
+            <canvas class="my-4 w-100" id="quizcore-date-taken-line-chart" style="max-height: 300px"></canvas>
+          </div> <!-- card-body -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
+
+  <!-- Line chart: Total Number of Students Taking Exam over Time -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-xl-12 col-xxl-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Total Number of Students Taking Exam (cummulative)</h3>
+          </div> <!-- card-header -->
+          <div class="card-body">
+            <canvas class="my-4 w-100" id="quizcore-cummulative-date-taken-line-chart" style="max-height: 300px"></canvas>
           </div> <!-- card-body -->
         </div> <!-- card -->
       </div> <!-- col -->
@@ -341,15 +357,17 @@ require_once 'header.php';
     },
   });
 
+  const takenDates = <?= json_encode($dates) ?>.map(date => new Date(date).toISOString().split('T')[0]);
+  const studentCounts = <?= json_encode($number_of_students) ?>;
 
-  // Date Taken vs Number of Students Bar Chart. (Taking Exam)
-  new Chart(document.getElementById("quizcore-date-taken-bar-chart").getContext("2d"), {
+  // Number of Students vs Date Taken Line Chart.
+  new Chart(document.getElementById("quizcore-date-taken-line-chart").getContext("2d"), {
     type: 'line',
     data: {
-      labels: <?= json_encode($dates) ?>.map(date => new Date(date).toISOString().split('T')[0]),
+      labels: takenDates,
       datasets: [{
         label: 'Number of Students',
-        data: <?= json_encode($number_of_students) ?>,
+        data: studentCounts,
         backgroundColor: [
           "rgba(171, 0, 50, 1)"
         ],
@@ -359,6 +377,12 @@ require_once 'header.php';
       }]
     },
     options: {
+      // elements: {
+      //   point: {
+      //     radius: 3, // Adjust the point size here
+      //     hoverRadius: 5, // Optional: Adjust hover size
+      //   }
+      // },
       borderWidth: 0,
       scales: {
         x: {
@@ -371,7 +395,7 @@ require_once 'header.php';
             display: true,
             text: 'Date Taken',
             font: {
-              size: 18,
+              size: 16,
             },
           },
           ticks: {
@@ -389,7 +413,112 @@ require_once 'header.php';
             display: true,
             text: 'Number of Students',
             font: {
-              size: 18,
+              size: 16,
+            },
+          },
+          ticks: {
+            callback: function(value) {
+              if (value % 1 === 0) {
+                return value;
+              }
+            }
+          },
+        }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.dataset.label}: ${context.raw}`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  /**
+   * Calculates the cumulative student counts from an array of student counts.
+   * @param {number[]} studentCounts - An array of integers representing the number of students per exam date.
+   * @returns {number[]} An array of integers representing the cumulative student counts.
+   */
+  const calculateCumulativeStudentCounts = (studentCounts) => {
+    let cumulativeStudentCounts = [];
+    let sum = 0;
+
+    for (let i = 0; i < studentCounts.length; i++) {
+      sum += studentCounts[i];
+      cumulativeStudentCounts.push(sum);
+    }
+
+    return cumulativeStudentCounts;
+  };
+
+  /**
+   * Parses the string array into an array of numbers.
+   * @param {string[]} studentCounts - An array of strings representing the number of students per exam date.
+   * @returns {number[]} An array of integers representing the number of students per exam date.
+   */
+  const parseStudentCounts = (studentCounts) => {
+    return studentCounts.map(count => parseInt(count, 10));
+  };
+
+  const cumulativeStudentCounts = calculateCumulativeStudentCounts(parseStudentCounts(studentCounts));
+
+  // Total Number of Students vs Date Taken Line Chart.
+  new Chart(document.getElementById("quizcore-cummulative-date-taken-line-chart").getContext("2d"), {
+    type: 'line',
+    data: {
+      labels: takenDates,
+      datasets: [{
+        label: 'Total Students',
+        data: cumulativeStudentCounts,
+        backgroundColor: [
+          "rgba(171, 0, 50, 1)"
+        ],
+        borderColor: [
+          "rgba(171, 4, 51, 255)"
+        ],
+      }]
+    },
+    options: {
+      // elements: {
+      //   point: {
+      //     radius: 3, // Adjust the point size here
+      //     hoverRadius: 5, // Optional: Adjust hover size
+      //   }
+      // },
+      borderWidth: 1.25,
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            unit: 'day',
+            tooltipFormat: 'yyyy-MM-dd'
+          },
+          title: {
+            display: true,
+            text: 'Time',
+            font: {
+              size: 16,
+            },
+          },
+          ticks: {
+            maxRotation: 45,
+            minRotation: 45,
+            autoSkip: false
+          },
+          grid: {
+            display: false // Hide the x-grid lines
+          },
+        },
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Total Students',
+            font: {
+              size: 16,
             },
           },
           ticks: {
@@ -437,7 +566,7 @@ require_once 'header.php';
             display: true,
             text: 'Expected Term',
             font: {
-              size: 18,
+              size: 16,
             },
           },
           ticks: {
@@ -455,7 +584,7 @@ require_once 'header.php';
             display: true,
             text: 'Number of Students',
             font: {
-              size: 18,
+              size: 16,
             },
           },
           ticks: {
