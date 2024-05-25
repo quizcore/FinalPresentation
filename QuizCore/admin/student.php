@@ -102,7 +102,7 @@ require_once 'header.php';
     <table class="table table-striped table-sm">
       <thead>
         <tr>
-          <th scope="col">Question number</th>
+          <th scope="col">#</th>
           <th scope="col">Question details</th>
           <th scope="col">Student Answer</th>
           <th scope="col">Corrected Answer</th>
@@ -110,6 +110,11 @@ require_once 'header.php';
       </thead>
       <tbody>
         <?php
+        function prepareScriptInput($text)
+        {
+          return str_replace('`', '\\`', $text);
+        }
+
         $cs110 = true; // Flag to indicate we're currently in CS110 section
 
         // Display CS110 header before the loop (guaranteed)
@@ -142,12 +147,25 @@ require_once 'header.php';
           }
 
           if (strlen($row[$number]) > 0) {
-            $rowClass = ($row[$number] === $qRow["question_answer"]) ? 'table-success' : 'table-danger'; // Set row class based on answer
+            $rowClass = (strval($row[$number]) === strval($qRow["question_answer"])) ? 'table-success' : 'table-danger'; // Set row class based on answer
             echo '<tr class="' . $rowClass . '"">';
             echo '<td>' . htmlspecialchars($qRow["question_id"], ENT_QUOTES, 'UTF-8') . '</td>';
-            echo '<td>' . $qRow["question_body"] . '</td>';
-            echo '<td>' . $row[$number] . '</td>';
-            echo '<td>' . $qRow["question_answer"] . '</td>';
+            // Question Body.
+            echo '<td id="question-body-' . $qRow["question_id"] . '">';
+            echo '  <script>document.getElementById("question-body-'  . $qRow["question_id"] . '").innerHTML=marked.parse(`' . prepareScriptInput($qRow["question_body"]) . '`);</script>';
+            echo '</td>';
+            // Student Answer.
+            echo '<td id="student-answer-' . $qRow["question_id"] . '">';
+            $student_answer = $row[$number];
+            $student_answer_text = $qRow['answer_' . ($student_answer + 1)];
+            echo '  <script>document.getElementById("student-answer-'  . $qRow["question_id"] . '").innerHTML=marked.parse(`' . prepareScriptInput($student_answer_text) . '`);</script>';
+            echo '</td>';
+            // Correct Answer.
+            echo '<td id="correct-answer-' . $qRow["question_id"] . '">';
+            $correct_answer = $qRow['question_answer'];
+            $correct_answer_text = $qRow['answer_' . ($correct_answer + 1)];
+            echo '  <script>document.getElementById("correct-answer-'  . $qRow["question_id"] . '").innerHTML=marked.parse(`' . prepareScriptInput($correct_answer_text) . '`);</script>';
+            echo '</td>';
             echo '</tr>';
           }
         }
