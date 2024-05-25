@@ -674,7 +674,7 @@ STUDENTS: list[Student] = [
         last_name="Fred",
         dob=datetime.datetime(2006, 5, 17),
         taken_date=datetime.datetime(2024, 5, 10),
-        email="aspenfred@mail.com",
+        email="aspen.fred@mail.com",
         expected_term="Fall2024",
         prev_education="UW",
         prev_classes="CS100, CS110",
@@ -687,12 +687,90 @@ STUDENTS: list[Student] = [
         last_name="Tank",
         dob=datetime.datetime(2006, 1, 4),
         taken_date=datetime.datetime(2024, 3, 24),
-        email="franktank@mail.com",
+        email="frank.tank@mail.com",
         expected_term="Winter2024",
         prev_education=None,
         prev_classes=None,
         cs110=cs110_all_wrong([1, 5, 7, 10]),
         cs111=[],
+    ),
+    Student(
+        sid="24302590",
+        first_name="Bob",
+        last_name="Bird",
+        dob=datetime.datetime(2006, 4, 12),
+        taken_date=datetime.datetime(2023, 12, 19),
+        email="bob.bird@mail.com",
+        expected_term="Fall2024",
+        prev_education="Green River College",
+        prev_classes="CS100",
+        cs110=cs110_all_wrong([0, 2, 8]),
+        cs111=[],
+    ),
+    Student(
+        sid="96497622",
+        first_name="Ashley",
+        last_name="Green",
+        dob=datetime.datetime(2005, 6, 14),
+        taken_date=datetime.datetime(2024, 5, 3),
+        email="ashley.green@mail.com",
+        expected_term="Fall2024",
+        prev_education="WSU",
+        prev_classes="CS100, CS111",
+        cs110=cs110_all_wrong([0, 1]),
+        cs111=[],
+    ),
+    Student(
+        sid="51953727",
+        first_name="Bear",
+        last_name="Glassman",
+        dob=datetime.datetime(2006, 1, 21),
+        taken_date=datetime.datetime(2022, 8, 28),
+        email="bear.glassman@mail.com",
+        expected_term="Fall2024",
+        prev_education=None,
+        prev_classes=None,
+        cs110=cs110_all_wrong([6]),
+        cs111=[],
+    ),
+    Student(
+        sid="88485906",
+        first_name="Jon",
+        last_name="Greg",
+        dob=datetime.datetime(2006, 5, 4),
+        taken_date=datetime.datetime(2024, 3, 11),
+        email="jon.greg@mail.com",
+        expected_term="Fall2024",
+        prev_education=None,
+        prev_classes=None,
+        cs110=cs110_all_wrong([4, 9, 10, 12]),
+        cs111=[],
+    ),
+    Student(
+        sid=None,
+        first_name="Ava",
+        last_name="Wilson",
+        dob=datetime.datetime(2004, 11, 4),
+        taken_date=datetime.datetime(2022, 12, 5),
+        email="ava.wilson@mail.com",
+        expected_term="Fall2023",
+        prev_education=None,
+        prev_classes=None,
+        cs110=cs110_all_correct([1, 5, 7, 8, 9, 10]),
+        cs111=[],
+    ),
+    Student(
+        sid=None,
+        first_name="Olivia",
+        last_name="Walker",
+        dob=datetime.datetime(2006, 5, 4),
+        taken_date=datetime.datetime(2024, 1, 20),
+        email="olivia.walker@mail.com",
+        expected_term="Fall2024",
+        prev_education=None,
+        prev_classes=None,
+        cs110=cs110_all_correct([]),
+        cs111=cs111_all_correct([1, 5, 6, 8, 10]),
     ),
 ]
 
@@ -776,7 +854,9 @@ def analyze_st_answers(
         offset = 15
         for i, b in enumerate(cs111):
             q = questions[offset + i]
-            st_answers[offset + i] = q.solution if b else random_solution_excluding(q.solution)
+            st_answers[offset + i] = (
+                q.solution if b else random_solution_excluding(q.solution)
+            )
         score += cs111.count(True)
         if score >= 25:
             recommendation = 1
@@ -869,7 +949,7 @@ def main() -> None:
     buf = [PREAMBLE]
     add_questions_to_buf(buf, QUESTIONS)
     add_students_to_buf(buf, STUDENTS)
-    with open("out_mysql_init", "w") as f:
+    with open("mysql_init", "w") as f:
         f.write("".join(buf))
 
 
