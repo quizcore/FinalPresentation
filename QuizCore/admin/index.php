@@ -80,6 +80,44 @@ if ($terms_students_result->num_rows > 0) {
   }
 }
 
+function sortTermAndStudentCountsByYearAndQuarter(&$terms, &$studentCounts)
+{
+  // Define a custom sorting function
+  $customSort = function ($a, $b) {
+    // Extract year and quarter from the terms
+    preg_match('/(\D+)(\d+)/', $a, $aMatches);
+    preg_match('/(\D+)(\d+)/', $b, $bMatches);
+
+    $aYear = $aMatches[2];
+    $bYear = $bMatches[2];
+
+    $quarters = ['Winter', 'Spring', 'Summer', 'Fall'];
+    $aQuarter = array_search($aMatches[1], $quarters);
+    $bQuarter = array_search($bMatches[1], $quarters);
+
+    // First, compare years
+    if ($aYear != $bYear) {
+      return $aYear > $bYear;
+    }
+    // If years are equal, compare quarters
+    else {
+      return $aQuarter > $bQuarter;
+    }
+  };
+
+  // Combine terms and student counts into an associative array
+  $combined = array_combine($terms, $studentCounts);
+
+  // Sort the associative array using custom sorting function
+  uksort($combined, $customSort);
+
+  // Extract sorted terms and student counts back into separate arrays
+  $terms = array_keys($combined);
+  $studentCounts = array_values($combined);
+}
+
+sortTermAndStudentCountsByYearAndQuarter($terms, $term_student_counts);
+
 $pageTitle = "Dashboard";
 require_once 'header.php';
 ?>

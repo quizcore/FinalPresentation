@@ -93,7 +93,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Prevent direct access to component and helper files
 * [x] Add Course Recommendation Criteria (CS110, CS111, and CS111++)
 * [x] Use line chart for Number of Students vs Time
-* [ ] Sort the expected term data before rendering the bar graph
+* [x] Sort the expected term data before rendering the bar graph
 * [ ] Hash password
 
 ## Both
