@@ -772,6 +772,71 @@ STUDENTS: list[Student] = [
         cs110=cs110_all_correct([]),
         cs111=cs111_all_correct([1, 5, 6, 8, 10]),
     ),
+    Student(
+        sid=None,
+        first_name="Emily",
+        last_name="Chen",
+        dob=datetime.datetime(2003, 7, 16),
+        taken_date=datetime.datetime(2024, 2, 1),
+        email="emily.chen@mail.com",
+        expected_term="Fall2025",
+        prev_education="UW",
+        prev_classes="CS100, CS110, CS111",
+        cs110=cs110_all_correct([3, 5]),
+        cs111=cs111_all_correct([2, 4, 7, 9, 11]),
+    ),
+    Student(
+        sid=None,
+        first_name="Theo",
+        last_name="Johnson",
+        dob=datetime.datetime(2004, 2, 11),
+        taken_date=datetime.datetime(2023, 11, 11),
+        email="theo.johnson@mail.com",
+        expected_term="Fall2024",
+        prev_education="Highline College",
+        prev_classes="CS100, CS101",
+        cs110=cs110_all_correct([3, 5, 6, 7]),
+        cs111=cs111_all_correct([1, 2, 4, 7, 9, 11, 12, 13, 14, 15]),
+    ),
+    Student(
+        sid="12212486",
+        first_name="Marcus",
+        last_name="Nguyen",
+        dob=datetime.datetime(2002, 6, 5),
+        taken_date=datetime.datetime(2022, 4, 20),
+        email="marcus.nguyen@mail.com",
+        expected_term="Spring2023",
+        prev_education=None,
+        prev_classes=None,
+        cs110=cs110_all_correct([3, 5, 6, 7]),
+        cs111=cs111_all_correct([1, 2, 3, 6, 7, 9, 11, 12, 13, 14, 15]),
+    ),
+    Student(
+        sid=None,
+        first_name="Elijah",
+        last_name="Ramirez",
+        dob=datetime.datetime(2004, 10, 12),
+        taken_date=datetime.datetime(2024, 3, 10),
+        email="elijah.ramirez@mail.com",
+        expected_term="Fall2024",
+        prev_education="UW Tacoma",
+        prev_classes="CS100, CS110",
+        cs110=cs110_all_wrong([2, 8]),
+        cs111=[],
+    ),
+    Student(
+        sid="14675465",
+        first_name="Sophie",
+        last_name="Reynolds",
+        dob=datetime.datetime(2001, 2, 28),
+        taken_date=datetime.datetime(2022, 7, 7),
+        email="sophie.reynolds@mail.com",
+        expected_term="Fall2023",
+        prev_education=None,
+        prev_classes=None,
+        cs110=cs110_all_correct([0, 8]),
+        cs111=cs111_all_correct([0, 11]),
+    ),
 ]
 
 
@@ -949,7 +1014,7 @@ def main() -> None:
     buf = [PREAMBLE]
     add_questions_to_buf(buf, QUESTIONS)
     add_students_to_buf(buf, STUDENTS)
-    with open("mysql_init", "w") as f:
+    with open("mysql_init.sql", "w") as f:
         f.write("".join(buf))
 
 
