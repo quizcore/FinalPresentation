@@ -4,8 +4,7 @@ import datetime
 import random
 
 
-PREAMBLE = """
-DROP TABLE IF EXISTS questions;
+PREAMBLE = """DROP TABLE IF EXISTS questions;
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS admin;
@@ -17,7 +16,7 @@ CREATE TABLE IF NOT EXISTS questions(
     answer_2 VARCHAR(200) NOT NULL,
     answer_3 VARCHAR(200) NOT NULL,
     answer_4 VARCHAR(200) NOT NULL,
-    question_answer VARCHAR(200) NOT NULL,
+    question_answer INT NOT NULL,
     PRIMARY KEY(question_id)
 ); CREATE TABLE IF NOT EXISTS students(
     student_id INT AUTO_INCREMENT NOT NULL,
@@ -30,41 +29,41 @@ CREATE TABLE IF NOT EXISTS questions(
     expected_term VARCHAR(20),
     previous_education VARCHAR(100),
     previous_classes VARCHAR(300),
-    question_1 VARCHAR(200),
-    question_2 VARCHAR(200),
-    question_3 VARCHAR(200),
-    question_4 VARCHAR(200),
-    question_5 VARCHAR(200),
-    question_6 VARCHAR(200),
-    question_7 VARCHAR(200),
-    question_8 VARCHAR(200),
-    question_9 VARCHAR(200),
-    question_10 VARCHAR(200),
-    question_11 VARCHAR(200),
-    question_12 VARCHAR(200),
-    question_13 VARCHAR(200),
-    question_14 VARCHAR(200),
-    question_15 VARCHAR(200),
-    question_16 VARCHAR(200),
-    question_17 VARCHAR(200),
-    question_18 VARCHAR(200),
-    question_19 VARCHAR(200),
-    question_20 VARCHAR(200),
-    question_21 VARCHAR(200),
-    question_22 VARCHAR(200),
-    question_23 VARCHAR(200),
-    question_24 VARCHAR(200),
-    question_25 VARCHAR(200),
-    question_26 VARCHAR(200),
-    question_27 VARCHAR(200),
-    question_28 VARCHAR(200),
-    question_29 VARCHAR(200),
-    question_30 VARCHAR(200),
-    question_31 VARCHAR(200),
-    question_32 VARCHAR(200),
-    question_33 VARCHAR(200),
-    question_34 VARCHAR(200),
-    question_35 VARCHAR(200),
+    question_1 INT,
+    question_2 INT,
+    question_3 INT,
+    question_4 INT,
+    question_5 INT,
+    question_6 INT,
+    question_7 INT,
+    question_8 INT,
+    question_9 INT,
+    question_10 INT,
+    question_11 INT,
+    question_12 INT,
+    question_13 INT,
+    question_14 INT,
+    question_15 INT,
+    question_16 INT,
+    question_17 INT,
+    question_18 INT,
+    question_19 INT,
+    question_20 INT,
+    question_21 INT,
+    question_22 INT,
+    question_23 INT,
+    question_24 INT,
+    question_25 INT,
+    question_26 INT,
+    question_27 INT,
+    question_28 INT,
+    question_29 INT,
+    question_30 INT,
+    question_31 INT,
+    question_32 INT,
+    question_33 INT,
+    question_34 INT,
+    question_35 INT,
     score INT,
     recommendation INT,
     PRIMARY KEY(student_id)
@@ -213,10 +212,10 @@ int result = x % y;
         difficulty=2,
         body="""Which of the following Java code snippets correctly computes the sum of two integers a and b?""",
         answers=(
-            "int sum = a - b;",
-            "int sum = a * b;",
-            "int sum = a / b;",
-            "int sum = a + b;",
+            "`int sum = a - b;`",
+            "`int sum = a * b;`",
+            "`int sum = a / b;`",
+            "`int sum = a + b;`",
         ),
         solution=3,
     ),
@@ -354,10 +353,10 @@ while (i < 5) {
         difficulty=3,
         body="Which of the following correctly defines a method named calculateArea in a Java class?",
         answers=(
-            "int calculateArea() { }",
-            "void calculateArea() { }",
-            "calculateArea() { }",
-            "public int calculateArea() { }",
+            "`int calculateArea() { }`",
+            "`void calculateArea() { }`",
+            "`calculateArea() { }`",
+            "`public int calculateArea() { }`",
         ),
         solution=3,
     ),
@@ -432,10 +431,10 @@ for (int i = 0; i < numbers.length; i++) {
         difficulty=4,
         body="Which of the following statements correctly creates an array of String objects named names in Java?",
         answers=(
-            "String[] names = new String();",
-            "String names[] = new String();",
-            "String[] names = new String[5];",
-            "String names[] = new String[5];",
+            "`String[] names = new String();`",
+            "`String names[] = new String();`",
+            "`String[] names = new String[5];`",
+            "`String names[] = new String[5];`",
         ),
         solution=0,
     ),
@@ -600,10 +599,10 @@ for (int i = 0; i < numbers.length; i++) {
         difficulty=7,
         body="""Which Java code snippet correctly opens a file named "data.txt" for reading?""",
         answers=(
-            """File file = new File("data.txt");""",
-            """FileReader fileReader = new FileReader("data.txt");""",
-            """BufferedReader reader = new BufferedReader(new FileReader("data.txt"));""",
-            """FileInputStream fis = new FileInputStream("data.txt");""",
+            """`File file = new File("data.txt");`""",
+            """`FileReader fileReader = new FileReader("data.txt");`""",
+            """`BufferedReader reader = new BufferedReader(new FileReader("data.txt"));`""",
+            """`FileInputStream fis = new FileInputStream("data.txt");`""",
         ),
         solution=3,
     ),
@@ -734,7 +733,7 @@ VALUES(
     "{escape_mysql_string(q.answers[1])}",
     "{escape_mysql_string(q.answers[2])}",
     "{escape_mysql_string(q.answers[3])}",
-    "{escape_mysql_string(q.answers[q.solution])}"
+    {q.solution}
 );
 """
         )
@@ -744,6 +743,12 @@ def optional_str_to_sql(string: str | None) -> str:
     if string is None:
         return "NULL"
     return f'"{string}"'
+
+
+def optional_int_to_sql(num: int | None) -> str:
+    if num is None:
+        return "NULL"
+    return str(num)
 
 
 def datetime_to_sql_str(my_date: datetime.datetime) -> str:
@@ -760,26 +765,18 @@ def random_solution_excluding(exclude: int) -> int:
 
 def analyze_st_answers(
     questions: list[Question], cs110: list[bool | None], cs111: list[bool | None]
-) -> tuple[list[str | None], int, int]:
+) -> tuple[list[int | None], int, int]:
     score = cs110.count(True)
     recommendation = 110
-    st_answers: list[str | None] = [None] * len(questions)
+    st_answers: list[int | None] = [None] * len(questions)
     for i, b in enumerate(cs110):
         q = questions[i]
-        if b:
-            answer = q.answers[q.solution]
-        else:
-            answer = q.answers[random_solution_excluding(q.solution)]
-        st_answers[i] = escape_mysql_string(answer)
+        st_answers[i] = q.solution if b else random_solution_excluding(q.solution)
     if score >= 11:
         offset = 15
         for i, b in enumerate(cs111):
             q = questions[offset + i]
-            if b:
-                answer = q.answers[q.solution]
-            else:
-                answer = q.answers[random_solution_excluding(q.solution)]
-            st_answers[offset + i] = escape_mysql_string(answer)
+            st_answers[offset + i] = q.solution if b else random_solution_excluding(q.solution)
         score += cs111.count(True)
         if score >= 25:
             recommendation = 1
@@ -859,7 +856,7 @@ VALUES (
             QUESTIONS, st.cs110, st.cs111
         )
         for a in st_answers:
-            buf.append(f"\t{optional_str_to_sql(a)},\n")
+            buf.append(f"\t{optional_int_to_sql(a)},\n")
         buf.append(
             f"""\t{score},
 \t{recommendation}
