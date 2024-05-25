@@ -19,8 +19,15 @@ if (!defined('MY_APP')) {
   <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
   <link rel="manifest" href="./img/site.webmanifest">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <!-- marked, convert markdown to HTML -->
+  <!-- marked.js, convert markdown to HTML -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- highlight.js, syntax highlight for code blocks -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <!-- Enable syntax highlighting for all codeblock -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
 
   <style>
     html,
