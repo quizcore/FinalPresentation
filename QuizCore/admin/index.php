@@ -43,40 +43,40 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Count students who took exam in the last 7 days
-$lastWeekStudents_query = "SELECT COUNT(*) as number_of_students FROM students WHERE date_quiz_taken >= '$sevenDaysAgo' AND date_quiz_taken <= '$today'";
-$lastWeekStudents_result = $conn->query($lastWeekStudents_query);
+$lastWeekStudentsQuery = "SELECT COUNT(*) as number_of_students FROM students WHERE date_quiz_taken >= '$sevenDaysAgo' AND date_quiz_taken <= '$today'";
+$lastWeekStudentsResult = $conn->query($lastWeekStudentsQuery);
 
 $lastWeekStudents = 0;
-if ($lastWeekStudents_result->num_rows > 0) {
-  $row = $lastWeekStudents_result->fetch_assoc();
+if ($lastWeekStudentsResult->num_rows > 0) {
+  $row = $lastWeekStudentsResult->fetch_assoc();
   $lastWeekStudents = $row['number_of_students'];
 }
 
 // Count date and students.
-$dates_students_query = "SELECT date_quiz_taken, COUNT(*) as number_of_students FROM students GROUP BY date_quiz_taken";
-$dates_students_result = $conn->query($dates_students_query);
+$datesStudentsQuery = "SELECT date_quiz_taken, COUNT(*) as number_of_students FROM students GROUP BY date_quiz_taken";
+$datesStudentsResult = $conn->query($datesStudentsQuery);
 
 $dates = array();
-$number_of_students = array();
+$dateStudentCounts = array();
 
-if ($dates_students_result->num_rows > 0) {
-  while ($row = $dates_students_result->fetch_assoc()) {
+if ($datesStudentsResult->num_rows > 0) {
+  while ($row = $datesStudentsResult->fetch_assoc()) {
     $dates[] = $row['date_quiz_taken'];
-    $number_of_students[] = $row['number_of_students'];
+    $dateStudentCounts[] = $row['number_of_students'];
   }
 }
 
 // Count students attending each quarter.
-$terms_students_query = "SELECT expected_term, COUNT(*) as number_of_students FROM students GROUP BY expected_term";
-$terms_students_result = $conn->query($terms_students_query);
+$termsStudentsQuery = "SELECT expected_term, COUNT(*) as number_of_students FROM students GROUP BY expected_term";
+$termsStudentsResult = $conn->query($termsStudentsQuery);
 
 $terms = array();
-$term_student_counts = array();
+$termStudentCounts = array();
 
-if ($terms_students_result->num_rows > 0) {
-  while ($row = $terms_students_result->fetch_assoc()) {
+if ($termsStudentsResult->num_rows > 0) {
+  while ($row = $termsStudentsResult->fetch_assoc()) {
     $terms[] = $row['expected_term'];
-    $term_student_counts[] = $row['number_of_students'];
+    $termStudentCounts[] = $row['number_of_students'];
   }
 }
 
@@ -116,7 +116,7 @@ function sortTermAndStudentCountsByYearAndQuarter(&$terms, &$studentCounts)
   $studentCounts = array_values($combined);
 }
 
-sortTermAndStudentCountsByYearAndQuarter($terms, $term_student_counts);
+sortTermAndStudentCountsByYearAndQuarter($terms, $termStudentCounts);
 
 $pageTitle = "Dashboard";
 require_once 'header.php';
@@ -396,7 +396,7 @@ require_once 'header.php';
   });
 
   const takenDates = <?= json_encode($dates) ?>.map(date => new Date(date).toISOString().split('T')[0]);
-  const studentCounts = <?= json_encode($number_of_students) ?>;
+  const studentCounts = <?= json_encode($dateStudentCounts) ?>;
 
   // Number of Students vs Date Taken Line Chart.
   new Chart(document.getElementById("quizcore-date-taken-line-chart").getContext("2d"), {
@@ -587,7 +587,7 @@ require_once 'header.php';
       labels: <?= json_encode($terms) ?>,
       datasets: [{
         label: 'Number of Students',
-        data: <?= json_encode($term_student_counts) ?>,
+        data: <?= json_encode($termStudentCounts) ?>,
         backgroundColor: [
           "rgba(171, 0, 50, 1)"
         ],
