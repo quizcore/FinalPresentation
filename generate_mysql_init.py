@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS questions(
     PRIMARY KEY(question_id)
 ); CREATE TABLE IF NOT EXISTS students(
     student_id INT AUTO_INCREMENT NOT NULL,
-    sid INT,
+    sid VARCHAR(20),
     first_name VARCHAR(40) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     dob DATE NOT NULL,
@@ -126,9 +126,11 @@ QUESTIONS: list[Question] = [
     Question(
         difficulty=1,
         body="""What will be the output of the following Java code snippet?
+```java
 int x = 5;
 int y = 3;
-System.out.println(x + y * 2);""",
+System.out.println(x + y * 2);
+```""",
         answers=(
             "11",
             "16",
@@ -140,11 +142,13 @@ System.out.println(x + y * 2);""",
     Question(
         difficulty=1,
         body="""What does the following Java code snippet do?
+```java
 int i = 0;
 while (i < 5) {
 \tSystem.out.print(i + " ");
 \ti++;
-}""",
+}
+```""",
         answers=(
             "Prints numbers from 0 to 4 with space separation",
             "Prints numbers from 1 to 5 with space separation",
@@ -156,12 +160,14 @@ while (i < 5) {
     Question(
         difficulty=1,
         body="""What is the output of the following Java code snippet?
+```java
 int num = -5;
 if (num > 0) {
 \tSystem.out.println("Positive");
 } else {
 \tSystem.out.println("Negative");
-}""",
+}
+```""",
         answers=(
             "Positive",
             "Negative",
@@ -173,9 +179,11 @@ if (num > 0) {
     Question(
         difficulty=1,
         body="""What does the following Java code snippet do?
+```java
 for (int i = 0; i < 5; i++) {
 \tSystem.out.println(i * 2 + " ");
-}""",
+}
+```""",
         answers=(
             "Prints even numbers from 0 to 8 with space seraration",
             "Prints odd numbers from 1 to 9 with space separation",
@@ -187,9 +195,11 @@ for (int i = 0; i < 5; i++) {
     Question(
         difficulty=1,
         body="""What will be the value of **result** in the following Java code snippet?
+```java
 int x = 5;
 int y = 2;
-int result = x % y;""",
+int result = x % y;
+```""",
         answers=(
             "1",
             "2",
@@ -213,9 +223,11 @@ int result = x % y;""",
     Question(
         difficulty=2,
         body="""What is the result of the following Java code snippet?
+```java
 int x = 10;
 int y = 3;
-int result = x % y;""",
+int result = x % y;
+```""",
         answers=(
             "1",
             "2",
@@ -228,26 +240,34 @@ int result = x % y;""",
         difficulty=2,
         body="""Which Java code snippet correctly implements a conditional structure to determine if a number num is even?""",
         answers=(
-            """if (num % 2 == 0) {
+            """```java
+if (num % 2 == 0) {
 \tSystem.out.println("Even");
 } else {
 \tSystem.out.println("Odd");
-}""",
-            """if (num / 2 == 0) {
+}
+```""",
+            """```java
+if (num / 2 == 0) {
 \tSystem.out.println("Even");
 } else {
 \tSystem.out.println("Odd");
-}""",
-            """if (num == 0) {
+}
+```""",
+            """```java
+if (num == 0) {
 \tSystem.out.println("Even");
 } else {
 \tSystem.out.println("Odd");
-}""",
-            """if (num % 2 != 0) {
+}
+```""",
+            """```java
+if (num % 2 != 0) {
 \tSystem.out.println("Even");
 } else {
 \tSystem.out.println("Odd");
-}""",
+}
+```""",
         ),
         solution=0,
     ),
@@ -255,29 +275,39 @@ int result = x % y;""",
         difficulty=2,
         body="""Which Java code snippet correctly implements a loop to print numbers from 1 to 5?""",
         answers=(
-            """for (int i = 1; i <= 5; i++) {
+            """```java
+for (int i = 1; i <= 5; i++) {
 \tSystem.out.print(i + " ");
-}""",
-            """for (int i = 0; i < 5; i++) {
+}
+```""",
+            """```java
+for (int i = 0; i < 5; i++) {
 \tSystem.out.print(i + " ");
-}""",
-            """for (int i = 1; i <= 6; i++) {
+}
+```""",
+            """```java
+for (int i = 1; i <= 6; i++) {
 \tSystem.out.print(i + " ");
-}""",
-            """for (int i = 0; i <= 5; i++) {
+}
+```""",
+            """```java
+for (int i = 0; i <= 5; i++) {
 \tSystem.out.print(i + " ");
-}""",
+}
+```""",
         ),
         solution=0,
     ),
     Question(
         difficulty=2,
         body="""What does the following Java code snippet do?
+```java
 int i = 0;
 while (i < 5) {
 \tSystem.out.print(i * 2 + " ");
 \ti++;
-}""",
+}
+```""",
         answers=(
             "Prints numbers from 0 to 4 with space separation",
             "Prints even numbers from 0 to 8 with space separation",
@@ -334,6 +364,7 @@ while (i < 5) {
     Question(
         difficulty=3,
         body="""What does the following Java code snippet do?
+```java
 public class Rectangle {
 \tint length;
 \tint width;
@@ -346,7 +377,8 @@ public class Rectangle {
 \tpublic int calculateArea() {
 \t\treturn length * width;
 \t}
-}""",
+}
+```""",
         answers=(
             "Defines a class named Rectangle with length and width attributes and a method to calculate the area",
             "Defines a method named Rectangle with parameters length and width",
@@ -381,11 +413,13 @@ public class Rectangle {
     Question(
         difficulty=4,
         body="""What does the following Java code snippet do?
+```java
 int[] numbers = {1, 2, 3, 4, 5};
 int sum = 0;
 for (int i = 0; i < numbers.length; i++) {
 \tsum += numbers[i];
-}""",
+}
+```""",
         answers=(
             "Finds the average of the numbers in the array",
             "Computes the product of the numbers in the array",
@@ -564,7 +598,7 @@ for (int i = 0; i < numbers.length; i++) {
     ),
     Question(
         difficulty=7,
-        body="Which Java code snippet correctly opens a file named &quot;data.txt&quot; for reading?",
+        body="""Which Java code snippet correctly opens a file named "data.txt" for reading?""",
         answers=(
             """File file = new File("data.txt");""",
             """FileReader fileReader = new FileReader("data.txt");""",
@@ -755,8 +789,9 @@ def analyze_st_answers(
 
 
 def add_students_to_buf(buf: list[str], students: list[Student]) -> None:
-    buf.append(
-        """INSERT INTO students (
+    for i, st in enumerate(students, start=1):
+        buf.append(
+            """INSERT INTO students (
 	student_id,
 	sid,
 	first_name,
@@ -806,8 +841,7 @@ def add_students_to_buf(buf: list[str], students: list[Student]) -> None:
 	recommendation)
 VALUES (
 """
-    )
-    for i, st in enumerate(students, start=1):
+        )
         buf.append(
             f"""\t{i},
 \t{optional_str_to_sql(st.sid)},
@@ -831,7 +865,7 @@ VALUES (
 \t{recommendation}
 """
         )
-    buf.append(")\n")
+        buf.append(");\n")
 
 
 def main() -> None:
