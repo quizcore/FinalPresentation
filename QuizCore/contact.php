@@ -49,6 +49,12 @@ require_once 'header.php';
       alert.classList.remove('show');
     });
   });
+
+  function limitTextAreaCharacterLimit(textarea, limit) {
+    if (textarea.value.length > limit) {
+      textarea.value = textarea.value.substring(0, limit);
+    }
+  }
 </script>
 
 <div class="container py-5">
@@ -61,15 +67,15 @@ require_once 'header.php';
       <form method="POST">
         <div class="mb-3">
           <label for="name" class="form-label">Your Name</label>
-          <input type="text" class="form-control" name="name" id="name" required />
+          <input type="text" class="form-control" name="name" id="name" maxlength="70" required />
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" name="contactEmail" id="email" required />
+          <input type="email" class="form-control" name="contactEmail" id="email" maxlength="30" required />
         </div>
         <div class="mb-3">
           <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" name="emailBody" rows="5" required></textarea>
+          <textarea class="form-control" id="message" name="emailBody" rows="5" oninput="limitTextAreaCharacterLimit(this, 290)" required></textarea>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
           <input type="submit" class="btn btn-bd-red btn-lg px-4" value="Send">
