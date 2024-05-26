@@ -13,6 +13,14 @@
     return prefersDark ? 'dark' : 'light';
   }
 
+
+  function switchTheme(themeId) {
+    // Disable all themes
+    document.querySelectorAll('link[id^="theme-"]').forEach(link => link.disabled = true);
+    // Enable the selected theme
+    document.getElementById(themeId).disabled = false;
+  }
+
   const setButtonThemeWithID = (theme, elementId) => {
     const element = document.getElementById(elementId);
 
@@ -64,6 +72,16 @@
     setStoredTheme(theme);
     setButtonTheme(getPreferredTheme());
     showActiveTheme(theme, true);
+
+
+    if (theme == "auto") {
+      theme = getPreferredTheme();
+    }
+    if (theme == "dark") {
+      switchTheme("theme-monokai");
+    } else {
+      switchTheme("theme-default");
+    }
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -73,7 +91,6 @@
     } else {
       toggleTheme(theme);
     }
-    console.log("Hello World " + theme);
   })
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -81,7 +98,17 @@
 
     const storedTheme = getStoredTheme();
     if (storedTheme) {
-      showActiveTheme(storedTheme)
+      showActiveTheme(storedTheme);
+
+      let theme = storedTheme;
+      if (theme == "auto") {
+        theme = getPreferredTheme();
+      }
+      if (theme == "dark") {
+        switchTheme("theme-monokai");
+      } else {
+        switchTheme("theme-default");
+      }
     }
 
     document.querySelectorAll('[data-bs-theme-value]')
@@ -96,4 +123,8 @@
         })
       })
   })
+
+
+  // Set a default theme on page load
+  document.getElementById('theme-default').disabled = false;
 })()
