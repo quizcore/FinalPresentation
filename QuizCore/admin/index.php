@@ -421,6 +421,8 @@ require_once 'header.php';
       //     hoverRadius: 5, // Optional: Adjust hover size
       //   }
       // },
+      responsive: true,
+      maintainAspectRatio: false,
       borderWidth: 0,
       scales: {
         x: {
@@ -526,6 +528,8 @@ require_once 'header.php';
       //     hoverRadius: 5, // Optional: Adjust hover size
       //   }
       // },
+      responsive: true,
+      maintainAspectRatio: false,
       borderWidth: 1.25,
       scales: {
         x: {
@@ -597,6 +601,8 @@ require_once 'header.php';
       }]
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       borderWidth: 0,
       scales: {
         x: {

@@ -95,6 +95,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Add Course Recommendation Criteria (CS110, CS111, and CS111++)
 * [x] Use line chart for Number of Students vs Time
 * [x] Sort the expected term data before rendering the bar graph
+* [x] Fix graph resizing on small screen (mobile device)
 * [ ] Hash password
 
 ## Both
