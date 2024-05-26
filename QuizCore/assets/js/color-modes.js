@@ -18,7 +18,10 @@
     // Disable all themes
     document.querySelectorAll('link[id^="theme-"]').forEach(link => link.disabled = true);
     // Enable the selected theme
-    document.getElementById(themeId).disabled = false;
+    var element = document.getElementById(themeId);
+    if (element !== null) {
+      element.disabled = false;
+    }
   }
 
   const setButtonThemeWithID = (theme, elementId) => {
@@ -126,5 +129,5 @@
 
 
   // Set a default theme on page load
-  document.getElementById('theme-default').disabled = false;
+  switchTheme("theme-default");
 })()
