@@ -428,7 +428,7 @@ require_once 'header.php';
         x: {
           type: 'time',
           time: {
-            unit: 'day',
+            // unit: 'day',
             tooltipFormat: 'yyyy-MM-dd'
           },
           title: {
@@ -535,7 +535,7 @@ require_once 'header.php';
         x: {
           type: 'time',
           time: {
-            unit: 'day',
+            // unit: 'day',
             tooltipFormat: 'yyyy-MM-dd'
           },
           title: {
