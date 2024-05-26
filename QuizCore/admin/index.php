@@ -302,7 +302,7 @@ require_once 'header.php';
             <h3 class="card-title">Number of Students Taking Exam</h3>
           </div> <!-- card-header -->
           <div class="card-body">
-            <canvas class="my-4 w-100" id="quizcore-date-taken-line-chart" style="max-height: 300px"></canvas>
+            <canvas class="my-4 w-100" id="quizcore-date-taken-line-chart" style="min-height: 300px; max-height: 400px;"></canvas>
           </div> <!-- card-body -->
         </div> <!-- card -->
       </div> <!-- col -->
@@ -318,7 +318,7 @@ require_once 'header.php';
             <h3 class="card-title">Total Number of Students Taking Exam (cummulative)</h3>
           </div> <!-- card-header -->
           <div class="card-body">
-            <canvas class="my-4 w-100" id="quizcore-cummulative-date-taken-line-chart" style="max-height: 300px"></canvas>
+            <canvas class="my-4 w-100" id="quizcore-cummulative-date-taken-line-chart" style="min-height: 300px; max-height: 400px;"></canvas>
           </div> <!-- card-body -->
         </div> <!-- card -->
       </div> <!-- col -->
@@ -334,7 +334,7 @@ require_once 'header.php';
             <h3 class="card-title">Number of Students Attending Each Term</h3>
           </div> <!-- card-header -->
           <div class="card-body">
-            <canvas class="my-4 w-100" id="quizcore-expected-term-bar-chart" style="max-height: 300px"></canvas>
+            <canvas class="my-4 w-100" id="quizcore-expected-term-bar-chart" style="min-height: 300px; max-height: 400px;"></canvas>
           </div> <!-- card-body -->
         </div> <!-- card -->
       </div> <!-- col -->
