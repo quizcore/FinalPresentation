@@ -77,7 +77,7 @@ require_once 'exam-header.php';
 						<div class="accordion-body">
 							<div class="form-group mb-3">
 								<label for="sid">CWU Student ID</label>
-								<input type="number" class="form-control" name="sid" id="floatingInput" placeholder="Student ID">
+								<input type="text" class="form-control" name="sid" id="floatingInput" placeholder="Student ID" pattern="\d*" maxlength="18">
 							</div>
 						</div>
 					</div>
@@ -93,11 +93,18 @@ require_once 'exam-header.php';
 						<div class="accordion-body">
 							<div class="form-group mb-3">
 								<label for="education">Previous Universities Attended</label>
-								<textarea type="text" class="form-control" name="education" id="floatingInput" placeholder="Separate universities with commas (e.g., University of Central California, MIT" rows="4" cols="50"></textarea>
+								<script>
+									function limitTextAreaCharacterLimit(textarea, limit) {
+										if (textarea.value.length > limit) {
+											textarea.value = textarea.value.substring(0, limit);
+										}
+									}
+								</script>
+								<textarea type="text" class="form-control" name="education" id="floatingInput" placeholder="Separate universities with commas (e.g., University of Central California, MIT" rows="4" cols="50" oninput="limitTextAreaCharacterLimit(this, 90)"></textarea>
 							</div>
 							<div class="form-group mb-3">
 								<label for="classes">Previous Computer Science Courses</label>
-								<textarea class="form-control" name="classes" id="floatingPassword" placeholder="List each course on a new line, including course code (e.g., CS-101) and course name (e.g., Introduction to Computer Science)" rows="6" cols="50"></textarea>
+								<textarea class="form-control" name="classes" id="floatingPassword" placeholder="List each course on a new line, including course code (e.g., CS-101) and course name (e.g., Introduction to Computer Science)" rows="6" cols="50" oninput="limitTextAreaCharacterLimit(this, 290)"></textarea>
 							</div>
 						</div>
 					</div>
