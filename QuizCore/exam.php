@@ -70,17 +70,17 @@ require_once 'exam-header.php';
 			<h1 class="h3 mb-3 fw-normal">Please provide your information</h1>
 
 			<div class="form-floating">
-				<input type="text" class="form-control" name="firstName" id="floatingInput1" placeholder="First Name" required>
+				<input type="text" class="form-control" name="firstName" id="floatingInput1" placeholder="First Name" maxlength="30" required>
 				<label for="floatingInput1">First Name</label>
 			</div>
 
 			<div class="mt-2 form-floating">
-				<input type="text" class="form-control" name="lastName" id="floatingInput2" placeholder="Last Name" required>
+				<input type="text" class="form-control" name="lastName" id="floatingInput2" placeholder="Last Name" maxlength="40" required>
 				<label for="floatingInput2">Last Name</label>
 			</div>
 
 			<div class="mt-2 form-floating">
-				<input type="email" class="form-control" name="email" id="floatingInput3" placeholder="name@example.com" required>
+				<input type="email" class="form-control" name="email" id="floatingInput3" placeholder="name@example.com" maxlength="90" required>
 				<label for="floatingInput3">Email address</label>
 			</div>
 
