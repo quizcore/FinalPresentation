@@ -133,7 +133,7 @@ require_once 'header.php';
             Total Students
           </div> <!-- card-header -->
           <div class="card-body">
-            <h2> <?= $total ?></h2>
+            <h2 id="quizcore-total-students-display">0</h2>
           </div> <!-- card-body -->
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
@@ -145,10 +145,10 @@ require_once 'header.php';
       <div class="col-xl-6 col-xxl-6 col-sm-6 mb-4">
         <div class="card border-warning text-center border-2">
           <div class="card-header fs-5">
-            Students Signed Up Last Week
+            Students Signed Up Past Week
           </div> <!-- card-header -->
           <div class="card-body">
-            <h2> <?= $lastWeekStudents ?></h2>
+            <h2 id="quizcore-total-students-past-week-display">0</h2>
           </div>
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
@@ -654,6 +654,39 @@ require_once 'header.php';
       scrollX: true,
       scrollCollapse: true,
     });
+  });
+
+  // JavaScript to animate the stats cards.
+  document.addEventListener("DOMContentLoaded", function() {
+    let counterElements = [{
+        element: document.getElementById("quizcore-total-students-display"),
+        target: <?= $total ?>
+      },
+      {
+        element: document.getElementById("quizcore-total-students-past-week-display"),
+        target: <?= $lastWeekStudents ?>
+      }
+    ];
+    let start = null;
+    let duration = 1000; // Total duration of the animation in milliseconds
+
+    function updateCounters(timestamp) {
+      if (!start) start = timestamp;
+      let progress = timestamp - start;
+
+      counterElements.forEach(counter => {
+        let count = Math.min(progress / duration * counter.target, counter.target);
+        counter.element.innerText = Math.floor(count);
+      });
+
+      if (progress < duration) {
+        requestAnimationFrame(updateCounters);
+      } else {
+        counterElements.forEach(counter => counter.element.innerText = counter.target); // Ensure they end exactly at target
+      }
+    }
+
+    requestAnimationFrame(updateCounters);
   });
 </script>
 
