@@ -50,6 +50,7 @@ require_once 'exam-header.php';
 <div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
 	<button type='button' class='btn btn-lg btn-bd-red' id='quizcore-home-btn'>Home</button> <br />
 </div>
+
 <script>
 	document.getElementById('quizcore-home-btn').addEventListener('click', function() {
 		window.location.href = './';

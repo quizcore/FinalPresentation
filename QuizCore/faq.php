@@ -4,8 +4,7 @@ $pageTitle = "FAQ";
 require_once 'header.php';
 ?>
 
-<!--Main-->
-<main class="container mt-5">
+<div class="container mt-5">
   <h1 class="text-center mb-4">Frequently Asked Questions</h1>
 
   <div class="accordion" id="accordionExample">
@@ -156,8 +155,7 @@ require_once 'header.php';
       </div>
     </div>
   </div>
-</main>
-<!--End of Main-->
+</div>
 
 <?php
 require_once 'footer.php';

@@ -57,8 +57,6 @@ $pageTitle = "Exam";
 require_once 'exam-header.php';
 ?>
 
-<!--Main-->
-<!--Main Div-->
 <div class="container-lg">
 	<!--Form-->
 	<div id="myForm" class="form-signin w-100 m-auto">

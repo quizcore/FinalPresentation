@@ -61,7 +61,7 @@ require_once 'exam-header.php';
 </div>
 
 <!-- Progress bar -->
-<?php echo generateProgressBar(50); ?>
+<?= generateProgressBar(50) ?>
 
 <div class="container">
 	<!--Questions pulled from database-->

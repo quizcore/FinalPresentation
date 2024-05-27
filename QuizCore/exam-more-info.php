@@ -45,8 +45,6 @@ $pageTitle = "Exam";
 require_once 'exam-header.php';
 ?>
 
-<!--Main-->
-<!--Main Div-->
 <div class="container">
 	<div class="container text-center">
 		<h1 class="h3 my-4 fw-normal">Please provide information about your previous education.</h1>
