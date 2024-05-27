@@ -112,6 +112,13 @@
       } else {
         switchTheme("theme-default");
       }
+    } else {
+      const theme = getPreferredTheme();
+      if (theme == "dark") {
+        switchTheme("theme-monokai");
+      } else {
+        switchTheme("theme-default");
+      }
     }
 
     document.querySelectorAll('[data-bs-theme-value]')
@@ -126,8 +133,4 @@
         })
       })
   })
-
-
-  // Set a default theme on page load
-  switchTheme("theme-default");
 })()
