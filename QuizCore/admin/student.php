@@ -174,8 +174,6 @@ require_once 'header.php';
     </table>
   </div>
 </main>
-</div>
-</div>
 
 <?php
 // Include footer.

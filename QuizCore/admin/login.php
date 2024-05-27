@@ -1,8 +1,5 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
-// Start the session.
 session_start();
 
 // Check if the user is already logged in, if yes, redirect to admin page.
@@ -11,7 +8,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
   exit();
 }
 
-// Include the database connection file.
 include_once 'dbconnection.php';
 
 // Define variables and initialize with empty values.
@@ -98,11 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 
-// Close connection.
-$conn->close();
-?>
-
-<?php
 $pageTitle = "Admin Login";
 require_once 'login-header.php';
 ?>
@@ -138,7 +129,6 @@ require_once 'login-header.php';
       <span toggle="#floatingPassword" class="bi bi-eye-slash field-icon-b toggle-password"></span>
     </div>
 
-    <!-- <button class="btn btn-bd-red w-100 py-2 mt-3" type="submit">Login</button> -->
     <input id=signUpBtn type="submit" value="Login" class="mt-4 btn btn-lg btn-dark w-100 py-2">
   </form>
 
@@ -174,7 +164,6 @@ require_once 'login-header.php';
     });
   });
 
-
   // Login error alert.
   document.addEventListener('DOMContentLoaded', function() {
     const alert = document.getElementById('loginErrorAlert');
@@ -193,6 +182,6 @@ require_once 'login-header.php';
 </script>
 
 <?php
-// Include footer.
-require_once './footer.php';
+require_once './login-footer.php';
+$conn->close();
 ?>

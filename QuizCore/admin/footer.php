@@ -7,6 +7,9 @@ if (!defined('MY_APP')) {
 }
 ?>
 
+</div>
+</div>
+
 <!--footer-->
 <div class="container-fluid py-5">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -19,7 +22,9 @@ if (!defined('MY_APP')) {
 
   </footer>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

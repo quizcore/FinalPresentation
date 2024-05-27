@@ -95,8 +95,6 @@ function fetchMessages(mysqli $conn): array
     </div>
   </div>
 </main>
-</div>
-</div>
 
 <script>
   // Messages table.

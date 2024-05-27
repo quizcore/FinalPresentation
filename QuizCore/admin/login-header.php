@@ -344,21 +344,10 @@ if (!defined('MY_APP')) {
     </ul>
   </div>
 
-
   <header class="navbar sticky-top bg-red flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-
     <a class="navbar-brand me-0 px-3" href="#">
       <img src="../img/cwu-wildcat-spirit-mark-single-color-reversed.png" alt="Logo" style="height: 40px" />
     </a>
-    <!--
-    <a class="navbar-brand me-0 px-3 fs-5" href="./">Computer Science Self-Placement Exam Admin Panel</a>
-    -->
-    <a class="navbar-text mx-auto d-none d-md-block text-white p-3 text-decoration-none">
-      CS Self-Placement Exam Admin Dashboard
-    </a>
-
-    <a class="navbar-text mx-auto d-block d-md-none text-white text-decoration-none">
-      Admin Dashboard
-    </a>
-
+    <a class="navbar-text mx-auto d-none d-md-block text-white p-3 text-decoration-none">CS Self-Placement Exam Admin Dashboard</a>
+    <a class="navbar-text mx-auto d-block d-md-none text-white text-decoration-none">Admin Dashboard</a>
   </header>
