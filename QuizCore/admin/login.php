@@ -113,73 +113,82 @@ require_once 'login-header.php';
   }
 </style>
 
-<main class="form-signin w-100 m-auto">
-  <form method="post" action="login.php">
-    <!-- <img class="mb-4" src="img/cwu_wildcat_spirit_mark_rgb.png" alt="" width="80" height="80"> -->
-    <h1 class="h3 mb-3 mt-5 fw-normal">Please Login.</h1>
+<div class="container pt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card shadow-lg rounded">
+        <main class="form-signin w-100 m-auto">
+          <form method="post" action="login.php">
+            <h1 class="h3 mb-3 mt-5 fw-normal text-center fw-bold">ADMIN LOGIN</h1>
 
-    <div class="form-floating">
-      <input type="text" class="form-control rounded-3" id="floatingInput" name="email">
-      <label for="floatingInput">Email address</label>
-    </div>
+            <div class="pb-5 text-center"><i class="bi bi-person-circle" style="margin-left: -44px; font-size: 60px;"></i></div>
 
-    <div class="form-floating mt-3">
-      <input type="password" class="form-control rounded-2" id="floatingPassword" name="password">
-      <label for="floatingPassword">Password</label>
-      <span toggle="#floatingPassword" class="bi bi-eye-slash field-icon-b toggle-password"></span>
-    </div>
+            <div class="form-floating">
+              <input type="text" class="form-control rounded-3" id="floatingInput" name="email">
+              <label for="floatingInput">Email address</label>
+            </div>
 
-    <input id=signUpBtn type="submit" value="Login" class="mt-4 btn btn-lg btn-dark w-100 py-2">
-  </form>
+            <div class="form-floating mt-3">
+              <input type="password" class="form-control rounded-2" id="floatingPassword" name="password">
+              <label for="floatingPassword">Password</label>
+              <span toggle="#floatingPassword" class="bi bi-eye-slash field-icon-b toggle-password"></span>
+            </div>
 
-  <!-- Error message display -->
-  <div id='loginErrorAlert' class='alert alert-danger d-flex alert-dismissible fade mt-3' role='alert'>
-    <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Error:'>
-      <use xlink:href='#check-circle-fill' />
-    </svg>
-    <div>
-      <?= $login_err_msg ?>
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            <input id=signUpBtn type="submit" value="Login" class="mt-4 btn btn-lg btn-dark w-100 py-2">
+          </form>
+
+          <!-- Error message display -->
+          <div id='loginErrorAlert' class='alert alert-danger d-flex alert-dismissible fade mt-3' role='alert'>
+            <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Error:'>
+              <use xlink:href='#check-circle-fill' />
+            </svg>
+            <div>
+              <?= $login_err_msg ?>
+              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <script>
+        // Toggle password show/hide.
+        document.querySelectorAll(".toggle-password").forEach(function(button) {
+          button.addEventListener("click", function() {
+            // Toggle the classes for the eye icon
+            this.classList.toggle("bi-eye-slash");
+            this.classList.toggle("bi-eye");
+
+            // Get the input element based on the "toggle" attribute of the clicked element
+            var input = document.querySelector(this.getAttribute("toggle"));
+
+            // Toggle the input type between password and text
+            if (input.getAttribute("type") === "password") {
+              input.setAttribute("type", "text");
+            } else {
+              input.setAttribute("type", "password");
+            }
+          });
+        });
+
+        // Login error alert.
+        document.addEventListener('DOMContentLoaded', function() {
+          const alert = document.getElementById('loginErrorAlert');
+
+          <?php if (empty($login_err_msg)) : ?>
+            alert.classList.remove('show');
+          <?php else : ?>
+            alert.classList.add('show');
+          <?php endif; ?>
+
+          const closeButton = document.querySelector('.btn-close');
+          closeButton.addEventListener('click', function() {
+            alert.classList.remove('show');
+          });
+        });
+      </script>
     </div>
   </div>
-</main>
-
-<script>
-  // Toggle password show/hide.
-  document.querySelectorAll(".toggle-password").forEach(function(button) {
-    button.addEventListener("click", function() {
-      // Toggle the classes for the eye icon
-      this.classList.toggle("bi-eye-slash");
-      this.classList.toggle("bi-eye");
-
-      // Get the input element based on the "toggle" attribute of the clicked element
-      var input = document.querySelector(this.getAttribute("toggle"));
-
-      // Toggle the input type between password and text
-      if (input.getAttribute("type") === "password") {
-        input.setAttribute("type", "text");
-      } else {
-        input.setAttribute("type", "password");
-      }
-    });
-  });
-
-  // Login error alert.
-  document.addEventListener('DOMContentLoaded', function() {
-    const alert = document.getElementById('loginErrorAlert');
-
-    <?php if (empty($login_err_msg)) : ?>
-      alert.classList.remove('show');
-    <?php else : ?>
-      alert.classList.add('show');
-    <?php endif; ?>
-
-    const closeButton = document.querySelector('.btn-close');
-    closeButton.addEventListener('click', function() {
-      alert.classList.remove('show');
-    });
-  });
-</script>
+</div>
 
 <?php
 require_once './login-footer.php';
