@@ -6,71 +6,75 @@ session_start();
 
 // Include the database connection file.
 include_once 'dbconnection.php';
-
-$course = "";
+require_once 'functions.php';
 
 $pageTitle = "Result";
 require_once 'exam-header.php';
-// Include functions file
-require_once 'functions.php';
+?>
 
-echo "<div class='container shadow p-3 my-5 bg-body-tertiary rounded'>";
-if ($_SESSION['score'] >= 11) {
-	echo "<h3>Great job on the first half of the exam! Your performance so far has qualified you to continue with the rest of the exam.</h3><br><br>";
+<div class='container shadow p-3 my-5 bg-body-tertiary rounded'>
+	<?php if ($_SESSION['score'] >= 11) : ?>
+		<h3>Great job on the first half of the exam! Your performance so far has qualified you to continue with the rest of the exam.</h3>
+		<br><br>
 
-	//<!-- Progress bar -->
-	echo generateProgressBar(100);
+		<?= generateProgressBar(100) ?>
 
-	echo "<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>";
-	echo "<button type='button' class='btn btn-lg btn-bd-red' id='continueBtn'>Continue</button> <br />";
-	echo "</div>\n";
-	echo "<script>\n";
-	echo "  document.getElementById('continueBtn').addEventListener('click', function() {\n";
-	echo "    window.location.href = './exam-cs111-s1.php';\n";
-	echo "  });\n";
-	echo "</script>";
-} else {
-	echo "<h2>Thank you for completing the test!</h2><br><br><h3>Please talk to an advisor about your results, and to learn what course is recommended for you to take.</h3>";
-	$course = 110;
-	$score = $_SESSION['score'];
-	$email = $_COOKIE['student'];
+		<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
+			<button type='button' class='btn btn-lg btn-bd-red' id='continueBtn'>Continue</button> <br />
+		</div>
+		<script>
+			document.getElementById('continueBtn').addEventListener('click', function() {
+				window.location.href = './exam-cs111-s1.php'
+			});
+		</script>
+	<?php else : ?>
+		<h2>Thank you for completing the test!</h2>
+		<br><br>
+		<h3>Please talk to an advisor about your results, and to learn what course is recommended for you to take.</h3>
 
-	// Prepare the SQL statement with placeholders
-	$sql = "UPDATE students SET recommendation = ?, score = ? WHERE email = ?";
+		<?php
+		$course = 110;
+		$score = $_SESSION['score'];
+		$email = $_COOKIE['student'];
 
-	// Initialize a prepared statement
-	$stmt = $conn->prepare($sql);
-	if ($stmt === false) {
-		die('Prepare failed: ' . $conn->error);
-	}
+		// Prepare the SQL statement with placeholders
+		$sql = "UPDATE students SET recommendation = ?, score = ? WHERE email = ?";
 
-	// Bind the parameters to the placeholders
-	$stmt->bind_param('sis', $course, $score, $email);
+		// Initialize a prepared statement
+		$stmt = $conn->prepare($sql);
+		if ($stmt === false) {
+			die('Prepare failed: ' . $conn->error);
+		}
 
-	// Execute the prepared statement
-	if (!$stmt->execute()) {
-		die('Execute failed: ' . $stmt->error);
-	}
+		// Bind the parameters to the placeholders
+		$stmt->bind_param('sis', $course, $score, $email);
 
-	// Close the statement
-	$stmt->close();
+		// Execute the prepared statement
+		if (!$stmt->execute()) {
+			die('Execute failed: ' . $stmt->error);
+		}
 
-	//<!-- Progress bar -->
-	echo generateProgressBar(100);
+		// Close the statement
+		$stmt->close();
 
-	echo "<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>";
-	echo "<button type='button' class='btn btn-lg btn-bd-red' id='homeBtn'>Home</button> <br />";
-	echo "</div>\n";
-	echo "<script>\n";
-	echo "  document.getElementById('homeBtn').addEventListener('click', function() {\n";
-	echo "    window.location.href = './';\n";
-	echo "  });\n";
-	echo "</script>";
-}
+		//<!-- Progress bar -->
+		echo generateProgressBar(100);
+		?>
 
-echo "</div>";
+		<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
+			<button type='button' class='btn btn-lg btn-bd-red' id='quizcore-home-btn'>Home</button> <br />
+		</div>
+		<script>
+			document.getElementById('quizcore-home-btn').addEventListener('click', function() {
+				window.location.href = './';
+			});
+		</script>";
+	<?php endif; ?>
+</div>
 
+<?php
 require_once 'exam-footer.php';
 
 // Close the database connection
 $conn->close();
+?>
