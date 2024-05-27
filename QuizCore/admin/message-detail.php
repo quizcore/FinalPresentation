@@ -1,8 +1,5 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
-// Start the session.
 session_start();
 
 // Check if the user is not logged in, redirect them to the login page.
@@ -11,10 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-// Include the database connection file.
 include_once 'dbconnection.php';
-
-// Start the session.
 session_start();
 
 if (isset($_GET['id'])) {
@@ -30,6 +24,7 @@ $stmt = $conn->prepare("SELECT * FROM contact WHERE contact_id = ?");
 $stmt->bind_param("i", $messageId);
 $stmt->execute();
 $result = $stmt->get_result();
+$stmt->close();
 
 if ($result->num_rows > 0) {
   $contactDetails = $result->fetch_assoc();
@@ -70,10 +65,6 @@ require_once 'header.php';
 </main>
 
 <?php
-// Include footer.
 require_once './footer.php';
-
-// Close the statement and database connection.
-$stmt->close();
 $conn->close();
 ?>

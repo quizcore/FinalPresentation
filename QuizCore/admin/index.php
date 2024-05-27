@@ -1,8 +1,5 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
-// Start the session.
 session_start();
 
 // Check if the user is not logged in, redirect them to the login page.
@@ -11,7 +8,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-// Include the database connection file.
 include_once 'dbconnection.php';
 
 // Define the date range for the last 7 days
@@ -678,6 +674,5 @@ require_once 'header.php';
 </script>
 
 <?php
-// Include footer.
 require_once './footer.php';
 ?>
