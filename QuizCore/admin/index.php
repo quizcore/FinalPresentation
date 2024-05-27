@@ -133,7 +133,7 @@ require_once 'header.php';
             Total Students
           </div> <!-- card-header -->
           <div class="card-body">
-            <h2 id="quizcore-total-students-display">0</h2>
+            <h2 id="quizcore-total-students-display"><?= $total ?></h2>
           </div> <!-- card-body -->
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
@@ -148,7 +148,7 @@ require_once 'header.php';
             Students Signed Up Past Week
           </div> <!-- card-header -->
           <div class="card-body">
-            <h2 id="quizcore-total-students-past-week-display">0</h2>
+            <h2 id="quizcore-total-students-past-week-display"><?= $lastWeekStudents ?></h2>
           </div>
           <div class="card-footer text-muted">
             <span class="ml-3 align-self-center">
