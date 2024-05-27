@@ -11,7 +11,7 @@ The online self-placement tool assists Central Washington University students in
 * Student online site: [http://quizcore.free.nf/](http://quizcore.free.nf/)
 * Admin online site: [http://quizcore-admin.free.nf/](http://quizcore-admin.free.nf/)
 
-## Mirror 2
+## Mirror 2 (Official, use tag v1.7)
 
 * Student online site: [http://quizcore.42web.io](http://quizcore.42web.io)
 * Admin online site: [http://quizcore.42web.io/admin](http://quizcore.42web.io/admin)
