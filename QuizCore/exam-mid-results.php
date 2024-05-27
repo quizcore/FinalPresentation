@@ -32,8 +32,28 @@ if ($_SESSION['score'] >= 11) {
 } else {
 	echo "<h2>Thank you for completing the test!</h2><br><br><h3>Please talk to an advisor about your results, and to learn what course is recommended for you to take.</h3>";
 	$course = 110;
-	$res = "UPDATE students SET recommendation = '$course', score = '$_SESSION[score]' WHERE email = '$_COOKIE[student]';";
-	mysqli_query($conn, $res);
+	$score = $_SESSION['score'];
+	$email = $_COOKIE['student'];
+
+	// Prepare the SQL statement with placeholders
+	$sql = "UPDATE students SET recommendation = ?, score = ? WHERE email = ?";
+
+	// Initialize a prepared statement
+	$stmt = $conn->prepare($sql);
+	if ($stmt === false) {
+		die('Prepare failed: ' . $conn->error);
+	}
+
+	// Bind the parameters to the placeholders
+	$stmt->bind_param('sis', $course, $score, $email);
+
+	// Execute the prepared statement
+	if (!$stmt->execute()) {
+		die('Execute failed: ' . $stmt->error);
+	}
+
+	// Close the statement
+	$stmt->close();
 
 	//<!-- Progress bar -->
 	echo generateProgressBar(100);
