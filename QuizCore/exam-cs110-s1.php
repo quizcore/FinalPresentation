@@ -1,12 +1,7 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
 session_start();
-
-// Include the database connection file.
 include_once 'dbconnection.php';
-// Include functions file
 require_once 'functions.php';
 
 $_SESSION['score'] = 0;
@@ -63,8 +58,6 @@ $pageTitle = "Exam";
 require_once 'exam-header.php';
 ?>
 
-<!--Main-->
-<!--Main Div-->
 <div class="container shadow p-3 my-5 bg-body-tertiary rounded">
 	<h2>Exam Question Set: 1</h2>
 </div>
@@ -83,9 +76,6 @@ require_once 'exam-header.php';
 </div>
 
 <?php
-// Include footer.
 require_once 'exam-footer.php';
-
-// Close the database connection
 $conn->close();
 ?>

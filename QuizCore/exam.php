@@ -1,10 +1,6 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
 session_start();
-
-// Include the database connection file.
 include_once 'dbconnection.php';
 
 $canStore = True;
@@ -101,9 +97,6 @@ require_once 'exam-header.php';
 </div>
 
 <?php
-// Include footer.
 require_once 'exam-footer.php';
-
-// Close the database connection
 $conn->close();
 ?>

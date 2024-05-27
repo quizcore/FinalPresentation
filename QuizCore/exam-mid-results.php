@@ -1,13 +1,9 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
 session_start();
 
-// Include the database connection file.
 include_once 'dbconnection.php';
 require_once 'functions.php';
-
 $pageTitle = "Result";
 require_once 'exam-header.php';
 ?>
@@ -17,6 +13,7 @@ require_once 'exam-header.php';
 		<h3>Great job on the first half of the exam! Your performance so far has qualified you to continue with the rest of the exam.</h3>
 		<br><br>
 
+		<!-- Progress bar -->
 		<?= generateProgressBar(100) ?>
 
 		<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
@@ -56,10 +53,10 @@ require_once 'exam-header.php';
 
 		// Close the statement
 		$stmt->close();
-
-		//<!-- Progress bar -->
-		echo generateProgressBar(100);
 		?>
+
+		<!-- Progress bar -->
+		<?= generateProgressBar(100) ?>
 
 		<div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
 			<button type='button' class='btn btn-lg btn-bd-red' id='quizcore-home-btn'>Home</button> <br />
@@ -74,7 +71,5 @@ require_once 'exam-header.php';
 
 <?php
 require_once 'exam-footer.php';
-
-// Close the database connection
 $conn->close();
 ?>

@@ -1,7 +1,5 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
 $pageTitle = "Self-Placement Quiz";
 require_once 'header.php';
 ?>
@@ -26,6 +24,5 @@ require_once 'header.php';
 </div>
 
 <?php
-// Include footer.
 require_once 'footer.php';
 ?>

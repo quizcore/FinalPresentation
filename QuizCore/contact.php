@@ -1,10 +1,6 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
 session_start();
-
-// Include the database connection file.
 include_once 'dbconnection.php';
 
 // Check if the send button was pressed
@@ -99,10 +95,8 @@ require_once 'header.php';
     </div>
   </div>
 </div>
-<?php
-// Include footer.
-require_once 'footer.php';
 
-// Close the database connection
+<?php
+require_once 'footer.php';
 $conn->close();
 ?>
