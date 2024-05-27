@@ -32,10 +32,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$a23 = $_POST['23'];
 	$a24 = $_POST['24'];
 	$a25 = $_POST['25'];
-
 	$score = $_SESSION['score'];
-	$sql = "UPDATE students SET question_21 = $a21, question_22 = $a22, question_23 = $a23, question_24 = $a24, question_25 = $a25, score = $score WHERE email = '$_COOKIE[student]';";
-	mysqli_query($conn, $sql);
+	$email = $_COOKIE['student'];
+
+	// Prepare the SQL statement with placeholders.
+	$sql  = "UPDATE students SET question_21 = ?, question_22 = ?, question_23 = ?, question_24 = ?, question_25 = ?, score = ? WHERE email = ?";
+
+	// Initialize a prepared statement.
+	$stmt = $conn->prepare($sql);
+	if ($stmt === false) {
+		die('Prepare failed: ' . $conn->error);
+	}
+
+	// Bind the parameters to the placeholders.
+	$stmt->bind_param('iiiiiis', $a21, $a22, $a23, $a24, $a25, $score, $email);
+
+	// Execute the prepared statement.
+	if (!$stmt->execute()) {
+		die('Execute failed: ' . $stmt->error);
+	}
+
+	$stmt->close();
 
 	header("Location: exam-cs111-s3.php");
 }

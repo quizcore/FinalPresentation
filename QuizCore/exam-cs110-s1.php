@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 // Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
 
@@ -17,29 +15,47 @@ $select = "SELECT * FROM questions WHERE difficulty = '1'";
 $result = $conn->query($select);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check answers and display results
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $question_id = $row["question_id"];
-            $correct_answer = $row["question_answer"];
-            $selected_answer = $_POST["$question_id"];
+	// Check answers and display results
+	if ($result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+			$question_id = $row["question_id"];
+			$correct_answer = $row["question_answer"];
+			$selected_answer = $_POST["$question_id"];
 
-            // Check if the selected answer is correct
-            if ($selected_answer == $correct_answer) {
-                $_SESSION['score'] = $_SESSION['score'] + 1;
-            }
-        }
-    }
+			// Check if the selected answer is correct
+			if ($selected_answer == $correct_answer) {
+				$_SESSION['score'] = $_SESSION['score'] + 1;
+			}
+		}
+	}
 
 	$a1 = $_POST['1'];
 	$a2 = $_POST['2'];
 	$a3 = $_POST['3'];
 	$a4 = $_POST['4'];
 	$a5 = $_POST['5'];
-
 	$score = $_SESSION['score'];
-	$sql = "UPDATE students SET question_1 = $a1, question_2 = $a2, question_3 = $a3, question_4 = $a4, question_5 = $a5, score = $score WHERE email = '$_COOKIE[student]';";
-	mysqli_query($conn, $sql);
+	$email = $_COOKIE['student'];
+
+	// Prepare the SQL statement with placeholders.
+	$sql  = "UPDATE students SET question_1 = ?, question_2 = ?, question_3 = ?, question_4 = ?, question_5 = ?, score = ? WHERE email = ?";
+
+	// Initialize a prepared statement.
+	$stmt = $conn->prepare($sql);
+	if ($stmt === false) {
+		die('Prepare failed: ' . $conn->error);
+	}
+
+	// Bind the parameters to the placeholders.
+	$stmt->bind_param('iiiiiis', $a1, $a2, $a3, $a4, $a5, $score, $email);
+
+	// Execute the prepared statement.
+	if (!$stmt->execute()) {
+		die('Execute failed: ' . $stmt->error);
+	}
+
+	$stmt->close();
+
 	header("Location: exam-cs110-s2.php");
 }
 

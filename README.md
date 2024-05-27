@@ -68,6 +68,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Handle non-numeric value for Student ID
 * [x] Close feedback alert by default on Contact page
 * [x] Add syntax highlighting to code blocks
+* [ ] Use prepared statement instead to prevent SQL injection
 * [ ] Prevent users to reaccess the quiz page after they have completed
 
 ## Admin
@@ -106,8 +107,8 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Improve file naming consistency (lower-case for file names)
 * [x] Close database after use
 * [x] Change the database question format to markdown
+* [x] Add character limit for all text boxes
 * [ ] Filter and escape user inputs before assembling query (prevent SQL injection)
-* [ ] Add character limit for all text boxes
 
 ## Low Priority
 
