@@ -1,4 +1,13 @@
 <?php
+// In the individual PHP files, check if the constant indicating the application is defined.
+if (!defined('MY_APP')) {
+  // If the constant is not defined, redirect the user to the homepage and terminate the script.
+  header('Location: index.php');
+  exit;
+}
+?>
+
+<?php
 // Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
 
