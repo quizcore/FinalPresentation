@@ -455,15 +455,18 @@ if (!defined('MY_APP')) {
 
         <script>
           document.addEventListener("DOMContentLoaded", function() {
-            // Get current URL path.
+            // Get current URL path
             const currentPath = window.location.pathname.split('/').pop();
 
-            // Select all nav links.
+            // Handle root page case
+            const page = currentPath === '' ? 'index.php' : currentPath;
+
+            // Select all nav links
             const navLinks = document.querySelectorAll('.nav-link');
 
-            // Remove 'active' class from all links and add it to the current page link.
+            // Remove 'active' class from all links and add it to the current page link
             navLinks.forEach(link => {
-              if (link.getAttribute('href') === currentPath) {
+              if (link.getAttribute('href') === page) {
                 link.classList.add('active');
               } else {
                 link.classList.remove('active');
