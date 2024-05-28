@@ -117,12 +117,22 @@ require_once 'header.php';
 
         $cs110 = true; // Flag to indicate we're currently in CS110 section
 
-        $qSelect = "SELECT q.question_id, q.question_body, q.answer_1, q.answer_2, q.answer_3, q.answer_4, q.question_answer, quiz.selected_answer FROM quiz INNER JOIN questions q ON quiz.question_id = q.question_id WHERE quiz.student_id = $id ORDER BY q.difficulty, q.question_id;
+        $qSelect = "SELECT q.question_id, q.question_body, q.answer_1, q.answer_2, q.answer_3, q.answer_4, q.question_answer, quiz.selected_answer FROM quiz INNER JOIN questions q ON quiz.question_id = q.question_id WHERE quiz.student_id = ? ORDER BY q.difficulty, q.question_id;
  ";
-        $qResults = $conn->query($qSelect);
+        // Initialize a prepared statement.
+        $qStmt = $conn->prepare($qSelect);
+        // Bind the parameters to the placeholders.
+        $qStmt->bind_param("i", $id);
+        // Execute the prepared statement.
+        $qStmt->execute();
+        // Get the result
+        $qResult = $qStmt->get_result();
+        // Close statement.
+        $qStmt->close();
+
         $questionNum = 1;
 
-        while ($qRow = $qResults->fetch_assoc()) {
+        while ($qRow = $qResult->fetch_assoc()) {
           $number = 'question_' . $qRow["question_id"];
 
           // Insert subsection title and line only if changing sections (after CS110)
