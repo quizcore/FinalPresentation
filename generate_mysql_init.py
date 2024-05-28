@@ -4,111 +4,113 @@ import datetime
 import random
 
 
-PREAMBLE = """DROP TABLE IF EXISTS questions;
-DROP TABLE IF EXISTS students;
-DROP TABLE IF EXISTS contact;
-DROP TABLE IF EXISTS admin;
+PREAMBLE = """-- -- Query quiz answers of student with student_id = 1
+-- SELECT q.question_id, 
+--        q.question_body, 
+--        q.answer_1, 
+--        q.answer_2, 
+--        q.answer_3, 
+--        q.answer_4, 
+--        q.question_answer, 
+--        quiz.selected_answer
+-- FROM quiz
+-- INNER JOIN questions q ON quiz.question_id = q.question_id
+-- WHERE quiz.student_id = 1
+-- ORDER BY q.difficulty, q.question_id;
+
+DROP 
+  TABLE IF EXISTS quiz;
+DROP 
+  TABLE IF EXISTS questions;
+DROP 
+  TABLE IF EXISTS students;
+DROP 
+  TABLE IF EXISTS contact;
+DROP 
+  TABLE IF EXISTS admin;
+-- questions.
 CREATE TABLE IF NOT EXISTS questions(
-    question_id INT AUTO_INCREMENT,
-    difficulty INT NOT NULL,
-    question_body VARCHAR(500) NOT NULL,
-    answer_1 VARCHAR(200) NOT NULL,
-    answer_2 VARCHAR(200) NOT NULL,
-    answer_3 VARCHAR(200) NOT NULL,
-    answer_4 VARCHAR(200) NOT NULL,
-    question_answer INT NOT NULL,
-    PRIMARY KEY(question_id)
-); CREATE TABLE IF NOT EXISTS students(
-    student_id INT AUTO_INCREMENT NOT NULL,
-    sid VARCHAR(20),
-    first_name VARCHAR(40) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    dob DATE NOT NULL,
-    date_quiz_taken DATE NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    expected_term VARCHAR(20),
-    previous_education VARCHAR(100),
-    previous_classes VARCHAR(300),
-    question_1 INT,
-    question_2 INT,
-    question_3 INT,
-    question_4 INT,
-    question_5 INT,
-    question_6 INT,
-    question_7 INT,
-    question_8 INT,
-    question_9 INT,
-    question_10 INT,
-    question_11 INT,
-    question_12 INT,
-    question_13 INT,
-    question_14 INT,
-    question_15 INT,
-    question_16 INT,
-    question_17 INT,
-    question_18 INT,
-    question_19 INT,
-    question_20 INT,
-    question_21 INT,
-    question_22 INT,
-    question_23 INT,
-    question_24 INT,
-    question_25 INT,
-    question_26 INT,
-    question_27 INT,
-    question_28 INT,
-    question_29 INT,
-    question_30 INT,
-    question_31 INT,
-    question_32 INT,
-    question_33 INT,
-    question_34 INT,
-    question_35 INT,
-    score INT,
-    recommendation INT,
-    PRIMARY KEY(student_id)
-); CREATE TABLE IF NOT EXISTS admin(
-    admin_id INT AUTO_INCREMENT NOT NULL,
-    first_name VARCHAR(40) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    PASSWORD VARCHAR(60) NOT NULL,
-    students INT,
-    PRIMARY KEY(admin_id)
-); CREATE TABLE IF NOT EXISTS contact(
-    contact_id INT AUTO_INCREMENT NOT NULL,
-    contact_name VARCHAR(80) NOT NULL,
-    contact_email VARCHAR(40) NOT NULL,
-    contact_message VARCHAR(300) NOT NULL,
-    PRIMARY KEY(contact_id)
-); INSERT INTO admin(
-    first_name,
-    last_name,
-    email,
-    PASSWORD
-)
-VALUES(
-    "admin",
-    1,
-    "admin@mail.com",
-    "admin"
+  question_id INT AUTO_INCREMENT NOT NULL, 
+  difficulty INT NOT NULL, 
+  question_body VARCHAR(500) NOT NULL, 
+  answer_1 VARCHAR(200) NOT NULL, 
+  answer_2 VARCHAR(200) NOT NULL, 
+  answer_3 VARCHAR(200) NOT NULL, 
+  answer_4 VARCHAR(200) NOT NULL, 
+  question_answer INT NOT NULL, 
+  PRIMARY KEY(question_id)
 );
+-- students.
+CREATE TABLE IF NOT EXISTS students(
+  student_id INT AUTO_INCREMENT NOT NULL, 
+  sid VARCHAR(20), 
+  first_name VARCHAR(40) NOT NULL, 
+  last_name VARCHAR(50) NOT NULL, 
+  dob DATE NOT NULL, 
+  date_quiz_taken DATE NOT NULL, 
+  email VARCHAR(100) UNIQUE NOT NULL, 
+  expected_term VARCHAR(20), 
+  previous_education VARCHAR(100), 
+  previous_classes VARCHAR(300), 
+  score INT, 
+  recommendation INT, 
+  PRIMARY KEY(student_id)
+);
+-- quiz.
+CREATE TABLE IF NOT EXISTS quiz(
+  quiz_id INT AUTO_INCREMENT NOT NULL, 
+  student_id INT NOT NULL, 
+  question_id INT NOT NULL, 
+  selected_answer INT NOT NULL, 
+  PRIMARY KEY(quiz_id), 
+  FOREIGN KEY(student_id) REFERENCES students(student_id), 
+  FOREIGN KEY(question_id) REFERENCES questions(question_id)
+);
+-- admin.
+CREATE TABLE IF NOT EXISTS admin(
+  admin_id INT AUTO_INCREMENT NOT NULL, 
+  first_name VARCHAR(40) NOT NULL, 
+  last_name VARCHAR(50) NOT NULL, 
+  email VARCHAR(100) UNIQUE NOT NULL, 
+  PASSWORD VARCHAR(60) NOT NULL, 
+  PRIMARY KEY(admin_id)
+);
+-- contact.
+CREATE TABLE IF NOT EXISTS contact(
+  contact_id INT AUTO_INCREMENT NOT NULL, 
+  contact_name VARCHAR(80) NOT NULL, 
+  contact_email VARCHAR(40) NOT NULL, 
+  contact_message VARCHAR(300) NOT NULL, 
+  PRIMARY KEY(contact_id)
+);
+-- Add admins.
 INSERT INTO admin(
-    first_name,
-    last_name,
-    email,
-    PASSWORD
-)
-VALUES(
-    "admin",
-    2,
-    "admin2@mail.com",
-    "admin"
-);
-INSERT INTO contact (contact_name, contact_email, contact_message) VALUES
-('Emily White', 'emilywhite@example.com', 'I got power outage when taking the test. Can I redo it?'),
-('Michael Green', 'michaelgreen@example.com', 'I entered the wrong student ID. How can I fix it?'),
-('Laura Red', 'laurared@example.com', 'Where can I view my test result?');
+  first_name, last_name, email, PASSWORD
+) 
+VALUES 
+  (
+    "admin", 1, "admin@mail.com", "admin"
+  ), 
+  (
+    "admin", 2, "admin2@mail.com", "admin"
+  );
+-- Add contacts.
+INSERT INTO contact(
+  contact_name, contact_email, contact_message
+) 
+VALUES 
+  (
+    'Emily White', 'emilywhite@example.com', 
+    'I got power outage when taking the test. Can I redo it?'
+  ), 
+  (
+    'Michael Green', 'michaelgreen@example.com', 
+    'I entered the wrong student ID. How can I fix it?'
+  ), 
+  (
+    'Laura Red', 'laurared@example.com', 
+    'Where can I view my test result?'
+  );
 """
 
 
@@ -944,45 +946,13 @@ def add_students_to_buf(buf: list[str], students: list[Student]) -> None:
 	expected_term,
 	previous_education,
 	previous_classes,
-	question_1,
-	question_2,
-	question_3,
-	question_4,
-	question_5,
-	question_6,
-	question_7,
-	question_8,
-	question_9,
-	question_10,
-	question_11,
-	question_12,
-	question_13,
-	question_14,
-	question_15,
-	question_16,
-	question_17,
-	question_18,
-	question_19,
-	question_20,
-	question_21,
-	question_22,
-	question_23,
-	question_24,
-	question_25,
-	question_26,
-	question_27,
-	question_28,
-	question_29,
-	question_30,
-	question_31,
-	question_32,
-	question_33,
-	question_34,
-	question_35,
 	score,
 	recommendation)
 VALUES (
 """
+        )
+        st_answers, score, recommendation = analyze_st_answers(
+            QUESTIONS, st.cs110, st.cs111
         )
         buf.append(
             f"""\t{i},
@@ -995,19 +965,27 @@ VALUES (
 \t{optional_str_to_sql(st.expected_term)},
 \t{optional_str_to_sql(st.prev_education)},
 \t{optional_str_to_sql(st.prev_classes)},
-"""
-        )
-        st_answers, score, recommendation = analyze_st_answers(
-            QUESTIONS, st.cs110, st.cs111
-        )
-        for a in st_answers:
-            buf.append(f"\t{optional_int_to_sql(a)},\n")
-        buf.append(
-            f"""\t{score},
+\t{score},
 \t{recommendation}
+);
 """
         )
-        buf.append(");\n")
+        for j, a in enumerate(st_answers, start=1):
+            if a is None:
+                continue
+            buf.append(
+                f"""INSERT INTO quiz(
+\tstudent_id,
+\tquestion_id,
+\tselected_answer
+) 
+VALUES (
+\t{i},
+\t{j},
+\t{optional_int_to_sql(a)}
+);
+"""
+            )
 
 
 def main() -> None:
