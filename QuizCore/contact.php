@@ -5,17 +5,29 @@ include_once 'dbconnection.php';
 
 // Check if the send button was pressed
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = test_input($_POST['name']);
-  $email = test_input($_POST['contactEmail']);
-  $body = test_input($_POST['emailBody']);
+  $name = $_POST['name'] ?? '';
+  $email = $_POST['contactEmail'] ?? '';
+  $body = $_POST['emailBody'] ?? '';
 
-  if (strlen($name) > 0 && strlen($email) > 0  && strlen($body) > 0) {
-    $sql = "INSERT INTO contact(contact_name, contact_email, contact_message) VALUES('$name', '$email', '$body');";
-    mysqli_query($conn, $sql);
+  // Prepare the SQL statement with placeholders.
+  $sql = "INSERT INTO contact (contact_name, contact_email, contact_message) VALUES (?, ?, ?)";
 
-    // Set a flag to indicate successful submission
-    $success = true;
+  // Initialize a prepared statement.
+  $stmt = $conn->prepare($sql);
+  if ($stmt === false) {
+    die('Prepare failed: ' . $conn->error);
   }
+
+  // Bind the parameters to the placeholders.
+  $stmt->bind_param('sss', $name, $email, $body);
+
+  // Execute the prepared statement.
+  if (!$stmt->execute()) {
+    die('Execute failed: ' . $stmt->error);
+  }
+
+  $stmt->close();
+  $success = true;
 }
 
 function test_input($data)
@@ -60,7 +72,7 @@ require_once 'header.php';
       <p>
         If you have any questions or feedback, feel free to reach out to us.
       </p>
-      <div class="mt-4">
+      <div class="mt-4 mb-4">
         <form method="POST">
           <label for="name" class="form-label">Name:</label>
           <div class="input-group mb-3">
