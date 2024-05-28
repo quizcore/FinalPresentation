@@ -60,23 +60,43 @@ require_once 'header.php';
       <p>
         If you have any questions or feedback, feel free to reach out to us.
       </p>
-      <form method="POST">
-        <div class="mb-3">
-          <label for="name" class="form-label">Your Name</label>
-          <input type="text" class="form-control" name="name" id="name" maxlength="70" required />
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" name="contactEmail" id="email" maxlength="30" required />
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" name="emailBody" rows="5" oninput="limitTextAreaCharacterLimit(this, 290)" required></textarea>
-        </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <input type="submit" class="btn btn-bd-red btn-lg px-4" value="Send">
-        </div>
-      </form><br />
+      <div class="mt-4">
+        <form method="POST">
+          <label for="name" class="form-label">Name:</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="bi bi-person-fill"></i>
+            </span>
+            <input type="text" class="form-control" name="name" id="name" maxlength="70" placeholder="e.g. Dave Hall" required />
+            <!-- tooltip -->
+            <span class="input-group-text">
+              <span class="quizcore-tooltip" data-bs-placement="bottom" title="FirstName LastName">
+                <i class="bi bi-question-circle text-muted"></i>
+              </span>
+            </span>
+          </div>
+          <label for="email" class="form-label">Email Address:</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <i class="bi bi-envelope-fill"></i>
+            </span>
+            <input type="email" class="form-control" name="contactEmail" id="email" maxlength="30" placeholder="e.g. dave.hall@mail.com" required />
+            <!-- tooltip -->
+            <span class="input-group-text">
+              <span class="quizcore-tooltip" data-bs-placement="bottom" title="Enter an email address for us to respond to.">
+                <i class="bi bi-question-circle text-muted"></i>
+              </span>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message:</label>
+            <textarea class="form-control" id="message" name="emailBody" rows="5" oninput="limitTextAreaCharacterLimit(this, 290)" placeholder="Please keep your text within a maximum of 290 characters" required></textarea>
+          </div>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <input type="submit" class="btn btn-bd-red btn-lg px-4" value="Send">
+          </div>
+        </form>
+      </div>
 
       <!-- Success message display -->
       <div id='myAlert' class='alert alert-success d-flex alert-dismissible fade' role='alert'>
@@ -91,7 +111,7 @@ require_once 'header.php';
 
     </div>
     <div class="col-md-6 mt-3">
-      <img src="./img/cwu-brand.jpeg" class="img-fluid rounded-5" alt="Contact Us Image">
+      <img src="./img/cwu-brand.jpeg" class="img-fluid rounded-3" alt="Contact Us Image">
     </div>
   </div>
 </div>
