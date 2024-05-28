@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
   $contactDetails = $result->fetch_assoc();
   // Display contact data using $contactDetails
 } else {
-  echo "Contact not found.";  // Handle case where default contact is not found
+  die("Message (id = " . $messageId . ") not found");
 }
 
 // Set page title
