@@ -18,6 +18,12 @@ PREAMBLE = """-- -- Query quiz answers of student with student_id = 1
 -- WHERE quiz.student_id = 1
 -- ORDER BY q.difficulty, q.question_id;
 
+-- -- Count numer of answers with specified student_id and difficulty
+-- SELECT COUNT(*)
+-- FROM quiz q
+-- JOIN questions qs ON q.question_id = qs.question_id
+-- WHERE q.student_id = 0 AND qs.difficulty = 2;
+
 DROP 
   TABLE IF EXISTS quiz;
 DROP 
