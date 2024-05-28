@@ -18,7 +18,7 @@ function displayQuestions($result)
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo '<div class="container shadow p-3 my-5 bg-body-tertiary rounded">';
+            echo '<div class="container shadow p-3 my-5 bg-body-tertiary rounded fs-5">';
             echo '<div id="question-body-' . $row["question_id"] . '">';
             echo '  <script>document.getElementById("question-body-'  . $row["question_id"] . '").innerHTML=marked.parse(`' . prepareScriptInput($row["question_body"]) . '`);</script>';
             echo '</div>';
