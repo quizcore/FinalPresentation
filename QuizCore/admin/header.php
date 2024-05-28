@@ -452,3 +452,22 @@ if (!defined('MY_APP')) {
             </div>
           </div>
         </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            // Get current URL path.
+            const currentPath = window.location.pathname.split('/').pop();
+
+            // Select all nav links.
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Remove 'active' class from all links and add it to the current page link.
+            navLinks.forEach(link => {
+              if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          });
+        </script>
