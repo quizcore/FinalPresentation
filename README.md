@@ -11,7 +11,7 @@ The online self-placement tool assists Central Washington University students in
 * Student online site: [http://quizcore.free.nf/](http://quizcore.free.nf/)
 * Admin online site: [http://quizcore-admin.free.nf/](http://quizcore-admin.free.nf/)
 
-## Mirror 2 (Official, use tag v1.7)
+## Mirror 2 (Official, use tag v1.8)
 
 * Student online site: [http://quizcore.42web.io](http://quizcore.42web.io)
 * Admin online site: [http://quizcore.42web.io/admin](http://quizcore.42web.io/admin)
@@ -68,6 +68,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Handle non-numeric value for Student ID
 * [x] Close feedback alert by default on Contact page
 * [x] Add syntax highlighting to code blocks
+* [x] Randomly select questions from the database
 * [ ] Use prepared statement instead to prevent SQL injection
 * [ ] Prevent users to reaccess the quiz page after they have completed
 
@@ -110,6 +111,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Close database after use
 * [x] Change the database question format to markdown
 * [x] Add character limit for all text boxes
+* [x] Redesign the database
 * [ ] Filter and escape user inputs before assembling query (prevent SQL injection)
 
 ## Low Priority
