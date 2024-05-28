@@ -100,6 +100,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Fix graph resizing on small screen (mobile device)
 * [x] Improve login form aesthetics
 * [x] Fix navigation focus
+* [x] Set border width of line graph to 1
 * [ ] Hash password
 
 ## Both

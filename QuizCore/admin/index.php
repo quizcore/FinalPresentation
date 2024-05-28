@@ -417,7 +417,7 @@ require_once 'header.php';
       // },
       responsive: true,
       maintainAspectRatio: false,
-      borderWidth: 0,
+      borderWidth: 1,
       scales: {
         x: {
           type: 'time',
