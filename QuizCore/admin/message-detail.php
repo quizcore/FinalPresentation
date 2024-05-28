@@ -8,7 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 session_start();
 
 if (isset($_GET['id'])) {

@@ -8,7 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 
 // Define the date range for the last 7 days
 $today = date("Y-m-d");

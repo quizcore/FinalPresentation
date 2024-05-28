@@ -2,7 +2,7 @@
 define('MY_APP', true);
 session_start();
 
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 require_once 'functions.php';
 $pageTitle = "Result";
 require_once 'exam-header.php';

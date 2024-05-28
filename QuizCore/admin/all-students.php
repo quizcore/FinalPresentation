@@ -11,8 +11,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-// Include the database connection file.
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 
 $result = $conn->query("SELECT * FROM students");
 

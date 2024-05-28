@@ -1,11 +1,5 @@
 <?php
-
-declare(strict_types=1);
-
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
-// Start the session.
 session_start();
 
 // Check if the user is not logged in, redirect them to the login page.
@@ -14,11 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-// Include the database connection file.
-include_once 'dbconnection.php';
-
-$pageTitle = "Contact Messages";
-require_once 'header.php';
+require_once 'dbconnection.php';
 
 // Fetch messages from the database
 $messages = fetchMessages($conn);
@@ -46,6 +36,9 @@ function fetchMessages(mysqli $conn): array
 
   return $messages;
 }
+
+$pageTitle = "Contact Messages";
+require_once 'header.php';
 ?>
 
 <!--Main-->

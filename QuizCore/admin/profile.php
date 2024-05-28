@@ -12,7 +12,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 // Include the database connection file.
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 
 // Fetch the admin data
 $select = "SELECT * FROM admin WHERE email = ?";

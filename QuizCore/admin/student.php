@@ -1,8 +1,5 @@
 <?php
-// Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
 define('MY_APP', true);
-
-// Start the session.
 session_start();
 
 // Check if the user is not logged in, redirect them to the login page.
@@ -11,8 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   exit();
 }
 
-// Include the database connection file.
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 
 // Default student ID
 $id = isset($_GET['id']) ? $_GET['id'] : 1;
@@ -28,12 +24,9 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
-  // Display student data using $row (existing logic)
 } else {
   echo "Student not found.";  // Handle case where default student is not found
 }
-
-// Rest of your code to display student information using $row
 
 $pageTitle = "Student Details";
 require_once 'header.php';

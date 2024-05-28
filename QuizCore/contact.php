@@ -1,7 +1,7 @@
 <?php
 define('MY_APP', true);
 session_start();
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 
 // Check if the send button was pressed
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

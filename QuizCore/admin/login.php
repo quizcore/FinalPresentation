@@ -8,7 +8,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]) {
   exit();
 }
 
-include_once 'dbconnection.php';
+require_once 'dbconnection.php';
 
 // Define variables and initialize with empty values.
 $email = $password = "";
