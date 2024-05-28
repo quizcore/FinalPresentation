@@ -12,20 +12,23 @@ require_once 'dbconnection.php';
 
 // Default student ID
 $id = isset($_GET['id']) ? $_GET['id'] : 1;
-// Prepare the SQL statement
+// Prepare the SQL statement with placeholders.
 $select = "SELECT * FROM students WHERE student_id = ?;";
+// Initialize a prepared statement.
 $stmt = $conn->prepare($select);
-// Bind parameters
+// Bind the parameters to the placeholders.
 $stmt->bind_param("i", $id);
-// Execute the statement
+// Execute the prepared statement.
 $stmt->execute();
 // Get the result
 $result = $stmt->get_result();
+// Close statement.
+$stmt->close();
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
 } else {
-  echo "Student not found.";  // Handle case where default student is not found
+  die("Student (id = " . $id . ") not found");
 }
 
 $pageTitle = "Student Details";
@@ -169,9 +172,6 @@ require_once 'header.php';
 </main>
 
 <?php
-// Include footer.
 require_once './footer.php';
-
-// Close the database connection
 $conn->close();
 ?>
