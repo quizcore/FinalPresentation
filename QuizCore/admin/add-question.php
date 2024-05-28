@@ -1,11 +1,12 @@
 <?php
-// In the individual PHP files, check if the constant indicating the application is defined.
-if (!defined('MY_APP')) {
-  // If the constant is not defined, redirect the user to the homepage and terminate the script.
-  header('Location: index.php');
-  exit;
-}
+// // In the individual PHP files, check if the constant indicating the application is defined.
+// if (!defined('MY_APP')) {
+//   // If the constant is not defined, redirect the user to the homepage and terminate the script.
+//   header('Location: index.php');
+//   exit;
+// }
 ?>
+
 
 <?php
 // Define a constant in the main application file to serve as a flag indicating that the application is being accessed.
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && is
   if (empty($question_body)) {
     array_push($errors, "Question body is required.");
   }
-  if (empty($answer_1) || empty($answer_2) || empty($answer_3) || empty($answer_4)) {
+  if (trim($answer_1) === '' || trim($answer_2) === '' || trim($answer_3) === '' || trim($answer_4) === '') {
     array_push($errors, "Please provide all answer choices.");
   }
   if (empty($question_answer)) {
@@ -195,7 +196,7 @@ require_once 'header.php';
       // Loop through answers and create options
       answers.forEach(function(answer, index) {
         var option = document.createElement("option");
-        option.value = answer;
+        option.value = index;
         option.text = "Answer " + (index + 1) + ": " + answer;
         selectElement.appendChild(option);
       });
