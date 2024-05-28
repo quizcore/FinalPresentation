@@ -94,11 +94,11 @@ require_once 'exam-header.php';
 										}
 									}
 								</script>
-								<textarea type="text" class="form-control" name="education" id="floatingInput" placeholder="Separate universities with commas (e.g., University of Central California, MIT" rows="4" cols="50" oninput="limitTextAreaCharacterLimit(this, 90)"></textarea>
+								<textarea type="text" class="form-control" name="education" id="floatingInput" placeholder="Separate universities with commas (e.g., Highline College, UW)" rows="4" cols="50" oninput="limitTextAreaCharacterLimit(this, 90)"></textarea>
 							</div>
 							<div class="form-group mb-3">
 								<label for="classes">Previous Computer Science Courses</label>
-								<textarea class="form-control" name="classes" id="floatingPassword" placeholder="List each course on a new line, including course code (e.g., CS-101) and course name (e.g., Introduction to Computer Science)" rows="6" cols="50" oninput="limitTextAreaCharacterLimit(this, 290)"></textarea>
+								<textarea class="form-control" name="classes" id="floatingPassword" placeholder="List each course on a new line, including course code (e.g., CS101) and course name (e.g., Introduction to Computer Science)" rows="6" cols="50" oninput="limitTextAreaCharacterLimit(this, 290)"></textarea>
 							</div>
 						</div>
 					</div>
