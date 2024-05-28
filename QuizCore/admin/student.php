@@ -124,21 +124,13 @@ require_once 'header.php';
 
         while ($qRow = $qResults->fetch_assoc()) {
           $number = 'question_' . $qRow["question_id"];
-          // $questionId = $qRow["question_id"];
-
-          // Determine subsection (CS110 or CS111) based on question ID range
-          if ($questionNum <= 15) {
-            $subsection = "CS110";
-          } else {
-            $subsection = "CS111";
-          }
 
           // Insert subsection title and line only if changing sections (after CS110)
-          if ($cs110 && $subsection === "CS111") {
+          if ($cs110 && $questionNum > 15) {
             echo '<tr>';
-            echo '<th colspan="4" class="text-center">' . $subsection . '</th>';
+            echo '<th colspan="4" class="text-center">CS111</th>';
             echo '</tr>';
-            echo '<hr>'; // Add horizontal line for separation
+            echo '<hr>';
             $cs110 = false; // Update flag after first CS110 section
           }
 
