@@ -1,13 +1,12 @@
 <?php
-// Enable error reporting
-error_reporting(E_ALL);
-
-// Display errors to the screen
-ini_set('display_errors', 1);
 define('MY_APP', true);
 session_start();
 require_once 'dbconnection.php';
 require_once 'functions.php';
+
+if (!checkExamSectionDone($conn, 3)) {
+	die('You have taken this section');
+}
 
 // Fetch questions.
 $select = "SELECT * FROM questions WHERE difficulty = 3 ORDER BY RAND() LIMIT 5";

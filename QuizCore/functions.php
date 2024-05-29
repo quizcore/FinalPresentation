@@ -92,6 +92,38 @@ function processStudentAnswers($conn)
     }
 }
 
+function checkExamSectionDone($conn, $difficulty)
+{
+    $studentID = getStudentID($conn);
+
+    $diffCountQuery = "SELECT COUNT(*) AS quiz_count FROM quiz q JOIN questions qs ON q.question_id = qs.question_id WHERE q.student_id = ? AND qs.difficulty = ?";
+    $diffCountStmt = $conn->prepare($diffCountQuery);
+    if ($diffCountStmt === false) {
+        die('Prepare failed: ' . $conn->error);
+    }
+    $diffCountStmt->bind_param('ii', $studentID, $difficulty);
+    if (!$diffCountStmt->execute()) {
+        die('Execute failed: ' . $diffCountStmt->error);
+    }
+    $diffCountResult = $diffCountStmt->get_result();
+    $diffCountStmt->close();
+    $diffCount = $diffCountResult->fetch_assoc()["quiz_count"];
+
+    if ($diffCount == 0) {
+        return true;
+    }
+
+    return false;
+}
+
+function getStudentID($conn)
+{
+    $email = $_COOKIE['student'];
+    $studentIDSelect = "SELECT student_id FROM students WHERE email = '$email'";
+    $studentIDResult = $conn->query($studentIDSelect);
+    return intval($studentIDResult->fetch_assoc()["student_id"]);
+}
+
 function getStudentScore($conn)
 {
     $email = $_COOKIE['student'];

@@ -4,6 +4,10 @@ session_start();
 require_once 'dbconnection.php';
 require_once 'functions.php';
 
+if (!checkExamSectionDone($conn, 4)) {
+	die('You have taken this section');
+}
+
 // Fetch questions.
 $select = "SELECT * FROM questions WHERE difficulty = 4 ORDER BY RAND() LIMIT 5";
 $result = $conn->query($select);

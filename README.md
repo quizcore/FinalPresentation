@@ -69,6 +69,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Close feedback alert by default on Contact page
 * [x] Add syntax highlighting to code blocks
 * [x] Randomly select questions from the database
+* [x] Prevent user to revisit completed sections
 * [ ] Use prepared statement instead to prevent SQL injection
 * [ ] Prevent users to reaccess the quiz page after they have completed
 
