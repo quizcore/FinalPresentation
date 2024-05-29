@@ -5,7 +5,7 @@ require_once 'dbconnection.php';
 require_once 'functions.php';
 
 if (!checkExamSectionDone($conn, 3)) {
-	die('You have taken this section');
+	die('You have taken this section.');
 }
 
 // Fetch questions.

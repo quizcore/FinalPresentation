@@ -4,6 +4,11 @@ session_start();
 
 require_once 'dbconnection.php';
 require_once 'functions.php';
+
+if (!checkCS111Accessible($conn)) {
+	die('CS111 exam sections are not available based on your score.');
+}
+
 $pageTitle = "Result";
 require_once 'exam-header.php';
 ?>

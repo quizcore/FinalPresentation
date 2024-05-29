@@ -37,8 +37,7 @@ The online self-placement tool assists Central Washington University students in
 * Student view: Open a browser and go to the URL [http://localhost/FinalPresentation/quizcore](http://localhost/FinalPresentation/quizcore)
 * Admin view: Open a browser and go to the URL [http://localhost/FinalPresentation/quizcore/admin/](http://localhost/FinalPresentation/quizcore/admin/)
 
-Tip: If your XAMPP database cannot start, there might be other database that takes up that port 3306. Make sure to kill all the processes that take up the port and try to start the XAMPP database again.
-For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the port 3306.
+fga2`For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the port 3306.
 
 # ROADMAP
 
@@ -70,6 +69,7 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Add syntax highlighting to code blocks
 * [x] Randomly select questions from the database
 * [x] Prevent user to revisit completed sections
+* [x] Prevent user to access CS111 sections if score is low
 * [ ] Use prepared statement instead to prevent SQL injection
 * [ ] Prevent users to reaccess the quiz page after they have completed
 

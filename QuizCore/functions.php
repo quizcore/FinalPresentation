@@ -116,6 +116,14 @@ function checkExamSectionDone($conn, $difficulty)
     return false;
 }
 
+function checkCS111Accessible($conn) {
+    $score = getStudentScore($conn);
+    if ($score >= 11) {
+        return true;
+    }
+    return false;
+}
+
 function getStudentID($conn)
 {
     $email = $_COOKIE['student'];
