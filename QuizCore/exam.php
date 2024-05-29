@@ -85,15 +85,38 @@ require_once 'exam-header.php';
 
 			<input id=signUpBtn type="submit" value="Sign Up" class="mt-4 btn btn-lg btn-dark w-100 py-2">
 
-			<?php
-			if ($canStore === False) {
-				echo "<h3>Our records show that you have already completed the test</h3>";
-			}
-			?>
+			<!-- message display -->
+			<br />
+			<br />
+			<div id='myAlert' class='alert alert-danger d-flex alert-dismissible fade' role='alert'>
+				<svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
+					<use xlink:href='#check-circle-fill' />
+				</svg>
+				<div>
+					Our records show that you have already completed the test
+					<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+				</div>
+			</div>
 		</form>
 	</div>
-</div>
 
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const alert = document.querySelector('.alert');
+
+		<?php if ($canStore === False) : ?>
+			alert.classList.add('show');
+		<?php else : ?>
+			alert.classList.remove('show');
+		<?php endif; ?>
+
+		const closeButton = document.querySelector('.btn-close');
+		closeButton.addEventListener('click', function() {
+			alert.classList.remove('show');
+		});
+	});
+</script>
 <?php
 require_once 'exam-footer.php';
 $conn->close();
