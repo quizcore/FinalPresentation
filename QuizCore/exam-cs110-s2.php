@@ -8,6 +8,10 @@ if (!checkExamSectionDone($conn, 2)) {
 	die('You have taken this section.');
 }
 
+if (!checkCS110Accessible($conn)) {
+	die('CS110 exam sections are not available if the user has not signed up.');
+}
+
 // Fetch questions.
 $select = "SELECT * FROM questions WHERE difficulty = 2 ORDER BY RAND() LIMIT 5";
 $result = $conn->query($select);

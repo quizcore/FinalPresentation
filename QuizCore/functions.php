@@ -116,7 +116,31 @@ function checkExamSectionDone($conn, $difficulty)
     return false;
 }
 
-function checkCS111Accessible($conn) {
+function checkCS110Accessible($conn)
+{
+    $email = $_COOKIE['student'];
+    if (isset($email) && $email !== '') {
+        $query = "SELECT COUNT(*) AS email_count FROM students WHERE email = ?";
+        $stmt = $conn->prepare($query);
+        if ($stmt === false) {
+            die('Prepare failed: ' . $conn->error);
+        }
+        $stmt->bind_param('s', $email);
+        if (!$stmt->execute()) {
+            die('Execute failed: ' . $stmt->error);
+        }
+        $result = $stmt->get_result();
+        $stmt->close();
+        $count = $result->fetch_assoc()["email_count"];
+        if ($count > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkCS111Accessible($conn)
+{
     $score = getStudentScore($conn);
     if ($score >= 11) {
         return true;

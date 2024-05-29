@@ -70,8 +70,8 @@ fga2`For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use th
 * [x] Randomly select questions from the database
 * [x] Prevent user to revisit completed sections
 * [x] Prevent user to access CS111 sections if score is low
+* [x] Prevent users to access CS110 sections if they have not signed up
 * [ ] Use prepared statement instead to prevent SQL injection
-* [ ] Prevent users to reaccess the quiz page after they have completed
 
 ## Admin
 
