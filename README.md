@@ -102,6 +102,12 @@ fga2`For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use th
 * [x] Improve login form aesthetics
 * [x] Fix navigation focus
 * [x] Set border width of line graph to 1
+* [x] Implement column filtering for student table
+* [x] Implement column filtering for message table
+* [x] Open student detail in new tab
+* [x] Open message detail in new tab
+* [ ] Add all-questions.php
+* [ ] Ability to minimize the navigation bar
 * [ ] Hash password
 
 ## Both
