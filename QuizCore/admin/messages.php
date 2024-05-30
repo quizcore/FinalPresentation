@@ -80,6 +80,14 @@ require_once 'header.php';
                     </tr>
                   <?php endif; ?>
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                  </tr>
+                </tfoot>
               </table>
             </div>
           </div>
@@ -92,23 +100,46 @@ require_once 'header.php';
 <script>
   // Messages table.
   document.addEventListener('DOMContentLoaded', function() {
-    new DataTable('#quizcore-messages-table', {
+    // Setup - add a text input to each footer cell
+    $('#quizcore-messages-table tfoot th').each(function(i) {
+      var $headerTh = $('#quizcore-messages-table thead th').eq($(this).index());
+      var title = $headerTh.text();
+      var headerWidth = $headerTh.width(); // Get the width of the corresponding header cell
+
+      $(this).html(
+        '<input type="text" placeholder="' + title + '" data-index="' + i + '" style="width: ' + headerWidth + 'px;"/>'
+      );
+    });
+
+    /** @type {HTMLElement} */
+    const quizcoreStudentsTable = document.querySelector('#quizcore-messages-table');
+
+    const table = new DataTable(quizcoreStudentsTable, {
       scrollY: "100vh",
       scrollX: true,
       scrollCollapse: true,
     });
+
+    // Filter event handler
+    $(table.table().container()).on('keyup', 'tfoot input', function() {
+      table
+        .column($(this).data('index'))
+        .search(this.value)
+        .draw();
+    });
   });
 
-  // redirectToStudentPage
-  const tableRows = document.querySelectorAll('tr[data-message-id]'); // Select rows with data-message-id attribute
+  /** @type {NodeListOf<HTMLTableRowElement>} */
+  const tableRows = document.querySelectorAll('tr[data-message-id]');
 
   tableRows.forEach(row => {
     row.addEventListener('click', (event) => {
-      // Get the contact ID from the data attribute with updated name
-      const contactId = row.dataset.messageId;
+      // Get the message ID from the data attribute
+      /** @type {string} */
+      const messageId = row.dataset.messageId;
 
-      // Redirect to student info page with ID parameter
-      window.location.href = `message-detail.php?id=${contactId}`;
+      // Open the message info page in a new tab with the ID parameter
+      window.open(`message-detail.php?id=${messageId}`, '_blank');
     });
   });
 </script>
