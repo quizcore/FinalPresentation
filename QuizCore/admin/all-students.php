@@ -163,8 +163,8 @@ require_once 'header.php';
       /** @type {string} */
       const studentId = row.dataset.studentId;
 
-      // Redirect to student info page with ID parameter
-      window.location.href = `student.php?id=${studentId}`;
+      // Open the student info page in a new tab with the ID parameter
+      window.open(`student.php?id=${studentId}`, '_blank');
     });
   });
 </script>
