@@ -253,10 +253,11 @@ require_once 'header.php';
     </div> <!-- row -->
   </div> <!-- container-fluid -->
 
-  <!-- Course Description. -->
+  <!-- Pie chart & Course Description. -->
   <div class="container-fluid mt-4">
     <div class="row">
-      <div class="col-xl-12 col-xxl-12 col-sm-12">
+      <!-- Course Description. -->
+      <div class="col-xl-6 col-xxl-6 col-sm-12 mb-6">
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Course Recommendation Criteria</h3>
@@ -285,13 +286,8 @@ require_once 'header.php';
           </div> <!-- card-body -->
         </div> <!-- card -->
       </div> <!-- col -->
-    </div> <!-- row -->
-  </div> <!-- container-fluid -->
-
-  <!-- Pie chart -->
-  <div class="container-fluid mt-4">
-    <div class="row">
-      <div class="col-xl-12 col-xxl-12 col-sm-12">
+      <!-- Pie chart . -->
+      <div class="col-xl-6 col-xxl-6 col-sm-12 mb-6">
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Course Recommendations</h3>
