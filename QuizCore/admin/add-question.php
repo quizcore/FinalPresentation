@@ -43,7 +43,12 @@ $errors = array(); // Array to store any errors
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && isset($_POST["question_body_code"]) && isset($_POST["answer_1"]) && isset($_POST["answer_2"]) && isset($_POST["answer_3"]) && isset($_POST["answer_4"])) {
   // Sanitize user input to prevent SQL injection
   $question_body = mysqli_real_escape_string($conn, $_POST["question_body"]);
-  $question_body_code = "\n```java\n" . mysqli_real_escape_string($conn, $_POST["question_body_code"]) . "\n```";
+  // Check if question_body_code is not empty and set it accordingly
+  if (!empty($_POST["question_body_code"])) {
+    $question_body_code = "\n```java\n" . mysqli_real_escape_string($conn, $_POST["question_body_code"]) . "\n```";
+  } else {
+    $question_body_code = "";
+  }
   $answer_1 = mysqli_real_escape_string($conn, $_POST["answer_1"]);
   $answer_2 = mysqli_real_escape_string($conn, $_POST["answer_2"]);
   $answer_3 = mysqli_real_escape_string($conn, $_POST["answer_3"]);
@@ -51,10 +56,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && is
   $question_answer = mysqli_real_escape_string($conn, $_POST["question_answer"]);
   $difficulty = isset($_POST["difficulty"]) ? (int) $_POST["difficulty"] : 1; // Set default if not set
 
-    // Check if question_body_code is not empty and append it to question_body
-    if (!empty($question_body_code)) {
-      $question_body .= " " . $question_body_code;
-    }
+  // Check if the checkboxes are checked and wrap answers with backticks accordingly
+  $answer_1_code = isset($_POST["answer_1_code"]) ? true : false;
+  $answer_2_code = isset($_POST["answer_2_code"]) ? true : false;
+  $answer_3_code = isset($_POST["answer_3_code"]) ? true : false;
+  $answer_4_code = isset($_POST["answer_4_code"]) ? true : false;
+
+  // Wrap answers with backticks if checkboxes are checked
+  if ($answer_1_code) {
+    $answer_1 = "`" . $answer_1 . "`";
+  }
+  if ($answer_2_code) {
+    $answer_2 = "`" . $answer_2 . "`";
+  }
+  if ($answer_3_code) {
+    $answer_3 = "`" . $answer_3 . "`";
+  }
+  if ($answer_4_code) {
+    $answer_4 = "`" . $answer_4 . "`";
+  }
+
+  // Check if question_body_code is not empty and append it to question_body
+  if (!empty($question_body_code)) {
+    $question_body .= " " . $question_body_code;
+  }
   // Validate form input
   if (empty($question_body)) {
     array_push($errors, "Question body is required.");
@@ -121,21 +146,40 @@ require_once 'header.php';
       <textarea class="form-control" id="question_body" name="question_body" rows="2" required><?php echo $question_body; ?></textarea>
     </div>
     <div class="mb-3">
-    <label for="question_body_code" class="form-label">Question Body Code:</label>
-    <textarea class="form-control" id="question_body_code" name="question_body_code" rows="4"><?php echo $question_body_code; ?></textarea>
-</div>
+      <label for="question_body_code" class="form-label">Question Body Code:</label>
+      <textarea class="form-control" id="question_body_code" name="question_body_code" rows="4"><?php echo $question_body_code; ?></textarea>
+    </div>
 
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="answer_1_code" name="answer_1_code">
+      <label class="form-check-label" for="answer_1_code">Answer 1 in code format</label>
+    </div>
     <div class="mb-3">
       <label for="answer_1" class="form-label">Answer 1:</label>
       <input type="text" class="form-control" id="answer_1" name="answer_1" required>
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="answer_2_code" name="answer_2_code">
+      <label class="form-check-label" for="answer_2_code">Answer 2 in code format</label>
     </div>
     <div class="mb-3">
       <label for="answer_2" class="form-label">Answer 2:</label>
       <input type="text" class="form-control" id="answer_2" name="answer_2" required>
     </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="answer_3_code" name="answer_3_code">
+      <label class="form-check-label" for="answer_3_code">Answer 3 in code format</label>
+    </div>
     <div class="mb-3">
       <label for="answer_3" class="form-label">Answer 3:</label>
       <input type="text" class="form-control" id="answer_3" name="answer_3" required>
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="answer_4_code" name="answer_4_code">
+      <label class="form-check-label" for="answer_4_code">Answer 4 in code format</label>
     </div>
     <div class="mb-3">
       <label for="answer_4" class="form-label">Answer 4:</label>
