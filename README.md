@@ -37,8 +37,7 @@ The online self-placement tool assists Central Washington University students in
 * Student view: Open a browser and go to the URL [http://localhost/FinalPresentation/quizcore](http://localhost/FinalPresentation/quizcore)
 * Admin view: Open a browser and go to the URL [http://localhost/FinalPresentation/quizcore/admin/](http://localhost/FinalPresentation/quizcore/admin/)
 
-Tip: If your XAMPP database cannot start, there might be other database that takes up that port 3306. Make sure to kill all the processes that take up the port and try to start the XAMPP database again.
-For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the port 3306.
+fga2`For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the port 3306.
 
 # ROADMAP
 
@@ -69,8 +68,10 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Close feedback alert by default on Contact page
 * [x] Add syntax highlighting to code blocks
 * [x] Randomly select questions from the database
+* [x] Prevent user to revisit completed sections
+* [x] Prevent user to access CS111 sections if score is low
+* [x] Prevent users to access CS110 sections if they have not signed up
 * [ ] Use prepared statement instead to prevent SQL injection
-* [ ] Prevent users to reaccess the quiz page after they have completed
 
 ## Admin
 
@@ -101,6 +102,12 @@ For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use the por
 * [x] Improve login form aesthetics
 * [x] Fix navigation focus
 * [x] Set border width of line graph to 1
+* [x] Implement column filtering for student table
+* [x] Implement column filtering for message table
+* [x] Open student detail in new tab
+* [x] Open message detail in new tab
+* [ ] Add all-questions.php
+* [ ] Ability to minimize the navigation bar
 * [ ] Hash password
 
 ## Both

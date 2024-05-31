@@ -1,13 +1,16 @@
 <?php
-// Enable error reporting
-error_reporting(E_ALL);
-
-// Display errors to the screen
-ini_set('display_errors', 1);
 define('MY_APP', true);
 session_start();
 require_once 'dbconnection.php';
 require_once 'functions.php';
+
+if (!checkExamSectionDone($conn, 3)) {
+	die('You have taken this section.');
+}
+
+if (!checkCS110Accessible($conn)) {
+	die('CS110 exam sections are not available if the user has not signed up.');
+}
 
 // Fetch questions.
 $select = "SELECT * FROM questions WHERE difficulty = 3 ORDER BY RAND() LIMIT 5";

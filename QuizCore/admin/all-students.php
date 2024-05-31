@@ -98,6 +98,21 @@ require_once 'header.php';
                 $result->free();
                 ?>
               </tbody>
+              <tfoot>
+                <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Date Of Birth</th>
+                  <th>Date Taken</th>
+                  <th>Recommendation</th>
+                  <th>Start Term</th>
+                  <th>CWU ID</th>
+                  <th>Previous College</th>
+                  <th>Relevant CS Courses</th>
+                </tr>
+              </tfoot>
             </table>
           </div>
         </div>
@@ -109,13 +124,32 @@ require_once 'header.php';
 <script>
   // Students table.
   document.addEventListener('DOMContentLoaded', function() {
+    // Setup - add a text input to each footer cell
+    $('#quizcore-students-table tfoot th').each(function(i) {
+      var $headerTh = $('#quizcore-students-table thead th').eq($(this).index());
+      var title = $headerTh.text();
+      var headerWidth = $headerTh.width(); // Get the width of the corresponding header cell
+
+      $(this).html(
+        '<input type="text" placeholder="' + title + '" data-index="' + i + '" style="width: ' + headerWidth + 'px;"/>'
+      );
+    });
+
     /** @type {HTMLElement} */
     const quizcoreStudentsTable = document.querySelector('#quizcore-students-table');
 
-    new DataTable(quizcoreStudentsTable, {
+    const table = new DataTable(quizcoreStudentsTable, {
       scrollY: "100vh",
       scrollX: true,
       scrollCollapse: true,
+    });
+
+    // Filter event handler
+    $(table.table().container()).on('keyup', 'tfoot input', function() {
+      table
+        .column($(this).data('index'))
+        .search(this.value)
+        .draw();
     });
   });
 
@@ -129,8 +163,8 @@ require_once 'header.php';
       /** @type {string} */
       const studentId = row.dataset.studentId;
 
-      // Redirect to student info page with ID parameter
-      window.location.href = `student.php?id=${studentId}`;
+      // Open the student info page in a new tab with the ID parameter
+      window.open(`student.php?id=${studentId}`, '_blank');
     });
   });
 </script>

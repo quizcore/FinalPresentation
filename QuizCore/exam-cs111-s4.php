@@ -4,6 +4,14 @@ session_start();
 require_once 'dbconnection.php';
 require_once 'functions.php';
 
+if (!checkExamSectionDone($conn, 7)) {
+	die('You have taken this section.');
+}
+
+if (!checkCS111Accessible($conn)) {
+	die('CS111 exam sections are not available based on your score.');
+}
+
 // Fetch questions.
 $select = "SELECT * FROM questions WHERE difficulty = 7 ORDER BY RAND() LIMIT 5";
 $result = $conn->query($select);

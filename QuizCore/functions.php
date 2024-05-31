@@ -92,6 +92,70 @@ function processStudentAnswers($conn)
     }
 }
 
+function checkExamSectionDone($conn, $difficulty)
+{
+    $studentID = getStudentID($conn);
+
+    $diffCountQuery = "SELECT COUNT(*) AS quiz_count FROM quiz q JOIN questions qs ON q.question_id = qs.question_id WHERE q.student_id = ? AND qs.difficulty = ?";
+    $diffCountStmt = $conn->prepare($diffCountQuery);
+    if ($diffCountStmt === false) {
+        die('Prepare failed: ' . $conn->error);
+    }
+    $diffCountStmt->bind_param('ii', $studentID, $difficulty);
+    if (!$diffCountStmt->execute()) {
+        die('Execute failed: ' . $diffCountStmt->error);
+    }
+    $diffCountResult = $diffCountStmt->get_result();
+    $diffCountStmt->close();
+    $diffCount = $diffCountResult->fetch_assoc()["quiz_count"];
+
+    if ($diffCount == 0) {
+        return true;
+    }
+
+    return false;
+}
+
+function checkCS110Accessible($conn)
+{
+    $email = $_COOKIE['student'];
+    if (isset($email) && $email !== '') {
+        $query = "SELECT COUNT(*) AS email_count FROM students WHERE email = ?";
+        $stmt = $conn->prepare($query);
+        if ($stmt === false) {
+            die('Prepare failed: ' . $conn->error);
+        }
+        $stmt->bind_param('s', $email);
+        if (!$stmt->execute()) {
+            die('Execute failed: ' . $stmt->error);
+        }
+        $result = $stmt->get_result();
+        $stmt->close();
+        $count = $result->fetch_assoc()["email_count"];
+        if ($count > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkCS111Accessible($conn)
+{
+    $score = getStudentScore($conn);
+    if ($score >= 11) {
+        return true;
+    }
+    return false;
+}
+
+function getStudentID($conn)
+{
+    $email = $_COOKIE['student'];
+    $studentIDSelect = "SELECT student_id FROM students WHERE email = '$email'";
+    $studentIDResult = $conn->query($studentIDSelect);
+    return intval($studentIDResult->fetch_assoc()["student_id"]);
+}
+
 function getStudentScore($conn)
 {
     $email = $_COOKIE['student'];
