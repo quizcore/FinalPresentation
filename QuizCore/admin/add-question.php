@@ -29,6 +29,7 @@ include_once 'dbconnection.php';
 
 // Initialize variables with empty values
 $question_body = "";
+$question_body_code = "";
 $answer_1 = "";
 $answer_2 = "";
 $answer_3 = "";
@@ -39,9 +40,10 @@ $difficulty = 1; // Set default difficulty to 1
 $errors = array(); // Array to store any errors
 
 // Processing form data when submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && isset($_POST["answer_1"]) && isset($_POST["answer_2"]) && isset($_POST["answer_3"]) && isset($_POST["answer_4"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && isset($_POST["question_body_code"]) && isset($_POST["answer_1"]) && isset($_POST["answer_2"]) && isset($_POST["answer_3"]) && isset($_POST["answer_4"])) {
   // Sanitize user input to prevent SQL injection
   $question_body = mysqli_real_escape_string($conn, $_POST["question_body"]);
+  $question_body_code = "\n```java\n" . mysqli_real_escape_string($conn, $_POST["question_body_code"]) . "\n```";
   $answer_1 = mysqli_real_escape_string($conn, $_POST["answer_1"]);
   $answer_2 = mysqli_real_escape_string($conn, $_POST["answer_2"]);
   $answer_3 = mysqli_real_escape_string($conn, $_POST["answer_3"]);
@@ -49,6 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && is
   $question_answer = mysqli_real_escape_string($conn, $_POST["question_answer"]);
   $difficulty = isset($_POST["difficulty"]) ? (int) $_POST["difficulty"] : 1; // Set default if not set
 
+    // Check if question_body_code is not empty and append it to question_body
+    if (!empty($question_body_code)) {
+      $question_body .= " " . $question_body_code;
+    }
   // Validate form input
   if (empty($question_body)) {
     array_push($errors, "Question body is required.");
@@ -70,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && is
     if ($conn->query($sql) === TRUE) {
       $message = "Question added successfully!";
       // Clear form fields after successful submission
-      $question_body = $answer_1 = $answer_2 = $answer_3 = $answer_4 = $question_answer = "";
+      $question_body = $question_body_code = $answer_1 = $answer_2 = $answer_3 = $answer_4 = $question_answer = "";
       $difficulty = 1; // Reset form values
 
     } else {
@@ -112,8 +118,13 @@ require_once 'header.php';
   <form id="myForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <div class="mb-3">
       <label for="question_body" class="form-label">Question Body:</label>
-      <textarea class="form-control" id="question_body" name="question_body" rows="3" required><?php echo $question_body; ?></textarea>
+      <textarea class="form-control" id="question_body" name="question_body" rows="2" required><?php echo $question_body; ?></textarea>
     </div>
+    <div class="mb-3">
+    <label for="question_body_code" class="form-label">Question Body Code:</label>
+    <textarea class="form-control" id="question_body_code" name="question_body_code" rows="4"><?php echo $question_body_code; ?></textarea>
+</div>
+
     <div class="mb-3">
       <label for="answer_1" class="form-label">Answer 1:</label>
       <input type="text" class="form-control" id="answer_1" name="answer_1" required>
