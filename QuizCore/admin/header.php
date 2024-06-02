@@ -428,7 +428,7 @@ if (!defined('MY_APP')) {
                 <li class="nav-item">
                   <a class="nav-link" href="all-questions.php">
                     <i class="bi bi-question-circle-fill fs-5"></i>
-                    <span class="ms-2">All Questions</span>
+                    <span class="ms-2">Questions</span>
                   </a>
                 </li>
                 <li class="nav-item">
