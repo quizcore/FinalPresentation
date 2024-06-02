@@ -426,6 +426,12 @@ if (!defined('MY_APP')) {
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="all-questions.php">
+                    <i class="bi bi-question-circle-fill fs-5"></i>
+                    <span class="ms-2">All Questions</span>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="messages.php">
                     <i class="bi bi-chat-right-text-fill fs-5"></i>
                     <span class="ms-2">Contact Messages</span>
