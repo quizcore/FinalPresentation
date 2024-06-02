@@ -118,6 +118,25 @@ $pageTitle = "Dashboard";
 require_once 'header.php';
 ?>
 
+<style>
+  .quizcore-stats-card-circle {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(140, 94, 88, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .quizcore-stats-card-icon-mod {
+    margin-left: -12px;
+    margin-top: -26px;
+    font-size: 30px;
+  }
+</style>
+
 <!--main-->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -127,35 +146,59 @@ require_once 'header.php';
   <!--Boxes-->
   <div class="container-fluid">
     <div class="row">
+      <!-- Total Students -->
       <div class="col-xl-6 col-xxl-6 col-sm-6 mb-4">
-        <div class="card border-primary text-center border-2">
-          <div class="card-header fs-5">
-            Total Students
-          </div> <!-- card-header -->
-          <div class="card-body">
-            <h2 id="quizcore-total-students-display"><?= $total ?></h2>
-          </div> <!-- card-body -->
-          <div class="card-footer text-muted">
-            <span class="ml-3 align-self-center">
-              <i class="bi bi-people" style="font-size: 1.75rem;"></i>
-            </span>
-          </div> <!-- card-footer -->
-        </div> <!-- card -->
-      </div> <!-- col -->
-      <div class="col-xl-6 col-xxl-6 col-sm-6 mb-4">
-        <div class="card border-warning text-center border-2">
-          <div class="card-header fs-5">
-            Students Signed Up Past Week
-          </div> <!-- card-header -->
-          <div class="card-body">
-            <h2 id="quizcore-total-students-past-week-display"><?= $lastWeekStudents ?></h2>
+        <div class="card widget-card border-light shadow">
+          <div class="card-body p-4">
+            <div class="row">
+              <div class="col-8">
+                <h5 class="card-title widget-card-title mb-3">Total Students</h5>
+                <h4 id="quizcore-total-students-display" class="card-subtitle text-body-secondary m-0"><?= $total ?></h4>
+              </div>
+              <div class="col-4">
+                <div class="d-flex justify-content-end">
+                  <div class="quizcore-stats-card-circle">
+                    <i class="bi bi-people quizcore-stats-card-icon-mod"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="d-flex align-items-center mt-3">
+                  <p class="fs-7 mb-0 text-secondary">all time</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-footer text-muted">
-            <span class="ml-3 align-self-center">
-              <i class="bi bi-pen" style="font-size: 1.75rem;"></i>
-            </span>
-          </div> <!-- card-footer -->
-        </div> <!-- card -->
+        </div>
+      </div> <!-- col -->
+      <!-- Past Week -->
+      <div class="col-xl-6 col-xxl-6 col-sm-6 mb-4">
+        <div class="card widget-card border-light shadow">
+          <div class="card-body p-4">
+            <div class="row">
+              <div class="col-8">
+                <h5 class="card-title widget-card-title mb-3">New Students</h5>
+                <h4 id="quizcore-total-students-past-week-display" class="card-subtitle text-body-secondary m-0"><?= $lastWeekStudents ?></h4>
+              </div>
+              <div class="col-4">
+                <div class="d-flex justify-content-end">
+                  <div class="quizcore-stats-card-circle">
+                    <i class="bi bi-calendar2-week quizcore-stats-card-icon-mod"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="d-flex align-items-center mt-3">
+                  <p class="fs-7 mb-0 text-secondary">since last week</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div> <!-- col -->
     </div> <!-- row -->
   </div> <!-- container-fluid -->
