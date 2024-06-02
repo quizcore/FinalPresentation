@@ -41,7 +41,7 @@ require_once 'header.php';
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Di</th>
+                  <th scope="col">Di.</th>
                   <th scope="col">Question Body</th>
                   <th scope="col">Choice 1</th>
                   <th scope="col">Choice 2</th>
@@ -99,7 +99,7 @@ require_once 'header.php';
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Di</th>
+                  <th>Di.</th>
                   <th>Question Body</th>
                   <th>Choice 1</th>
                   <th>Choice 2</th>

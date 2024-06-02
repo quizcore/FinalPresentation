@@ -179,7 +179,7 @@ require_once 'header.php';
                   <th scope="col">Email</th>
                   <th scope="col">Date Of Birth</th>
                   <th scope="col">Date Taken</th>
-                  <th scope="col">Recommendation</th>
+                  <th scope="col">Rec.</th>
                   <th scope="col">Start Term</th>
                   <th scope="col">CWU ID</th>
                   <th scope="col">Previous College</th>
@@ -239,7 +239,7 @@ require_once 'header.php';
                   <th>Email</th>
                   <th>Date Of Birth</th>
                   <th>Date Taken</th>
-                  <th>Recommendation</th>
+                  <th>Rec.</th>
                   <th>Start Term</th>
                   <th>CWU ID</th>
                   <th>Previous College</th>
