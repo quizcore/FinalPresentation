@@ -84,7 +84,7 @@ if ($result->num_rows == 1) {
 
                 $stmt->close();
             } else {
-                echo "No changes were made.";
+                array_push($errors, "No changes were made.");
             }
         } 
     } else {
@@ -101,6 +101,16 @@ require_once 'header.php';
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Edit Student Information</h1>
     </div>
+    <?php
+if (count($errors) > 0) {
+    echo "<div class='alert alert-danger'>";
+    foreach ($errors as $error) {
+        echo $error . "<br>";
+    }
+    echo "</div>";
+}
+
+?>
 
     <form id="editStudentForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
@@ -152,14 +162,6 @@ require_once 'header.php';
 
 
 <?php
-if (count($errors) > 0) {
-    echo "<div class='alert alert-danger'>";
-    foreach ($errors as $error) {
-        echo $error . "<br>";
-    }
-    echo "</div>";
-}
-
 // Include footer.
 require_once 'footer.php';
 ?>
