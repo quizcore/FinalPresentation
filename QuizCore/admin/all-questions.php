@@ -26,7 +26,7 @@ require_once 'header.php';
   </div>
 
   <!--Data table-->
-  <div class="container-fluid">
+  <div class="container-fluid" style="font-size: 14px;">
     <div class="row">
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
@@ -41,7 +41,7 @@ require_once 'header.php';
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Diff</th>
+                  <th scope="col">Di</th>
                   <th scope="col">Question Body</th>
                   <th scope="col">Choice 1</th>
                   <th scope="col">Choice 2</th>
@@ -52,6 +52,11 @@ require_once 'header.php';
               </thead>
               <tbody>
                 <?php
+                function prepareScriptInput($text)
+                {
+                  return str_replace('`', '\\`', $text);
+                }
+
                 // Function to build table rows
                 function buildTableRow(array $row): void
                 {
@@ -65,13 +70,19 @@ require_once 'header.php';
                       >';
 
                   // add a tag on question_id
-                  echo '<td>' . htmlspecialchars($row["question_id"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  echo '<td>' . htmlspecialchars($question_id, ENT_QUOTES, 'UTF-8') . '</td>';
                   echo '<td>' . htmlspecialchars($row["difficulty"], ENT_QUOTES, 'UTF-8') . '</td>';
-                  echo '<td>' . htmlspecialchars($row["question_body"], ENT_QUOTES, 'UTF-8') . '</td>';
-                  echo '<td>' . htmlspecialchars($row["answer_1"], ENT_QUOTES, 'UTF-8') . '</td>';
-                  echo '<td>' . htmlspecialchars($row["answer_2"], ENT_QUOTES, 'UTF-8') . '</td>';
-                  echo '<td>' . htmlspecialchars($row["answer_3"], ENT_QUOTES, 'UTF-8') . '</td>';
-                  echo '<td>' . htmlspecialchars($row["answer_4"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  // echo '<td>' . htmlspecialchars($row["question_body"], ENT_QUOTES, 'UTF-8') . '</td>';
+                  // Question Body.
+                  echo '<td id="question-body-' . $question_id . '">';
+                  echo '  <script>document.getElementById("question-body-'  . $question_id . '").innerHTML=marked.parse(`' . prepareScriptInput($row["question_body"]) . '`);</script>';
+                  echo '</td>';
+                  // Choices.
+                  for ($i = 1; $i <= 4; $i++) {
+                    echo '<td id="answer-' . $i . '-' . $question_id . '">';
+                    echo '  <script>document.getElementById("answer-' . $i . '-' . $question_id . '").innerHTML=marked.parse(`' . prepareScriptInput($row["answer_$i"]) . '`);</script>';
+                    echo '</td>';
+                  }
                   echo '<td>' . htmlspecialchars("Choice " . ($row["question_answer"] + 1), ENT_QUOTES, 'UTF-8') . '</td>';
                   echo '</tr>';
                 }
@@ -88,7 +99,7 @@ require_once 'header.php';
               <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Diff</th>
+                  <th>Di</th>
                   <th>Question Body</th>
                   <th>Choice 1</th>
                   <th>Choice 2</th>
