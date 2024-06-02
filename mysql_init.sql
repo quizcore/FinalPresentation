@@ -12,6 +12,12 @@
 -- WHERE quiz.student_id = 1
 -- ORDER BY q.difficulty, q.question_id;
 
+-- -- Count numer of answers with specified student_id and difficulty
+-- SELECT COUNT(*)
+-- FROM quiz q
+-- JOIN questions qs ON q.question_id = qs.question_id
+-- WHERE q.student_id = 0 AND qs.difficulty = 2;
+
 DROP 
   TABLE IF EXISTS quiz;
 DROP 
@@ -954,7 +960,7 @@ INSERT INTO quiz(
 VALUES (
 	1,
 	2,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1044,7 +1050,7 @@ INSERT INTO quiz(
 VALUES (
 	1,
 	11,
-	1
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -1121,7 +1127,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	1,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1141,7 +1147,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	3,
-	2
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -1151,7 +1157,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	4,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1161,7 +1167,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	5,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1181,7 +1187,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	7,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1201,7 +1207,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	9,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1211,7 +1217,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	10,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1241,7 +1247,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	13,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1251,7 +1257,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	14,
-	0
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1261,7 +1267,7 @@ INSERT INTO quiz(
 VALUES (
 	2,
 	15,
-	3
+	1
 );
 INSERT INTO students (
 	student_id,
@@ -1308,7 +1314,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	2,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1328,7 +1334,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	4,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1368,7 +1374,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	8,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1388,7 +1394,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	10,
-	3
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -1398,7 +1404,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	11,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1408,7 +1414,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	12,
-	2
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1418,7 +1424,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	13,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1428,7 +1434,7 @@ INSERT INTO quiz(
 VALUES (
 	3,
 	14,
-	0
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -1495,16 +1501,6 @@ INSERT INTO quiz(
 VALUES (
 	4,
 	3,
-	0
-);
-INSERT INTO quiz(
-	student_id,
-	question_id,
-	selected_answer
-) 
-VALUES (
-	4,
-	4,
 	3
 );
 INSERT INTO quiz(
@@ -1514,7 +1510,7 @@ INSERT INTO quiz(
 ) 
 VALUES (
 	4,
-	5,
+	4,
 	2
 );
 INSERT INTO quiz(
@@ -1524,8 +1520,18 @@ INSERT INTO quiz(
 ) 
 VALUES (
 	4,
+	5,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	4,
 	6,
-	0
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1555,7 +1561,7 @@ INSERT INTO quiz(
 VALUES (
 	4,
 	9,
-	2
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1565,7 +1571,7 @@ INSERT INTO quiz(
 VALUES (
 	4,
 	10,
-	2
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -1595,7 +1601,7 @@ INSERT INTO quiz(
 VALUES (
 	4,
 	13,
-	0
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -1615,7 +1621,7 @@ INSERT INTO quiz(
 VALUES (
 	4,
 	15,
-	2
+	1
 );
 INSERT INTO students (
 	student_id,
@@ -1652,16 +1658,6 @@ INSERT INTO quiz(
 VALUES (
 	5,
 	1,
-	2
-);
-INSERT INTO quiz(
-	student_id,
-	question_id,
-	selected_answer
-) 
-VALUES (
-	5,
-	2,
 	1
 );
 INSERT INTO quiz(
@@ -1671,8 +1667,18 @@ INSERT INTO quiz(
 ) 
 VALUES (
 	5,
-	3,
+	2,
 	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	5,
+	3,
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -1692,7 +1698,7 @@ INSERT INTO quiz(
 VALUES (
 	5,
 	5,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -1702,7 +1708,7 @@ INSERT INTO quiz(
 VALUES (
 	5,
 	6,
-	2
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -1732,7 +1738,7 @@ INSERT INTO quiz(
 VALUES (
 	5,
 	9,
-	1
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -1742,7 +1748,7 @@ INSERT INTO quiz(
 VALUES (
 	5,
 	10,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1772,7 +1778,7 @@ INSERT INTO quiz(
 VALUES (
 	5,
 	13,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1792,7 +1798,7 @@ INSERT INTO quiz(
 VALUES (
 	5,
 	15,
-	1
+	3
 );
 INSERT INTO students (
 	student_id,
@@ -1849,7 +1855,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	3,
-	2
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -1859,7 +1865,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	4,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1889,7 +1895,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	7,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1899,7 +1905,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	8,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1909,7 +1915,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	9,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -1939,7 +1945,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	12,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -1959,7 +1965,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	14,
-	2
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -1969,7 +1975,7 @@ INSERT INTO quiz(
 VALUES (
 	6,
 	15,
-	2
+	3
 );
 INSERT INTO students (
 	student_id,
@@ -2016,7 +2022,7 @@ INSERT INTO quiz(
 VALUES (
 	7,
 	2,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -2056,7 +2062,7 @@ INSERT INTO quiz(
 VALUES (
 	7,
 	6,
-	1
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -2076,7 +2082,7 @@ INSERT INTO quiz(
 VALUES (
 	7,
 	8,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -2106,7 +2112,7 @@ INSERT INTO quiz(
 VALUES (
 	7,
 	11,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -2343,7 +2349,7 @@ INSERT INTO quiz(
 VALUES (
 	8,
 	17,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -2383,7 +2389,7 @@ INSERT INTO quiz(
 VALUES (
 	8,
 	21,
-	2
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -2610,7 +2616,7 @@ INSERT INTO quiz(
 VALUES (
 	9,
 	6,
-	0
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -2730,7 +2736,7 @@ INSERT INTO quiz(
 VALUES (
 	9,
 	18,
-	3
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -2780,7 +2786,7 @@ INSERT INTO quiz(
 VALUES (
 	9,
 	23,
-	0
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -2800,7 +2806,7 @@ INSERT INTO quiz(
 VALUES (
 	9,
 	25,
-	1
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -2997,7 +3003,7 @@ INSERT INTO quiz(
 VALUES (
 	10,
 	7,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3097,7 +3103,7 @@ INSERT INTO quiz(
 VALUES (
 	10,
 	17,
-	2
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -3127,7 +3133,7 @@ INSERT INTO quiz(
 VALUES (
 	10,
 	20,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3157,7 +3163,7 @@ INSERT INTO quiz(
 VALUES (
 	10,
 	23,
-	3
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -3177,7 +3183,7 @@ INSERT INTO quiz(
 VALUES (
 	10,
 	25,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3197,7 +3203,7 @@ INSERT INTO quiz(
 VALUES (
 	10,
 	27,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3207,26 +3213,6 @@ INSERT INTO quiz(
 VALUES (
 	10,
 	28,
-	1
-);
-INSERT INTO quiz(
-	student_id,
-	question_id,
-	selected_answer
-) 
-VALUES (
-	10,
-	29,
-	2
-);
-INSERT INTO quiz(
-	student_id,
-	question_id,
-	selected_answer
-) 
-VALUES (
-	10,
-	30,
 	0
 );
 INSERT INTO quiz(
@@ -3236,8 +3222,28 @@ INSERT INTO quiz(
 ) 
 VALUES (
 	10,
+	29,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	10,
+	30,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	10,
 	31,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -3344,7 +3350,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	4,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -3364,7 +3370,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	6,
-	1
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -3384,7 +3390,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	8,
-	2
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3474,7 +3480,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	17,
-	3
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -3484,7 +3490,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	18,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3524,7 +3530,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	22,
-	3
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -3534,7 +3540,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	23,
-	3
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -3554,7 +3560,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	25,
-	1
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -3594,7 +3600,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	29,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -3604,7 +3610,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	30,
-	3
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -3614,7 +3620,7 @@ INSERT INTO quiz(
 VALUES (
 	11,
 	31,
-	1
+	0
 );
 INSERT INTO quiz(
 	student_id,
@@ -3691,7 +3697,7 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	1,
-	1
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3721,7 +3727,7 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	4,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -3731,16 +3737,6 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	5,
-	3
-);
-INSERT INTO quiz(
-	student_id,
-	question_id,
-	selected_answer
-) 
-VALUES (
-	12,
-	6,
 	1
 );
 INSERT INTO quiz(
@@ -3750,8 +3746,18 @@ INSERT INTO quiz(
 ) 
 VALUES (
 	12,
+	6,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	12,
 	7,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -3761,7 +3767,7 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	8,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -3781,7 +3787,7 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	10,
-	0
+	3
 );
 INSERT INTO quiz(
 	student_id,
@@ -3791,7 +3797,7 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	11,
-	1
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -3801,7 +3807,7 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	12,
-	2
+	1
 );
 INSERT INTO quiz(
 	student_id,
@@ -3831,7 +3837,7 @@ INSERT INTO quiz(
 VALUES (
 	12,
 	15,
-	3
+	1
 );
 INSERT INTO students (
 	student_id,
@@ -4128,7 +4134,7 @@ INSERT INTO quiz(
 VALUES (
 	13,
 	27,
-	3
+	2
 );
 INSERT INTO quiz(
 	student_id,
@@ -4209,4 +4215,2197 @@ VALUES (
 	13,
 	35,
 	1
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	14,
+	NULL,
+	"Lucas",
+	"Hernandez",
+	"2000-10-17",
+	"2022-04-05",
+	"lucas.hernandez@mail.com",
+	"Fall2024",
+	NULL,
+	NULL,
+	4,
+	110
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	1,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	2,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	3,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	4,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	5,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	6,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	7,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	8,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	9,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	10,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	11,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	12,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	13,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	14,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	14,
+	15,
+	1
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	15,
+	NULL,
+	"Zachary",
+	"Carter",
+	"2003-01-28",
+	"2021-12-28",
+	"zachary.carter@mail.com",
+	"Fall2022",
+	NULL,
+	NULL,
+	4,
+	110
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	1,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	2,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	3,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	4,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	5,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	6,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	7,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	8,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	9,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	10,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	11,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	12,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	13,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	14,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	15,
+	15,
+	2
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	16,
+	"15847522",
+	"Alexander",
+	"Lee",
+	"2001-07-18",
+	"2024-02-01",
+	"alexander.lee@mail.com",
+	"Fall2025",
+	NULL,
+	NULL,
+	15,
+	111
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	1,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	2,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	3,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	4,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	5,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	6,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	7,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	8,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	9,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	10,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	11,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	12,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	13,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	14,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	15,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	16,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	17,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	18,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	19,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	20,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	21,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	22,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	23,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	24,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	25,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	26,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	27,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	28,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	29,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	30,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	31,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	32,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	33,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	34,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	16,
+	35,
+	0
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	17,
+	NULL,
+	"Noah",
+	"Mitchell",
+	"1995-08-28",
+	"2023-01-09",
+	"noah.mitchell@mail.com",
+	"Fall2024",
+	"Highline",
+	"CS100, CS110",
+	16,
+	111
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	1,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	2,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	3,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	4,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	5,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	6,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	7,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	8,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	9,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	10,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	11,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	12,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	13,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	14,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	15,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	16,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	17,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	18,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	19,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	20,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	21,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	22,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	23,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	24,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	25,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	26,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	27,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	28,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	29,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	30,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	31,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	32,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	33,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	34,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	17,
+	35,
+	0
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	18,
+	"15847584",
+	"Mia",
+	"Stewart",
+	"2005-02-15",
+	"2024-01-04",
+	"mia.stewart@mail.com",
+	"Fall2025",
+	NULL,
+	NULL,
+	5,
+	110
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	1,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	2,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	3,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	4,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	5,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	6,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	7,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	8,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	9,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	10,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	11,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	12,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	13,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	14,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	18,
+	15,
+	1
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	19,
+	NULL,
+	"Emma",
+	"Taylor",
+	"2004-02-19",
+	"2024-05-01",
+	"emma.taylor@mail.com",
+	"Fall2024",
+	NULL,
+	NULL,
+	6,
+	110
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	1,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	2,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	3,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	4,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	5,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	6,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	7,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	8,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	9,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	10,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	11,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	12,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	13,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	14,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	19,
+	15,
+	1
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	20,
+	NULL,
+	"Harper",
+	"Lee",
+	"1999-06-16",
+	"2023-04-01",
+	"harper.lee@mail.com",
+	"Spring2024",
+	NULL,
+	NULL,
+	20,
+	111
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	1,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	2,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	3,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	4,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	5,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	6,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	7,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	8,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	9,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	10,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	11,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	12,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	13,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	14,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	15,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	16,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	17,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	18,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	19,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	20,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	21,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	22,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	23,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	24,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	25,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	26,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	27,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	28,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	29,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	30,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	31,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	32,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	33,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	34,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	20,
+	35,
+	2
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	21,
+	NULL,
+	"Sam",
+	"Ross",
+	"2002-12-31",
+	"2024-04-04",
+	"sam.ross@mail.com",
+	"Fall2024",
+	"WSU",
+	"CS110",
+	3,
+	110
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	1,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	2,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	3,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	4,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	5,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	6,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	7,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	8,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	9,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	10,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	11,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	12,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	13,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	14,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	21,
+	15,
+	2
+);
+INSERT INTO students (
+	student_id,
+	sid,
+	first_name,
+	last_name,
+	dob,
+	date_quiz_taken,
+	email,
+	expected_term,
+	previous_education,
+	previous_classes,
+	score,
+	recommendation)
+VALUES (
+	22,
+	NULL,
+	"Isaac",
+	"Martinez",
+	"2004-02-10",
+	"2023-11-12",
+	"isaac.martinez@mail.com",
+	"Winter2025",
+	"Seattle U",
+	"CS110",
+	8,
+	110
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	1,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	2,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	3,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	4,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	5,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	6,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	7,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	8,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	9,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	10,
+	1
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	11,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	12,
+	0
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	13,
+	2
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	14,
+	3
+);
+INSERT INTO quiz(
+	student_id,
+	question_id,
+	selected_answer
+) 
+VALUES (
+	22,
+	15,
+	0
 );
