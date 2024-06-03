@@ -47,11 +47,33 @@ if ($result->num_rows == 1) {
             $student_id = mysqli_real_escape_string($conn, $_POST['id']);
 
             $updatedFields = array();
+
             if (isset($_POST['first_name']) && $_POST['first_name'] != $row['first_name']) {
                 $updatedFields['first_name'] = mysqli_real_escape_string($conn, $_POST['first_name']);
             }
 
-            // Repeat this for other fields like last_name, email, dob, start_term, etc.
+            if (isset($_POST['last_name']) && $_POST['last_name'] != $row['last_name']) {
+                $updatedFields['last_name'] = mysqli_real_escape_string($conn, $_POST['last_name']);
+            }
+            if (isset($_POST['dob']) && $_POST['dob'] != $row['dob']) {
+                $updatedFields['dob'] = mysqli_real_escape_string($conn, $_POST['dob']);
+            }
+
+            if (isset($_POST['expected_term']) && $_POST['expected_term'] != $row['expected_term']) {
+                $updatedFields['expected_term'] = mysqli_real_escape_string($conn, $_POST['expected_term']);
+            }
+            if (isset($_POST['sid']) && $_POST['sid'] != $row['sid']) {
+                $updatedFields['sid'] = mysqli_real_escape_string($conn, $_POST['sid']);
+            }
+
+            if (isset($_POST['previous_education']) && $_POST['previous_education'] != $row['previous_education']) {
+                $updatedFields['previous_education'] = mysqli_real_escape_string($conn, $_POST['previous_education']);
+            }
+            if (isset($_POST['previous_classes']) && $_POST['previous_classes'] != $row['previous_classes']) {
+                $updatedFields['previous_classes'] = mysqli_real_escape_string($conn, $_POST['previous_classes']);
+            }
+
+            // Repeat this for other fields like last_name, , dob, start_term, etc.
 
             if (!empty($updatedFields)) {
                 $updateQuery = "UPDATE students SET ";
@@ -75,6 +97,7 @@ if ($result->num_rows == 1) {
                     // Success message if the update is successful
                     $_SESSION['success_message'] = "Student information updated successfully!";
                     // Redirect to a success page
+                    $_SESSION['id'] = $student_id;
                     header("Location: success.php");
                     exit();
                 } else {
@@ -132,23 +155,23 @@ if (count($errors) > 0) {
         </div>
 
         <div class="mb-3">
-            <label for="start_term" class="form-label">Start Term:</label>
-            <input type="text" class="form-control" id="start_term" name="start_term" value="<?php echo $row['expected_term']; ?>">
+            <label for="expected_term" class="form-label">Start Term:</label>
+            <input type="text" class="form-control" id="expected_term" name="expected_term" value="<?php echo $row['expected_term']; ?>">
         </div>
 
         <div class="mb-3">
-            <label for="cwu_id" class="form-label">CWU ID:</label>
-            <input type="text" class="form-control" id="cwu_id" name="cwu_id" value="<?php echo $row['sid']; ?>">
+            <label for="sid" class="form-label">CWU ID:</label>
+            <input type="number" class="form-control" id="sid" name="sid" value="<?php echo $row['sid']; ?>">
         </div>
 
         <div class="mb-3">
-            <label for="previous_college" class="form-label">Previous College:</label>
-            <input type="text" class="form-control" id="previous_college" name="previous_college" value="<?php echo $row['previous_education']; ?>">
+            <label for="previous_education" class="form-label">Previous College:</label>
+            <input type="text" class="form-control" id="previous_education" name="previous_education" value="<?php echo $row['previous_education']; ?>">
         </div>
 
         <div class="mb-3">
-            <label for="cs_courses" class="form-label">Relevant CS Courses:</label>
-            <input type="text" class="form-control" id="cs_courses" name="cs_courses" value="<?php echo $row['previous_classes']; ?>">
+            <label for="previous_classes" class="form-label">Relevant CS Courses:</label>
+            <input type="text" class="form-control" id="previous_classes" name="previous_classes" value="<?php echo $row['previous_classes']; ?>">
         </div>
 
         <!-- Add more fields for other student information as needed -->

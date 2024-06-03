@@ -20,6 +20,7 @@ session_start();
 // Check if a success message is set in the session
 if (isset($_SESSION['success_message'])) {
     $successMessage = $_SESSION['success_message'];
+    $id= $_SESSION['id'];
     // Unset the success message to prevent displaying it again on refresh
     unset($_SESSION['success_message']);
 } else {
@@ -40,14 +41,13 @@ require_once 'header.php';
       <div class="col-lg-8">
         <!-- Admin Profile Card -->
         <div class="card shadow-lg p-3 mb-5 rounded">
-          <h3 class="card-title text-center">Update message</h3>
+          <h3 class="card-title text-center"><?php echo $successMessage; ?></h3>
           <div class="card-body">
             <div class="row mt-3">
               <div class="col-lg-12">
 
                 <div class="row">
-                <p><?php echo $successMessage; ?></p>
-    <p><a href="index.php">Go back to homepage</a></p>
+    <a href="edit-student.php?id=<?php echo $id; ?>" class="btn btn-lg btn-bd-red">Back</a>
                 </div>
               </div>
             </div>
