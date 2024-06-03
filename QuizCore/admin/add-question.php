@@ -245,16 +245,21 @@ require_once 'header.php';
         answerInput4.value
       ];
 
+      // Store the previously selected value
+      var selectedValue = selectElement.value;
       // Clear existing options
-      selectElement.innerHTML = "<option disabled value=''>Select Correct Answer</option>";
+      selectElement.innerHTML = "<option disabled selected value=''>Select Correct Answer</option>";
 
       // Loop through answers and create options
       answers.forEach(function(answer, index) {
         var option = document.createElement("option");
-        option.value = index;
+        option.value = index + 1;
         option.text = "Answer " + (index + 1) + ": " + answer;
         selectElement.appendChild(option);
       });
+
+      // Set the previously selected value back
+      selectElement.value = selectedValue;
     }
   });
 </script>
