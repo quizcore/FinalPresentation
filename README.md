@@ -126,7 +126,9 @@ fga2`For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use th
 
 * [ ] Remove Extension from all pages (ex. .php, .html)
 * [ ] Add admin ability to change Questions and delete items in Database for students
-* [ ] Add admin ability to change edit and delete students???
+* [X] Add admin ability to add Questions
+* [X] Add admin ability to edit students information
+* [ ] Add admin ability to delete students???
 * [ ] Add admin ability to change their profile???
 * [ ] Add admin ability to change password???
 * [ ] Add admin ability to create new admin account???
