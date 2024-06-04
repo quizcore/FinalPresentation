@@ -54,6 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && is
   $answer_3 = mysqli_real_escape_string($conn, $_POST["answer_3"]);
   $answer_4 = mysqli_real_escape_string($conn, $_POST["answer_4"]);
   $question_answer = mysqli_real_escape_string($conn, $_POST["question_answer"]);
+  // Subtract 1 to align with SQL indexing before inserting into the database
+  $correctedAnswer = $question_answer - 1;
   $difficulty = isset($_POST["difficulty"]) ? (int) $_POST["difficulty"] : 1; // Set default if not set
 
   // Check if the checkboxes are checked and wrap answers with backticks accordingly
@@ -96,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question_body"]) && is
 
   // If no errors, insert question into database
   if (count($errors) == 0) {
-    $sql = "INSERT INTO questions (difficulty, question_body, answer_1, answer_2, answer_3, answer_4, question_answer) VALUES ('$difficulty', '$question_body', '$answer_1', '$answer_2', '$answer_3', '$answer_4', '$question_answer')";
+    $sql = "INSERT INTO questions (difficulty, question_body, answer_1, answer_2, answer_3, answer_4, question_answer) VALUES ('$difficulty', '$question_body', '$answer_1', '$answer_2', '$answer_3', '$answer_4', '$correctedAnswer')";
 
     if ($conn->query($sql) === TRUE) {
       $message = "Question added successfully!";
@@ -250,16 +252,17 @@ require_once 'header.php';
       // Clear existing options
       selectElement.innerHTML = "<option disabled selected value=''>Select Correct Answer</option>";
 
-      // Loop through answers and create options
-      answers.forEach(function(answer, index) {
+      // Loop through answers and create options starting from index 1
+      for (var index = 0; index < answers.length; index++) {
         var option = document.createElement("option");
-        option.value = index + 1;
-        option.text = "Answer " + (index + 1) + ": " + answer;
+        option.value = index + 1; // Start index from 1
+        option.text = "Answer " + (index + 1) + ": " + answers[index];
         selectElement.appendChild(option);
-      });
+      }
 
       // Set the previously selected value back
       selectElement.value = selectedValue;
+
     }
   });
 </script>
