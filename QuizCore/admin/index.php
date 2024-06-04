@@ -365,7 +365,7 @@ require_once 'header.php';
       <div class="col-xl-12 col-xxl-12 col-sm-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Total Number of Students Taking Exam (cummulative)</h3>
+            <h3 class="card-title">Total Number of Students Taking Exam (Cumulative)</h3>
           </div> <!-- card-header -->
           <div class="card-body">
             <canvas class="my-4 w-100" id="quizcore-cummulative-date-taken-line-chart" style="min-height: 300px; max-height: 400px;"></canvas>
