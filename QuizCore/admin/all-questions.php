@@ -148,6 +148,21 @@ require_once 'header.php';
         .draw();
     });
   });
+
+    // redirectToQuestionPage
+  /** @type {NodeListOf<HTMLTableRowElement>} */
+  const tableRows = document.querySelectorAll('tr[data-question-id]'); // Select rows with data-question-id attribute
+
+  tableRows.forEach(row => {
+    row.addEventListener('click', (event) => {
+      // Get the question ID from the data attribute
+      /** @type {string} */
+      const questionId = row.dataset.questionId;
+
+      // Open the question info page in a new tab with the ID parameter
+      window.open(`question.php?id=${questionId}`, '_blank');
+  });
+});
 </script>
 
 <?php
