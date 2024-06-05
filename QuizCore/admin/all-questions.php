@@ -88,11 +88,23 @@ require_once 'header.php';
                   echo '</tr>';
                 }
 
+                // Array to store rows with difficulty zero
+                $zeroDifficultyRows = [];
+
                 // Loop through the result set
                 foreach ($result as $row) {
-                  buildTableRow($row);
+                  if ($row["difficulty"] == 0) {
+                    // Store rows with difficulty zero
+                    $zeroDifficultyRows[] = $row;
+                  } else {
+                    buildTableRow($row);
+                  }
                 }
 
+                // Output rows with difficulty zero at the end
+                foreach ($zeroDifficultyRows as $row) {
+                  buildTableRow($row);
+                }
                 // Free result set
                 $result->free();
                 ?>
@@ -149,7 +161,7 @@ require_once 'header.php';
     });
   });
 
-    // redirectToQuestionPage
+  // redirectToQuestionPage
   /** @type {NodeListOf<HTMLTableRowElement>} */
   const tableRows = document.querySelectorAll('tr[data-question-id]'); // Select rows with data-question-id attribute
 
@@ -161,8 +173,8 @@ require_once 'header.php';
 
       // Open the question info page in a new tab with the ID parameter
       window.open(`question.php?id=${questionId}`, '_blank');
+    });
   });
-});
 </script>
 
 <?php
