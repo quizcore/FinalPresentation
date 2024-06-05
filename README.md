@@ -106,7 +106,7 @@ fga2`For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use th
 * [x] Implement column filtering for message table
 * [x] Open student detail in new tab
 * [x] Open message detail in new tab
-* [ ] Add all-questions.php
+* [X] Add all-questions.php
 * [ ] Ability to minimize the navigation bar
 * [ ] Hash password
 
@@ -125,22 +125,22 @@ fga2`For instance, for macos, run `sudo pkill mysqld` to kill mysqld that use th
 ## Low Priority
 
 * [ ] Remove Extension from all pages (ex. .php, .html)
-* [ ] Add admin ability to change Questions and delete items in Database for students
+* [X] Add admin ability to enable/disable Questions
 * [X] Add admin ability to add Questions
 * [X] Add admin ability to edit students information
-* [ ] Add admin ability to delete students???
-* [ ] Add admin ability to change their profile???
-* [ ] Add admin ability to change password???
-* [ ] Add admin ability to create new admin account???
-* [ ] Add the ability for administrators to send emails to students when they click on their email addresses???
-* [ ] Add the ability for students to send an email to an administrator after completing the test???
+* [ ] Add admin ability to delete students
+* [ ] Add admin ability to change their profile
+* [ ] Add admin ability to change password
+* [ ] Add admin ability to create new admin account
+* [ ] Add the ability for administrators to send emails to students when they click on their email addresses
+* [ ] Add the ability for students to send an email to an administrator after completing the test
 * [ ] Handle error for bad database connection
 * [ ] Handle error for invalid session state
 
 # Future
 
-* Allow admin to add question
-* Allow admin to delete question
+* Allow admin to add a question
+* Allow admin to enable/disable a question
 * Use CWU domain
 * Use clerk for authentication
 * Allow to modify student information
