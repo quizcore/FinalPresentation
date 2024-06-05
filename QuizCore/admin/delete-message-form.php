@@ -73,7 +73,7 @@ $conn->close();
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="form-control"><?= htmlspecialchars($contactDetails['contact_message'], ENT_QUOTES, 'UTF-8'); ?></div>
-                                    </div><br/><br/>
+                                    </div><br/><br/><br/><br/>
 
                                     <form action="delete-message.php" method="POST">
                                         <div class="container d-grid gap-2 d-md-grid justify-content-md-center">
