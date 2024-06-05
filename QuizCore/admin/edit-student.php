@@ -135,28 +135,28 @@ if (count($errors) > 0) {
 
 ?>
 
-    <form id="editStudentForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form id="editStudentForm" method="post">
 
         <input type="hidden" name="id" value="<?php echo $row['student_id']; ?>">
 
         <div class="mb-3">
             <label for="first_name" class="form-label">First Name:</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $row['first_name']; ?>">
+            <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $row['first_name']; ?>" required>
         </div>
 
         <div class="mb-3">
             <label for="last_name" class="form-label">Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>">
+            <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>" required>
         </div>
 
         <div class="mb-3">
             <label for="dob" class="form-label">Date of Birth:</label>
-            <input type="date" class="form-control" id="dob" name="dob" value="<?php echo $row['dob']; ?>">
+            <input type="date" class="form-control" id="dob" name="dob" value="<?php echo $row['dob']; ?>" required>
         </div>
 
         <div class="mb-3">
             <label for="expected_term" class="form-label">Start Term:</label>
-            <input type="text" class="form-control" id="expected_term" name="expected_term" value="<?php echo $row['expected_term']; ?>">
+            <input type="text" class="form-control" id="expected_term" name="expected_term" value="<?php echo $row['expected_term']; ?>" required>
         </div>
 
         <div class="mb-3">
