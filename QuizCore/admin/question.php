@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
         $question_details = array(
             'question_id' => $row['question_id'],
             'difficulty' => $row['difficulty'],
+            'old_difficulty' => $row['old_difficulty'],
             'question_body' => $row['question_body'],
             'answer_1' => $row['answer_1'],
             'answer_2' => $row['answer_2'],
@@ -41,33 +42,32 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['question_id']) && isset($_POST['difficulty']) && $_POST['difficulty'] != 0) {
-        $question_id = mysqli_real_escape_string($conn, $_GET["id"]);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['disable_question'])) {
+    $question_id = mysqli_real_escape_string($conn, $_GET["id"]);
 
-        // Save the old difficulty in a session variable
-        $_SESSION['old_difficulty'] = $question_details['difficulty'];
+    // Save the old difficulty in a session variable
+    $_SESSION['old_difficulty'] = $question_details['difficulty'];
 
-        $updateQuery = "UPDATE questions SET difficulty = 0 WHERE question_id = ?";
-        $stmt = $conn->prepare($updateQuery);
-        $stmt->bind_param("i", $question_id);
+    $updateQuery = "UPDATE questions SET old_difficulty = difficulty, difficulty = 0 WHERE question_id = ?";
+    $stmt = $conn->prepare($updateQuery);
+    $stmt->bind_param("i", $question_id);
 
-        if ($stmt->execute()) {
-            // Success message if the update is successful
-            $_SESSION['success_message'] = "Question disabled successfully!";
-            // Redirect to a success page
-            $_SESSION['question-href'] = "question.php?id=";
-            // Flag to indicate question has been disabled
-            $_SESSION['question_disabled'] = true;
-            header("Location: success.php");
-            exit();
-        } else {
-            // Error message if the update fails
-            echo "Error disabling question: " . $conn->error;
-        }
-
-        $stmt->close();
+    if ($stmt->execute()) {
+        // Success message if the update is successful
+        $_SESSION['success_message'] = "Question disabled successfully!";
+        // Redirect to a success page
+        $_SESSION['id'] = $question_id;
+        $_SESSION['question-href'] = "question.php?id=";
+        // Flag to indicate question has been disabled
+        $_SESSION['question_disabled'] = true;
+        header("Location: success.php");
+        exit();
+    } else {
+        // Error message if the update fails
+        echo "Error disabling question: " . $conn->error;
     }
+
+    $stmt->close();
 }
 
 
@@ -80,6 +80,14 @@ require_once 'header.php';
     </div>
     <!-- Display Question Details -->
     <?php
+    // Display the status as "Disabled" if the difficulty is zero
+    $status = ($question_details['difficulty'] == 0) ? 'Disabled' : 'Enabled';
+
+    echo "<p><strong>Status:</strong> $status</p>";
+
+    if ($status === 'Disabled') {
+        echo "<p><strong>Old Difficulty:</strong> " . $question_details['old_difficulty'] . "</p>";
+    }
     echo "<p><strong>Question ID:</strong> " . $question_details['question_id'] . "</p>";
     echo "<p><strong>Difficulty:</strong> " . $question_details['difficulty'] . "</p>";
     echo "<p><strong>Question Body:</strong> " . $question_details['question_body'] . "</p>";
@@ -87,10 +95,17 @@ require_once 'header.php';
     echo "<p><strong>Answer 2:</strong> " . $question_details['answer_2'] . "</p>";
     echo "<p><strong>Answer 3:</strong> " . $question_details['answer_3'] . "</p>";
     echo "<p><strong>Answer 4:</strong> " . $question_details['answer_4'] . "</p>";
-    echo "<p><strong>Correct Answer:</strong> ". "Answer ". ($question_details['question_answer'] + 1) . "</p>";
-    
-    ?>
+    echo "<p><strong>Correct Answer:</strong> " . "Answer " . ($question_details['question_answer'] + 1) . "</p>";
 
+    if ($status !== 'Disabled') {
+        echo "
+        <form method='POST'>
+            <div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
+                <button type='submit' name='disable_question' class='btn btn-lg btn-bd-red'>Disable Question</button>
+            </div>
+        </form>";
+    }
+    ?>
 
 
 </main>
