@@ -36,72 +36,63 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
             'answer_4' => $row['answer_4'],
             'question_answer' => $row['question_answer']
         );
-
     } else {
         echo "Question not found";
     }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['question_id']) && isset($_POST['difficulty']) && $_POST['difficulty'] != 0) {
+        $question_id = mysqli_real_escape_string($conn, $_GET["id"]);
+
+        // Save the old difficulty in a session variable
+        $_SESSION['old_difficulty'] = $question_details['difficulty'];
+
+        $updateQuery = "UPDATE questions SET difficulty = 0 WHERE question_id = ?";
+        $stmt = $conn->prepare($updateQuery);
+        $stmt->bind_param("i", $question_id);
+
+        if ($stmt->execute()) {
+            // Success message if the update is successful
+            $_SESSION['success_message'] = "Question disabled successfully!";
+            // Redirect to a success page
+            $_SESSION['question-href'] = "question.php?id=";
+            // Flag to indicate question has been disabled
+            $_SESSION['question_disabled'] = true;
+            header("Location: success.php");
+            exit();
+        } else {
+            // Error message if the update fails
+            echo "Error disabling question: " . $conn->error;
+        }
+
+        $stmt->close();
+    }
+}
+
 
 $pageTitle = "Question";
 require_once 'header.php';
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Edit Question</h1>
+        <h1 class="h2">Question Details</h1>
     </div>
-                <!-- Display Question Details -->
-                <form id="myForm" method="post">
-                    <div class="mb-3">
-                        <label for="question_id" class="form-label">Question ID:</label>
-                        <input type="text" class="form-control" id="question_id" name="question_id" value="<?php echo $question_details['question_id']; ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="question_body" class="form-label">Question Body:</label>
-                        <textarea class="form-control" id="question_body" name="question_body" rows="4" required><?php echo $question_details['question_body']; ?></textarea>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="answer_1" class="form-label">Answer 1:</label>
-                        <input type="text" class="form-control" id="answer_1" name="answer_1" value="<?php echo $question_details['answer_1'] ?>" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="answer_2" class="form-label">Answer 2:</label>
-                        <input type="text" class="form-control" id="answer_2" name="answer_2" value="<?php echo $question_details['answer_2'] ?>" required>
-                    </div>
+    <!-- Display Question Details -->
+    <?php
+    echo "<p><strong>Question ID:</strong> " . $question_details['question_id'] . "</p>";
+    echo "<p><strong>Difficulty:</strong> " . $question_details['difficulty'] . "</p>";
+    echo "<p><strong>Question Body:</strong> " . $question_details['question_body'] . "</p>";
+    echo "<p><strong>Answer 1:</strong> " . $question_details['answer_1'] . "</p>";
+    echo "<p><strong>Answer 2:</strong> " . $question_details['answer_2'] . "</p>";
+    echo "<p><strong>Answer 3:</strong> " . $question_details['answer_3'] . "</p>";
+    echo "<p><strong>Answer 4:</strong> " . $question_details['answer_4'] . "</p>";
+    echo "<p><strong>Correct Answer:</strong> ". "Answer ". ($question_details['question_answer'] + 1) . "</p>";
+    
+    ?>
 
 
-                    <div class="mb-3">
-                        <label for="answer_3" class="form-label">Answer 3:</label>
-                        <input type="text" class="form-control" id="answer_3" name="answer_3" value="<?php echo $question_details['answer_3'] ?>" required>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="answer_4" class="form-label">Answer 4:</label>
-                        <input type="text" class="form-control" id="answer_4" name="answer_4" value="<?php echo $question_details['answer_4'] ?>" required>
-                    </div>
-                    <div class="mb-3">
-    <label for="question_answer" class="form-label">Correct Answer:</label>
-    <select class="form-select" id="question_answer" name="question_answer" required>
-        <option value="1" <?php if ($question_details['question_answer'] == 0) echo "selected"; ?>>Answer 1</option>
-        <option value="2" <?php if ($question_details['question_answer'] == 1) echo "selected"; ?>>Answer 2</option>
-        <option value="3" <?php if ($question_details['question_answer'] == 2) echo "selected"; ?>>Answer 3</option>
-        <option value="4" <?php if ($question_details['question_answer'] == 3) echo "selected"; ?>>Answer 4</option>
-    </select>
-</div>
-
-
-                    <div class="mb-3">
-                        <label for="difficulty" class="form-label">Difficulty:</label>
-                        <input type="number" class="form-control" id="difficulty" name="difficulty"  value="<?php echo $question_details['difficulty'] ?>" required>
-                    </div><br />
-
-                    <div class="container d-grid gap-2 d-md-grid justify-content-md-center">
-                        <input type="submit" value="Edit" class="btn btn-lg btn-bd-red">
-                    </div>
-
-                </form>
 </main>
 <?php
 include_once 'footer.php'

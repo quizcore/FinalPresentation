@@ -19,14 +19,15 @@ session_start();
 
 // Check if a success message is set in the session
 if (isset($_SESSION['success_message'])) {
-    $successMessage = $_SESSION['success_message'];
-    $id= $_SESSION['id'];
-    // Unset the success message to prevent displaying it again on refresh
-    unset($_SESSION['success_message']);
+  $successMessage = $_SESSION['success_message'];
+  $id = $_SESSION['id'];
+  $questionHref = $_SESSION['question-href'];
+  // Unset the success message to prevent displaying it again on refresh
+  unset($_SESSION['success_message']);
 } else {
-    // Redirect to another page if no success message is set
-    header("Location: index.php");
-    exit();
+  // Redirect to another page if no success message is set
+  header("Location: index.php");
+  exit();
 }
 
 $pageTitle = "Update student success message";
@@ -47,7 +48,11 @@ require_once 'header.php';
               <div class="col-lg-12">
 
                 <div class="row">
-    <a href="edit-student.php?id=<?php echo $id; ?>" class="btn btn-lg btn-bd-red">Back</a>
+                  <?php
+                  $backLink = $successMessage === "Question disabled successfully!" ? "$questionHref$id" : "edit-student.php?id=$id";
+                  ?>
+                  <a href="<?php echo $backLink; ?>" class="btn btn-lg btn-bd-red">Back</a>
+
                 </div>
               </div>
             </div>
