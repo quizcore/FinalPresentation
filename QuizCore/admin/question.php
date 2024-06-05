@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
     }
 }
 
+//disable_question
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['disable_question'])) {
     $question_id = mysqli_real_escape_string($conn, $_GET["id"]);
 
@@ -70,6 +71,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['disable_question'])) {
     $stmt->close();
 }
 
+//enable_question
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['enable_question'])) {
+    $question_id = mysqli_real_escape_string($conn, $_GET["id"]);
+
+    // Set difficulty equal to old_difficulty and old_difficulty to zero
+    $updateQuery = "UPDATE questions SET difficulty = old_difficulty, old_difficulty = 0 WHERE question_id = ?";
+    $stmt = $conn->prepare($updateQuery);
+    $stmt->bind_param("i", $question_id);
+
+    if ($stmt->execute()) {
+        // Success message if the update is successful
+        $_SESSION['success_message'] = "Question enabled successfully!";
+        // Redirect to a success page
+        $_SESSION['id'] = $question_id;
+        $_SESSION['question-href'] = "question.php?id=";
+        // Flag to indicate question has been enabled
+        $_SESSION['question_enabled'] = true;
+        header("Location: success.php");
+        exit();
+    } else {
+        // Error message if the update fails
+        echo "Error enabling question: " . $conn->error;
+    }
+
+    $stmt->close();
+}
+
+
 
 $pageTitle = "Question";
 require_once 'header.php';
@@ -89,7 +118,9 @@ require_once 'header.php';
         echo "<p><strong>Old Difficulty:</strong> " . $question_details['old_difficulty'] . "</p>";
     }
     echo "<p><strong>Question ID:</strong> " . $question_details['question_id'] . "</p>";
+    if ($status !== 'Disabled') {
     echo "<p><strong>Difficulty:</strong> " . $question_details['difficulty'] . "</p>";
+    }
     echo "<p><strong>Question Body:</strong> " . $question_details['question_body'] . "</p>";
     echo "<p><strong>Answer 1:</strong> " . $question_details['answer_1'] . "</p>";
     echo "<p><strong>Answer 2:</strong> " . $question_details['answer_2'] . "</p>";
@@ -102,6 +133,13 @@ require_once 'header.php';
         <form method='POST'>
             <div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
                 <button type='submit' name='disable_question' class='btn btn-lg btn-bd-red'>Disable Question</button>
+            </div>
+        </form>";
+    } else {
+        echo "
+        <form method='POST'>
+            <div class='container d-grid gap-2 d-md-grid justify-content-md-center'>
+                <button type='submit' name='enable_question' class='btn btn-lg btn-bd-red'>Enable Question</button>
             </div>
         </form>";
     }

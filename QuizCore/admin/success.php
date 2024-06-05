@@ -49,7 +49,7 @@ require_once 'header.php';
 
                 <div class="row">
                   <?php
-                  $backLink = $successMessage === "Question disabled successfully!" ? "$questionHref$id" : "edit-student.php?id=$id";
+                  $backLink = ($successMessage === "Question enabled successfully!" || $successMessage === "Question disabled successfully!") ? "$questionHref$id" : "edit-student.php?id=$id";
                   ?>
                   <a href="<?php echo $backLink; ?>" class="btn btn-lg btn-bd-red">Back</a>
 
