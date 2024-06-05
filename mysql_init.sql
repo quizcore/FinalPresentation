@@ -32,6 +32,7 @@ DROP
 CREATE TABLE IF NOT EXISTS questions(
   question_id INT AUTO_INCREMENT NOT NULL, 
   difficulty INT NOT NULL, 
+  old_difficulty INT, 
   question_body VARCHAR(500) NOT NULL, 
   answer_1 VARCHAR(200) NOT NULL, 
   answer_2 VARCHAR(200) NOT NULL, 
